@@ -255,3 +255,165 @@ ERROR - 2013-09-12 16:47:41 --> Severity: Notice  --> Undefined variable: Column
 ERROR - 2013-09-12 16:47:41 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
 ERROR - 2013-09-12 16:47:41 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
 ERROR - 2013-09-12 16:47:41 --> 404 Page Not Found --> assets
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:39 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:39 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:39 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:22:40 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:22:40 --> 404 Page Not Found --> assets
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_usuario' E:\wamp\www\web2\application\controllers\verifica_login.php 35
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'nombres' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'apellidos' E:\wamp\www\web2\application\controllers\verifica_login.php 36
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'iniciales' E:\wamp\www\web2\application\controllers\verifica_login.php 37
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'id_nivel' E:\wamp\www\web2\application\controllers\verifica_login.php 38
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Undefined variable: Columna E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Notice  --> Trying to get property of non-object E:\wamp\www\web2\application\controllers\verifica_login.php 39
+ERROR - 2013-09-12 21:23:01 --> Severity: Warning  --> Illegal string offset 'coordinador' E:\wamp\www\web2\application\controllers\verifica_login.php 40
+ERROR - 2013-09-12 21:23:02 --> 404 Page Not Found --> assets

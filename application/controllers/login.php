@@ -9,6 +9,7 @@ class Login extends CI_Controller {
         $this->load->helper(array('form'));
         $this->load->view('header/header_login');
         $this->load->view('menu/menu_login');
+        echo "HH:prueba";
         $this->load->view('login');
         $this->load->view('footer/footer_login');
     }
