@@ -1,0 +1,170 @@
+/* compania*/
+
+
+            fieldset {
+
+                width: 270px;
+                height: auto;
+                background-color: #ddd;
+                padding: 5px;
+                margin: 0px;
+                margin-top: 5px;
+                border:solid 1px #ccc;
+            }
+
+            .fieldset2columnas{
+                width: 560px;
+                margin: 0px;
+                float: left;
+            }
+            .fieldset2columnasCabecera{
+                width: 560px;
+                margin: 0px;
+                margin-bottom: 5px;
+                float: left;
+            }
+
+            .fila{
+                margin: 2px;
+                padding: 3px;
+                overflow: hidden;
+                width: 260px;
+                height: auto;
+               
+
+            }
+
+            .fila .etiqueta {
+                width: 50px;
+                
+                color: #000;
+                float: left;
+            }
+
+
+            .fila .box {
+                float: right;
+                width: 200px;
+                margin: 0px;
+            }
+
+
+
+
+            .fila .totalHorizontal {
+                width: 100%;
+                color: #000;
+            }
+
+            .FormLeft{
+             float: left;
+             margin: 0px;
+             margin-left: 2px;                   
+             margin-right: 2px;
+             margin-bottom: 5px;
+             
+            }
+            .divLeft{
+             float: left;
+             margin: 0px;
+            }
+            
+            .marginCero{
+             margin: 0px;
+            }
+            
+            .izquierdaAnalisis {
+                float: left;
+                width: 100px;
+            }
+
+            .centroAnalisis { 
+                float: left;
+                width: 60px;
+            }
+
+            .derechaAnalisis {
+                float: right;
+                width: 80px;
+            }
+
+            .contenedorFormulario{
+                /*width: 620px;*/
+                width: 860px;
+                background-color: #ddd;
+                overflow: hidden;
+                height: auto;
+                padding: 5px;
+                margin: opx;
+            }
+
+            .well{
+                margin-bottom: 3px;
+            }
+            
+            .izquierdaFormulario {
+                float: left;
+                width: 280px;
+            }
+
+            .centroFormulario { 
+                float: left;
+                width: 280px;
+                margin-left: 10px;
+                margin-right: 5px;
+            }
+
+            .derechaFormulario {
+                float: left;
+                width: 280px;
+            }
+
+         
+
+           /*HH: controles formulario compania */
+            #txtidcompania{
+                width: 45px;
+                margin: 0
+            }
+            #txtnombre {
+                width: 450px;
+                margin: 0
+            }
+
+
+            select{
+                margin: 0px;
+            }
+            #cboAnalisis {
+                width: 60px;
+            }
+
+            #cboprocedencia {
+                width: 180px;
+            }
+
+            #cboPais{
+                width: 210px;
+            }
+
+            .modal{
+                
+                width: 700px;
+            }    
+            
+/*HH: controles formulario contacto */
+#txtidContacto{
+    width: 50px;
+}
+
+/*HH: botones de navvegacion*/
+
+.btnNav{
+    margin: 0px;
+    padding: 0px;
+    boder: 0px;
+}
+/* fin de compania*/
+
+
+

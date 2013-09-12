@@ -1,0 +1,10 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Proceso extends CI_Controller {
+
+	public function index()
+	{
+//echo "Hola mundo";		
+$this->load->view('proyectos/procesos/reporteCambioEstado');
+	}
+}
