@@ -19,7 +19,6 @@ class verifica_login extends CI_Controller {
             $this->load->view('footer/footer_login');
             
         }else {
-            //redirect('home','refresh');
             redirect('marqueting/compania','refresh');
         }
     }
