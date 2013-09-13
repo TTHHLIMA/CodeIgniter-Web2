@@ -36,7 +36,7 @@ class verifica_login extends CI_Controller {
                     'xxxnombres' => $row['nombres']." ".$row['apellidos'],
 		    'xxxiniciales' => strtoupper($row['iniciales']),
 		    'xxxnivel' => $row['id_nivel'],
-		    'xxxactivo' => $Columna->activo,
+		    'xxxactivo' => $row['activo'],
                     'xxxcoordinador' => $row['coordinador']
                 );
                 $this->session->set_userdata('Datos_Session',$sess_array);
