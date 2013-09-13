@@ -17,9 +17,10 @@ class verifica_login extends CI_Controller {
             $this->load->view('menu/menu_login');           
             $this->load->view('login');
             $this->load->view('footer/footer_login');
-            
+            //HH: prueba
         }else {
             redirect('marqueting/compania','refresh');
+            
         }
     }
     
