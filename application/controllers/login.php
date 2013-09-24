@@ -15,6 +15,7 @@ class Login extends CI_Controller {
 
     function cerrar_sesion() {
         $this->session->unset_userdata('Datos_Session');
+        session_start();
         session_destroy();
         redirect('login', 'refresh');
     }
