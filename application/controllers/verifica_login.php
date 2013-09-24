@@ -32,12 +32,12 @@ class verifica_login extends CI_Controller {
             $sess_array = array();
             foreach ($result as $row){
                 $sess_array = array(
-                    'xxxiduser' => $row['id_usuario'],
-                    'xxxnombres' => $row['nombres']." ".$row['apellidos'],
-		    'xxxiniciales' => strtoupper($row['iniciales']),
-		    'xxxnivel' => $row['id_nivel'],
-		    'xxxactivo' => $row['activo'],
-                    'xxxcoordinador' => $row['coordinador']
+                    'xxxiduser' => $row->id_usuario,
+                    'xxxnombres' => $row->nombres . " " . $row->apellidos,
+		    'xxxiniciales' => strtoupper($row->iniciales),
+		    'xxxnivel' => $row->id_nivel,
+		    'xxxactivo' => $row->activo,
+                    'xxxcoordinador' => $row->coordinador
                 );
                 $this->session->set_userdata('Datos_Session',$sess_array);
             }

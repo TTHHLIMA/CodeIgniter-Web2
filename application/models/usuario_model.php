@@ -11,7 +11,7 @@ class Usuario_model extends CI_Model{
         $query = $this->db->query("SELECT * FROM `usuarios` where usuario = '".$usuario."' and password = '".$password."' limit 0,1");
         if ($query->num_rows()===1)
             {
-                return $query->row_array();
+                return $query->result();
             } else {
                 return false;
             }
