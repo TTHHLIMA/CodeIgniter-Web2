@@ -38,19 +38,19 @@ if ($contacto != null) {
 
     <div class="FormLeft ">
         <a class="btn" id="btnPrimeroC"
-           href="compania/buscar_contacto_primero"
+           href="#"
            data-toggle="modal"
            >|<<</a>
         <a class="btn" id="btnAnteriorC"
-           href="compania/buscar_contacto_anterior"
+           href="#"
            data-toggle="modal"
            ><<</a>
         <a class="btn" id="btnSiguienteC"
-           href="compania/buscar_contacto_siguiente"
+           href="#"
            data-toggle="modal"
            >>></a>
         <a class="btn" id="btnUltimoC"
-           href="compania/buscar_contacto_ultimo"
+           href="#"
            data-toggle="modal"
            >>>|</a>
     </div>

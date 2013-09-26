@@ -56,21 +56,38 @@
                                            data-toggle="modal"
                                         >Buscar</a>
                                         <a class="btn" id="btnPrimero"
-                                           href="compania/buscar_compania_primero"
+                                           href="#"
                                            data-toggle="modal"
                                         >|<<</a>  
                                         <a class="btn" id="btnAnterior"
-                                           href="compania/buscar_compania_anterior"
+                                           href="#"
                                            data-toggle="modal" 
                                         ><<</a>
                                         <a class="btn" id="btnSiguiente"
-                                           href="compania/buscar_compania_siguiente"
+                                           href="#"
                                            data-toggle="modal"
                                         >>></a>
                                         <a class="btn" id="btnUltimo"
-                                           href="compania/buscar_compania_ultimo"
+                                           href="#"
                                            data-toggle="modal"
                                         >>>|</a>
+                                        
+                                        <a class="btn" id="btnUltimo"
+                                           href="compania/buscar_compania_ultimo"
+                                           data-toggle="modal"
+                                           >Nuevo</a>
+                                        <a class="btn" id="btnUltimo"
+                                           href="compania/buscar_compania_ultimo"
+                                           data-toggle="modal"
+                                           >Agregar</a>
+                                        <a class="btn" id="btnActualizar"
+                                           href="#"
+                                           data-toggle="modal"
+                                           >Actualizar</a>
+                                        <a class="btn" id="btnUltimo"
+                                           href="compania/buscar_compania_ultimo"
+                                           data-toggle="modal"
+                                           >Eliminar</a>                                        
                                     </div>
                                     
                                 </fieldset>
@@ -80,7 +97,7 @@
                             <div class="contenedorFormulario well">
 
                                 <div id="formularioCompania" class="divLeft" >  
-                                    <form>
+                                     <form id="frmCompania" action="" method="post">
                                         <div class="row-fluid">
                                 <fieldset class="fieldset2columnasCabecera">
 

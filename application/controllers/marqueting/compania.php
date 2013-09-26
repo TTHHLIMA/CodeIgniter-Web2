@@ -50,11 +50,6 @@ class Compania extends CI_Controller {
     //HH: botones de navegacion contactos
     public function buscar_contacto_siguiente($idcompania_actual = '',$idcontacto_actual = '') {
         $data['contacto'] = $this->compania_model->buscar_contacto_siguiente($idcompania_actual,$idcontacto_actual);
-       // echo "Dato:".$data['contacto'];
-        
-        //if (count($data['listaCompania']) > 0) {
-            
-        //}
         $this->load->view('marqueting/formularioContacto', $data);
     }
 
@@ -102,7 +97,31 @@ class Compania extends CI_Controller {
         }
     }
 
-
+    function actualizar_compania(){
+        
+        $idcompania= $this->input->post("txtidcompania");
+        $txtnombre= $this->input->post("txtnombre");
+        $txtcalle= $this->input->post("txtcalle");
+        $txtcodigo= $this->input->post("txtcodigo");
+        $txtlugar= $this->input->post("txtlugar");
+        
+        $data = array(
+               'nombre' => $txtnombre,
+               'calle' => $txtcalle,
+               'codigo' => $txtcodigo,
+               'lugar' => $txtlugar
+            );
+            print_r($data);
+        //$this->db->where('idcompania', $idcompania);
+        //$this->db->update('compania', $data); 
+        $res = $this->db->update('compania', $data, array('idcompania' => $idcompania));
+        if (!$res){
+            // if query returns null
+            $msg = $this->db->_error_message();
+            $num = $this->db->_error_number();
+            //echo "Error(" . $num . ") ".$msg;
+        }
+    }
 
 
 }

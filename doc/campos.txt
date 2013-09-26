@@ -1,0 +1,27 @@
+txtidcompania		idcompania
+txtnombre			nombre
+txtcalle			calle
+txtcodigo			codigo
+txtlugar			lugar
+
+
+
+
+
+
+rm.Fields("idcompania") = Label3.Caption		"idcompania"
+rm.Fields("nombre") = Text1.Text				"nombre"
+rm.Fields("correo_postal") = Text2.Text 		"Po box"
+rm.Fields("calle") = Text3.Text					"calle"
+rm.Fields("lugar") = Text4.Text					"lugar"
+rm.Fields("codigo") = Text5.Text				"codigo"
+rm.Fields("pais") = cad4						"codigo de la tabla pais"
+rm.Fields("telefono") = Text7.Text				"telefono"
+rm.Fields("fax") = Text8.Text					"fax"
+rm.Fields("mail") = Text9.Text					"mail"
+rm.Fields("web") = Text11.Text					"web"
+rm.Fields("interesante_link") = Text12.Text   	"web2"
+rm.Fields("ana_abc") = Combo3.Text				"Analisis ABC"
+rm.Fields("perfil_cliente") = Text14.Text		"perfil_cliente"
+rm.Fields("productos") = Text10.Text			"productos"
+rm.Fields("procedencia_cliente") = text17.Text	"procedencia"
