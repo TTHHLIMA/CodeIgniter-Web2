@@ -37,6 +37,7 @@
                         function() {
                             var idcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + idcompania);
+                            $("#btnAgregar").attr('disabled', 'disabled'); //HH: inicializo mostrando el formulario sin el biton agregar
                         }
                 );
             });
@@ -62,6 +63,7 @@
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania);
+                            $("#btnAgregar").attr('disabled', 'disabled');
                         }
                 );
             });
@@ -73,6 +75,7 @@
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania);
+                            $("#btnAgregar").attr('disabled', 'disabled');
                         }
                 );
             });
@@ -83,8 +86,10 @@
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania);
+                            $("#btnAgregar").attr('disabled', 'disabled');
                         }
                 );
+
             });
             $(document).on("click", "#btnPrimero", function(e) {
                 e.preventDefault();
@@ -93,8 +98,10 @@
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania);
+                            $("#btnAgregar").attr('disabled', 'disabled');
                         }
                 );
+
             });
 
             //HH: eventos de los botones de navegacion contacto
@@ -129,53 +136,51 @@
                 $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_ultimo/" + idcompania);
             });
 
-            //HH:Carga eventos de mantenimiento
-            /*            $(document).on("click", "#btnActualizar", function(e) {
-             e.preventDefault();
-             form = $("#frmCompania").serialize();
-             $.ajax({
-             type: "POST",
-             url: "<?php echo site_url("marqueting/compania/actualizar_compania"); ?>",
-             data: form,
-             success: function(data) {
-             console.log(data);
-             alert('Successful!'); //Unterminated String literal fixed
-             }
-             
-             });
-             event.preventDefault();
-             return false;  //stop the actual form post !important!
-             });
-             */
+            $(document).on("click", "#btnNuevo", function(e) {
+                e.preventDefault();
+                limpiaFormulario($("#frmCompania"));
+                $("#btnActualizar").attr('disabled', 'disabled');
+                $("#btnEliminar").attr('disabled', 'disabled');
+                $('#txtnombre').focus();
+            });
+
 
             $(document).on("click", "#btnActualizar", function(e) {
                 e.preventDefault();
-
+                if ($('#btnActualizar').attr('disabled')) {
+                    return false;
+                }
                 $.Zebra_Dialog('¿Desea Actualizar el Registro?', {
                     'type': 'question',
                     'title': 'Confirmación',
-                    'buttons': ['Yes', 'No', 'Canselar'],
+                    'buttons': ['Si', 'No', 'Cancelar'],
                     'onClose': function(caption) {
-                        //alert((caption != '' ? '"' + caption + '"' : 'nothing') + ' was clicked');
-                        if (caption == "Yes") {
+                        if (caption == "Si") {
                             $.ajax({
-                                url: '<?= base_url() ?>marqueting/compania/actualizar_compania',
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento/2',
                                 type: 'POST',
                                 data: $("#frmCompania").serializeArray(),
                                 success: function(resp) {
-                                    //alert(resp);
-                                    console.log(resp);
-                                    $.Zebra_Dialog('Se Actualizo el Registro.', {
-                                        'type': 'confirmation',
-                                        'title': 'Confirmación'
-                                    });
+                                    if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
+                                        console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
+                                        $.Zebra_Dialog('Se Actualizo el Registro.', {
+                                            'type': 'confirmation',
+                                            'title': 'Confirmación'
+                                        });
+                                    } else {
+                                        console.log(resp);
+                                        $.Zebra_Dialog('Error al actualizar el Registro.', {
+                                            'type': 'error',
+                                            'title': 'Error'
+                                        });
+                                    }
                                 },
                                 error: function(resp) {
-                                    //alert(JSON.stringify(resp));
+                                    console.log(resp);
                                     $.Zebra_Dialog('Error al actualizar el Registro.', {
-                                        'type': 'Error',
+                                        'type': 'error',
                                         'title': 'Error'
-                                    });                                    
+                                    });
                                 }
                             });
                         }
@@ -185,9 +190,63 @@
 
                 });
 
-
-
+                event.preventDefault();
+                return false;  //stop the actual form post !important!
             });
+
+            $(document).on("click", "#btnEliminar", function(e) {
+                e.preventDefault();
+                if ($('#btnEliminar').attr('disabled')) {
+                    return false;
+                }
+                $.Zebra_Dialog('¿Desea Eliminar el Registro?', {
+                    'type': 'question',
+                    'title': 'Confirmación',
+                    'buttons': ['Si', 'No', 'Cancelar'],
+                    'onClose': function(caption) {
+                        if (caption == "Si") {
+                            $.ajax({
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento/3',
+                                type: 'POST',
+                                data: $("#frmCompania").serializeArray(),
+                                success: function(resp) {
+                                    if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
+                                        console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
+                                        $.Zebra_Dialog('Se Elimino el Registro.', {
+                                            'type': 'confirmation',
+                                            'title': 'Confirmación'
+                                        });
+                                        limpiaFormulario($("#frmCompania"));
+                                    } else {
+                                        console.log(resp);
+                                        $.Zebra_Dialog('<b>Error al Eliminar el Registro</b> <br>' + resp, {
+                                            'type': 'error',
+                                            'title': 'Error'
+                                        });
+                                    }
+                                },
+                                error: function(resp) {
+                                    console.log(resp);
+                                    $.Zebra_Dialog('Error al Eliminar el Registro.', {
+                                        'type': 'error',
+                                        'title': 'Error'
+                                    });
+                                }
+                            });
+                        }
+                    }
+
+
+                });
+
+                event.preventDefault();
+                return false;  //stop the actual form post !important!
+            });
+
+
+
+
+
             // HH: cargando datos de consulta tipo modal
             $(document).on("click", "#btnBuscador", function(e) {
                 $('#test_modal').modal('show');
@@ -204,8 +263,26 @@
                 );
                 $('#test_modal').modal('hide') //HH:cierro el modal
             }
-            //HH: se cierra el modal
-            //$('#test_modal').modal('hide')
+
+            //HH: Funcion para limpiar los formularios
+            function limpiaFormulario(miFormulario) {
+                // recorremos todos los campos que tiene el formulario
+                $(':input', miFormulario).each(function() {
+                    var type = this.type;
+                    var tag = this.tagName.toLowerCase();
+                    //limpiamos los valores de los campos…
+                    if (type == 'text' || type == 'password' || tag == 'textarea')
+                        this.value = "";
+                    // excepto de los checkboxes y radios, le quitamos el checked
+                    // pero su valor no debe ser cambiado
+                    else if (type == 'checkbox' || type == 'radio')
+                        this.checked = false;
+                    // los selects le ponesmos el indice a -
+                    else if (tag == 'select')
+                        this.selectedIndex = -1;
+                });
+            }
+
         </script>       
 
 

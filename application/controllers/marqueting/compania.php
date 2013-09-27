@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 //HH: para definir las sesiones y saber si puede visualizar
@@ -10,7 +11,7 @@ class Compania extends CI_Controller {
         parent::__construct();
         $this->load->library('pagination');
         $this->load->model('marqueting/compania_model');
-        $this->load->helper(array('url'));
+        $this->load->helper(array('url', 'consola_helper'));
     }
 
     public function index() {
@@ -29,63 +30,84 @@ class Compania extends CI_Controller {
     //HH: botones de navegacion Compania
     public function buscar_compania_siguiente($idcompania_actual = '') {
         $data['compania'] = $this->compania_model->buscar_compania_siguiente($idcompania_actual);
-        $this->load->view('marqueting/formularioCompania', $data);
+        $data['paises'] = $this->compania_model->listar_paises();
+        if ($data['compania'] === False) {
+            $data['compania'] = $this->compania_model->buscar_compania_idcompania($idcompania_actual);
+        }
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioCompania');
     }
 
     public function buscar_compania_anterior($idcompania_actual = '') {
         $data['compania'] = $this->compania_model->buscar_compania_anterior($idcompania_actual);
-        $this->load->view('marqueting/formularioCompania', $data);
+        $data['paises'] = $this->compania_model->listar_paises();
+        if ($data['compania'] === False) {
+            $data['compania'] = $this->compania_model->buscar_compania_idcompania($idcompania_actual);
+        }
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioCompania');
     }
 
     public function buscar_compania_ultimo($idcompania_actual = '') {
         $data['compania'] = $this->compania_model->buscar_compania_ultimo();
-        $this->load->view('marqueting/formularioCompania', $data);
+        $data['paises'] = $this->compania_model->listar_paises();
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioCompania');
     }
 
     public function buscar_compania_primero() {
         $data['compania'] = $this->compania_model->buscar_compania_primero();
-        $this->load->view('marqueting/formularioCompania', $data);
+        $data['paises'] = $this->compania_model->listar_paises();
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioCompania');
     }
 
     //HH: botones de navegacion contactos
-    public function buscar_contacto_siguiente($idcompania_actual = '',$idcontacto_actual = '') {
-        $data['contacto'] = $this->compania_model->buscar_contacto_siguiente($idcompania_actual,$idcontacto_actual);
-        $this->load->view('marqueting/formularioContacto', $data);
+    public function buscar_contacto_siguiente($idcompania_actual = '', $idcontacto_actual = '') {
+        $data['contacto'] = $this->compania_model->buscar_contacto_siguiente($idcompania_actual, $idcontacto_actual);
+        if ($data['contacto'] === False) {
+            $data['contacto'] = $this->compania_model->buscar_contacto_idcontacto($idcontacto_actual);
+        }        
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioContacto');
     }
 
-    public function buscar_contacto_anterior($idcompania_actual = '',$idcontacto_actual='') {
-        $data['contacto'] = $this->compania_model->buscar_contacto_anterior($idcompania_actual,$idcontacto_actual);
-        $this->load->view('marqueting/formularioContacto', $data);
+    public function buscar_contacto_anterior($idcompania_actual = '', $idcontacto_actual = '') {
+        $data['contacto'] = $this->compania_model->buscar_contacto_anterior($idcompania_actual, $idcontacto_actual);
+        if ($data['contacto'] === False) {
+            $data['contacto'] = $this->compania_model->buscar_contacto_idcontacto($idcontacto_actual);
+        }
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioContacto');
     }
 
     public function buscar_contacto_ultimo($idcompania_actual = '') {
         $data['contacto'] = $this->compania_model->buscar_contacto_ultimo($idcompania_actual);
-        $this->load->view('marqueting/formularioContacto', $data);
+         $this->load->vars($data);
+        $this->load->view('marqueting/formularioContacto');
     }
 
-    public function buscar_contacto_primero($idcompania_actual ='') {
+    public function buscar_contacto_primero($idcompania_actual = '') {
         $data['contacto'] = $this->compania_model->buscar_contacto_primero($idcompania_actual);
-        //var_dump($resultado);
-        $this->load->view('marqueting/formularioContacto', $data);
+         $this->load->vars($data);
+        $this->load->view('marqueting/formularioContacto');
     }
 
-    
-    public function buscar_compania_idcompania($idcompania ='') {
+    public function buscar_compania_idcompania($idcompania = '') {
         $data['compania'] = $this->compania_model->buscar_compania_idcompania($idcompania);
         $this->load->view('marqueting/formularioCompania', $data);
-    }    
-    
-    
+    }
+
     //HH: funcion para cargar al contacto
     public function mostrar_contacto() {
         $this->load->view('marqueting/formularioContacto');
     }
-    
+
     //HH: funcion para el modal y filtrar las companias
     public function test() {
         $this->load->view('buscador');
     }
-    
+
     public function filtrar_compania_nombre($nombre = null) {
         if ($nombre == null) {
             $data['lista_companias'] = array();
@@ -97,31 +119,31 @@ class Compania extends CI_Controller {
         }
     }
 
-    function actualizar_compania(){
-        
-        $idcompania= $this->input->post("txtidcompania");
-        $txtnombre= $this->input->post("txtnombre");
-        $txtcalle= $this->input->post("txtcalle");
-        $txtcodigo= $this->input->post("txtcodigo");
-        $txtlugar= $this->input->post("txtlugar");
-        
+    function proceso_mantenimiento($opcion = "") {
+        $idcompania = $this->input->post("txtidcompania");
+        $txtnombre = $this->input->post("txtnombre");
+        $txtcalle = $this->input->post("txtcalle");
+        $txtcodigo = $this->input->post("txtcodigo");
+        $txtlugar = $this->input->post("txtlugar");
+
         $data = array(
-               'nombre' => $txtnombre,
-               'calle' => $txtcalle,
-               'codigo' => $txtcodigo,
-               'lugar' => $txtlugar
-            );
-            print_r($data);
-        //$this->db->where('idcompania', $idcompania);
-        //$this->db->update('compania', $data); 
-        $res = $this->db->update('compania', $data, array('idcompania' => $idcompania));
-        if (!$res){
-            // if query returns null
-            $msg = $this->db->_error_message();
-            $num = $this->db->_error_number();
-            //echo "Error(" . $num . ") ".$msg;
+            'nombre' => $txtnombre,
+            'calle' => $txtcalle,
+            'codigo' => $txtcodigo,
+            'lugar' => $txtlugar
+        );
+
+        if ($opcion === "1") {//HH: agregar
+        }
+        if ($opcion === "2") { //HH: actualizar
+            $respuesta = $this->compania_model->actualizar_compania($data, $idcompania);
+        }
+        if ($opcion === "3") { //HH: Eliminar
+            $respuesta = $this->compania_model->eliminar_compania($idcompania);
+        }
+        if ($respuesta <> "") {
+            echo $respuesta;
         }
     }
-
 
 }
