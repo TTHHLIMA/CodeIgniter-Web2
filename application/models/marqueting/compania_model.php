@@ -131,7 +131,7 @@ class Compania_model extends CI_Model {
         $error = "";
         if ($idcompania <> "") {
             $error = 0; //HH: flag para saber si esta vacio el id
-            //$res = $this->db->update('compania', $array, array('idcompania' => $idcompania));
+            $res = $this->db->update('compania', $array, array('idcompania' => $idcompania));
         } else {
             $mensaje = "Error: IdCompania esta vacio. ";
             $error = 1;

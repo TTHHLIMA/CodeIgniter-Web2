@@ -125,15 +125,17 @@ class Compania extends CI_Controller {
         $txtcalle = $this->input->post("txtcalle");
         $txtcodigo = $this->input->post("txtcodigo");
         $txtlugar = $this->input->post("txtlugar");
-
+        
+        //consola_google("Dato: " . $idcompania);
+        
         $data = array(
             'nombre' => $txtnombre,
             'calle' => $txtcalle,
             'codigo' => $txtcodigo,
             'lugar' => $txtlugar
         );
-
-        if ($opcion === "1") {//HH: agregar
+           //$idcompania ="";
+           if ($opcion === "1") {//HH: agregar
         }
         if ($opcion === "2") { //HH: actualizar
             $respuesta = $this->compania_model->actualizar_compania($data, $idcompania);

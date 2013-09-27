@@ -1550,7 +1550,7 @@ legend + .control-group {
   /* IE7 inline-block hack */
 
   *zoom: 1;
-  padding: 4px 10px 4px;
+  padding: 4px 8px 4px; /*HH: cambio de paddin para los botones */
   margin-bottom: 0;
   font-size: 13px;
   line-height: 18px;

@@ -52,43 +52,53 @@ if ($compania != null) {
                 <div class="contenedorFormulario well">
                     <fieldset class="fieldset2columnas">
                         <div class="FormLeft">
+                            <div class="btn-group divLeft">
+                            
                             <a class="btn" id="btnPrimero"
                                href="#"
                                data-toggle="modal"
-                               >|<<</a>  
+                               ><i class="icon-fast-backward"></i></a>  
                             <a class="btn" id="btnAnterior"
                                href="#"
                                data-toggle="modal" 
-                               ><<</a>
+                               ><i class="icon-backward"></i></a>
                             <a class="btn" id="btnSiguiente"
                                href="#"
                                data-toggle="modal"
-                               >>></a>
+                               ><i class="icon-forward"></i></a>
                             <a class="btn" id="btnUltimo"
                                href="#"
                                data-toggle="modal"
-                               >>>|</a>
-
+                               ><i class="icon-fast-forward"></i></a>
+                            </div>
+                            <div class="btn-group divLeft">
+   
                             <a class="btn" id="btnNuevo"
                                href="#"
                                data-toggle="modal"
-                               >Nuevo</a>
+                               title="Nuevo"
+                               ><img src="<?= $this->config->base_url() ?>images/marqueting/nuevo.png" class="tamanoIconoMantenimiento"></a>
                             <a class="btn" id="btnAgregar"
                                href="#"
                                data-toggle="modal"
-                               >Agregar</a>
+                               title="Agregar"
+                               ><img src="<?= $this->config->base_url() ?>images/marqueting/agregar.png" class="tamanoIconoMantenimiento"></a>
                             <a class="btn" id="btnActualizar"
                                href="#"
                                data-toggle="modal"
-                               >Actualizar</a>
+                               title="Actualizar"
+                               ><img src="<?= $this->config->base_url() ?>images/marqueting/actualizar.png" class="tamanoIconoMantenimiento"></a>
                             <a class="btn" id="btnEliminar"
                                href="#"
                                data-toggle="modal"
-                               >Eliminar</a>                                        
+                               title="eliminar"
+                               ><img src="<?= $this->config->base_url() ?>images/marqueting/eliminar2.png" class="tamanoIconoMantenimiento"></a>                                        
                             <a class="btn" id="btnBuscador"
                                href="#a"
                                data-toggle="modal"
-                               >Buscar</a>
+                               title="Buscar"
+                               ><img src="<?= $this->config->base_url() ?>images/marqueting/buscar2.png" class="tamanoIconoMantenimiento"></a>
+                            </div>   
                         </div>
 
                     </fieldset>
@@ -106,7 +116,7 @@ if ($compania != null) {
                                         <label >Firma</label>
                                     </div>
                                     <div class="FormLeft">
-                                        <input type="text" name="txtidcompania" id="txtidcompania"  value="<?= $VarIdcompania ?>" disabled>
+                                        <input type="text" name="txtidcompania" id="txtidcompania"  value="<?= $VarIdcompania ?>" readonly >
                                     </div>
 
                                     <div  class="FormLeft">

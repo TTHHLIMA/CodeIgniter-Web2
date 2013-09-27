@@ -11,6 +11,7 @@
         <!-- Le styles -->
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilosMarqueting.css" rel="stylesheet">
+        <link href="<?= $this->config->base_url() ?>css/estilos.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilosCompania.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/menu_superior.css" rel="stylesheet">
         <script src="<?= $this->config->base_url() ?>JQuery/jquery-1.9.1.js"></script>
@@ -141,6 +142,7 @@
                 limpiaFormulario($("#frmCompania"));
                 $("#btnActualizar").attr('disabled', 'disabled');
                 $("#btnEliminar").attr('disabled', 'disabled');
+                $('#btnAgregar').removeAttr("disabled");
                 $('#txtnombre').focus();
             });
 
@@ -259,6 +261,7 @@
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania);
+                            $("#btnAgregar").attr('disabled', 'disabled');
                         }
                 );
                 $('#test_modal').modal('hide') //HH:cierro el modal

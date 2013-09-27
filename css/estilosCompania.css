@@ -48,7 +48,11 @@
                 margin: 0px;
             }
 
-
+            .fila .boxleft {
+                            float: left;
+                            width: 200px;
+                            margin: 0px;
+                        }
 
 
             .fila .totalHorizontal {
