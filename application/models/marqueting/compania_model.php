@@ -114,6 +114,32 @@ class Compania_model extends CI_Model {
         }
     }
 
+    public function buscar_ferias_idcompania($idcompania="") {
+        $query = $this->db->query("select feria.nombre as nombre , feria.fecha_comienzo as fecha_comienzo , feria.fecha_final as fecha_final from feria , feria_compania where feria.idferia=feria_compania.idferia and feria_compania.idcompania= '" . $idcompania . "'");
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
+     public function buscar_categorias_idcompania($idcompania="") {
+        $query = $this->db->query("select sonts_categoria.nombre as nombre from sonts_categoria , sonts_categoria_compania where sonts_categoria.idsonst = sonts_categoria_compania.idsonst and sonts_categoria_compania.idcompania= '" . $idcompania . "' order by sonts_categoria_compania.prioridad");
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
+      public function buscar_partner_idcompania($idcompania="") {
+        $query = $this->db->query("select compania.nombre as nombre , (select distinct sonts_categoria.nombre from sonts_categoria , sonts_categoria_compania  where sonts_categoria.idsonst = sonts_categoria_compania.idsonst and sonts_categoria_compania.prioridad = '1' and sonts_categoria_compania.idcompania = compania.idcompania  limit 1) as categoria  from compania , partner_compania  where  compania.nocontactar ='N' and compania.paralizado = 'N' and  compania.idcompania = partner_compania.partner and partner_compania.idcompania= '" . $idcompania . "' order by compania.nombre");
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }        
     function listar_paises(){
         $query = $this->db->query("select codigo , nombre from pais order by nombre asc");
             if ($query->num_rows() > 0) {
@@ -124,7 +150,67 @@ class Compania_model extends CI_Model {
         
     }
     
+    function listar_consorcio(){
+        $query = $this->db->query("Select idconsorcio, nombre from consorcio order by nombre");
+            if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+        
+    }    
+
+        function listar_idiomas(){
+        $query = $this->db->query("select codigo, nombre from idiomas order by nombre");
+            if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+        
+    }
+    
     //HH: Mantenimiento
+    
+    public function nuevo_idcompania() {
+        $query = $this->db->query("SELECT concat('E1',right(concat('0000',(substring(idcompania,2) + 1)),4)) as idcompania FROM `compania` order by idcompania desc limit 0,1");
+        if ($query->num_rows() === 1) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
+    
+    
+    function agregar_compania($array, $idcompania = "") {
+        $res = "";
+        $mensaje = "";
+        $error = "";
+        if ($idcompania <> "") {
+            $error = 0; //HH: flag para saber si esta vacio el id
+            $res = $this->db->insert('compania', $array);
+        } else {
+            $mensaje = "Error: IdCompania esta vacio. ";
+            $error = 1;
+        }
+
+        if (!$res) {
+            if ($error === 0) {
+                $msg = $this->db->_error_message();
+                $num = $this->db->_error_number();
+                return "Error(" . $num . ") " . $msg;
+            }
+            if ($error === 1) {
+                return $mensaje;
+            }
+        } else {
+            return false;
+        }
+    }    
+    
+    
+    
     function actualizar_compania($array, $idcompania = "") {
         $res = "";
         $mensaje = "";

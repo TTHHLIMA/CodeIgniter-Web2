@@ -25,3 +25,159 @@ rm.Fields("ana_abc") = Combo3.Text				"Analisis ABC"
 rm.Fields("perfil_cliente") = Text14.Text		"perfil_cliente"
 rm.Fields("productos") = Text10.Text			"productos"
 rm.Fields("procedencia_cliente") = text17.Text	"procedencia"
+
+
+
+INSERT INTO 'compania' (
+
+'idcompania' => 'E10002',
+'nombre' => 'ALS Anlagentechnik und Sondermaschinen GmbH',
+'correo_postal' => '',
+'calle' => 'Heidelberger Str. 12',
+'lugar' => 'Dresden',
+'Codigo' => '01189',
+'pais' => 'Z0065',
+'telefono' => '+49 351 403860',
+'fax' => '+49 351 4038688',
+'Mail' => 'info@als-dresden.de',
+'web' => 'www.als-dresden.de',
+'interesante_link' => 'http://www.pegasus-multimedia.de/db_sites/dals/sites/deutsch/seiten/_frameset.htm',
+'perfil_cliente' => '', 
+'productos' => '1) Verpackungsmaschinen f?r Lebensmittel und andere Produkte.\r\n2) Montagestationen und Pr?fsystemen',
+'procedencia_cliente' => '',
+'ana_abc' => '',
+'pendiente' => 'N',
+'departamento' => '',
+'idconsorcio' => 'CO5007',
+'alias_com' => '',
+'terminologias' => '0', 
+'exportado' => '0',
+'nocontactar' => 'N',
+'paralizado' => 'N',
+'nota' => '',
+'oem' => '0',
+'masch' => '0',
+'distri' => '0',
+'fach' => '0',
+'privat' => '0',
+'sonst' => '0',
+'bedarfinZukunft' => '', 
+'dict' => '0',
+'fecha_dict' => '0000-00-00'
+);
+
+txtidcompania		idcompania
+txtnombre			nombre
+					correo_postal
+txtcalle			calle
+txtlugar			lugar
+txtcodigo			Codigo
+cboPais				pais
+txttelefono			telefono
+txtfax				fax
+txtmail				Mail
+txtweb				web
+txtweb2				interesante_link
+txtperfilCliente	perfil_cliente
+txtproducto			productos
+cboprocedencia		procedencia_cliente
+cboAnalisis			ana_abc
+pendiente			pendiente
+					departamento
+cboconsorcio		idconsorcio
+					alias_com
+					terminologias
+					exportado
+					nocontactar
+					paralizado
+					nota
+chkoem				oem
+chkmasch			masch
+chkdistri			distri
+chkfach				fach
+chkprivat			privat
+chksonst			sonst
+cboWirtschaftslage	bedarfinZukunft
+chkdict				dict
+					fecha_dict			
+
+cboferias
+cbocategorias
+cboparthner
+
+
+
+
+
+
+
+
+
+
+
+
+
+txtidcompania
+txtnombre
+txtcalle
+txtcodigo
+txtlugar
+cboPais
+txttelefono
+txtfax
+txtmail
+txtweb
+txtweb2
+cboconsorcio
+cboferias
+cboAnalisis
+pendiente
+cboprocedencia
+chkmasch
+chkoem
+chkdistri
+chkfach
+chkprivat
+chksonst
+chkdict
+txtproducto
+txtperfilCliente
+cboWirtschaftslage
+cbocategorias
+cboparthner
+
+
+insert into compania values('" & 
+Label3.Caption
+Text1.Text
+''
+Text3.Text
+Text4.Text
+Text5.Text
+cad4
+Text7.Text
+Text8.Text
+Text9.Text
+Text11.Text
+Text12.Text
+Text14.Text
+Text10.Text
+text17.Text
+Trim(Combo3.Text)
+pendiente
+DataCombo4.BoundText
+''
+'0'
+'0'
+nocontactar
+paralizado
+txtnota.Text
+chkoem.Value
+chkmasch.Value
+chkdistri.Value
+chkfach.Value
+chkprivat.Value
+chksonst.Value
+CbobedarfinZukunft.Text
+chkdict.Value
+xfechadict

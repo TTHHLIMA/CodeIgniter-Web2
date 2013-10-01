@@ -41,12 +41,16 @@
                 float: left;
             }
 
-
+            select{
+                color: #000;
+            }
             .fila .box {
                 float: right;
                 width: 200px;
                 margin: 0px;
+                color: #000;
             }
+            
 
             .fila .boxleft {
                             float: left;

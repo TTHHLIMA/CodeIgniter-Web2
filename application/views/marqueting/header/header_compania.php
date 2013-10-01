@@ -47,8 +47,13 @@
             $(document).ready(function() {
                 $("#Resultados").load("<?= $this->config->base_url() ?>marqueting/compania/filtrar_compania_nombre/");
                 $("#txtbuscar").keyup(function(e) {
-                    id = $(this).val();
-                    var href = "<?= $this->config->base_url() ?>marqueting/compania/filtrar_compania_nombre/" + id;
+                    var cadena = $(this).val();
+                    //cadena = cadena.replace(' ', '_');
+                    for (var i = 0; i < cadena.length; i++) {
+                        cadena = cadena.replace(" ", "_");
+                    }
+                    var href = "<?= $this->config->base_url() ?>marqueting/compania/filtrar_compania_nombre/" + cadena;
+                    console.log(href);
                     $("#Resultados").load(href);
                 });
             });
@@ -139,12 +144,72 @@
 
             $(document).on("click", "#btnNuevo", function(e) {
                 e.preventDefault();
-                limpiaFormulario($("#frmCompania"));
-                $("#btnActualizar").attr('disabled', 'disabled');
-                $("#btnEliminar").attr('disabled', 'disabled');
-                $('#btnAgregar').removeAttr("disabled");
-                $('#txtnombre').focus();
+                $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_primero", function() {
+                    limpiaFormulario($("#frmCompania"));
+                    $("#btnActualizar").attr('disabled', 'disabled');
+                    $("#btnEliminar").attr('disabled', 'disabled');
+                    $('#btnAgregar').removeAttr("disabled");
+                    $('#txtnombre').focus();
+                });
             });
+
+
+
+            $(document).on("click", "#btnAgregar", function(e) {
+                e.preventDefault();
+                if ($('#btnAgregar').attr('disabled')) {
+                    return false;
+                }
+                $.Zebra_Dialog('¿Desea Agregar el Registro?', {
+                    'type': 'question',
+                    'title': 'Confirmación',
+                    'buttons': ['Si', 'No', 'Cancelar'],
+                    'onClose': function(caption) {
+                        if (caption == "Si") {
+                            $.ajax({
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento/1',
+                                type: 'POST',
+                                data: $("#frmCompania").serializeArray(),
+                                success: function(resp) {
+                                    if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
+                                        console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
+                                        $.Zebra_Dialog('Se Agrego el Registro.', {
+                                            'type': 'confirmation',
+                                            'title': 'Confirmación'
+                                        });
+                                    } else {
+                                        console.log(resp);
+                                        $.Zebra_Dialog('Error al Agregar el Registro.', {
+                                            'type': 'error',
+                                            'title': 'Error'
+                                        });
+                                    }
+                                },
+                                error: function(resp) {
+                                    console.log(resp);
+                                    $.Zebra_Dialog('Error al Agregar el Registro.', {
+                                        'type': 'error',
+                                        'title': 'Error'
+                                    });
+                                }
+                            });
+                        }
+
+                    }
+
+
+                });
+
+                event.preventDefault();
+                return false;  //stop the actual form post !important!
+            });
+
+
+
+
+
+
+
 
 
             $(document).on("click", "#btnActualizar", function(e) {
@@ -196,6 +261,14 @@
                 return false;  //stop the actual form post !important!
             });
 
+
+
+
+
+
+
+
+
             $(document).on("click", "#btnEliminar", function(e) {
                 e.preventDefault();
                 if ($('#btnEliminar').attr('disabled')) {
@@ -244,6 +317,29 @@
                 event.preventDefault();
                 return false;  //stop the actual form post !important!
             });
+
+
+
+
+            //HH: contacto 
+            $(document).on("click", "#btnNuevoC", function(e) {
+                e.preventDefault();
+                limpiaFormulario($("#frmContacto"));
+                $("#btnActualizarC").attr('disabled', 'disabled');
+                $("#btnEliminarC").attr('disabled', 'disabled');
+                $('#btnAgregarC').removeAttr("disabled");
+                $('#txtnomContacto').focus();
+            });
+
+
+
+
+
+
+
+
+
+
 
 
 
