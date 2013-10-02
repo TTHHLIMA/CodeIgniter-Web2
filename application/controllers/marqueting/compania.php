@@ -11,6 +11,7 @@ class Compania extends CI_Controller {
         parent::__construct();
         $this->load->library('pagination');
         $this->load->model('marqueting/compania_model');
+        $this->load->model('marqueting/contacto_model');
         $this->load->helper(array('url', 'consola_helper'));
     }
 
@@ -38,6 +39,7 @@ class Compania extends CI_Controller {
         $data['ferias'] = $this->compania_model->buscar_ferias_idcompania($data['compania'][0]->idcompania);
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
         $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
+        $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -52,6 +54,7 @@ class Compania extends CI_Controller {
         $data['ferias'] = $this->compania_model->buscar_ferias_idcompania($data['compania'][0]->idcompania);
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
         $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
+        $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -63,6 +66,7 @@ class Compania extends CI_Controller {
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
         $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
+        $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -73,7 +77,8 @@ class Compania extends CI_Controller {
         $data['ferias'] = $this->compania_model->buscar_ferias_idcompania($data['compania'][0]->idcompania);
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
-        $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);        
+        $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
+        $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -85,6 +90,7 @@ class Compania extends CI_Controller {
         if ($data['contacto'] === False) {
             $data['contacto'] = $this->compania_model->buscar_contacto_idcontacto($idcontacto_actual);
         }
+        $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -95,6 +101,7 @@ class Compania extends CI_Controller {
         if ($data['contacto'] === False) {
             $data['contacto'] = $this->compania_model->buscar_contacto_idcontacto($idcontacto_actual);
         }
+        $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -102,6 +109,7 @@ class Compania extends CI_Controller {
     public function buscar_contacto_ultimo($idcompania_actual = '') {
         $data['contacto'] = $this->compania_model->buscar_contacto_ultimo($idcompania_actual);
         $data['idiomas'] = $this->compania_model->listar_idiomas();
+        $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -109,6 +117,7 @@ class Compania extends CI_Controller {
     public function buscar_contacto_primero($idcompania_actual = '') {
         $data['contacto'] = $this->compania_model->buscar_contacto_primero($idcompania_actual);
         $data['idiomas'] = $this->compania_model->listar_idiomas();
+        $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -119,7 +128,8 @@ class Compania extends CI_Controller {
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         $data['ferias'] = $this->compania_model->buscar_ferias_idcompania($data['compania'][0]->idcompania);
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
-        $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);        
+        $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
+        $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -261,6 +271,81 @@ class Compania extends CI_Controller {
         }
         if ($opcion === "3") { //HH: Eliminar
             $respuesta = $this->compania_model->eliminar_compania($idcompania);
+        }
+        if ($respuesta <> "") {
+            echo $respuesta;
+        }
+    }
+
+    function proceso_mantenimiento_contacto($opcion = "") {
+        
+        $idcontacto = $this->input->post("txtidContacto");
+        $idcompania = $this->input->post("txtidCompania");
+        $anrede = $this->input->post("cboAndere");
+        $nombres = $this->input->post("cboAndere");
+        $apellidos = $this->input->post("cboAndere");
+        $cargo = $this->input->post("cboAndere");
+        $departamento = $this->input->post("cboAndere");
+        $telefono = $this->input->post("cboAndere");
+        $fax = $this->input->post("cboAndere");
+        $mail = $this->input->post("cboAndere");
+        $contac_interes = 'N',
+        $celular = '',
+        $idioma = '',
+        $techni_forum = '0',
+        $reportes_tt = '0',
+        $exportado = '0',
+        $retirado = '0',
+        $reportes_tt_com = '0',
+        $chknich = '0'
+        $fecha_datos_admin = '0000-00-00';
+        $fecha_datos_user = '0000-00-00';
+            
+        consola_google($idcompania);
+        consola_google($idcontacto);
+
+        $respuesta = "";
+
+        if ($opcion === "1") {//HH: agregar
+            $idcompania = "";
+            $result = $this->contacto_model->nuevo_idcontacto();
+            foreach ($result as $row) {
+                $idcompania = $row->idcompania;
+            }
+            //consola_google($idcompania);
+            $dataCompa = array(
+                'idcontacto' => 'Q10001',
+                'idcompania' => $idcompania,
+                'anrede' => 'Herr',
+                'nombres' => 'Michael',
+                'apellidos' => 'Junger',
+                'cargo' => 'Sales Manager',
+                'departamento' => 'Sales',
+                'telefono' => '',
+                'fax' => '',
+                'mail' => 'junger@acr.de',
+                'contac_interes' => 'N',
+                'celular' => '',
+                'idioma' => '',
+                'techni_forum' => '0',
+                'reportes_tt' => '0',
+                'exportado' => '0',
+                'retirado' => '0',
+                'reportes_tt_com' => '0',
+                'chknich' => '0',
+                'fecha_datos_admin' => '0000-00-00',
+                'fecha_datos_user' => '0000-00-00'
+            );
+            //$respuesta = $this->contacto_model->agregar_contacto($dataCompa, $idcompania);
+        }
+        if ($opcion === "2") { //HH: actualizar
+            $dataCompa = array(
+                'nombre' => $txtnombre
+            );
+            // $respuesta = $this->contacto_model->actualizar_contacto($dataCompa, $idcompania);
+        }
+        if ($opcion === "3") { //HH: Eliminar
+            // $respuesta = $this->contacto_model->eliminar_contacto($idcompania);
         }
         if ($respuesta <> "") {
             echo $respuesta;

@@ -3,6 +3,8 @@
 if ($contacto != null) {
     foreach ($contacto as $row) {
         $xidcontacto = $row->idcontacto;
+        $xidcompania = $row->idcompania;
+        $xandere = $row->anrede;
         $xnombre = $row->nombres;
         $xapellidos = $row->apellidos;
         $xcargo = $row->cargo;
@@ -15,6 +17,8 @@ if ($contacto != null) {
     }
 } else {
     $xidcontacto = "";
+    $xidcompania="";
+    $xandere="";
     $xnombre = "";
     $xapellidos = "";
     $xcargo = "";
@@ -81,6 +85,27 @@ if ($contacto != null) {
         <div class="fila">
             <label class="etiqueta" >Contact.</label>
             <input class="boxleft" type="text" name="txtidContacto" id="txtidContacto"  value="<?= $xidcontacto; ?>" readonly>
+            <input class="boxleft" type="hidden" name="txtidCompania" id="txtidCompania"  value="<?= $xidcompania; ?>">
+            <div class="divLeft">
+                <div class="etiquetaCount">
+                    Total de Contactos : <b><?= $countContactos ?></b>
+                </div>
+            </div>
+        </div>
+        <div class="fila">
+            <label class="etiqueta" >Andere</label>
+            <select class="box"  name="cboAndere" id="cboAndere" >
+                <option value=''></option>
+                <option <? echo ($xandere === "Herr") ? "selected" : ""; ?>>Herr</option>
+                <option <? echo ($xandere === "Frau") ? "selected" : ""; ?>>Frau</option>
+                <option <? echo ($xandere === "Dipl. Ing.") ? "selected" : ""; ?>>Dipl. Ing.</option>
+                <option <? echo ($xandere === "Prof") ? "selected" : ""; ?>>Prof</option>
+                <option <? echo ($xandere === "Dr.") ? "selected" : ""; ?>>Dr.</option>
+                <option <? echo ($xandere === "Mr.") ? "selected" : ""; ?>>Mr.</option>
+                <option <? echo ($xandere === "Miss.") ? "selected" : ""; ?>>Miss.</option>
+                <option <? echo ($xandere === "Mrs.") ? "selected" : ""; ?>>Mrs.</option>
+                <option <? echo ($xandere === "Ms.") ? "selected" : ""; ?>>Ms.</option>
+            </select>
         </div>
         <div class="fila">
             <label class="etiqueta" >Nombre</label>
@@ -117,19 +142,34 @@ if ($contacto != null) {
 
         <div class="fila">
             <label class="etiqueta">Idioma</label>
-            
-                <?php
-                echo "<select  name='cboPais' id='cboPais'>";
-                echo "<option value=''></option>";
-                foreach ($idiomas as $idioma) {
-                    if ($xidioma === $idioma->nombre) {
-                        echo "<option value='" . $idioma->codigo . "' selected>" . $idioma->nombre . "</option>";
-                    } else {
-                        echo "<option value='" . $idioma->codigo . "'>" . $idioma->nombre . "</option>";
-                    }
+
+            <?php
+            echo "<select  name='cboPais' id='cboPais'>";
+            echo "<option value=''></option>";
+            foreach ($idiomas as $idioma) {
+                if ($xidioma === $idioma->nombre) {
+                    echo "<option value='" . $idioma->codigo . "' selected>" . $idioma->nombre . "</option>";
+                } else {
+                    echo "<option value='" . $idioma->codigo . "'>" . $idioma->nombre . "</option>";
                 }
-                echo "</select>";
-                ?>
-        </div>    
+            }
+            echo "</select>";
+            ?>
+        </div>  
+        <div class="FormLeft">
+
+                                        <input type="checkbox" name="chkmasch" id="chkmasch" <? echo ($VarMasch === "1") ? "checked" : ""; ?> > OEM
+
+                                    </div>
+                                    <div class="FormLeft">
+
+                                        <input type="checkbox" name="chkoem" id="chkoem" <? echo ($VarOem === "1") ? "checked" : ""; ?> > Masch/Anlagebau
+
+                                    </div>
+                                    <div class="FormLeft">
+
+                                        <input type="checkbox" name="chkdistri" id="chkdistri" <? echo ($VarDistri === "1") ? "checked" : ""; ?> > Distributeur
+
+                                    </div>
     </form>
 </fieldset>

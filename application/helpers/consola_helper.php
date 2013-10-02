@@ -9,9 +9,9 @@ if (!function_exists('consola_google')) {
             //HH: creo los parametros de salida
             echo "<script type='text/javascript'>";
             echo "var var_dump = '";
-            echo json_encode($data);
+            echo json_encode($data); //HH: muestro los datos formato json
             echo "';";
-            echo "console.log(var_dump);";
+            echo "console.log(var_dump);"; //HH: agrego mi datos en la consola de google
             echo "</script>";  
         } else {
             echo "<script type='text/javascript'>console.log('" . $data . "');</script>";

@@ -181,3 +181,35 @@ chksonst.Value
 CbobedarfinZukunft.Text
 chkdict.Value
 xfechadict
+
+
+
+// contactos
+
+insert into contacto values ('" & Trim(lblCodigo.Caption) & "','" & Trim(lblcodigocompañia.Caption) & "','" & Trim(CBOANDERE.Text) & "','" & Trim(TxtNombre.Text) & "','" & Trim(TxtApellidos.Text) & "','" & Trim(TxtCargo.Text) & "','" & Trim(TxtDepartamento.Text) & "','" & Trim(TxtTelefono.Text) & "','" & Trim(TxtFax.Text) & "','" & Trim(txtMail.Text) & "','" & contacinteres & "', '" & Trim(txtcel.Text) & "','" & cboidioma.Text & "','" & chktechniforum.Value & "','" & chkreportett.Value & "','0','" & chkretirado.Value & "','" & chkreportettcom.Value & "','" & chknich.Value & "', '" & Format("0000-00-00", "YYYY-MM-DD") & "',  '" & Format("0000-00-00", "YYYY-MM-DD") & "' )
+
+
+INSERT INTO `contacto` (
+`idcontacto`=>'Q10001', 
+`idcompania`=>'E11203', 
+`anrede`=>'Herr', 
+`nombres`=>'Michael', 
+`apellidos`=>'Junger', 
+`cargo`=>'Sales Manager', 
+`departamento`=>'Sales', 
+`telefono`=>'', 
+`fax`=>'', 
+`mail`=>'junger@acr.de', 
+`contac_interes`=>'N', 
+`celular`=>'', 
+`idioma`=>'', 
+`techni_forum`=>'0', 
+`reportes_tt`=>'0', 
+`exportado`=>'0', 
+`retirado`=>'0', 
+`reportes_tt_com`=>'0', 
+`chknich`=>'0', 
+`fecha_datos_admin`=>'0000-00-00', 
+`fecha_datos_user`=>'0000-00-00'
+) VALUES
+(, , , , , , , , , , , '', ' ', '0', '0', '0', '0', '0', , , );

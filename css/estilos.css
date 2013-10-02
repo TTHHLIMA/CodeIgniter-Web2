@@ -12,3 +12,11 @@
     height: 16px;
 }
 
+.etiquetaCount{
+    height: 18px;
+    background-color: #eee;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 5px;
+    font-size: 12px;
+}

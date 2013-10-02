@@ -170,6 +170,26 @@ class Compania_model extends CI_Model {
         
     }
     
+     function total_de_registros($tabla =""){
+        $num = $this->db->count_all($tabla);
+        if ($num > 0) {
+            return $num;
+        } else {
+            return false;
+        }
+        
+    }
+    
+         function total_registros_contacto($idcompania){
+        $query = $this->db->query("SELECT COUNT(*) AS total FROM contacto where idcompania = '" . $idcompania ."'");
+        $row = $query->row();
+        if ($query->num_rows() > 0) {
+            return $row->total;
+        } else {
+            return false;
+        }
+        
+    }
     //HH: Mantenimiento
     
     public function nuevo_idcompania() {

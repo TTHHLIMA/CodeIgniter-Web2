@@ -47,7 +47,7 @@ if ($compania != null) {
         $VarPais = $c->pais;
         $VarTelefono = $c->telefono;
         $VarFax = $c->fax;
-        $VarMail = $c->Mail;
+        $VarMail = $c->mail;
         $VarWeb = $c->web;
         $VarInteresante_link = $c->interesante_link;
         $VarPerfil_cliente = $c->perfil_cliente;
@@ -91,7 +91,7 @@ if ($compania != null) {
 
 
                 <div class="contenedorFormulario well">
-                    <fieldset class="fieldset2columnas">
+                   
                         <div class="FormLeft">
                             <div class="btn-group divLeft">
 
@@ -139,10 +139,15 @@ if ($compania != null) {
                                    data-toggle="modal"
                                    title="Buscar"
                                    ><img src="<?= $this->config->base_url() ?>images/marqueting/buscar2.png" class="tamanoIconoMantenimiento"></a>
-                            </div>   
+                            </div>  
+                            <div class="divLeft">
+                                <div class="etiquetaCount">
+                                Total de Firmas : <b><?=$countCompania?></b>
+                                </div>
+                            </div>
                         </div>
 
-                    </fieldset>
+                  
                 </div>               
 
 

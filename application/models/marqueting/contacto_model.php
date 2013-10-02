@@ -1,45 +1,110 @@
 <?php
-
 class Contacto_model extends CI_Model {
 
     public function construct() {
         parent::__construct();
         $this->load->database();
     }
+    
+ //HH: Mantenimiento
+    
+    public function nuevo_idcontacto() {
+        $query = $this->db->query("SELECT concat('Q1',right(concat('0000',(substring(idcompania,2) + 1)),4)) as idcontacto FROM `contacto` order by idcontacto desc limit 0,1");
+        if ($query->num_rows() === 1) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
+    
+    
+    function agregar_contacto($array, $idcontacto = "") {
+        $res = "";
+        $mensaje = "";
+        $error = "";
+        if ($idcontacto <> "") {
+            $error = 0; //HH: flag para saber si esta vacio el id
+            $res = $this->db->insert('contacto', $array);
+        } else {
+            $mensaje = "Error: IdContacto esta vacio. ";
+            $error = 1;
+        }
 
-    function mostrarContacto() {
-        $query = $this->db->get('contacto');
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $fila) {
-                $data[] = $fila;
+        if (!$res) {
+            if ($error === 0) {
+                $msg = $this->db->_error_message();
+                $num = $this->db->_error_number();
+                return "Error(" . $num . ") " . $msg;
             }
-            return $data;
+            if ($error === 1) {
+                return $mensaje;
+            }
+        } else {
+            return false;
+        }
+    }    
+    
+    
+    
+    function actualizar_contacto($array, $idcontacto = "") {
+        $res = "";
+        $mensaje = "";
+        $error = "";
+        if ($idcontacto <> "") {
+            $error = 0; //HH: flag para saber si esta vacio el id
+            $res = $this->db->update('contacto', $array, array('idcontacto' => $idcontacto));
+        } else {
+            $mensaje = "Error: IdContacto esta vacio. ";
+            $error = 1;
+        }
+
+        if (!$res) {
+            if ($error === 0) {
+                $msg = $this->db->_error_message();
+                $num = $this->db->_error_number();
+                return "Error(" . $num . ") " . $msg;
+            }
+            if ($error === 1) {
+                return $mensaje;
+            }
         } else {
             return false;
         }
     }
 
-    function buscarContactoIdCompania($idcompania) {
-        $this->db->where('idcompania', $idcompania);
-        $query = $this->db->get('contacto');
-        if ($query->num_rows() > 0) {
-            return $query->result_array();
+    function eliminar_contacto($idcontacto = "") {
+        $res = "";
+        $mensaje = "";
+        $error = 0; //HH: flag para saber si esta vacio el id
+
+        if ($idcontacto <> "") {
+            $this->db->where('id_contacto', $idcontacto);
+            $this->db->from('requerimientos');
+            $count =  $this->db->count_all_results();
+            if ($count>0){
+                $error = 2; //HH: el regitro tiene contactos
+                $mensaje ="El Registro tiene Requerimientos enlazados.";
+            } else {
+                $res = $this->db->delete('contacto', array('idcontacto' => $idcontacto));
+            }
+        } else {
+            $mensaje = "Error: IdContacto esta vacio. ";
+            $error = 1;
+        }
+
+        if (!$res) { 
+            if ($error === 0) {
+                $msg = $this->db->_error_message();
+                $num = $this->db->_error_number();
+                return "Error(" . $num . ") " . $msg;
+            }
+            if ($error > 0) {
+                return $mensaje;
+            }
         } else {
             return false;
         }
-    }
-
-//obtenemos el total de filas para hacer la paginación
-    function count_contacto_compania($idcompania) {
-        //$consulta = $this->db->get('compania');
-        //return $consulta->num_rows();
-                return $this->db->count_all_results('contacto');
-    }
-
-    public function list_mensajes($limit, $offset) {
-        $this->db->limit($limit, $offset);
-        $query = $this->db->get('compania');
-        return $query->result();
-    }
-
+    }    
+    
 }
