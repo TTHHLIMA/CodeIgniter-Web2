@@ -2,32 +2,50 @@
 //var_dump($contacto);
 if ($contacto != null) {
     foreach ($contacto as $row) {
-        $xidcontacto = $row->idcontacto;
+        $xidcontacto =  $row->idcontacto;
         $xidcompania = $row->idcompania;
-        $xandere = $row->anrede;
-        $xnombre = $row->nombres;
+        $xanrede = $row->anrede;
+        $xnombres =  $row->nombres;
         $xapellidos = $row->apellidos;
-        $xcargo = $row->cargo;
-        $xdepartamento = $row->departamento;
+        $xcargo =  $row->cargo;
+        $xdepartamento =  $row->departamento;
         $xtelefono = $row->telefono;
-        $xcelular = $row->celular;
         $xfax = $row->fax;
         $xmail = $row->mail;
+        $xcontac_interes = $row->contac_interes;
+        $xcelular = $row->celular;
         $xidioma = $row->idioma;
+        //$xtechni_forum = '0';
+        //$xreportes_tt = '0';
+        //$xexportado = '0';
+        $xretirado = $row->retirado;
+        //$xreportes_tt_com = '0';
+        $xchknich = $row->chknich;
+        //$xfecha_datos_admin = '0000-00-00';
+        //$xfecha_datos_user = '0000-00-00';
     }
 } else {
-    $xidcontacto = "";
-    $xidcompania="";
-    $xandere="";
-    $xnombre = "";
-    $xapellidos = "";
-    $xcargo = "";
-    $xdepartamento = "";
-    $xtelefono = "";
-    $xcelular = "";
-    $xfax = "";
-    $xmail = "";
-    $xidioma = "";
+        $xidcontacto =  "";
+        $xidcompania = "";
+        $xanrede = "";
+        $xnombres =  "";
+        $xapellidos = "";
+        $xcargo =  "";
+        $xdepartamento =  "";
+        $xtelefono = "";
+        $xfax = "";
+        $xmail = "";
+        $xcontac_interes = "";
+        $xcelular = "";
+        $xidioma = "";
+        //$xtechni_forum = "";
+        //$xreportes_tt = "";
+        //$xexportado = "";
+        $xretirado = "";
+        //$xreportes_tt_com = "";
+        $xchknich = "";
+        //$xfecha_datos_admin = "";
+        //$xfecha_datos_user = "";
 }
 ?>
 
@@ -80,7 +98,7 @@ if ($contacto != null) {
 
 </fieldset>
 
-<fieldset >
+<fieldset id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : ""; ?> >
     <form id="frmContacto" action="" method="post">
         <div class="fila">
             <label class="etiqueta" >Contact.</label>
@@ -96,20 +114,20 @@ if ($contacto != null) {
             <label class="etiqueta" >Andere</label>
             <select class="box"  name="cboAndere" id="cboAndere" >
                 <option value=''></option>
-                <option <? echo ($xandere === "Herr") ? "selected" : ""; ?>>Herr</option>
-                <option <? echo ($xandere === "Frau") ? "selected" : ""; ?>>Frau</option>
-                <option <? echo ($xandere === "Dipl. Ing.") ? "selected" : ""; ?>>Dipl. Ing.</option>
-                <option <? echo ($xandere === "Prof") ? "selected" : ""; ?>>Prof</option>
-                <option <? echo ($xandere === "Dr.") ? "selected" : ""; ?>>Dr.</option>
-                <option <? echo ($xandere === "Mr.") ? "selected" : ""; ?>>Mr.</option>
-                <option <? echo ($xandere === "Miss.") ? "selected" : ""; ?>>Miss.</option>
-                <option <? echo ($xandere === "Mrs.") ? "selected" : ""; ?>>Mrs.</option>
-                <option <? echo ($xandere === "Ms.") ? "selected" : ""; ?>>Ms.</option>
+                <option <? echo ($xanrede === "Herr") ? "selected" : ""; ?>>Herr</option>
+                <option <? echo ($xanrede === "Frau") ? "selected" : ""; ?>>Frau</option>
+                <option <? echo ($xanrede === "Dipl. Ing.") ? "selected" : ""; ?>>Dipl. Ing.</option>
+                <option <? echo ($xanrede === "Prof") ? "selected" : ""; ?>>Prof</option>
+                <option <? echo ($xanrede === "Dr.") ? "selected" : ""; ?>>Dr.</option>
+                <option <? echo ($xanrede === "Mr.") ? "selected" : ""; ?>>Mr.</option>
+                <option <? echo ($xanrede === "Miss.") ? "selected" : ""; ?>>Miss.</option>
+                <option <? echo ($xanrede === "Mrs.") ? "selected" : ""; ?>>Mrs.</option>
+                <option <? echo ($xanrede === "Ms.") ? "selected" : ""; ?>>Ms.</option>
             </select>
         </div>
         <div class="fila">
             <label class="etiqueta" >Nombre</label>
-            <input class="box" type="text" name="txtnomContacto" id="txtnomContacto" value="<?= $xnombre; ?>">
+            <input class="box" type="text" name="txtnomContacto" id="txtnomContacto" value="<?= $xnombres; ?>">
         </div>
         <div class="fila">
             <label class="etiqueta">Apellido</label>
@@ -144,32 +162,32 @@ if ($contacto != null) {
             <label class="etiqueta">Idioma</label>
 
             <?php
-            echo "<select  name='cboPais' id='cboPais'>";
+            echo "<select  name='cboIdioma' id='cboIdioma'>";
             echo "<option value=''></option>";
             foreach ($idiomas as $idioma) {
                 if ($xidioma === $idioma->nombre) {
-                    echo "<option value='" . $idioma->codigo . "' selected>" . $idioma->nombre . "</option>";
+                    echo "<option value='" . $idioma->nombre  . "' selected>" . $idioma->nombre . "</option>";
                 } else {
-                    echo "<option value='" . $idioma->codigo . "'>" . $idioma->nombre . "</option>";
+                    echo "<option value='" . $idioma->nombre  . "'>" . $idioma->nombre . "</option>";
                 }
             }
             echo "</select>";
             ?>
         </div>  
-        <div class="FormLeft">
+        <div class="fila">
 
-                                        <input type="checkbox" name="chkmasch" id="chkmasch" <? echo ($VarMasch === "1") ? "checked" : ""; ?> > OEM
+            <input type="checkbox" name="chkcontacinteres" id="chkcontacinteres" <? echo ($xcontac_interes === "S") ? "checked" : ""; ?> > Richtiger Ansprechpartner
 
-                                    </div>
-                                    <div class="FormLeft">
+        </div>
+        <div class="fila">
 
-                                        <input type="checkbox" name="chkoem" id="chkoem" <? echo ($VarOem === "1") ? "checked" : ""; ?> > Masch/Anlagebau
+            <input type="checkbox" name="chkretirado" id="chkretirado" <? echo ($xretirado === "1") ? "checked" : ""; ?> > Retirado
 
-                                    </div>
-                                    <div class="FormLeft">
+        </div>
+        <div class="fila">
 
-                                        <input type="checkbox" name="chkdistri" id="chkdistri" <? echo ($VarDistri === "1") ? "checked" : ""; ?> > Distributeur
+            <input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> > Nicht richtiger Ansprechpartner
 
-                                    </div>
+        </div>
     </form>
 </fieldset>

@@ -145,6 +145,12 @@ if ($compania != null) {
                                 Total de Firmas : <b><?=$countCompania?></b>
                                 </div>
                             </div>
+                            <div class="divLeft">
+                                <?= ($VarNocontactar==="S")? "<div class='circuloNoContactar'></div>":""; ?>
+                            </div>
+                            <div class="divLeft">
+                                 <?= ($VarParalizado==="S")? "<div class='circuloParalizado'></div>":""; ?>
+                            </div>
                         </div>
 
                   
@@ -166,7 +172,7 @@ if ($compania != null) {
                                     </div>
 
                                     <div  class="FormLeft">
-                                        <input type="text" name="txtnombre" id="txtnombre" value="<?= $VarNombre ?>">
+                                        <input type="text" name="txtnombre" id="txtnombre" value="<?= $VarNombre ?>" <?= ($VarParalizado==="S")? " style='background-color: #ccf;'":"";?> >
                                     </div>
                                 </fieldset>                                        
                             </div>

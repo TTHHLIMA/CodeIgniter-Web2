@@ -72,11 +72,31 @@
                 $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_siguiente/" + idcompania,
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
-                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
-                                    function() {
-                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                            var xcount = 0;
+                            $.ajax({
+                                url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + xidcompania,
+                                success: function(datos) {
+                                    xcount = datos;
+                                    if (xcount === "0") {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+
+                                                    $("#btnNuevoC").click();
+
+                                                }
+                                        );
+                                    } else {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+                                                    $("#btnAgregarC").attr('disabled', 'disabled');
+                                                }
+                                        );
+
                                     }
-                            );
+                                }
+                            });
+
+
                             $("#btnAgregar").attr('disabled', 'disabled');
 
                         }
@@ -89,11 +109,30 @@
                 $("#CompaniaContactos").load("marqueting/compania/buscar_compania_anterior/" + idcompania,
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
-                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
-                                    function() {
-                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                            var xcount = 0;
+                            $.ajax({
+                                url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + xidcompania,
+                                success: function(datos) {
+                                    xcount = datos;
+                                    if (xcount === "0") {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+
+                                                    $("#btnNuevoC").click();
+
+                                                }
+                                        );
+                                    } else {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+                                                    $("#btnAgregarC").attr('disabled', 'disabled');
+                                                }
+                                        );
+
                                     }
-                            );
+                                }
+                            });
+
                             $("#btnAgregar").attr('disabled', 'disabled');
                         }
                 );
@@ -104,11 +143,30 @@
                 $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_ultimo",
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
-                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
-                                    function() {
-                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                            var xcount = 0;
+                            $.ajax({
+                                url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + xidcompania,
+                                success: function(datos) {
+                                    xcount = datos;
+                                    if (xcount === "0") {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+
+                                                    $("#btnNuevoC").click();
+
+                                                }
+                                        );
+                                    } else {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+                                                    $("#btnAgregarC").attr('disabled', 'disabled');
+                                                }
+                                        );
+
                                     }
-                            );
+                                }
+                            });
+
                             $("#btnAgregar").attr('disabled', 'disabled');
                         }
                 );
@@ -120,11 +178,29 @@
                 $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_primero",
                         function() {
                             var xidcompania = $("#txtidcompania").attr("value");
-                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
-                                    function() {
-                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                            var xcount = 0;
+                            $.ajax({
+                                url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + xidcompania,
+                                success: function(datos) {
+                                    xcount = datos;
+                                    if (xcount === "0") {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+
+                                                    $("#btnNuevoC").click();
+
+                                                }
+                                        );
+                                    } else {
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
+                                                function() {
+                                                    $("#btnAgregarC").attr('disabled', 'disabled');
+                                                }
+                                        );
+
                                     }
-                            );
+                                }
+                            });
                             $("#btnAgregar").attr('disabled', 'disabled');
 
                         }
@@ -139,12 +215,33 @@
                 //var href = $("#btnSiguienteC").attr("href");
                 var idcompania = $("#txtidcompania").attr("value");
                 var idcontacto = $("#txtidContacto").attr("value");
-                //alert(href+"/"+idcompania+"/"+idcontacto);
-                $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_siguiente/" + idcompania + "/" + idcontacto,
-                        function() {
-                            $("#btnAgregarC").attr('disabled', 'disabled');
+
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + idcompania,
+                    success: function(datos) {
+                        xcount = datos;
+                        if (xcount === "0") {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_contacto/" + idcompania,
+                                    function() {
+                                        limpiaFormulario($("#frmContacto"));
+                                        $("#btnActualizarC").attr('disabled', 'disabled');
+                                        $("#btnEliminarC").attr('disabled', 'disabled');
+                                        $('#btnAgregarC').removeAttr("disabled");
+                                        $('#txtnomContacto').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_siguiente/" + idcompania + "/" + idcontacto,
+                                    function() {
+                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                                    }
+                            );
+
                         }
-                );
+                    }
+                });
+
             });
 
             $(document).on("click", "#btnAnteriorC", function(e) {
@@ -152,34 +249,99 @@
                 //var href = $("#btnAnteriorC").attr("href");
                 var idcompania = $("#txtidcompania").attr("value");
                 var idcontacto = $("#txtidContacto").attr("value");
-                //alert(href+"/"+idcompania);
-                $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_anterior/" + idcompania + "/" + idcontacto,
-                        function() {
-                            $("#btnAgregarC").attr('disabled', 'disabled');
+
+
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + idcompania,
+                    success: function(datos) {
+                        xcount = datos;
+                        if (xcount === "0") {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_contacto/" + idcompania,
+                                    function() {
+                                        limpiaFormulario($("#frmContacto"));
+                                        $("#btnActualizarC").attr('disabled', 'disabled');
+                                        $("#btnEliminarC").attr('disabled', 'disabled');
+                                        $('#btnAgregarC').removeAttr("disabled");
+                                        $('#txtnomContacto').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_anterior/" + idcompania + "/" + idcontacto,
+                                    function() {
+                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                                    }
+                            );
+
                         }
-                );
+                    }
+                });
+
 
             });
+
             $(document).on("click", "#btnPrimeroC", function(e) {
                 e.preventDefault();
-                //var href = $("#btnPrimeroC").attr("href");
+
                 var idcompania = $("#txtidcompania").attr("value");
-                $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + idcompania,
-                        function() {
-                            $("#btnAgregarC").attr('disabled', 'disabled');
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + idcompania,
+                    success: function(datos) {
+                        xcount = datos;
+                        if (xcount === "0") {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_contacto/" + idcompania,
+                                    function() {
+                                        limpiaFormulario($("#frmContacto"));
+                                        $("#btnActualizarC").attr('disabled', 'disabled');
+                                        $("#btnEliminarC").attr('disabled', 'disabled');
+                                        $('#btnAgregarC').removeAttr("disabled");
+                                        $('#txtnomContacto').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + idcompania,
+                                    function() {
+                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                                    }
+                            );
+
                         }
-                );
+                    }
+                });
+
 
             });
+
             $(document).on("click", "#btnUltimoC", function(e) {
                 e.preventDefault();
-                //var href = $("#btnUltimoC").attr("href");
                 var idcompania = $("#txtidcompania").attr("value");
-                $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_ultimo/" + idcompania,
-                        function() {
-                            $("#btnAgregarC").attr('disabled', 'disabled');
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + idcompania,
+                    success: function(datos) {
+                        xcount = datos;
+                        if (xcount === "0") {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_contacto/" + idcompania,
+                                    function() {
+                                        limpiaFormulario($("#frmContacto"));
+                                        $("#btnActualizarC").attr('disabled', 'disabled');
+                                        $("#btnEliminarC").attr('disabled', 'disabled');
+                                        $('#btnAgregarC').removeAttr("disabled");
+                                        $('#txtnomContacto').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_ultimo/" + idcompania,
+                                    function() {
+                                        $("#btnAgregarC").attr('disabled', 'disabled');
+                                    }
+                            );
+
                         }
-                );
+                    }
+                });
+
             });
 
 
@@ -229,15 +391,15 @@
                                         $("#btnUltimo").click();
                                     } else {
                                         console.log(resp);
-                                        $.Zebra_Dialog('Error al Agregar el Registro.', {
+                                        $.Zebra_Dialog('<b>Error al Agregar el Registro. </b><br>' + resp, {
                                             'type': 'error',
                                             'title': 'Error'
                                         });
                                     }
                                 },
                                 error: function(resp) {
-                                    console.log(resp);
-                                    $.Zebra_Dialog('Error al Agregar el Registro.', {
+                                    //console.log(resp);
+                                    $.Zebra_Dialog('<b>Error al Agregar el Registro.</b>' + resp, {
                                         'type': 'error',
                                         'title': 'Error'
                                     });
@@ -376,11 +538,18 @@
             //HH: contacto 
             $(document).on("click", "#btnNuevoC", function(e) {
                 e.preventDefault();
-                limpiaFormulario($("#frmContacto"));
-                $("#btnActualizarC").attr('disabled', 'disabled');
-                $("#btnEliminarC").attr('disabled', 'disabled');
-                $('#btnAgregarC').removeAttr("disabled");
-                $('#txtnomContacto').focus();
+                var idcompania = $("#txtidcompania").attr("value");
+                $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_contacto/" + idcompania,
+                        function() {
+                            limpiaFormulario($("#frmContacto"));
+                            $("#btnActualizarC").attr('disabled', 'disabled');
+                            $("#btnEliminarC").attr('disabled', 'disabled');
+                            $('#btnAgregarC').removeAttr("disabled");
+                            $('#txtnomContacto').focus();
+                        }
+                );
+
+
             });
 
 
@@ -395,13 +564,14 @@
                     'buttons': ['Si', 'No', 'Cancelar'],
                     'onClose': function(caption) {
                         if (caption == "Si") {
+                            var idcompania = $("#txtidcompania").attr("value");
                             $.ajax({
-                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/1',
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/1/' + idcompania,
                                 type: 'POST',
                                 data: $("#frmContacto").serializeArray(),
                                 success: function(resp) {
                                     if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
-                                        console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
+                                        //console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
                                         $.Zebra_Dialog('Se Agrego el Registro.', {
                                             'type': 'confirmation',
                                             'title': 'Confirmación'
@@ -447,6 +617,9 @@
                 if ($('#btnActualizarC').attr('disabled')) {
                     return false;
                 }
+                var idcompania = $("#txtidcompania").attr("value");
+                var idcontacto = $("#txtidContacto").attr("value");
+
                 $.Zebra_Dialog('¿Desea Actualizar el Registro?', {
                     'type': 'question',
                     'title': 'Confirmación',
@@ -464,6 +637,12 @@
                                             'type': 'confirmation',
                                             'title': 'Confirmación'
                                         });
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_idcontacto/" + idcontacto + "/" + idcompania,
+                                                function() {
+                                                    $("#btnAgregarC").attr('disabled', 'disabled');
+                                                }
+                                        );
+
                                     } else {
                                         console.log(resp);
                                         $.Zebra_Dialog('Error al actualizar el Registro.', {
@@ -501,7 +680,7 @@
 
             $(document).on("click", "#btnEliminarC", function(e) {
                 e.preventDefault();
-                if ($('#btnEliminar').attr('disabled')) {
+                if ($('#btnEliminarC').attr('disabled')) {
                     return false;
                 }
                 $.Zebra_Dialog('¿Desea Eliminar el Registro?', {
@@ -511,9 +690,9 @@
                     'onClose': function(caption) {
                         if (caption == "Si") {
                             $.ajax({
-                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento/3',
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/3',
                                 type: 'POST',
-                                data: $("#frmCompania").serializeArray(),
+                                data: $("#frmContacto").serializeArray(),
                                 success: function(resp) {
                                     if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
                                         console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
@@ -521,9 +700,9 @@
                                             'type': 'confirmation',
                                             'title': 'Confirmación'
                                         });
-                                        limpiaFormulario($("#frmCompania"));
-                                        limpiarCompania();
-                                        $("#btnNuevo").click();
+                                        limpiaFormulario($("#frmContacto"));
+                                        $("#btnNuevoC").click();
+                                        //$("#panelContacto").removeAttr("style");
                                     } else {
                                         console.log(resp);
                                         $.Zebra_Dialog('<b>Error al Eliminar el Registro</b> <br>' + resp, {
@@ -549,7 +728,6 @@
                 event.preventDefault();
                 return false;  //stop the actual form post !important!
             });
-
 
 
 

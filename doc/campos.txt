@@ -213,3 +213,24 @@ INSERT INTO `contacto` (
 `fecha_datos_user`=>'0000-00-00'
 ) VALUES
 (, , , , , , , , , , , '', ' ', '0', '0', '0', '0', '0', , , );
+
+
+
+
+txtidContacto
+txtidCompania
+cboAndere
+txtnomContacto
+txtapeContacto
+txtcargoContacto
+txtdepartamentoContacto
+txttelefonoContacto
+txtcelularContacto
+txtfaxContacto
+txtmailcontacto
+cboIdioma
+chkcontacinteres
+chkretirado
+chknich
+
+

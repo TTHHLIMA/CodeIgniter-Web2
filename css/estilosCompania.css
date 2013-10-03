@@ -60,7 +60,7 @@
 
 
             .fila .totalHorizontal {
-                width: 100%;
+                width: 98%;
                 color: #000;
             }
 
@@ -151,10 +151,16 @@
                 width: 180px;
             }
 
+            #cboIdioma{
+                width: 210px;
+            }
             #cboPais{
                 width: 210px;
             }
-
+            #cboAndere{
+                width: 80px;
+                float: left;
+            }
             .modal{
                 
                 width: 700px;
@@ -175,4 +181,23 @@
 /* fin de compania*/
 
 
-
+.circuloNoContactar {
+border-radius: 50%;
+width: 20px;
+height: 20px;
+background-color: #fed22f;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 5px;
+    text-align: center;
+}
+.circuloParalizado {
+border-radius: 50%;
+width: 20px;
+height: 20px;
+background-color: #e9322d;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 5px;
+    text-align: center;
+}
