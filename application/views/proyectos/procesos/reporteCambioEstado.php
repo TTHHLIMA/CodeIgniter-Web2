@@ -1,7 +1,7 @@
 <?
-require_once("../Lib/sesion.php");
-require '../Lib/Db.conexion.php';
-$db = DataBase::getInstance();
+//require_once($this->config->base_url() . "Lib/sesion.php");
+//require $this->config->base_url() . "Lib/Db.conexion.php";
+//$db = DataBase::getInstance();
 
 $xFiltro = $_GET['xFiltro'];
 ?>
