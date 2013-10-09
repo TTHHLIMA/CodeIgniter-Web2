@@ -19,7 +19,7 @@
                             </ul>
                         </li>
                         <li class="active"><a href="<?= $this->config->base_url() ?>marqueting/compania">Marqueting</a></li>
-                        <li class="active"><a href="#contact">Proyectos</a></li>
+                        <li class="active"><a href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/">Proyectos- Reporte</a></li>
                         <li class="active"><a href="#contact">Reportes</a></li>
                     </ul>
 

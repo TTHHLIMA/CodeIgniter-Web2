@@ -10,13 +10,13 @@ class Procesos_model extends CI_Model {
 //HH: Botones de navegacion Compania     
 
     public function buscar_tareas_nivel_filtro($filtro="") {
-      $filtro="";  
+
         if ($filtro===""){
             $xfiltro = " ";
         } else {
             $xfiltro = "  and  r.coordinador='" . $filtro . "' ";
         }
-        
+      
         $Sql = "SELECT r.id, r.pedido,
                 r.alias,
                 r.coordinador,
@@ -38,6 +38,34 @@ class Procesos_model extends CI_Model {
             return false;
         }
     }
+    
+        function actualizar_r_cambios_estados($array, $xid = "") {
+        $res = "";
+        $mensaje = "";
+        $error = "";
+        if ($xid <> "") {
+            $error = 0; //HH: flag para saber si esta vacio el id
+            $res = $this->db->update('r_cambios_estados', $array, array('id' => $xid));
+        } else {
+            $mensaje = "Error: xID esta vacio. ";
+            $error = 1;
+        }
+
+        if (!$res) {
+            if ($error === 0) {
+                $msg = $this->db->_error_message();
+                $num = $this->db->_error_number();
+                return "Error(" . $num . ") " . $msg;
+            }
+            if ($error === 1) {
+                return $mensaje;
+            }
+        } else {
+            return false;
+        }
+    }
+    
+    
 
 }
 

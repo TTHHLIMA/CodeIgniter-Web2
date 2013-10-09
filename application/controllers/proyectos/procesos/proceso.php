@@ -12,13 +12,21 @@ class Proceso extends CI_Controller {
     }
 
     public function index($filtro = "") {
-        $data['xxxiduser'] = $this->session->userdata('Datos_Session')['xxxiduser'];
+        $login = $this->session->userdata('Datos_Session');
+        //var_dump($login['xxxiduser']);
+        $data['xxxiduser'] = $login['xxxiduser'];
+        $data['xxxnombres'] = $login['xxxnombres'];
+        $data['xxxiniciales'] = $login['xxxiniciales'];
+        $data['xxxnivel'] = $login['xxxnivel'];
+        $data['xxxactivo'] = $login['xxxactivo'];
+        $data['xxxcoordinador'] = $login['xxxcoordinador'];
+        /*$data['xxxiduser'] = $this->session->userdata('Datos_Session')['xxxiduser'];
         $data['xxxnombres'] = $this->session->userdata('Datos_Session')['xxxnombres'];
         $data['xxxiniciales'] = $this->session->userdata('Datos_Session')['xxxiniciales'];
         $data['xxxnivel'] = $this->session->userdata('Datos_Session')['xxxnivel'];
         $data['xxxactivo'] = $this->session->userdata('Datos_Session')['xxxactivo'];
         $data['xxxcoordinador'] = $this->session->userdata('Datos_Session')['xxxcoordinador'];
-        
+        */
         
         switch ($filtro) {
             case "FSM":
@@ -47,14 +55,21 @@ class Proceso extends CI_Controller {
     }
 
     public function consultar($filtro = "") {
-        $data['xxxiduser'] = $this->session->userdata('Datos_Session')['xxxiduser'];
+       /* $data['xxxiduser'] = $this->session->userdata('Datos_Session')['xxxiduser'];
         $data['xxxnombres'] = $this->session->userdata('Datos_Session')['xxxnombres'];
         $data['xxxiniciales'] = $this->session->userdata('Datos_Session')['xxxiniciales'];
         $data['xxxnivel'] = $this->session->userdata('Datos_Session')['xxxnivel'];
         $data['xxxactivo'] = $this->session->userdata('Datos_Session')['xxxactivo'];
         $data['xxxcoordinador'] = $this->session->userdata('Datos_Session')['xxxcoordinador'];
-        
-        
+        */
+        $login = $this->session->userdata('Datos_Session');
+        //var_dump($login['xxxiduser']);
+        $data['xxxiduser'] = $login['xxxiduser'];
+        $data['xxxnombres'] = $login['xxxnombres'];
+        $data['xxxiniciales'] = $login['xxxiniciales'];
+        $data['xxxnivel'] = $login['xxxnivel'];
+        $data['xxxactivo'] = $login['xxxactivo'];
+        $data['xxxcoordinador'] = $login['xxxcoordinador'];        
         switch ($filtro) {
             case "FSM":
                 $data['xrbUsuarioCheked1'] = " checked ";
@@ -71,7 +86,10 @@ class Proceso extends CI_Controller {
                 $data['xrbUsuarioCheked2'] = "";
                 $data['xrbUsuarioCheked3'] = " checked ";
         }
-        $data['procesos'] = $this->procesos_model->buscar_tareas_nivel_filtro($filtro = "");
+        
+
+        
+        $data['procesos'] = $this->procesos_model->buscar_tareas_nivel_filtro($filtro);
         //var_dump($data['procesos']);
         $this->load->vars($data);
 
@@ -81,5 +99,17 @@ class Proceso extends CI_Controller {
         $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
     }
     
+    
+       function proceso_mantenimiento_reporte($id) {
+        $respuesta = "";
+            $data = array(
+                'visto' => 'S'
+            );
+            $respuesta = $this->procesos_model->actualizar_r_cambios_estados($data, $id);
+        
+        if ($respuesta <> "") {
+            echo $respuesta;
+        }
+    } 
     
 }

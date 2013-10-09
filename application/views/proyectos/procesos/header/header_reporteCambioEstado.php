@@ -50,7 +50,8 @@
 
             function listaPorCoordinador() {
                 valRadio = getRadioVal("rbUsuario");
-                window.location = location.pathname + "" + valRadio;
+                //window.location = location.pathname + "" + valRadio;
+                window.location = "<?= $this->config->base_url() ?>proyectos/procesos/proceso/consultar/" + valRadio;
             }
 
             function getRadioVal(radioName) {
@@ -72,15 +73,14 @@
 
             function getVista(xid, obj) {
                 var dato;
-                ajax = nuevoAjax();
-                ajax.open("GET", "upd_adminReporteProceso.php?xid=" + xid, true);
-                ajax.onreadystatechange = function() {
-                    if (ajax.readyState == 1) {
-                        obj.value = "Cargando";
-                    }
-                    if (ajax.readyState == 4) {
-                        dato = ajax.responseText;
-                        if (dato == "1") {
+                
+                
+                
+                $.ajax({
+                    url: '<?= $this->config->base_url() ?>proyectos/procesos/proceso/proceso_mantenimiento_reporte/'+xid,
+                    success: function(resp) {
+                        if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
+                            console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
                             obj.className = 'btn btn-mini ';
                             document.getElementById(xid).style.fontWeight = "100";
                             document.getElementById(xid).style.color = "black";
@@ -89,10 +89,12 @@
                         } else {
                             alert("error: no se realizo los cambios");
                         }
+                    },
+                    error: function(resp) {
+                        console.log(resp);
+                        alert("error: no se realizo los cambios");
                     }
-
-                }
-                ajax.send(null)
+                });                
             }
 
 
