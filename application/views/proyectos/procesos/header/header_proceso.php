@@ -11,23 +11,9 @@
         <!-- Le styles -->
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/menu_superior.css" rel="stylesheet">
-        <!--<script src=" http://code.jquery.com/jquery-1.9.1.js"></script>-->
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
-        <!--<link href="../assets/css/hernan.css" rel="stylesheet">-->
-
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap-responsive.css" rel="stylesheet">	
         <script src="<?= $this->config->base_url() ?>JQuery/datatable/js/jquery.js" type="text/javascript"></script>
         <script src="<?= $this->config->base_url() ?>JQuery/datatable/js/jquery.dataTables.js" type="text/javascript"></script>
-        <!-- archivo ajax -->
-        <script src="<?= $this->config->base_url() ?>js/ajax.js" type="text/javascript"></script>
-        <!-- fin archivo ajax -->
-
-
 
         <style type="text/css">
             <!--  @import "<?= $this->config->base_url() ?>JQuery/datatable/css/demo_table_jui.css";
@@ -95,6 +81,7 @@
                     "aaSorting": [[0, "desc"]],
                     "bJQueryUI": true
                 });
+                
                 
             });
 

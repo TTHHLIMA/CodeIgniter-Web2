@@ -5,11 +5,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Techni-Translate (Intranet)</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
         <!-- Le styles -->
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+        <link href="<?= $this->config->base_url() ?>assets/css/bootstrap-responsive.css" rel="stylesheet">	
         <link href="<?= $this->config->base_url() ?>css/estilosMarqueting.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilos.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilosCompania.css" rel="stylesheet">
@@ -23,7 +21,7 @@
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <link href="<?= $this->config->base_url() ?>assets/css/bootstrap-responsive.css" rel="stylesheet">	
+        
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?= $this->config->base_url() ?>img/favicon.ico">
