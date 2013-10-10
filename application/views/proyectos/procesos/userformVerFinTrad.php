@@ -1,6 +1,6 @@
 <?
 // busco el usuario
-	$MySql5="";
+	/* $MySql5="";
 	$MySql5="select idpedido , actualizaciontm, realizadopor4, horafinal1, traduccionfinal, cleanup, observacion3, proc_conf_traduccion_final from pedido where idpedido='".$Columna->idpedido."'";	
 	$db->setQuery($MySql5);  
 	$MyRs5 = $db->loadObjectList();  
@@ -8,8 +8,11 @@
 		$MyNr5 = count($MyRs5);
 //************ fin busco el usuario
 	//echo "dato: ".$Nrx;
-	if ($MyNr5 > 0) { // imprimo los datos 			
-					foreach($MyRs5 as $MyCol5){ 
+         * 
+         */
+$userformVerFinTrad = $pm->procesos_model->consultar_userformVerFinTrad($Columna->idpedido);
+if ($userformVerFinTrad != null) {		
+					foreach($userformVerFinTrad as $MyCol5){ 
 						if ($xxxnivel=="1"){ // reviso el nivel administrativo y dejo k edite	
 							$activo="";
 							$colorFondo="#BE81F7";

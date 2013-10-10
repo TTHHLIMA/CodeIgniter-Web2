@@ -1,24 +1,28 @@
 <?
 //echo $Columna->idpedido;
-
+$proceso_salto= $pm->procesos_model->consultar_Pedido_Salto($Columna->idpedido);
 // busco el usuario
-	$MySql1="";
+	/* $MySql1="";
 	$MySql1="select idpedido , realizadopor1 , hora1 , PDFGlobal , saltolinea , chekearttx , observacion5 , proc_conf_salto_linea
 				from pedido where idpedido='".$Columna->idpedido."'";	
 	$db->setQuery($MySql1);  
 	$MyRs1 = $db->loadObjectList();  
 		$MyNr1="";
 		$MyNr1 = count($MyRs1);
+         * 
+         */
 //************ fin busco el usuario
           //      echo $MySql1;
 	//echo "dato: ".$MyNr1;
-	if ($MyNr1 > 0) { // imprimo los datos 			
-				foreach($MyRs1 as $MyCol1){ 
+	 if ($proceso_salto != null) {		
+				foreach($proceso_salto as $MyCol1){ 
 						if ($xxxnivel=="1"){ // reviso el nivel administrativo y dejo k edite	
 							$activo="";
 							$colorFondo="#F8E6E0";
+                                                        $Botondisable="0";
+						
 						} else {
-							//echo $Columna->user_salto_linea." - ".$xxxiduser."<br>";
+                                                //echo $Columna->user_salto_linea." - ".$xxxiduser."<br>";
                                                         if($Columna->user_salto_linea<>$xxxiduser) {  //verifico si pertenece a 
 								//echo 'No se ha encontrado "adios" en la cadena';
 								$activo="DISABLED";
@@ -30,7 +34,7 @@
                                                                 $Botondisable="0";
 							  }
                                                           //echo $activo;
-						}
+                                                }
 							
 				?>
 		<td style="background-color: <? echo $colorFondo;?>;">

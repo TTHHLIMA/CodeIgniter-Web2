@@ -74,8 +74,6 @@
             function getVista(xid, obj) {
                 var dato;
                 
-                
-                
                 $.ajax({
                     url: '<?= $this->config->base_url() ?>proyectos/procesos/proceso/proceso_mantenimiento_reporte/'+xid,
                     success: function(resp) {
@@ -94,7 +92,8 @@
                         console.log(resp);
                         alert("error: no se realizo los cambios");
                     }
-                });                
+                }); 
+                
             }
 
 

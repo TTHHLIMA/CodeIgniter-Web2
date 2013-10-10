@@ -1,6 +1,6 @@
 <?
 // busco el usuario
-	$MySql7="";
+	/*$MySql7="";
 	$MySql7="select idpedido , realizadopor8 , observacion8 , proc_conf_correccion	from pedido where idpedido='".$Columna->idpedido."'";	
 	$db->setQuery($MySql7);  
 	$MyRs7 = $db->loadObjectList();  
@@ -8,9 +8,12 @@
 		$MyNr7 = count($MyRs7);
 //************ fin busco el usuario
 	//echo "dato: ".$Nrx;
-	if ($MyNr7 > 0) { // imprimo los datos 			
+         * 
+         */
+$userformPrepCorre = $pm->procesos_model->consultar_userformPrepCorre($Columna->idpedido);
+if ($userformPrepCorre != null) {		
 	
-				 foreach($MyRs7 as $MyCol7){ 
+				 foreach($userformPrepCorre as $MyCol7){ 
 						if ($xxxnivel=="1"){ // reviso el nivel administrativo y dejo k edite	
 							$activo="";
 							$colorFondo="#F78181";

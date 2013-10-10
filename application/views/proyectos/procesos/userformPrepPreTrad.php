@@ -1,5 +1,6 @@
 <?
 // busco el usuario
+/*
 	$MySql3="";
 	$MySql3="select idpedido , realizadopor3 , hora4 , analisistm , 1roexporteus99 as proexporteus99 , pretransl75 , traducir100,
 					2doexporteus99 as sdoexporteus99,
@@ -18,11 +19,15 @@
 		$MyNr3 = count($MyRs3);
 //************ fin busco el usuario
 	//echo "dato: ".$Nrx;
-	if ($MyNr3 > 0) { // imprimo los datos 			
-					foreach($MyRs3 as $MyCol3){ 
+ * 
+ */
+$userformPrepPreTrad = $pm->procesos_model->consultar_userformPrepPreTrad($Columna->idpedido);
+if ($userformPrepPreTrad != null) {		
+					foreach($userformPrepPreTrad as $MyCol3){ 
 						if ($xxxnivel=="1"){ // reviso el nivel administrativo y dejo k edite	
 							$activo="";
 							$colorFondo="#58D3F7";
+                                                         $Botondisable="0";
 						} else {
 							if($Columna->user_pre_traduccion<>$xxxiduser) {  //verifico si pertenece a 
 								//echo 'No se ha encontrado "adios" en la cadena';

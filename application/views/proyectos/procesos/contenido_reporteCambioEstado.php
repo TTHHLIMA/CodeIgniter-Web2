@@ -51,7 +51,7 @@
                             <form name="frm<? echo $proceso->pedido . $cont; ?>" method="POST" action="">
                                 <td><? echo $proceso->id; ?></td>
                                 <td>
-                                    <a href='procesos.php?xIdP=<? echo $proceso->pedido; ?>' >
+                                    <a href='<?= $this->config->base_url() ?>proyectos/procesos/proceso/panel/<? echo $proceso->pedido; ?>' >
                                         <? echo $proceso->pedido; ?>
                                     </a>
                                 </td>

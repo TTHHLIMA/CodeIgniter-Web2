@@ -9,14 +9,14 @@ class Procesos_model extends CI_Model {
 
 //HH: Botones de navegacion Compania     
 
-    public function buscar_tareas_nivel_filtro($filtro="") {
+    public function buscar_tareas_nivel_filtro($filtro = "") {
 
-        if ($filtro===""){
+        if ($filtro === "") {
             $xfiltro = " ";
         } else {
             $xfiltro = "  and  r.coordinador='" . $filtro . "' ";
         }
-      
+
         $Sql = "SELECT r.id, r.pedido,
                 r.alias,
                 r.coordinador,
@@ -38,8 +38,8 @@ class Procesos_model extends CI_Model {
             return false;
         }
     }
-    
-        function actualizar_r_cambios_estados($array, $xid = "") {
+
+    function actualizar_r_cambios_estados($array, $xid = "") {
         $res = "";
         $mensaje = "";
         $error = "";
@@ -64,8 +64,329 @@ class Procesos_model extends CI_Model {
             return false;
         }
     }
-    
-    
+
+    function buscar_proceso_idpedido($idpedido = "") {
+        $Sql = "";
+        $Sql = "SELECT  pedido.idpedido ,compania.alias_com , 
+                 (select iniciales from coordinador where coordinador.nombre = pedido.coordinador limit 0,1 ) as coordinador , 
+                 DATE_FORMAT(pedido.fechaentrega, '%d/%m/%Y') AS fechaentrega, 
+                 pedido.realizadopor1 as salto_linea, 
+                 pedido.realizadopor2 as formateo,  
+                 pedido.realizadopor3 as pre_traduccion, 
+                 pedido.realizadopor7 as traduccion , 
+                 cotizacion.cant_combinaciones ,
+                 cotizacion.idioma_origen , 
+                 cotizacion.idioma_final , 
+                 pedido.realizadopor4 as traduccion_final , 
+                 pedido.realizadopor5 as formato_final , 
+                 pedido.realizadopor6 ,  
+                 pedido.realizadopor8 as correccion  
+                 FROM compania, contacto, requerimientos, cotizacion,  pedido where compania.idcompania = contacto.idcompania and 
+                 contacto.idcontacto = requerimientos.id_contacto and requerimientos.idrequerimiento = cotizacion.idrequerimiento and cotizacion.idcotizacion = pedido.idcotizacion and 
+                 pedido.proyectoterminado='N' and pedido.idpedido='" . $idpedido . "' order by  pedido.fechaentrega limit 0,1";
+
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    //HH: consultas
+
+    function consultar_Pedido_Salto($idpedido = "") {
+        $Sql = "";
+        $Sql = "select idpedido , realizadopor1 , hora1 , PDFGlobal , saltolinea , chekearttx , observacion5 , proc_conf_salto_linea
+				from pedido where idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function consultar_userformPrepFormateo($idpedido = "") {
+        $Sql = "";
+        $Sql = "select idpedido , realizadopor2 , hora2 , editacionformateo , ttx1 , realizadopor6 , hora3,  editaciontextofoto, observacion1, proc_conf_formateo
+				from pedido where idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function consultar_userformPrepPreTrad($idpedido = "") {
+        $Sql = "";
+        $Sql = "select idpedido , realizadopor3 , hora4 , analisistm , 1roexporteus99 as proexporteus99 , pretransl75 , traducir100,
+					2doexporteus99 as sdoexporteus99,
+					borrarunidadesnotraducibles,
+					alfabetic,
+					rtffortrans,
+					crearttx,
+					analisisfinal,
+					preparacionter,
+					observacion2,
+					proc_conf_pre_traduccion
+				from pedido where idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function consultar_userformPrepTrad($idpedido = "") {
+        $Sql = "";
+        $Sql = "select idpedido , realizadopor7 , Mskhora7, Chktraduccion, Chkarchivofinal, txtobservacion7 , proc_conf_traduccion	from pedido where idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function consultar_userformPrepCorre($idpedido = "") {
+        $Sql = "";
+        $Sql = "select idpedido , realizadopor8 , observacion8 , proc_conf_correccion	from pedido where idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function consultar_userformVerFinTrad($idpedido = "") {
+        $Sql = "";
+        $Sql = "select idpedido , actualizaciontm, realizadopor4, horafinal1, traduccionfinal, cleanup, observacion3, proc_conf_traduccion_final from pedido where idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function consultar_userformVerFinFormFin($idpedido = "") {
+        $Sql = "";
+        $Sql = "select idpedido , 
+	realizadopor5, 
+	horafinal2,
+	formatofinal,
+	cambiaridioma,
+	actualizarindice1,
+	pocisionamiento,
+	estiloletra,
+	mayusculaminuscula,
+	numerodecimales,
+	codigosfinal,
+	actualizarindice2,
+	verificarmayusmin,
+	observacion4,
+	proc_conf_formato_final
+	from pedido where idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    //HH: filtro de usuarios
+
+    function consultar_user($nivel, $iduser) {
+        if ($nivel === "1") {
+            $Sql = "";
+            $Sql = "select ue.id_usuarios ,ue.idusuarios_estado , ue.descripcion ,ue.idestado , e.orden  from usuarios_estado ue, estado e where e.idestado = ue.idestado order by ue.id_usuarios, e.orden ";
+        }
+        if ($nivel === "2") {
+            $Sql = "";
+            $Sql = "select ue.id_usuarios ,ue.idusuarios_estado , ue.descripcion ,ue.idestado , e.orden  from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ";
+        }
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function listar_user() {
+        $Sql = "";
+        $Sql = "select ue.id_usuarios ,ue.idusuarios_estado , ue.descripcion ,ue.idestado , e.orden  from usuarios_estado ue, estado e where e.idestado = ue.idestado order by ue.id_usuarios, e.orden ";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    //HH: busquedas
+
+
+    function buscar_userSaltoLinea($iduser, $idpedido) {
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor1 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userFormateo($iduser, $idpedido) {
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor2 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userPreTraduccion($iduser, $idpedido) {
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor3 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+        //echo $Sql;
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userTraduccion($iduser, $idpedido) {
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor7 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+        //echo $Sql;
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userCorreccion($iduser, $idpedido) {
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor8 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+        //echo $Sql;
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userTraduccionFinal($iduser, $idpedido) {
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor4 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+        //echo $Sql;
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userFormatoFinal($idpedido) {
+        $Sql = "";
+        $Sql = "SELECT distinct pedido.idpedido as idpedido,
+                                     compania.alias_com as alias, 
+                                     (select iniciales from coordinador where coordinador.nombre = pedido.coordinador limit 0,1 ) as coordinador,
+                                     pedido.realizadopor1 as salto_linea, 
+                                     pedido.realizadopor2 as formateo,  
+				     pedido.realizadopor3 as pre_traduccion,
+                                     pedido.realizadopor7 as traduccion , 
+                                     pedido.realizadopor4 as traduccion_final , 
+                                     pedido.realizadopor5 as formato_final , 
+                                     pedido.realizadopor8 as correccion, 
+                                     pedido.proyectoterminado
+                    FROM  compania, contacto, requerimientos, cotizacion,  pedido 
+                    where compania.idcompania = contacto.idcompania and 
+                                     contacto.idcontacto = requerimientos.id_contacto and 
+                                     requerimientos.idrequerimiento = cotizacion.idrequerimiento and  
+                                     cotizacion.idcotizacion = pedido.idcotizacion and 
+                                     pedido.proyectoterminado='N'  and  
+                                     pedido.idpedido='" . $idpedido . "'";
+        //echo $Sql;
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userReporteProceso($iduser, $idpedido) {
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor5 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+        //echo $Sql;
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function agregar_r_cambios_estados($array) {
+        $res = "";
+        $res = $this->db->insert('r_cambios_estados', $array);
+
+
+        if (!$res) {
+            $msg = $this->db->_error_message();
+            $num = $this->db->_error_number();
+            return "Error(" . $num . ") " . $msg;
+        } else {
+            return false;
+        }
+    }
+
+    //HH: update de procesos
+
+
+
+
+    function upd_procesos_estados($array, $idpedido = "") {
+        $res = "";
+        $mensaje = "";
+        $error = "";
+        if ($idpedido <> "") {
+            $error = 0; //HH: flag para saber si esta vacio el id
+            $res = $this->db->update('pedido', $array, array('idpedido' => $idpedido));
+        } else {
+            $mensaje = "Error: IdPedido esta vacio. ";
+            $error = 1;
+        }
+
+        if (!$res) {
+            if ($error === 0) {
+                $msg = $this->db->_error_message();
+                $num = $this->db->_error_number();
+                return "Error(" . $num . ") " . $msg;
+            }
+            if ($error === 1) {
+                return $mensaje;
+            }
+        } else {
+            return false;
+        }
+    }
 
 }
 

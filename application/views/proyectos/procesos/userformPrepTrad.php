@@ -1,6 +1,6 @@
 <?
 // busco el usuario
-	$MySql4="";
+/*	$MySql4="";
 	$MySql4="select idpedido , realizadopor7 , Mskhora7, Chktraduccion, Chkarchivofinal, txtobservacion7 , proc_conf_traduccion	from pedido where idpedido='".$Columna->idpedido."'";	
 	$db->setQuery($MySql4);  
 	$MyRs4 = $db->loadObjectList();  
@@ -8,12 +8,16 @@
 		$MyNr4 = count($MyRs4);
 //************ fin busco el usuario
 	//echo "dato: ".$Nrx;
-	if ($MyNr4 > 0) { // imprimo los datos 			
+ * 
+ */
+$userformPrepTrad = $pm->procesos_model->consultar_userformPrepTrad($Columna->idpedido);
+if ($userformPrepTrad != null) {		
 	
-				 foreach($MyRs4 as $MyCol4){ 
+				 foreach($userformPrepTrad as $MyCol4){ 
 						if ($xxxnivel=="1"){ // reviso el nivel administrativo y dejo k edite	
 							$activo="";
 							$colorFondo="#F2F5A9";
+                                                        $Botondisable="0";
 						} else {
 							if($Columna->user_traduccion<>$xxxiduser) {  //verifico si pertenece a 
 								//echo 'No se ha encontrado "adios" en la cadena';

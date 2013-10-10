@@ -1,6 +1,6 @@
 <?
 // busco el usuario
-	$MySql6="";
+/*	$MySql6="";
 	$MySql6="select idpedido , 
 	realizadopor5, 
 	horafinal2,
@@ -23,8 +23,11 @@
 		$MyNr6 = count($MyRs6);
 //************ fin busco el usuario
 	//echo "dato: ".$Nrx;
-	if ($MyNr6 > 0) { // imprimo los datos 			
-					foreach($MyRs6 as $MyCol6){ 
+ * 
+ */
+$userformVerFinFormFin = $pm->procesos_model->consultar_userformVerFinFormFin($Columna->idpedido);
+if ($userformVerFinFormFin != null) {		
+					foreach($userformVerFinFormFin as $MyCol6){ 
 						if ($xxxnivel=="1"){ // reviso el nivel administrativo y dejo k edite	
 							$activo="";
 							$colorFondo="#3ADF00";
