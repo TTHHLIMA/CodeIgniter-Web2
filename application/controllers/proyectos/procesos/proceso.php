@@ -131,6 +131,24 @@ class Proceso extends CI_Controller {
         $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
     }
 
+    
+      function listar($xFiltro="",$xCoord="") {
+        $login = $this->session->userdata('Datos_Session');
+        $data['xxxiduser'] = $login['xxxiduser'];
+        $data['xxxnombres'] = $login['xxxnombres'];
+        $data['xxxiniciales'] = $login['xxxiniciales'];
+        $data['xxxnivel'] = $login['xxxnivel'];
+        $data['xxxactivo'] = $login['xxxactivo'];
+        $data['xxxcoordinador'] = $login['xxxcoordinador'];
+        $data['xCoord']=$xCoord;
+        $data['xFiltro']=$xFiltro;
+        $this->load->vars($data);
+        $this->load->view('proyectos/procesos/header/header_proceso');
+        $this->load->view('menu/menuSuperior');
+        $this->load->view('proyectos/procesos/contenido_listar');
+        $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
+    }  
+    
     function proceso_ins_userReporteProceso($idpedido, $xValproceso) {
 
         if ($idpedido <> "" and $xValproceso <> "") {

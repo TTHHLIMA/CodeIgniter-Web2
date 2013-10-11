@@ -331,6 +331,150 @@ class Procesos_model extends CI_Model {
         }
     }
 
+    function busca_listar_procesos_admin_filtro($iduser, $inic_coordinador) {
+        $Sql = "";
+        if ($inic_coordinador == 'JSM') {
+            $xCoordValue = " and pedido.coordinador='Juan Salas Marin' ";
+        }
+        if ($inic_coordinador == 'FSM') {
+            $xCoordValue = " and pedido.coordinador='Flormira Salas Marin' ";
+        }
+        if ($inic_coordinador == '') {
+            $xCoordValue = "";
+        }
+        $Sql = "SELECT  pedido.idpedido ,
+                                                compania.alias_com , 
+						(select iniciales from coordinador where coordinador.nombre = pedido.coordinador limit 0,1 ) as coordinador , 
+						DATE_FORMAT(pedido.fechaentrega, '%d/%m/%Y') AS fechaentrega, 
+                                                pedido.realizadopor1 as salto_linea, 
+                                                pedido.realizadopor2 as formateo,  
+						pedido.realizadopor3 as pre_traduccion, 
+                                                pedido.realizadopor7 as traduccion , 
+                                                cotizacion.cant_combinaciones ,
+                                                cotizacion.idioma_origen , 
+                                                cotizacion.idioma_final , 
+                                                pedido.realizadopor4 as traduccion_final , 
+                                                pedido.realizadopor5 as formato_final , 
+                                                pedido.realizadopor6 ,  
+                                                pedido.realizadopor8 as correccion                                                
+                                                                 FROM compania, contacto, requerimientos, cotizacion,  pedido where compania.idcompania = contacto.idcompania and 
+								 contacto.idcontacto = requerimientos.id_contacto and requerimientos.idrequerimiento = cotizacion.idrequerimiento and cotizacion.idcotizacion = pedido.idcotizacion and 
+								 pedido.proyectoterminado='N' " . $inic_coordinador . "
+								 and
+								(pedido.`realizadopor1` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+								pedido.`realizadopor2` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+								pedido.`realizadopor3` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+								pedido.`realizadopor4` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+								pedido.`realizadopor5` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+								pedido.`realizadopor7` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+								pedido.`realizadopor8` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden )  )
+								 order by  pedido.fechaentrega";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+    
+    function busca_listar_procesos_admin_todos($inic_coordinador) {
+        $Sql = "";
+        if ($inic_coordinador == 'JSM') {
+            $xCoordValue = " and pedido.coordinador='Juan Salas Marin' ";
+        }
+        if ($inic_coordinador == 'FSM') {
+            $xCoordValue = " and pedido.coordinador='Flormira Salas Marin' ";
+        }
+        if ($inic_coordinador == '') {
+            $xCoordValue = "";
+        }
+                        $Sql = "SELECT  pedido.idpedido ,
+                                compania.alias_com , 
+                                (select iniciales from coordinador where coordinador.nombre = pedido.coordinador limit 0,1 ) as coordinador , 
+                                 DATE_FORMAT(pedido.fechaentrega, '%d/%m/%Y') AS fechaentrega, 
+                                 pedido.realizadopor1 as salto_linea, 
+                                 pedido.realizadopor2 as formateo,  
+                                 pedido.realizadopor3 as pre_traduccion, 
+                                 pedido.realizadopor7 as traduccion , 
+                                 cotizacion.cant_combinaciones ,
+                                 cotizacion.idioma_origen , 
+                                 cotizacion.idioma_final , 
+                                 pedido.realizadopor4 as traduccion_final , 
+                                 pedido.realizadopor5 as formato_final , 
+                                 pedido.realizadopor6 ,  
+                                 pedido.realizadopor8 as correccion                                                
+                                         FROM compania, contacto, requerimientos, cotizacion,  pedido where compania.idcompania = contacto.idcompania and 
+                                         contacto.idcontacto = requerimientos.id_contacto and requerimientos.idrequerimiento = cotizacion.idrequerimiento and cotizacion.idcotizacion = pedido.idcotizacion and 
+                                         pedido.proyectoterminado='N' " . $xCoordValue . " order by  pedido.fechaentrega";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
+    function busca_listar_procesos_usuario_todos($iduser="") {
+        $Sql = "";
+        $Sql = "SELECT distinct pedido.idpedido ,
+                compania.alias_com , 
+                                (select iniciales from coordinador where coordinador.nombre = pedido.coordinador limit 0,1 ) as coordinador , 
+                                DATE_FORMAT(pedido.fechaentrega, '%d/%m/%Y') AS fechaentrega, 
+                                pedido.realizadopor1 as salto_linea, 
+                                pedido.realizadopor2 as formateo,  
+                                pedido.realizadopor3 as pre_traduccion, 
+                                pedido.realizadopor7 as traduccion , 
+                                cotizacion.cant_combinaciones ,
+                                cotizacion.idioma_origen , 
+                                cotizacion.idioma_final , 
+                                pedido.realizadopor4 as traduccion_final , 
+                                pedido.realizadopor5 as formato_final , 
+                                pedido.realizadopor6 , 
+                                pedido.realizadopor8 as correccion,
+                        proc_conf_salto_linea,
+                        proc_conf_formateo,
+                        proc_conf_pre_traduccion,
+                        proc_conf_traduccion,
+                        proc_conf_correccion,
+                        proc_conf_traduccion_final,
+                        proc_conf_formato_final,   
+                        Coalesce((select id_usuarios from usuarios_estado where idusuarios_estado = realizadopor1), 0) as user_salto_linea,
+                        Coalesce((select id_usuarios from usuarios_estado where idusuarios_estado = realizadopor2), 0) as user_formateo,
+                        Coalesce((select id_usuarios from usuarios_estado where idusuarios_estado = realizadopor3), 0) as user_pre_traduccion,
+                        Coalesce((select id_usuarios from usuarios_estado where idusuarios_estado = realizadopor7), 0) as user_traduccion,
+                        Coalesce((select id_usuarios from usuarios_estado where idusuarios_estado = realizadopor8), 0) as user_correccion,
+                        Coalesce((select id_usuarios from usuarios_estado where idusuarios_estado = realizadopor4), 0) as user_traduccion_final,
+                        Coalesce((select id_usuarios from usuarios_estado where idusuarios_estado = realizadopor5), 0) as user_formato_final,
+                        Coalesce((select idestado from usuarios_estado where idusuarios_estado = realizadopor1), 0) as estado_salto_linea,
+                        Coalesce((select idestado from usuarios_estado where idusuarios_estado = realizadopor2), 0) as estado_formateo,
+                        Coalesce((select idestado from usuarios_estado where idusuarios_estado = realizadopor3), 0) as estado_pre_traduccion,
+                        Coalesce((select idestado from usuarios_estado where idusuarios_estado = realizadopor7), 0) as estado_traduccion,
+                        Coalesce((select idestado from usuarios_estado where idusuarios_estado = realizadopor8), 0) as estado_correccion,
+                        Coalesce((select idestado from usuarios_estado where idusuarios_estado = realizadopor4), 0) as estado_traduccion_final,
+                        Coalesce((select idestado from usuarios_estado where idusuarios_estado = realizadopor5), 0) as estado_formato_final	                                                
+                                                        FROM  compania, contacto, requerimientos, cotizacion,  pedido where compania.idcompania = contacto.idcompania and contacto.idcontacto = requerimientos.id_contacto and 
+                                                        requerimientos.idrequerimiento = cotizacion.idrequerimiento and  cotizacion.idcotizacion = pedido.idcotizacion and pedido.proyectoterminado='N' and
+                                                        (
+                                                        pedido.`realizadopor1` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+                                                        pedido.`realizadopor2` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+                                                        pedido.`realizadopor3` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+                                                        pedido.`realizadopor4` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+                                                        pedido.`realizadopor5` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+                                                        pedido.`realizadopor7` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
+                                                        pedido.`realizadopor8` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden )      
+                                                                                                                )
+                                                        order by  pedido.fechaentrega";
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
+    
+    
+    
     function buscar_userReporteProceso($iduser, $idpedido) {
         $Sql = "";
         $Sql = "select * from pedido where realizadopor5 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
