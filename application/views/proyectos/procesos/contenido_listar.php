@@ -19,26 +19,37 @@ $pm->load->model("procesos_model");
 
                 <?php
                 if ($xxxnivel == "1") {
-
+                    // echo "Dato:" . $xCoord;
                     if ($xCoord == 'JSM') {
                         $xCoordJSM = " selected";
+                        $xCoordFSM = "";
+                        $xCoordTodos = "";
                     }
                     if ($xCoord == 'FSM') {
+                        $xCoordJSM = "";
                         $xCoordFSM = " selected";
+                        $xCoordTodos = "";
                     }
-                    if ($xCoord == '') {
+                    if ($xCoord == 'Todos') {
+                        $xCoordJSM = "";
+                        $xCoordFSM = "";
+                        $xCoordTodos = " selected";
+                    }
+                    if ($xCoord === '') {
+                        $xCoordJSM = "";
+                        $xCoordFSM = "";
                         $xCoordTodos = " selected";
                     }
 
 
 
-                            $xrbUsuarioCheked1 = "";
-                            $xrbUsuarioCheked2 = "";
-                            $xrbUsuarioCheked3 = "";
-                            $xrbUsuarioCheked4 = "";
-                            $xrbUsuarioCheked5 = "";
-                            $xrbUsuarioCheked6 = "";
-                            $xrbUsuarioCheked7 = "";
+                    $xrbUsuarioCheked1 = "";
+                    $xrbUsuarioCheked2 = "";
+                    $xrbUsuarioCheked3 = "";
+                    $xrbUsuarioCheked4 = "";
+                    $xrbUsuarioCheked5 = "";
+                    $xrbUsuarioCheked6 = "";
+                    $xrbUsuarioCheked7 = "";
                     switch ($xFiltro) {
                         case "5":
                             $xrbUsuarioCheked1 = " checked ";
@@ -58,7 +69,7 @@ $pm->load->model("procesos_model");
                         case "3":
                             $xrbUsuarioCheked6 = " checked ";
                             break;
-                        case "":
+                        case "0":
                             $xrbUsuarioCheked7 = " checked ";
                             break;
                         default:
@@ -70,13 +81,19 @@ $pm->load->model("procesos_model");
                         <tr>
                             <td width="320"><h1>Proyectos Abiertos</h1></td>
                             <td width="220">
-                                <label for="CboCoordinadorCab">Coordinador</label>
-                                <select name="CboCoordinadorCab" id="CboCoordinadorCab" style="width:80px;">
+                                <table>
+                                    <tr>
+                                        <td><label for="CboCoordinadorCab">Coordinador</label></td>
+                                        <td>
+                                            <select name="CboCoordinadorCab" id="CboCoordinadorCab" style="width:80px;">
 
-                                    <option value="JSM" <?= $xCoordJSM ?> >JSM</option>
-                                    <option value="FSM" <?= $xCoordFSM ?> >FSM</option>
-                                    <option value="" <?= $xCoordTodos ?> >Todos</option>
-                                </select>
+                                                <option value="JSM" <?= $xCoordJSM ?> >JSM</option>
+                                                <option value="FSM" <?= $xCoordFSM ?> >FSM</option>
+                                                <option value="Todos" <?= $xCoordTodos ?> >Todos</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
 
                             <td width="60"><input type="radio" name="rbUsuario" value="5" onChange="llamaUsuario();"  <?PHP echo $xrbUsuarioCheked1; ?> /> AG</td>
@@ -85,7 +102,7 @@ $pm->load->model("procesos_model");
                             <td width="60"><input type="radio" name="rbUsuario" value="6" onChange="llamaUsuario();" <?PHP echo $xrbUsuarioCheked4; ?> /> FSM</td>
                             <td width="60"><input type="radio" name="rbUsuario" value="8" onChange="llamaUsuario();"  <?PHP echo $xrbUsuarioCheked5; ?> /> JSM</td>
                             <td width="60"><input type="radio" name="rbUsuario" value="3" onChange="llamaUsuario();" <?PHP echo $xrbUsuarioCheked6; ?> /> YSO</td>
-                            <td width="80"><input type="radio" name="rbUsuario" value="" onChange="llamaUsuario();" <?PHP echo $xrbUsuarioCheked7; ?> /> Todos</td>
+                            <td width="80"><input type="radio" name="rbUsuario" value="0" onChange="llamaUsuario();" <?PHP echo $xrbUsuarioCheked7; ?> /> Todos</td>
                             <td><input class='btn btn-mini' type='button' value='Refresh' onclick='llamaUsuario();'></td>                    
                         </tr>
 
@@ -96,10 +113,15 @@ $pm->load->model("procesos_model");
 
                 if ($xxxnivel == "1") {
                     $Sql = "";
-                    if ($xFiltro <> "") {
-                        $proceso = $pm->procesos_model->busca_listar_procesos_admin_filtro($xCoord, $xFiltro);
-                    } else {
+                    //echo "controller: xCoord=" . $xCoord . "  - xFiltro=" . $xFiltro;
+                    if ($xFiltro === "0") {
                         $proceso = $pm->procesos_model->busca_listar_procesos_admin_todos($xCoord);
+                    } else {
+                        if ($xFiltro === "") {
+                            $proceso = $pm->procesos_model->busca_listar_procesos_admin_todos($xCoord);
+                        } else {
+                            $proceso = $pm->procesos_model->busca_listar_procesos_admin_filtro($xFiltro, $xCoord);
+                        }
                     }
                 }
 
@@ -247,34 +269,7 @@ $pm->load->model("procesos_model");
                                     </td>
 
 
-                                    <?
-                                    if ($xxxnivel == '2') {
-                                        //echo $Sql;
-                                        $xSql = "";
-                                        $xSql = "select distinct prioridades.prioridad 
-											from prioridades , usuario_estado
-											where 
-											prioridades.id_usuario = usuario_estado.id_usuario and
-											usuario_estado.nombre ='" . $xxxnombre . "' and 
-											prioridades.id_pedido ='" . $Columna->idpedido . "'";
-                                        $db->setQuery($xSql);
-                                        $RsSql = $db->loadObjectList();
-                                        $NrRes = "";
-                                        $NrRes = count($RsSql);
-                                        if ($NrRes > 0) { // imprimo los datos 	
-                                            foreach ($RsSql as $Col) {
-                                                $prioridad = "";
-                                                $prioridad = $Col->prioridad;
-                                            }
-                                        } else {
-                                            $prioridad = "";
-                                        }
-
-                                        echo "<td>" . $prioridad . "</td>";
-                                    } else {
-                                        echo "<td></td>";
-                                    }
-                                    ?>
+                                    <? echo "<td></td>"; ?>
 
 
 
@@ -390,13 +385,6 @@ $pm->load->model("procesos_model");
                         <!-- nombre del fomulario 'P100011' -> idpedido + el contador para que no se repita -->
                     <form name="frm0" method="POST" action="">
                         <td></td>
-
-
-                        <td></td>
-
-
-
-
                         <td></td>
                         <td></td>
                         <td></td>
@@ -410,8 +398,7 @@ $pm->load->model("procesos_model");
                         <td></td>
                         <td></td>
                         <td></td>
-
-
+                        <td></td>
                     </form>
 
                     <td style="padding:0px">
@@ -446,7 +433,5 @@ $pm->load->model("procesos_model");
 
         </div><!--/span-->
     </div><!--/row-->
-
-
 
 </div>

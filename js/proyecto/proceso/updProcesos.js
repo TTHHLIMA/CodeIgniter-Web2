@@ -1,3 +1,4 @@
+var ruta ="http://localhost/web2/proyectos/procesos/proceso/";
 function upd_userformPrepSalto(pedido) {
     var Estado = "Cbo" + pedido + "1";
     var ChkPDFGlobal = "ChkPDFGlobal" + pedido;
@@ -23,7 +24,7 @@ function upd_userformPrepSalto(pedido) {
 
 
     $.ajax({
-        url: 'http://localhost/web2/proyectos/procesos/proceso/upd_userformPrepSalto/',
+        url: ruta + 'upd_userformPrepSalto',
         type: "POST",
         data: {myArray: myArray},
         success: function(resp) {
@@ -74,7 +75,7 @@ function upd_userformPrepFormateo(pedido) {
 
 
     $.ajax({
-        url: 'http://localhost/web2/proyectos/procesos/proceso/upd_userformPrepFormateo/',
+        url: ruta + 'upd_userformPrepFormateo',
         type: "POST",
         data: {myArray: myArray},
         success: function(resp) {
@@ -150,7 +151,7 @@ function upd_userformPrepPreTrad(pedido) {
 
 
     $.ajax({
-        url: 'http://localhost/web2/proyectos/procesos/proceso/upd_userformPrepPreTrad/',
+        url: ruta + 'upd_userformPrepPreTrad',
         type: "POST",
         data: {myArray: myArray},
         success: function(resp) {
@@ -196,7 +197,7 @@ function upd_userformPrepTrad(pedido) {
 
 
     $.ajax({
-        url: 'http://localhost/web2/proyectos/procesos/proceso/upd_userformPrepTrad/',
+        url: ruta + 'upd_userformPrepTrad',
         type: "POST",
         data: {myArray: myArray},
         success: function(resp) {
@@ -238,7 +239,7 @@ function upd_userformPrepCorre(pedido) {
 
 
     $.ajax({
-        url: 'http://localhost/web2/proyectos/procesos/proceso/upd_userformPrepCorre/',
+        url: ruta + 'upd_userformPrepCorre',
         type: "POST",
         data: {myArray: myArray},
         success: function(resp) {
@@ -293,7 +294,7 @@ function upd_userformVerFinTrad(pedido) {
 
 
     $.ajax({
-        url: 'http://localhost/web2/proyectos/procesos/proceso/upd_userformVerFinTrad/',
+        url: ruta + 'upd_userformVerFinTrad',
         type: "POST",
         data: {myArray: myArray},
         success: function(resp) {
@@ -368,7 +369,7 @@ function upd_userformVerFinFormFin(pedido) {
 
 
     $.ajax({
-        url: 'http://localhost/web2/proyectos/procesos/proceso/upd_userformVerFinFormFin/',
+        url: ruta + 'upd_userformVerFinFormFin',
         type: "POST",
         data: {myArray: myArray},
         success: function(resp) {

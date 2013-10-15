@@ -333,6 +333,8 @@ class Procesos_model extends CI_Model {
 
     function busca_listar_procesos_admin_filtro($iduser, $inic_coordinador) {
         $Sql = "";
+        $xCoordValue="";
+        echo "model: iduser=" . $iduser . "  - inic_coordinador=" . $inic_coordinador;
         if ($inic_coordinador == 'JSM') {
             $xCoordValue = " and pedido.coordinador='Juan Salas Marin' ";
         }
@@ -359,7 +361,7 @@ class Procesos_model extends CI_Model {
                                                 pedido.realizadopor8 as correccion                                                
                                                                  FROM compania, contacto, requerimientos, cotizacion,  pedido where compania.idcompania = contacto.idcompania and 
 								 contacto.idcontacto = requerimientos.id_contacto and requerimientos.idrequerimiento = cotizacion.idrequerimiento and cotizacion.idcotizacion = pedido.idcotizacion and 
-								 pedido.proyectoterminado='N' " . $inic_coordinador . "
+								 pedido.proyectoterminado='N' " . $xCoordValue . "
 								 and
 								(pedido.`realizadopor1` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
 								pedido.`realizadopor2` IN (select ue.idusuarios_estado from usuarios_estado ue, estado e where e.idestado = ue.idestado and ue.id_usuarios ='" . $iduser . "' order by ue.id_usuarios, e.orden ) or
@@ -385,7 +387,7 @@ class Procesos_model extends CI_Model {
         if ($inic_coordinador == 'FSM') {
             $xCoordValue = " and pedido.coordinador='Flormira Salas Marin' ";
         }
-        if ($inic_coordinador == '') {
+        if ($inic_coordinador == '' || $inic_coordinador == 'Todos') {
             $xCoordValue = "";
         }
                         $Sql = "SELECT  pedido.idpedido ,
@@ -486,7 +488,19 @@ class Procesos_model extends CI_Model {
             return false;
         }
     }
-
+    
+    function buscar_estado_mostrarInicialEstado($estado) {
+        $Sql = "";
+        $Sql = "select ue.descripcion , ue.idestado  from usuarios_estado ue where  ue.idusuarios_estado = '" . $estado . "'";
+        
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+    
     function agregar_r_cambios_estados($array) {
         $res = "";
         $res = $this->db->insert('r_cambios_estados', $array);

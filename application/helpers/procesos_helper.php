@@ -19,47 +19,44 @@ function buscar($palabra) {
 }
 
 function ponerColorEstados($estado) {
-    $base = DataBase::getInstance();
-    $xSql = "";
-    $xSql = "select ue.idestado  from usuarios_estado ue where  ue.idusuarios_estado = '" . $estado . "'";
-    $base->setQuery($xSql);
-    $RsSql = $base->loadObjectList();
-    $NrRes = "";
-    $NrRes = count($RsSql);
-    if ($NrRes > 0) { // imprimo los datos 	
-        foreach ($RsSql as $Col) {
+    $pm = &get_instance();
+    $pm->load->model("procesos_model");
+    $proceso = $pm->procesos_model->buscar_estado_mostrarInicialEstado($estado);
+    if ($proceso != null) {
+        foreach ($proceso as $Col) {
             $xxEstado = "";
             $xxEstado = $Col->idestado;
         }
+        if ($xxEstado === "1") {
+            $xxColor = "style='color:red;'";
+        }
+        if ($xxEstado === "2") {
+            $xxColor = "style='color:blue;'";
+        }
+        if ($xxEstado === "3") {
+            $xxColor = "style='color:green;'";
+        }
+        
+    } else {
+        $xxColor="";
     }
 
-    if ($xxEstado === "1") {
-        $xxColor = "style='color:red;'";
-    }
-    if ($xxEstado === "2") {
-        $xxColor = "style='color:blue;'";
-    }
-    if ($xxEstado === "3") {
-        $xxColor = "style='color:green;'";
-    }
+
     return $xxColor;
 }
 
 function mostrarInicialEstado($estado) {
-    $base = DataBase::getInstance();
-    $xSql = "";
-    $xSql = "select ue.descripcion  from usuarios_estado ue where  ue.idusuarios_estado = '" . $estado . "'";
-    $base->setQuery($xSql);
-    $RsSql = $base->loadObjectList();
-    $NrRes = "";
-    $NrRes = count($RsSql);
-    if ($NrRes > 0) { // imprimo los datos 	
-        foreach ($RsSql as $Col) {
+    $pm = &get_instance();
+    $pm->load->model("procesos_model");
+    $proceso = $pm->procesos_model->buscar_estado_mostrarInicialEstado($estado);
+    if ($proceso != null) {
+        foreach ($proceso as $Col) {
             $xxDescripcion = "";
             $xxDescripcion = $Col->descripcion;
         }
+    } else {
+        $xxDescripcion="";
     }
     return $xxDescripcion;
 }
-
 ?>

@@ -19,7 +19,13 @@ class verifica_login extends CI_Controller {
             $this->load->view('footer/footer_login');
             //HH: prueba
         }else {
-            redirect('marqueting/compania','refresh');
+            $login = $this->session->userdata('Datos_Session');
+            if ($login['xxxnivel']==="1"){
+                redirect('proyectos/procesos/proceso/','refresh');
+            }
+             if ($login['xxxnivel']==="2"){
+                redirect('proyectos/procesos/proceso/listar','refresh');
+            }            
             
         }
     }
