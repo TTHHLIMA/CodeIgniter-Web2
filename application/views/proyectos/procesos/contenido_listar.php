@@ -79,7 +79,7 @@ $pm->load->model("procesos_model");
 
                     <table >
                         <tr>
-                            <td width="320"><h1>Proyectos Abiertos</h1></td>
+                            <td width="20"></td>
                             <td width="220">
                                 <table>
                                     <tr>
@@ -332,13 +332,14 @@ $pm->load->model("procesos_model");
                                                     ?>
 
                                                 </span>
+                                                <strong style="font-size: 16px;">
                                                 <span style="background: #EFEFFB;"><b>Pedido:&nbsp;</b><? echo $Columna->idpedido; ?>&nbsp;</span>
                                                 <span style="background: #EFEFFB;"><b>Alias:&nbsp;</b><? echo $Columna->alias_com; ?>&nbsp;</span>
                                                 <span style="background: #EFEFFB;"><b>Coordinador:&nbsp;</b><? echo $Columna->coordinador ?>&nbsp;</span>
                                                 <span style="background: #EFEFFB;"><b>Fecha de entrega:&nbsp;</b><? echo $Columna->fechaentrega; ?>&nbsp;</span>
                                                 <span style="background: #EFEFFB;"><b>Idioma de origen:&nbsp;</b><? echo $Columna->idioma_origen; ?>&nbsp;</span>
                                                 <span style="background: #EFEFFB;"><b>Idioma final:&nbsp;</b><? echo $Columna->idioma_final; ?>&nbsp;</span>
-
+                                                </strong>
 
                                             </td>
                                         </tr>

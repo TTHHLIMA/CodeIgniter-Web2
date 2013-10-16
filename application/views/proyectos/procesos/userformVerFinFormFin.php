@@ -1,30 +1,4 @@
 <?
-// busco el usuario
-/*	$MySql6="";
-	$MySql6="select idpedido , 
-	realizadopor5, 
-	horafinal2,
-	formatofinal,
-	cambiaridioma,
-	actualizarindice1,
-	pocisionamiento,
-	estiloletra,
-	mayusculaminuscula,
-	numerodecimales,
-	codigosfinal,
-	actualizarindice2,
-	verificarmayusmin,
-	observacion4,
-	proc_conf_formato_final
-	from pedido where idpedido='".$Columna->idpedido."'";	
-	$db->setQuery($MySql6);  
-	$MyRs6 = $db->loadObjectList();  
-		$MyNr6="";
-		$MyNr6 = count($MyRs6);
-//************ fin busco el usuario
-	//echo "dato: ".$Nrx;
- * 
- */
 $userformVerFinFormFin = $pm->procesos_model->consultar_userformVerFinFormFin($Columna->idpedido);
 if ($userformVerFinFormFin != null) {		
 					foreach($userformVerFinFormFin as $MyCol6){ 

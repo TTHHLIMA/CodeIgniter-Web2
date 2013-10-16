@@ -302,9 +302,9 @@ class Procesos_model extends CI_Model {
         }
     }
 
-    function buscar_userFormatoFinal($idpedido) {
+    function buscar_userFormatoFinal($iduser,$idpedido) {
         $Sql = "";
-        $Sql = "SELECT distinct pedido.idpedido as idpedido,
+        /*$Sql = "SELECT distinct pedido.idpedido as idpedido,
                                      compania.alias_com as alias, 
                                      (select iniciales from coordinador where coordinador.nombre = pedido.coordinador limit 0,1 ) as coordinador,
                                      pedido.realizadopor1 as salto_linea, 
@@ -322,6 +322,11 @@ class Procesos_model extends CI_Model {
                                      cotizacion.idcotizacion = pedido.idcotizacion and 
                                      pedido.proyectoterminado='N'  and  
                                      pedido.idpedido='" . $idpedido . "'";
+         * 
+         */
+        $Sql = "";
+        $Sql = "select * from pedido where realizadopor5 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+
         //echo $Sql;
         $query = $this->db->query($Sql);
         if ($query->num_rows() > 0) {
@@ -334,7 +339,7 @@ class Procesos_model extends CI_Model {
     function busca_listar_procesos_admin_filtro($iduser, $inic_coordinador) {
         $Sql = "";
         $xCoordValue="";
-        echo "model: iduser=" . $iduser . "  - inic_coordinador=" . $inic_coordinador;
+        //echo "model: iduser=" . $iduser . "  - inic_coordinador=" . $inic_coordinador;
         if ($inic_coordinador == 'JSM') {
             $xCoordValue = " and pedido.coordinador='Juan Salas Marin' ";
         }

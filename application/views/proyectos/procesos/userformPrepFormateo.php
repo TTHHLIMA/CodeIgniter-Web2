@@ -1,16 +1,4 @@
 <?
-// busco el usuario
-/* 	$MySql2="";
-  $MySql2="select idpedido , realizadopor2 , hora2 , editacionformateo , ttx1 , realizadopor6 , hora3,  editaciontextofoto, observacion1, proc_conf_formateo
-  from pedido where idpedido='".$Columna->idpedido."'";
-  $db->setQuery($MySql2);
-  $MyRs2 = $db->loadObjectList();
-  $MyNr2="";
-  $MyNr2 = count($MyRs2);
- * 
- */
-//************ fin busco el usuario
-//echo "dato: ".$Nrx;
 $userformPrepFormateo = $pm->procesos_model->consultar_userformPrepFormateo($Columna->idpedido);
 if ($userformPrepFormateo != null) {
     foreach ($userformPrepFormateo as $MyCol2) {

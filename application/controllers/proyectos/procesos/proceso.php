@@ -9,7 +9,7 @@ class Proceso extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('proyectos/procesos_model');
-        $this->load->helper(array('url', 'consola_helper', 'funciones_helper','procesos_helper'));
+        $this->load->helper(array('url', 'consola_helper', 'funciones_helper', 'procesos_helper'));
     }
 
     public function index($filtro = "") {
@@ -20,34 +20,33 @@ class Proceso extends CI_Controller {
         $data['xxxnivel'] = $login['xxxnivel'];
         $data['xxxactivo'] = $login['xxxactivo'];
         $data['xxxcoordinador'] = $login['xxxcoordinador'];
-        if ($login['xxxnivel']==="1"){
-        switch ($filtro) {
-            case "FSM":
-                $data['xrbUsuarioCheked1'] = " checked ";
-                $data['xrbUsuarioCheked2'] = "";
-                $data['xrbUsuarioCheked3'] = "";
-                break;
-            case "JSM":
-                $data['xrbUsuarioCheked1'] = "";
-                $data['xrbUsuarioCheked2'] = " checked ";
-                $data['xrbUsuarioCheked3'] = "";
-                break;
-            default:
-                $data['xrbUsuarioCheked1'] = "";
-                $data['xrbUsuarioCheked2'] = "";
-                $data['xrbUsuarioCheked3'] = " checked ";
-        }
-        $data['procesos'] = $this->procesos_model->buscar_tareas_nivel_filtro($filtro = "");
-        $this->load->vars($data);
+        if ($login['xxxnivel'] === "1") {
+            switch ($filtro) {
+                case "FSM":
+                    $data['xrbUsuarioCheked1'] = " checked ";
+                    $data['xrbUsuarioCheked2'] = "";
+                    $data['xrbUsuarioCheked3'] = "";
+                    break;
+                case "JSM":
+                    $data['xrbUsuarioCheked1'] = "";
+                    $data['xrbUsuarioCheked2'] = " checked ";
+                    $data['xrbUsuarioCheked3'] = "";
+                    break;
+                default:
+                    $data['xrbUsuarioCheked1'] = "";
+                    $data['xrbUsuarioCheked2'] = "";
+                    $data['xrbUsuarioCheked3'] = " checked ";
+            }
+            $data['procesos'] = $this->procesos_model->buscar_tareas_nivel_filtro($filtro = "");
+            $this->load->vars($data);
 
-        $this->load->view('proyectos/procesos/header/header_reporteCambioEstado');
-        $this->load->view('menu/menuSuperior');
-        $this->load->view('proyectos/procesos/contenido_reporteCambioEstado');
-        $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
+            $this->load->view('proyectos/procesos/header/header_reporteCambioEstado');
+            $this->load->view('menu/menuSuperior');
+            $this->load->view('proyectos/procesos/contenido_reporteCambioEstado');
+            $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
         } else {
             echo "No tiene permisos.";
         }
-        
     }
 
     public function consultar($filtro = "") {
@@ -107,22 +106,20 @@ class Proceso extends CI_Controller {
         $data['xxxnivel'] = $login['xxxnivel'];
         $data['xxxactivo'] = $login['xxxactivo'];
         $data['xxxcoordinador'] = $login['xxxcoordinador'];
-        if ($login['xxxnivel']==="1"){
-        $data['proceso'] = $this->procesos_model->buscar_proceso_idpedido($idpedido);
-        $data['xIdP'] = $idpedido;
-        $this->load->vars($data);
-        $this->load->view('proyectos/procesos/header/header_proceso');
-        $this->load->view('menu/menuSuperior');
-        $this->load->view('proyectos/procesos/contenido_proceso');
-        $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
+        if ($login['xxxnivel'] === "1") {
+            $data['proceso'] = $this->procesos_model->buscar_proceso_idpedido($idpedido);
+            $data['xIdP'] = $idpedido;
+            $this->load->vars($data);
+            $this->load->view('proyectos/procesos/header/header_proceso');
+            $this->load->view('menu/menuSuperior');
+            $this->load->view('proyectos/procesos/contenido_proceso');
+            $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
         } else {
             echo "No tiene permiso.";
         }
-        
     }
 
-    
-      function listar($xFiltro="",$xCoord="") {
+    function listar($xFiltro = "", $xCoord = "") {
         $login = $this->session->userdata('Datos_Session');
         $data['xxxiduser'] = $login['xxxiduser'];
         $data['xxxnombres'] = $login['xxxnombres'];
@@ -130,15 +127,19 @@ class Proceso extends CI_Controller {
         $data['xxxnivel'] = $login['xxxnivel'];
         $data['xxxactivo'] = $login['xxxactivo'];
         $data['xxxcoordinador'] = $login['xxxcoordinador'];
-        $data['xCoord']=$xCoord;
-        $data['xFiltro']=$xFiltro;
-        $this->load->vars($data);
-        $this->load->view('proyectos/procesos/header/header_listar');
-        $this->load->view('menu/menuSuperior');
-        $this->load->view('proyectos/procesos/contenido_listar');
-        $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
-    }  
-    
+        $data['xCoord'] = $xCoord;
+        $data['xFiltro'] = $xFiltro;
+        if ($login['xxxiduser'] <> "") {
+            $this->load->vars($data);
+            $this->load->view('proyectos/procesos/header/header_listar');
+            $this->load->view('menu/menuSuperior');
+            $this->load->view('proyectos/procesos/contenido_listar');
+            $this->load->view('proyectos/procesos/footer/footer_reporteCambioEstado');
+        } else {
+            echo "expiro el tiempo de su sesion.";
+        }
+    }
+
     function proceso_ins_userReporteProceso($idpedido, $xValproceso) {
 
         if ($idpedido <> "" and $xValproceso <> "") {

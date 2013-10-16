@@ -132,7 +132,7 @@
                 //alert("dato="+valRadio);
                 var i = document.getElementById("CboCoordinadorCab").selectedIndex;
                 valCboCoordinador = document.getElementById("CboCoordinadorCab").options[i].text;
-                alert(valRadio);
+                //alert(valRadio);
                 if (valCboCoordinador=="Todos" && valRadio==""){
                     window.location = "<?= $this->config->base_url() ?>proyectos/procesos/proceso/listar";
                 } else {
