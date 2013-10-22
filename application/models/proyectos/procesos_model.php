@@ -302,7 +302,40 @@ class Procesos_model extends CI_Model {
         }
     }
 
-    function buscar_userFormatoFinal($iduser,$idpedido) {
+    function buscar_userFormatoFinal($idpedido) {
+        $Sql = "";
+        $Sql = "SELECT distinct pedido.idpedido as idpedido,
+                                     compania.alias_com as alias, 
+                                     (select iniciales from coordinador where coordinador.nombre = pedido.coordinador limit 0,1 ) as coordinador,
+                                     pedido.realizadopor1 as salto_linea, 
+                                     pedido.realizadopor2 as formateo,  
+				     pedido.realizadopor3 as pre_traduccion,
+                                     pedido.realizadopor7 as traduccion , 
+                                     pedido.realizadopor4 as traduccion_final , 
+                                     pedido.realizadopor5 as formato_final , 
+                                     pedido.realizadopor8 as correccion, 
+                                     pedido.proyectoterminado
+                    FROM  compania, contacto, requerimientos, cotizacion,  pedido 
+                    where compania.idcompania = contacto.idcompania and 
+                                     contacto.idcontacto = requerimientos.id_contacto and 
+                                     requerimientos.idrequerimiento = cotizacion.idrequerimiento and  
+                                     cotizacion.idcotizacion = pedido.idcotizacion and 
+                                     pedido.proyectoterminado='N'  and  
+                                     pedido.idpedido='" . $idpedido . "'";
+         
+        //$Sql = "";
+        //$Sql = "select * from pedido where realizadopor5 in (select idusuarios_estado from usuarios_estado where id_usuarios = '" . $iduser . "' ) and  idpedido='" . $idpedido . "'";
+
+        //echo $Sql;
+        $query = $this->db->query($Sql);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    function buscar_userFormatoFinalProceso($iduser,$idpedido) {
         $Sql = "";
         /*$Sql = "SELECT distinct pedido.idpedido as idpedido,
                                      compania.alias_com as alias, 
@@ -334,8 +367,11 @@ class Procesos_model extends CI_Model {
         } else {
             return false;
         }
-    }
-
+    }    
+    
+    
+    
+    
     function busca_listar_procesos_admin_filtro($iduser, $inic_coordinador) {
         $Sql = "";
         $xCoordValue="";

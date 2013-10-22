@@ -409,14 +409,13 @@ if ($compania != null) {
 
 
 
-                    <div id="formularioContacto" class="divLeft">
+                    <div id="formularioContacto" class="divLeft ">
                         <!-- tercera columna -->
                         <!-- Formulario Contactos -->
 
 
                         <!-- fin de tercera columna -->
                     </div>
-
                 </div>
 
             </div><!--/row-->

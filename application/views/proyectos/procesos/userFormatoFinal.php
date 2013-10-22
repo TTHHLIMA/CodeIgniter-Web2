@@ -24,7 +24,7 @@ $userFormatoFinal= $pm->procesos_model->consultar_user("1","");
 if ($xxxnivel=="2"){
     
    // echo "prueba: " . $xxxiduser . " - " . $Columna->idpedido ;
-$xuserFormatoFinal= $pm->procesos_model->buscar_userFormatoFinal($xxxiduser,$Columna->idpedido);
+$xuserFormatoFinal= $pm->procesos_model->buscar_userFormatoFinalProceso($xxxiduser,$Columna->idpedido);
 //var_dump($xuserFormatoFinal);
 if ($xuserFormatoFinal != null) {
                 $userFormatoFinal= $pm->procesos_model->consultar_user("2",$xxxiduser);

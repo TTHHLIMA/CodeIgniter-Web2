@@ -97,8 +97,8 @@
             }
 
             .contenedorFormulario{
-                /*width: 620px;*/
-                width: 860px;
+                /*width: 620px;  860px */
+                width: auto;
                 background-color: #ddd;
                 overflow: hidden;
                 height: auto;
