@@ -10,6 +10,7 @@
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap-responsive.css" rel="stylesheet">	
         <link href="<?= $this->config->base_url() ?>css/estilosMarqueting.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilos.css" rel="stylesheet">
+        <link href="<?= $this->config->base_url() ?>assets/css/datepicker.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilosCompania.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/menu_superior.css" rel="stylesheet">
         <script src="<?= $this->config->base_url() ?>JQuery/jquery-1.9.1.js"></script>
@@ -21,7 +22,7 @@
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        
+
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?= $this->config->base_url() ?>img/favicon.ico">
@@ -43,6 +44,8 @@
                             $("#btnAgregar").attr('disabled', 'disabled'); //HH: inicializo mostrando el formulario sin el biton agregar
                         }
                 );
+                
+                    $('.datepicker').datepicker()
             });
 
             //HH: Cargo el div para filtrar los datos de tipo modal
@@ -734,7 +737,7 @@
 
 
 
-
+        
 
 
             // HH: cargando datos de consulta tipo modal

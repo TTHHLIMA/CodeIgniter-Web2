@@ -134,7 +134,7 @@ textarea {
 body {
   margin: 0;
   font-family: Arial, sans-serif, "Helvetica Neue", Helvetica;
-  font-size: 13px;
+  font-size: 13px; 
   line-height: 18px;
   color: #333333;
   background-color: #ffffff;
@@ -890,9 +890,9 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 27px;
+  margin-bottom: 20px; /*HH*/
   font-size: 19.5px;
-  line-height: 36px;
+  line-height: 20px; /*HH*/
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;

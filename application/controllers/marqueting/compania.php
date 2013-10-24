@@ -400,4 +400,76 @@ class Compania extends CI_Controller {
         }
     }
 
+    function proceso_mantenimiento_llamada($opcion = "", $idcontacto = "") {
+
+        $idllamada = $this->input->post("txtidLlamada");
+        $idcontacto = ($this->input->post("txtidContacto") === "") ? $idcontacto : $this->input->post("txtidContacto");
+        $usuario = $this->input->post("cbousuario1");
+        $fecha_llamada = "0000-00-00";
+        $fecha_carta_html = "0000-00-00";
+        $nota = $this->input->post("txtnotaContacto");
+        $volver_llamar = "0000-00-00";
+        $fecha_cdirecta1_1 = "0000-00-00";
+        $chkCA1 = ($this->input->post("chkCa1") === "on") ? "1" : "0";
+        $chkCA2 = ($this->input->post("chkCa2") === "on") ? "1" : "0";
+        $chkCA3 = ($this->input->post("chkCa3") === "on") ? "1" : "0";
+        $chkCC1 = ($this->input->post("chkCc1") === "on") ? "1" : "0";
+        $chkCC2 = ($this->input->post("chkCc2") === "on") ? "1" : "0";
+        $chkCD1 = ($this->input->post("chkCd1") === "on") ? "1" : "0";
+        $chkCD2 = ($this->input->post("chkCd2") === "on") ? "1" : "0";
+        $info_email = "0000-00-00";
+        $precio_email = "0000-00-00";
+
+        if ($opcion === "1") {//HH: agregar
+            $idllamada = "";
+            $dataLlamada = array(
+                'idllamada' => $idllamada,
+                'idcontacto' => $idcontacto,
+                'usuario' => $usuario,
+                'fecha_llamada' => $fecha_llamada,
+                'fecha_carta_html' => $fecha_carta_html,
+                'nota' => $nota,
+                'volver_llamar' => $volver_llamar,
+                'fecha_cdirecta1_1' => $fecha_cdirecta1_1,
+                'chkCA1' => $chkCA1,
+                'chkCA2' => $chkCA2,
+                'chkCA3' => $chkCA3,
+                'chkCC1' => $chkCC1,
+                'chkCC2' => $chkCC2,
+                'chkCD1' => $chkCD1,
+                'chkCD2' => $chkCD2,
+                'info_email' => $info_email,
+                'precio_email' => $precio_email
+            );
+            $respuesta = $this->llamada_model->agregar_llamada($dataLlamada, $idcontacto);
+        }
+        if ($opcion === "2") { //HH: actualizar
+            $dataLlamada = array(
+                'idcontacto' => $idcontacto,
+                'usuario' => $usuario,
+                'fecha_llamada' => $fecha_llamada,
+                'fecha_carta_html' => $fecha_carta_html,
+                'nota' => $nota,
+                'volver_llamar' => $volver_llamar,
+                'fecha_cdirecta1_1' => $fecha_cdirecta1_1,
+                'chkCA1' => $chkCA1,
+                'chkCA2' => $chkCA2,
+                'chkCA3' => $chkCA3,
+                'chkCC1' => $chkCC1,
+                'chkCC2' => $chkCC2,
+                'chkCD1' => $chkCD1,
+                'chkCD2' => $chkCD2,
+                'info_email' => $info_email,
+                'precio_email' => $precio_email
+            );
+            $respuesta = $this->llamada_model->actualizar_llamada($dataLlamada, $idllamada);
+        }
+        if ($opcion === "3") { //HH: Eliminar
+            $respuesta = $this->llamada_model->eliminar_llamada($idllamada);
+        }
+        if ($respuesta <> "") {
+            echo $respuesta;
+        }
+    }
+
 }

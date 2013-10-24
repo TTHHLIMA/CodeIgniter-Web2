@@ -50,230 +50,258 @@ if ($contacto != null) {
 ?>
 
 
-<table>
-    <tr><td valign="top">
-            <fieldset class="marginCero">
-                <div class="FormLeft ">
-                    <div class="btn-group divLeft">
 
-                        <a class="btn" id="btnPrimeroC"
-                           href="#"
-                           data-toggle="modal"
-                           ><i class="icon-fast-backward"></i></a>  
-                        <a class="btn" id="btnAnteriorC"
-                           href="#"
-                           data-toggle="modal" 
-                           ><i class="icon-backward"></i></a>
-                        <a class="btn" id="btnSiguienteC"
-                           href="#"
-                           data-toggle="modal"
-                           ><i class="icon-forward"></i></a>
-                        <a class="btn" id="btnUltimoC"
-                           href="#"
-                           data-toggle="modal"
-                           ><i class="icon-fast-forward"></i></a>
-                    </div>
-                    <div class="btn-group divLeft">
 
-                        <a class="btn" id="btnNuevoC"
-                           href="#"
-                           data-toggle="modal"
-                           title="Nuevo"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/nuevo.png" class="tamanoIconoMantenimiento"></a>
-                        <a class="btn" id="btnAgregarC"
-                           href="#"
-                           data-toggle="modal"
-                           title="Agregar"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/agregar.png" class="tamanoIconoMantenimiento"></a>
-                        <a class="btn" id="btnActualizarC"
-                           href="#"
-                           data-toggle="modal"
-                           title="Actualizar"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/actualizar.png" class="tamanoIconoMantenimiento"></a>
-                        <a class="btn" id="btnEliminarC"
-                           href="#"
-                           data-toggle="modal"
-                           title="eliminar"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/eliminar2.png" class="tamanoIconoMantenimiento"></a>                                        
+<table width="600" id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : "style='background-color: #ddd'"; ?> >
+    <tr>
+        <td colspan="2">
 
-                    </div>   
+            <div class="FormLeft ">
+                <div class="btn-group divLeft">
+
+                    <a class="btn" id="btnPrimeroC"
+                       href="#"
+                       data-toggle="modal"
+                       ><i class="icon-fast-backward"></i></a>  
+                    <a class="btn" id="btnAnteriorC"
+                       href="#"
+                       data-toggle="modal" 
+                       ><i class="icon-backward"></i></a>
+                    <a class="btn" id="btnSiguienteC"
+                       href="#"
+                       data-toggle="modal"
+                       ><i class="icon-forward"></i></a>
+                    <a class="btn" id="btnUltimoC"
+                       href="#"
+                       data-toggle="modal"
+                       ><i class="icon-fast-forward"></i></a>
                 </div>
+                <div class="btn-group divLeft">
 
-            </fieldset>
+                    <a class="btn" id="btnNuevoC"
+                       href="#"
+                       data-toggle="modal"
+                       title="Nuevo"
+                       ><img src="<?= $this->config->base_url() ?>images/marqueting/nuevo.png" class="tamanoIconoMantenimiento"></a>
+                    <a class="btn" id="btnAgregarC"
+                       href="#"
+                       data-toggle="modal"
+                       title="Agregar"
+                       ><img src="<?= $this->config->base_url() ?>images/marqueting/agregar.png" class="tamanoIconoMantenimiento"></a>
+                    <a class="btn" id="btnActualizarC"
+                       href="#"
+                       data-toggle="modal"
+                       title="Actualizar"
+                       ><img src="<?= $this->config->base_url() ?>images/marqueting/actualizar.png" class="tamanoIconoMantenimiento"></a>
+                    <a class="btn" id="btnEliminarC"
+                       href="#"
+                       data-toggle="modal"
+                       title="eliminar"
+                       ><img src="<?= $this->config->base_url() ?>images/marqueting/eliminar2.png" class="tamanoIconoMantenimiento"></a>                                        
 
-            <fieldset id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : ""; ?> >
-                <form id="frmContacto" action="" method="post">
-                    <div class="fila">
-                        <label class="etiqueta" >Contact.</label>
-                        <input class="boxleft" type="text" name="txtidContacto" id="txtidContacto"  value="<?= $xidcontacto; ?>" readonly>
-                        <input class="boxleft" type="hidden" name="txtidCompania" id="txtidCompania"  value="<?= $xidcompania; ?>">
-                        <div class="divLeft">
-                            <div class="etiquetaCount">
-                                Total de Contactos : <b><?= $countContactos ?></b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta" >Andere</label>
-                        <select class="box"  name="cboAndere" id="cboAndere" >
-                            <option value=''></option>
-                            <option <? echo ($xanrede === "Herr") ? "selected" : ""; ?>>Herr</option>
-                            <option <? echo ($xanrede === "Frau") ? "selected" : ""; ?>>Frau</option>
-                            <option <? echo ($xanrede === "Dipl. Ing.") ? "selected" : ""; ?>>Dipl. Ing.</option>
-                            <option <? echo ($xanrede === "Prof") ? "selected" : ""; ?>>Prof</option>
-                            <option <? echo ($xanrede === "Dr.") ? "selected" : ""; ?>>Dr.</option>
-                            <option <? echo ($xanrede === "Mr.") ? "selected" : ""; ?>>Mr.</option>
-                            <option <? echo ($xanrede === "Miss.") ? "selected" : ""; ?>>Miss.</option>
-                            <option <? echo ($xanrede === "Mrs.") ? "selected" : ""; ?>>Mrs.</option>
-                            <option <? echo ($xanrede === "Ms.") ? "selected" : ""; ?>>Ms.</option>
-                        </select>
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta" >Nombre</label>
-                        <input class="box" type="text" name="txtnomContacto" id="txtnomContacto" value="<?= $xnombres; ?>">
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta">Apellido</label>
-                        <input class ="box" type="text" name="txtapeContacto" value="<?= $xapellidos; ?>">
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta">Cargo</label>
-                        <input class="box" type="text" name="txtcargoContacto" value="<?= $xcargo; ?>">
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta">Dpt.</label>
-                        <input class="box" type="text" name="txtdepartamentoContacto" value="<?= $xdepartamento; ?>">
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta">T&eacute;l.</label>
-                        <input class="box" type="text" name="txttelefonoContacto" value ="<?= $xtelefono; ?>">
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta">Cel.</label>
-                        <input class="box" type="text" name="txtcelularContacto" value="<?= $xcelular; ?>">
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta">Fax</label>
-                        <input class="box" type="text" name="txtfaxContacto" value="<?= $xfax; ?>">
-                    </div>
-                    <div class="fila">
-                        <label class="etiqueta">Mail</label>
-                        <input class="box" type="text" name="txtmailcontacto" value="<?= $xmail; ?>" >
-                    </div>
-
-                    <div class="fila">
-                        <label class="etiqueta">Idioma</label>
-
-                        <?php
-                        echo "<select  name='cboIdioma' id='cboIdioma'>";
-                        echo "<option value=''></option>";
-                        foreach ($idiomas as $idioma) {
-                            if ($xidioma === $idioma->nombre) {
-                                echo "<option value='" . $idioma->nombre . "' selected>" . $idioma->nombre . "</option>";
-                            } else {
-                                echo "<option value='" . $idioma->nombre . "'>" . $idioma->nombre . "</option>";
-                            }
-                        }
-                        echo "</select>";
-                        ?>
-                    </div>  
-                    <div class="fila">
-
-                        <input type="checkbox" name="chkcontacinteres" id="chkcontacinteres" <? echo ($xcontac_interes === "S") ? "checked" : ""; ?> > Richtiger Ansprechpartner
-
-                    </div>
-                    <div class="fila">
-
-                        <input type="checkbox" name="chkretirado" id="chkretirado" <? echo ($xretirado === "1") ? "checked" : ""; ?> > Retirado
-
-                    </div>
-                    <div class="fila">
-
-                        <input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> > Nicht richtiger Ansprechpartner
-
-                    </div>
-                </form>
-            </fieldset>
-        </td>
-        <td valign="top" style="background-color: #0044CC" >
-            
-            <fieldset class="marginCero">
-                <div class="FormLeft ">
-                    <div class="btn-group divLeft">
-
-                        <a class="btn" id="btnPrimeroll"
-                           href="#"
-                           data-toggle="modal"
-                           ><i class="icon-fast-backward"></i></a>  
-                        <a class="btn" id="btnAnteriorll"
-                           href="#"
-                           data-toggle="modal" 
-                           ><i class="icon-backward"></i></a>
-                        <a class="btn" id="btnSiguientell"
-                           href="#"
-                           data-toggle="modal"
-                           ><i class="icon-forward"></i></a>
-                        <a class="btn" id="btnUltimoll"
-                           href="#"
-                           data-toggle="modal"
-                           ><i class="icon-fast-forward"></i></a>
-                    </div>
-                    <div class="btn-group divLeft">
-
-                        <a class="btn" id="btnNuevoll"
-                           href="#"
-                           data-toggle="modal"
-                           title="Nuevo"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/nuevo.png" class="tamanoIconoMantenimiento"></a>
-                        <a class="btn" id="btnAgregarll"
-                           href="#"
-                           data-toggle="modal"
-                           title="Agregar"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/agregar.png" class="tamanoIconoMantenimiento"></a>
-                        <a class="btn" id="btnActualizarll"
-                           href="#"
-                           data-toggle="modal"
-                           title="Actualizar"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/actualizar.png" class="tamanoIconoMantenimiento"></a>
-                        <a class="btn" id="btnEliminarll"
-                           href="#"
-                           data-toggle="modal"
-                           title="eliminar"
-                           ><img src="<?= $this->config->base_url() ?>images/marqueting/eliminar2.png" class="tamanoIconoMantenimiento"></a>                                        
-
-                    </div>   
-                </div>
-
-            </fieldset>
-
-            <fieldset id="panelLlamada" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : ""; ?> >
-                <form id="frmllamada" action="" method="post">
-                    <table>
-                        <tr>
-                            <td><span class="fila">
-                              <input class="boxleft" type="text" name="txtidLlamada" id="txtidLlamada"  value="<?= $xidcontacto; ?>" readonly />
-                            </span></td>
-                              <td><input class="boxleft" type="hidden" name="txtidContacto" id="txtidContacto"  value="<?= $xidcompania; ?>"> <div class="etiquetaCount">
-                                Total de Llamadas : <b><?= $countContactos ?></b>
-                            </div></td>
-                        </tr>
-                                                <tr>
-                            <td>sasd</td>
-                              <td>asdas</td>
-                        </tr>
-                    </table>
-                    <div class="fila">
-                      
-                        <div class="divLeft">
-                           
-                        </div>
-                    </div>
-                 
-                </form>
-            </fieldset>
+                </div>   
+            </div>
         </td>
     </tr>
+
+    <tr>
+        <td width="289" valign="top">
+            <form id="frmContacto" action="" method="post">
+                <table width="250">
+                    <tr>
+                        <td colspan="2">
+
+                            <table  width="100%">
+                                <tr>
+                                    <td valign="top"><label  >Contact.</label></td>
+                                    <td valign="top"><input class="boxleft" type="text" name="txtidContacto" id="txtidContacto"  value="<?= $xidcontacto; ?>" readonly></td>
+                                    <td valign="top"> <input class="boxleft" type="hidden" name="txtidCompania" id="txtidCompania"  value="<?= $xidcompania; ?>">                        <div class="etiquetaCount">
+                                            Total de Contactos : <b><?= $countContactos ?></b>
+                                        </div></td>
+                                </tr>
+                            </table>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <label  >Andere</label>
+
+                        </td>
+                        <td>
+                            <select class="box"  name="cboAndere" id="cboAndere" >
+                                <option value=''></option>
+                                <option <? echo ($xanrede === "Herr") ? "selected" : ""; ?>>Herr</option>
+                                <option <? echo ($xanrede === "Frau") ? "selected" : ""; ?>>Frau</option>
+                                <option <? echo ($xanrede === "Dipl. Ing.") ? "selected" : ""; ?>>Dipl. Ing.</option>
+                                <option <? echo ($xanrede === "Prof") ? "selected" : ""; ?>>Prof</option>
+                                <option <? echo ($xanrede === "Dr.") ? "selected" : ""; ?>>Dr.</option>
+                                <option <? echo ($xanrede === "Mr.") ? "selected" : ""; ?>>Mr.</option>
+                                <option <? echo ($xanrede === "Miss.") ? "selected" : ""; ?>>Miss.</option>
+                                <option <? echo ($xanrede === "Mrs.") ? "selected" : ""; ?>>Mrs.</option>
+                                <option <? echo ($xanrede === "Ms.") ? "selected" : ""; ?>>Ms.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label  >Nombre</label>
+
+                        </td>
+                        <td>
+                            <input  type="text" name="txtnomContacto" id="txtnomContacto" value="<?= $xnombres; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label >Apellido</label>
+
+                        </td>
+                        <td>
+                            <input  type="text" name="txtapeContacto" value="<?= $xapellidos; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label >Cargo</label>
+
+                        </td>
+                        <td>
+                            <input class="box" type="text" name="txtcargoContacto" value="<?= $xcargo; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="etiqueta">Dpt.</label>
+
+                        </td>
+                        <td>
+                            <input class="box" type="text" name="txtdepartamentoContacto" value="<?= $xdepartamento; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="etiqueta">T&eacute;l.</label>
+
+                        </td>
+                        <td>
+                            <input class="box" type="text" name="txttelefonoContacto" value ="<?= $xtelefono; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="etiqueta">Cel.</label>
+
+                        </td>
+                        <td>
+                            <input class="box" type="text" name="txtcelularContacto" value="<?= $xcelular; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="etiqueta">Fax</label>
+
+                        </td>
+                        <td>
+                            <input class="box" type="text" name="txtfaxContacto" value="<?= $xfax; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="etiqueta">Mail</label>
+
+                        </td>
+                        <td>
+                            <input class="box" type="text" name="txtmailcontacto" value="<?= $xmail; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label >Idioma</label>
+
+                        </td>
+                        <td><?php
+                            echo "<select  name='cboIdioma' id='cboIdioma'>";
+                            echo "<option value=''></option>";
+                            foreach ($idiomas as $idioma) {
+                                if ($xidioma === $idioma->nombre) {
+                                    echo "<option value='" . $idioma->nombre . "' selected>" . $idioma->nombre . "</option>";
+                                } else {
+                                    echo "<option value='" . $idioma->nombre . "'>" . $idioma->nombre . "</option>";
+                                }
+                            }
+                            echo "</select>";
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+
+
+                            <input type="checkbox" name="chkcontacinteres" id="chkcontacinteres" <? echo ($xcontac_interes === "S") ? "checked" : ""; ?> > Richtiger Ansprechpartner
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="checkbox" name="chkretirado" id="chkretirado" <? echo ($xretirado === "1") ? "checked" : ""; ?> > Retirado
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                            Nicht richtiger Ansprechpartner </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <fieldset class="fieldset">
+                                <legend><span>Permisos</span></legend>    
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                            Techni-Forum </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                            TT Reportes Contacto </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                            TT Reportes Compañia </td>
+                                    </tr>
+                                </table>
+                            </fieldset>              
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+
+
+
+
+
+        <td width="299" valign="top">
+            <!-- div  para llamadas de contactos -->
+            <div id="formularioLlamadas">
+               
+            </div>
+            <!-- fin del div de llamadas -->
+
+
+
+
+        </td>
+    </tr>
+
 </table>
+
+
+
 
 
 
