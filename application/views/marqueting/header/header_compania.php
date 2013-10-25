@@ -39,13 +39,15 @@
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + idcompania,
                                     function() {
                                         $("#btnAgregarC").attr('disabled', 'disabled');
+                                        var idcontacto = $("#txtidContacto").attr("value");
+                                        $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + idcontacto);
                                     }
                             );
                             $("#btnAgregar").attr('disabled', 'disabled'); //HH: inicializo mostrando el formulario sin el biton agregar
                         }
                 );
-                
-                    $('.datepicker').datepicker()
+
+                $('.datepicker').datepicker()
             });
 
             //HH: Cargo el div para filtrar los datos de tipo modal
@@ -81,14 +83,36 @@
                                     if (xcount === "0") {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
-
                                                     $("#btnNuevoC").click();
-
                                                 }
                                         );
                                     } else {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
+                                                    //HH: formulario de llamadas
+                                                    var xidcontacto = $("#txtidContacto").attr("value");
+                                                    var xxcount = 0;
+                                                    $.ajax({
+                                                        url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                                        success: function(datos) {
+                                                            xxcount = datos;
+                                                            if (xxcount === "0") {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnNuevoL").click();
+                                                                        }
+                                                                );
+                                                            } else {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                        }
+                                                                );
+
+                                                            }
+                                                        }
+                                                    });
+                                                    //HH: formulario de llamadas
                                                     $("#btnAgregarC").attr('disabled', 'disabled');
                                                 }
                                         );
@@ -118,14 +142,36 @@
                                     if (xcount === "0") {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
-
                                                     $("#btnNuevoC").click();
-
                                                 }
                                         );
                                     } else {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
+                                                    //HH: formulario de llamadas
+                                                    var xidcontacto = $("#txtidContacto").attr("value");
+                                                    var xxcount = 0;
+                                                    $.ajax({
+                                                        url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                                        success: function(datos) {
+                                                            xxcount = datos;
+                                                            if (xxcount === "0") {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnNuevoL").click();
+                                                                        }
+                                                                );
+                                                            } else {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                        }
+                                                                );
+
+                                                            }
+                                                        }
+                                                    });
+                                                    //HH: formulario de llamadas
                                                     $("#btnAgregarC").attr('disabled', 'disabled');
                                                 }
                                         );
@@ -152,14 +198,36 @@
                                     if (xcount === "0") {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
-
                                                     $("#btnNuevoC").click();
-
                                                 }
                                         );
                                     } else {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
+                                                    //HH: formulario de llamadas
+                                                    var xidcontacto = $("#txtidContacto").attr("value");
+                                                    var xxcount = 0;
+                                                    $.ajax({
+                                                        url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                                        success: function(datos) {
+                                                            xxcount = datos;
+                                                            if (xxcount === "0") {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnNuevoL").click();
+                                                                        }
+                                                                );
+                                                            } else {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                        }
+                                                                );
+
+                                                            }
+                                                        }
+                                                    });
+                                                    //HH: formulario de llamadas
                                                     $("#btnAgregarC").attr('disabled', 'disabled');
                                                 }
                                         );
@@ -187,14 +255,36 @@
                                     if (xcount === "0") {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
-
                                                     $("#btnNuevoC").click();
-
                                                 }
                                         );
                                     } else {
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania,
                                                 function() {
+                                                    //HH: formulario de llamadas
+                                                    var xidcontacto = $("#txtidContacto").attr("value");
+                                                    var xxcount = 0;
+                                                    $.ajax({
+                                                        url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                                        success: function(datos) {
+                                                            xxcount = datos;
+                                                            if (xxcount === "0") {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnNuevoL").click();
+                                                                        }
+                                                                );
+                                                            } else {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                        }
+                                                                );
+
+                                                            }
+                                                        }
+                                                    });
+                                                    //HH: formulario de llamadas
                                                     $("#btnAgregarC").attr('disabled', 'disabled');
                                                 }
                                         );
@@ -216,7 +306,7 @@
                 //var href = $("#btnSiguienteC").attr("href");
                 var idcompania = $("#txtidcompania").attr("value");
                 var idcontacto = $("#txtidContacto").attr("value");
-
+                //alert(idcontacto);
                 var xcount = 0;
                 $.ajax({
                     url: "<?= $this->config->base_url() ?>marqueting/compania/count_contacto/" + idcompania,
@@ -235,6 +325,30 @@
                         } else {
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_siguiente/" + idcompania + "/" + idcontacto,
                                     function() {
+                                        //HH: formulario de llamadas
+                                        var xidcontacto = $("#txtidContacto").attr("value");
+                                        var xxcount = 0;
+                                        $.ajax({
+                                            url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                            success: function(datos) {
+                                                xxcount = datos;
+                                                if (xxcount === "0") {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnNuevoL").click();
+                                                            }
+                                                    );
+                                                } else {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnAgregarL").attr('disabled', 'disabled');
+                                                            }
+                                                    );
+
+                                                }
+                                            }
+                                        });
+                                        //HH: formulario de llamadas
                                         $("#btnAgregarC").attr('disabled', 'disabled');
                                     }
                             );
@@ -270,6 +384,30 @@
                         } else {
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_anterior/" + idcompania + "/" + idcontacto,
                                     function() {
+                                        //HH: formulario de llamadas
+                                        var xidcontacto = $("#txtidContacto").attr("value");
+                                        var xxcount = 0;
+                                        $.ajax({
+                                            url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                            success: function(datos) {
+                                                xxcount = datos;
+                                                if (xxcount === "0") {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnNuevoL").click();
+                                                            }
+                                                    );
+                                                } else {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnAgregarL").attr('disabled', 'disabled');
+                                                            }
+                                                    );
+
+                                                }
+                                            }
+                                        });
+                                        //HH: formulario de llamadas                                        
                                         $("#btnAgregarC").attr('disabled', 'disabled');
                                     }
                             );
@@ -303,6 +441,30 @@
                         } else {
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + idcompania,
                                     function() {
+                                        //HH: formulario de llamadas
+                                        var xidcontacto = $("#txtidContacto").attr("value");
+                                        var xxcount = 0;
+                                        $.ajax({
+                                            url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                            success: function(datos) {
+                                                xxcount = datos;
+                                                if (xxcount === "0") {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnNuevoL").click();
+                                                            }
+                                                    );
+                                                } else {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnAgregarL").attr('disabled', 'disabled');
+                                                            }
+                                                    );
+
+                                                }
+                                            }
+                                        });
+                                        //HH: formulario de llamadas                                        
                                         $("#btnAgregarC").attr('disabled', 'disabled');
                                     }
                             );
@@ -335,6 +497,30 @@
                         } else {
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_ultimo/" + idcompania,
                                     function() {
+                                        //HH: formulario de llamadas
+                                        var xidcontacto = $("#txtidContacto").attr("value");
+                                        var xxcount = 0;
+                                        $.ajax({
+                                            url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                            success: function(datos) {
+                                                xxcount = datos;
+                                                if (xxcount === "0") {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnNuevoL").click();
+                                                            }
+                                                    );
+                                                } else {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnAgregarL").attr('disabled', 'disabled');
+                                                            }
+                                                    );
+
+                                                }
+                                            }
+                                        });
+                                        //HH: formulario de llamadas
                                         $("#btnAgregarC").attr('disabled', 'disabled');
                                     }
                             );
@@ -346,6 +532,142 @@
             });
 
 
+
+
+            //HH: eventos de los botones de navegacion Llamada
+
+            $(document).on("click", "#btnSiguienteL", function(e) {
+                e.preventDefault();
+                var idllamada = $("#txtidLlamada").attr("value");
+                var idcontacto = $("#txtidContacto").attr("value");
+                alert(idcontacto);
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + idcontacto,
+                    success: function(datos) {
+                        xcount = datos;
+                        alert(xcount);
+                        if (xcount === "0") {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_llamadas/" + idcontacto,
+                                    function() {
+                                        limpiaFormulario($("#frmLlamada"));
+                                        $("#btnActualizarL").attr('disabled', 'disabled');
+                                        $("#btnEliminarL").attr('disabled', 'disabled');
+                                        $('#btnAgregarL').removeAttr("disabled");
+                                        $('#cbousuario1').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_siguiente/" + idllamada + "/" + idcontacto,
+                                    function() {
+                                        $("#btnAgregarL").attr('disabled', 'disabled');
+                                    }
+                            );
+
+                        }
+                    }
+                });
+
+            });
+
+            $(document).on("click", "#btnAnteriorL", function(e) {
+                e.preventDefault();
+                var idllamada = $("#txtidLlamada").attr("value");
+                var idcontacto = $("#txtidContacto").attr("value");
+
+
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + idcontacto,
+                    success: function(datos) {
+                        xcount = datos;
+                        if (xcount === "0") {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_llamadas/" + idcontacto,
+                                    function() {
+                                        limpiaFormulario($("#frmLlamada"));
+                                        $("#btnActualizarL").attr('disabled', 'disabled');
+                                        $("#btnEliminarL").attr('disabled', 'disabled');
+                                        $('#btnAgregarL').removeAttr("disabled");
+                                        $('#cbousuario1').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_anterior/" + idllamada + "/" + idcontacto,
+                                    function() {
+                                        $("#btnAgregarL").attr('disabled', 'disabled');
+                                    }
+                            );
+
+                        }
+                    }
+                });
+
+
+            });
+
+            $(document).on("click", "#btnPrimeroL", function(e) {
+                e.preventDefault();
+
+                var idcontacto = $("#txtidContacto").attr("value");
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + idcontacto,
+                    success: function(datos) {
+                        xcount = datos;
+                        if (xcount === "0") {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_llamadas/" + idcontacto,
+                                    function() {
+                                        limpiaFormulario($("#frmLlamada"));
+                                        $("#btnActualizarL").attr('disabled', 'disabled');
+                                        $("#btnEliminarL").attr('disabled', 'disabled');
+                                        $('#btnAgregarL').removeAttr("disabled");
+                                        $('#cbousuario1').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_primero/" + idcontacto,
+                                    function() {
+                                        $("#btnAgregarL").attr('disabled', 'disabled');
+                                    }
+                            );
+
+                        }
+                    }
+                });
+
+
+            });
+
+            $(document).on("click", "#btnUltimoL", function(e) {
+                e.preventDefault();
+                var idcontacto = $("#txtidContacto").attr("value");
+                var xcount = 0;
+                $.ajax({
+                    url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + idcontacto,
+                    success: function(datos) {
+                        xcount = datos;
+                        if (xcount === "0") {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_llamadas/" + idcontacto,
+                                    function() {
+                                        limpiaFormulario($("#frmLlamada"));
+                                        $("#btnActualizarL").attr('disabled', 'disabled');
+                                        $("#btnEliminarL").attr('disabled', 'disabled');
+                                        $('#btnAgregarL').removeAttr("disabled");
+                                        $('#cbousuario1').focus();
+                                    }
+                            );
+                        } else {
+                            $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + idcontacto,
+                                    function() {
+                                        $("#btnAgregarL").attr('disabled', 'disabled');
+                                    }
+                            );
+
+                        }
+                    }
+                });
+
+            });
 
 
 
@@ -578,6 +900,30 @@
                                             'title': 'Confirmación'
                                         });
                                         $("#btnUltimoC").click();
+                                        //HH: formulario de llamadas
+                                        var xidcontacto = $("#txtidContacto").attr("value");
+                                        var xxcount = 0;
+                                        $.ajax({
+                                            url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                            success: function(datos) {
+                                                xxcount = datos;
+                                                if (xxcount === "0") {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnNuevoL").click();
+                                                            }
+                                                    );
+                                                } else {
+                                                    $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                            function() {
+                                                                $("#btnAgregarL").attr('disabled', 'disabled');
+                                                            }
+                                                    );
+
+                                                }
+                                            }
+                                        });
+                                        //HH: formulario de llamadas                                       
                                     } else {
                                         console.log(resp);
                                         $.Zebra_Dialog('Error al Agregar el Registro.', {
@@ -640,6 +986,30 @@
                                         });
                                         $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_idcontacto/" + idcontacto + "/" + idcompania,
                                                 function() {
+                                                    //HH: formulario de llamadas
+                                                    var xidcontacto = $("#txtidContacto").attr("value");
+                                                    var xxcount = 0;
+                                                    $.ajax({
+                                                        url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + xidcontacto,
+                                                        success: function(datos) {
+                                                            xxcount = datos;
+                                                            if (xxcount === "0") {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnNuevoL").click();
+                                                                        }
+                                                                );
+                                                            } else {
+                                                                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
+                                                                        function() {
+                                                                            $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                        }
+                                                                );
+
+                                                            }
+                                                        }
+                                                    });
+                                                    //HH: formulario de llamadas                                                    
                                                     $("#btnAgregarC").attr('disabled', 'disabled');
                                                 }
                                         );
@@ -735,9 +1105,208 @@
 
 
 
+            //HH: llamadas 
+            $(document).on("click", "#btnNuevoL", function(e) {
+                e.preventDefault();
+                var xidcontacto = $("#txtidContacto").attr("value");
+                $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_llamadas/" + xidcontacto,
+                        function() {
+                            limpiaFormulario($("#frmLlamada"));
+                            $("#btnActualizarL").attr('disabled', 'disabled');
+                            $("#btnEliminarL").attr('disabled', 'disabled');
+                            $('#btnAgregarL').removeAttr("disabled");
+                            $('#cbousuario1').focus();
+                        }
+                );
 
 
-        
+            });
+
+
+            $(document).on("click", "#btnAgregarL", function(e) {
+                e.preventDefault();
+                if ($('#btnAgregarC').attr('disabled')) {
+                    return false;
+                }
+                $.Zebra_Dialog('¿Desea Agregar el Registro?', {
+                    'type': 'question',
+                    'title': 'Confirmación',
+                    'buttons': ['Si', 'No', 'Cancelar'],
+                    'onClose': function(caption) {
+                        if (caption == "Si") {
+                            var idcompania = $("#txtidcompania").attr("value");
+                            $.ajax({
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/1/' + idcompania,
+                                type: 'POST',
+                                data: $("#frmContacto").serializeArray(),
+                                success: function(resp) {
+                                    if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
+                                        //console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
+                                        $.Zebra_Dialog('Se Agrego el Registro.', {
+                                            'type': 'confirmation',
+                                            'title': 'Confirmación'
+                                        });
+                                        $("#btnUltimoC").click();
+                                    } else {
+                                        console.log(resp);
+                                        $.Zebra_Dialog('Error al Agregar el Registro.', {
+                                            'type': 'error',
+                                            'title': 'Error'
+                                        });
+                                    }
+                                },
+                                error: function(resp) {
+                                    console.log(resp);
+                                    $.Zebra_Dialog('Error al Agregar el Registro.', {
+                                        'type': 'error',
+                                        'title': 'Error'
+                                    });
+                                }
+                            });
+                        }
+
+                    }
+
+
+                });
+
+                event.preventDefault();
+                return false;  //stop the actual form post !important!
+            });
+
+
+
+
+
+
+
+
+
+            $(document).on("click", "#btnActualizarL", function(e) {
+                e.preventDefault();
+                if ($('#btnActualizarC').attr('disabled')) {
+                    return false;
+                }
+                var idcompania = $("#txtidcompania").attr("value");
+                var idcontacto = $("#txtidContacto").attr("value");
+
+                $.Zebra_Dialog('¿Desea Actualizar el Registro?', {
+                    'type': 'question',
+                    'title': 'Confirmación',
+                    'buttons': ['Si', 'No', 'Cancelar'],
+                    'onClose': function(caption) {
+                        if (caption == "Si") {
+                            $.ajax({
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/2',
+                                type: 'POST',
+                                data: $("#frmContacto").serializeArray(),
+                                success: function(resp) {
+                                    if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
+                                        console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
+                                        $.Zebra_Dialog('Se Actualizo el Registro.', {
+                                            'type': 'confirmation',
+                                            'title': 'Confirmación'
+                                        });
+                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_idcontacto/" + idcontacto + "/" + idcompania,
+                                                function() {
+                                                    $("#btnAgregarC").attr('disabled', 'disabled');
+                                                }
+                                        );
+
+                                    } else {
+                                        console.log(resp);
+                                        $.Zebra_Dialog('Error al actualizar el Registro.', {
+                                            'type': 'error',
+                                            'title': 'Error'
+                                        });
+                                    }
+                                },
+                                error: function(resp) {
+                                    console.log(resp);
+                                    $.Zebra_Dialog('Error al actualizar el Registro.', {
+                                        'type': 'error',
+                                        'title': 'Error'
+                                    });
+                                }
+                            });
+                        }
+
+                    }
+
+
+                });
+
+                event.preventDefault();
+                return false;  //stop the actual form post !important!
+            });
+
+
+
+
+
+
+
+
+
+            $(document).on("click", "#btnEliminarL", function(e) {
+                e.preventDefault();
+                if ($('#btnEliminarC').attr('disabled')) {
+                    return false;
+                }
+                $.Zebra_Dialog('¿Desea Eliminar el Registro?', {
+                    'type': 'question',
+                    'title': 'Confirmación',
+                    'buttons': ['Si', 'No', 'Cancelar'],
+                    'onClose': function(caption) {
+                        if (caption == "Si") {
+                            $.ajax({
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/3',
+                                type: 'POST',
+                                data: $("#frmContacto").serializeArray(),
+                                success: function(resp) {
+                                    if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
+                                        console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
+                                        $.Zebra_Dialog('Se Elimino el Registro.', {
+                                            'type': 'confirmation',
+                                            'title': 'Confirmación'
+                                        });
+                                        limpiaFormulario($("#frmContacto"));
+                                        $("#btnNuevoC").click();
+                                        //$("#panelContacto").removeAttr("style");
+                                    } else {
+                                        console.log(resp);
+                                        $.Zebra_Dialog('<b>Error al Eliminar el Registro</b> <br>' + resp, {
+                                            'type': 'error',
+                                            'title': 'Error'
+                                        });
+                                    }
+                                },
+                                error: function(resp) {
+                                    console.log(resp);
+                                    $.Zebra_Dialog('Error al Eliminar el Registro.', {
+                                        'type': 'error',
+                                        'title': 'Error'
+                                    });
+                                }
+                            });
+                        }
+                    }
+
+
+                });
+
+                event.preventDefault();
+                return false;  //stop the actual form post !important!
+            });
+
+
+
+
+
+
+
+
+
 
 
             // HH: cargando datos de consulta tipo modal

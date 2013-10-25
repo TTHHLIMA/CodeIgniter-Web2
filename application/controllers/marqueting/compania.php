@@ -12,6 +12,7 @@ class Compania extends CI_Controller {
         $this->load->library('pagination');
         $this->load->model('marqueting/compania_model');
         $this->load->model('marqueting/contacto_model');
+        $this->load->model('marqueting/llamada_model');
         $this->load->helper(array('url', 'consola_helper'));
     }
 
@@ -183,6 +184,57 @@ class Compania extends CI_Controller {
         }
     }
 
+//HH: botones de navegacion llamadas
+     //HH: botones de navegacion contactos
+    public function buscar_llamada_siguiente($idllamada_actual = '', $idcontacto_actual = '') {
+        $data['llamada'] = $this->llamada_model->buscar_llamada_siguiente($idllamada_actual, $idcontacto_actual);
+        if ($data['llamada'] === False) {
+            $data['llamada'] = $this->llamada_model->buscar_llamada_idllamada($idllamada_actual);
+        }
+        $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto_actual);
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioLlamadas');
+    }
+
+    public function buscar_llamada_anterior($idllamada_actual = '', $idcontacto_actual = '') {
+        $data['llamada'] = $this->llamada_model->buscar_llamada_anterior($idllamada_actual, $idcontacto_actual);
+        if ($data['llamada'] === False) {
+            $data['llamada'] = $this->llamada_model->buscar_llamada_idllamada($idllamada_actual);
+        }
+        $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto_actual);
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioLlamadas');
+    }
+
+    public function buscar_llamada_ultimo($idcontacto_actual = '') {
+        $data['llamada'] = $this->llamada_model->buscar_llamada_ultimo($idcontacto_actual);
+        $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto_actual);
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioLlamadas');
+    }
+
+    public function buscar_llamada_primero($idcontacto_actual = '') {
+        $data['llamada'] = $this->llamada_model->buscar_llamada_primero($idcontacto_actual);
+        $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto_actual);
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioLlamadas');
+    }
+
+    
+    public function count_llamadas($idcontacto) {
+        echo $this->llamada_model->total_registros_llamada($idcontacto);
+    }
+    
+    
+    public function formulario_llamadas($idcontacto = "") {
+        $data['llamada'] = NULL;
+        $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto);
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioLlamadas');
+    }    
+    
+    
+    
     function proceso_mantenimiento($opcion = "") {
         $idcompania = $this->input->post("txtidcompania");
         $txtnombre = $this->input->post("txtnombre");

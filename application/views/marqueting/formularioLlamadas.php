@@ -1,43 +1,43 @@
 <?
 //var_dump($contacto);
-if ($llamadas != null) {
-    foreach ($llamadas as $row) {
-        $idllamada = $row->idllamada;
-        $idcontacto = $row->idcontacto;
-        $usuario = $row->usuario;
-        $fecha_llamada = $row->fecha_llamada;
-        $fecha_carta_html = $row->fecha_carta_html;
-        $nota = $row->nota;
-        $volver_llamar = $row->volver_llamar;
-        $fecha_cdirecta1_1 = $row->fecha_cdirecta1_1;
-        $chkCA1 = $row->chkCA1;
-        $chkCA2 = $row->chkCA2;
-        $chkCA3 = $row->chkCA3;
-        $chkCC1 = $row->chkCC1;
-        $chkCC2 = $row->chkCC2;
-        $chkCD1 = $row->chkCD1;
-        $chkCD2 = $row->chkCD2;
-        $info_email = $row->info_email;
-        $precio_email = $row->precio_email;
+if ($llamada != null) {
+    foreach ($llamada as $row) {
+        $xidllamada = $row->idllamada;
+        $xidcontacto = $row->idcontacto;
+        $xusuario = $row->usuario;
+        $xfecha_llamada = $row->fecha_llamada;
+        $xfecha_carta_html = $row->fecha_carta_html;
+        $xnota = $row->nota;
+        $xvolver_llamar = $row->volver_llamar;
+        $xfecha_cdirecta1_1 = $row->fecha_cdirecta1_1;
+        $xchkCA1 = $row->chkCA1;
+        $xchkCA2 = $row->chkCA2;
+        $xchkCA3 = $row->chkCA3;
+        $xchkCC1 = $row->chkCC1;
+        $xchkCC2 = $row->chkCC2;
+        $xchkCD1 = $row->chkCD1;
+        $xchkCD2 = $row->chkCD2;
+        $xinfo_email = $row->info_email;
+        $xprecio_email = $row->precio_email;
     }
 } else {
-        $idllamada = "";
-        $idcontacto = "";
-        $usuario = "";
-        $fecha_llamada = "";
-        $fecha_carta_html = "";
-        $nota = "";
-        $volver_llamar = "";
-        $fecha_cdirecta1_1 = "";
-        $chkCA1 = "";
-        $chkCA2 = "";
-        $chkCA3 = "";
-        $chkCC1 = "";
-        $chkCC2 = "";
-        $chkCD1 = "";
-        $chkCD2 = "";
-        $info_email = "";
-        $precio_email = "";
+        $xidllamada = "";
+        $xidcontacto = "";
+        $xusuario = "";
+        $xfecha_llamada = "";
+        $xfecha_carta_html = "";
+        $xnota = "";
+        $xvolver_llamar = "";
+        $xfecha_cdirecta1_1 = "";
+        $xchkCA1 = "";
+        $xchkCA2 = "";
+        $xchkCA3 = "";
+        $xchkCC1 = "";
+        $xchkCC2 = "";
+        $xchkCD1 = "";
+        $xchkCD2 = "";
+        $xinfo_email = "";
+        $xprecio_email = "";
 }
 ?>
 
@@ -102,7 +102,7 @@ if ($llamadas != null) {
                                                 <tr>
                                                     <td valign="top"><label  >Id.</label></td>
                                                     <td valign="top"><input class="boxleft" type="text" name="txtidLlamada" id="txtidLlamada"  value="<?= $xidllamada; ?>" readonly></td>
-                                                    <td valign="top"> <input class="boxleft" type="hidden" name="txtidContacto" id="txtidContacto"  value="<?= $xidcontacto; ?>">                        
+                                                    <td valign="top"> <input class="boxleft" type="hidden" name="txtXidContacto" id="txtXidContacto"  value="<?= $xidcontacto; ?>">                        
                                                         <div class="etiquetaCount">
                                                             Total de llamadas : <b><?= $countLlamadas ?></b>
                                                         </div></td>
@@ -121,48 +121,41 @@ if ($llamadas != null) {
                                         <td>
                                             <select class="box"  name="cbousuario1" id="cbousuario1" >
                                                 <option value=''></option>
-                                                <option <? echo ($xcbousuario1 === "Christian") ? "selected" : ""; ?>>Christian</option>
-                                                <option <? echo ($xcbousuario1 === "Flormira") ? "selected" : ""; ?>>Flormira</option>
-                                                <option <? echo ($xcbousuario1 === "Isolde Petrik") ? "selected" : ""; ?>>Isolde Petrik</option>
-                                                <option <? echo ($xcbousuario1 === "Juan") ? "selected" : ""; ?>>Juan</option>
+                                                <option <? echo ($xusuario === "Christian") ? "selected" : ""; ?>>Christian</option>
+                                                <option <? echo ($xusuario === "Flormira") ? "selected" : ""; ?>>Flormira</option>
+                                                <option <? echo ($xusuario === "Isolde Petrik") ? "selected" : ""; ?>>Isolde Petrik</option>
+                                                <option <? echo ($xusuario === "Juan") ? "selected" : ""; ?>>Juan</option>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Fecha de llamada</td>
                                         <td>
+                                            <!--
                                             <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
                                                 <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
                                                 <span class="add-on"><i class="icon-calendar"></i></span>
                                             </div>
-                                           
+                                            -->
+                                            <input  type="text" name="txtfecha_llamada" value="<?= $xfecha_llamada; ?>" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Info per Email</td>
                                         <td>
-                                            <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                                <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
-                                                <span class="add-on"><i class="icon-calendar"></i></span>
-                                            </div>
+                                            <input  type="text" name="txtinfo_email" value="<?= $xinfo_email; ?>" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Preise per E-Mail</td>
                                         <td>
-                                            <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                                <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
-                                                <span class="add-on"><i class="icon-calendar"></i></span>
-                                            </div>
+                                             <input  type="text" name="txtprecio_email" value="<?= $xprecio_email; ?>" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Volver a llamar</td>
                                         <td>
-                                            <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                                <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
-                                                <span class="add-on"><i class="icon-calendar"></i></span>
-                                            </div>
+                                             <input  type="text" name="txtvolver_llamar" value="<?= $xvolver_llamar; ?>" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -170,31 +163,31 @@ if ($llamadas != null) {
                                             
                                                 <table border="0" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td><input type="checkbox" name="chkCa1" id="chkCa1" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                                        <td><input type="checkbox" name="chkCa1" id="chkCa1" <? echo ($xchkCA1 === "1") ? "checked" : ""; ?> />
                                                             Besonders intressiert</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" name="chkCa2" id="chkCa2" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                                        <td><input type="checkbox" name="chkCa2" id="chkCa2" <? echo ($xchkCA2 === "1") ? "checked" : ""; ?> />
                                                             Bedarf, Interesse an Informationsmaterial </td>
                                                     </tr>
                                                     <tr>
-                                                      <td><input type="checkbox" name="chkCa3" id="chkCa3" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                                      <td><input type="checkbox" name="chkCa3" id="chkCa3" <? echo ($xchkCA3 === "1") ? "checked" : ""; ?> />
                                                             Bedarf, Interesse an Informationsmaterial mit Preisen</td>
                                                     </tr>
                                                     <tr>
-                                                      <td><input type="checkbox" name="chkCc1" id="chkCc1" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                                      <td><input type="checkbox" name="chkCc1" id="chkCc1" <? echo ($xchkCC1 === "1") ? "checked" : ""; ?> />
                                                             Bedarf, aber bereits fester Partner</td>
                                                     </tr>
                                                     <tr>
-                                                      <td><input type="checkbox" name="chkCc2" id="chkCc2" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                                      <td><input type="checkbox" name="chkCc2" id="chkCc2" <? echo ($xchkCC2 === "1") ? "checked" : ""; ?> />
                                                             Bedarf, aber wird intern durchgeführt</td>
                                                     </tr>
                                                     <tr>
-                                                      <td><input type="checkbox" name="chkCd1" id="chkCd1" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                                      <td><input type="checkbox" name="chkCd1" id="chkCd1" <? echo ($xchkCD1 === "1") ? "checked" : ""; ?> />
                                                             Kein Bedarf, national tätig</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="checkbox" name="chkCd2" id="chkCd2" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                                        <td><input type="checkbox" name="chkCd2" id="chkCd2" <? echo ($xchkCD2 === "1") ? "checked" : ""; ?> />
                                                             Kein Bedarf, nur Vertrieb/Handel</td>
                                                     </tr>
                                                 </table>
@@ -205,7 +198,7 @@ if ($llamadas != null) {
                                       <td colspan="2">Nota</td>
                                     </tr>
                                     <tr>
-                                      <td colspan="2"><textarea name="txtnotaContacto" id="txtnotaContacto" cols="45" rows="5"></textarea></td>
+                                      <td colspan="2"><textarea name="txtnotaContacto" id="txtnotaContacto" cols="45" rows="5"><?= $xnota; ?></textarea></td>
                                     </tr>
                                 </table>
                             </form>
