@@ -111,6 +111,8 @@ class Llamada_model extends CI_Model {
 
     public function buscar_llamada_siguiente($idllamada_actual, $idcontacto_actual) {
         $query = $this->db->query("select * from fecha_llamada_contacto where idllamada IN (SELECT idllamada FROM fecha_llamada_contacto where idcontacto = '" . $idcontacto_actual . "') and  idllamada > '" . $idllamada_actual . "' order by idllamada asc LIMIT 0,1");
+        //echo "select * from fecha_llamada_contacto where idllamada IN (SELECT idllamada FROM fecha_llamada_contacto where idcontacto = '" . $idcontacto_actual . "') and  idllamada > '" . $idllamada_actual . "' order by idllamada asc LIMIT 0,1";
+            
         if ($query->num_rows() === 1) {
             return $query->result();
         } else {

@@ -15,11 +15,11 @@ if ($contacto != null) {
         $xcontac_interes = $row->contac_interes;
         $xcelular = $row->celular;
         $xidioma = $row->idioma;
-        //$xtechni_forum = '0';
-        //$xreportes_tt = '0';
+        $xtechni_forum = $row->techni_forum;
+        $xreportes_tt = $row->reportes_tt;
         //$xexportado = '0';
         $xretirado = $row->retirado;
-        //$xreportes_tt_com = '0';
+        $xreportes_tt_com = $row->reportes_tt_com;
         $xchknich = $row->chknich;
         //$xfecha_datos_admin = '0000-00-00';
         //$xfecha_datos_user = '0000-00-00';
@@ -38,11 +38,11 @@ if ($contacto != null) {
     $xcontac_interes = "";
     $xcelular = "";
     $xidioma = "";
-    //$xtechni_forum = "";
-    //$xreportes_tt = "";
+    $xtechni_forum = "";
+    $xreportes_tt = "";
     //$xexportado = "";
     $xretirado = "";
-    //$xreportes_tt_com = "";
+    $xreportes_tt_com = "";
     $xchknich = "";
     //$xfecha_datos_admin = "";
     //$xfecha_datos_user = "";
@@ -262,15 +262,15 @@ if ($contacto != null) {
                                 <legend><span>Permisos</span></legend>    
                                 <table border="0" cellpadding="0" cellspacing="0">
                                     <tr>
-                                        <td><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                        <td><input type="checkbox" name="chktechniforum" id="chktechniforum" <? echo ($xtechni_forum === "1") ? "checked" : ""; ?> />
                                             Techni-Forum </td>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                        <td><input type="checkbox" name="chkreportett" id="chkreportett" <? echo ($xreportes_tt === "1") ? "checked" : ""; ?> />
                                             TT Reportes Contacto </td>
                                     </tr>
                                     <tr>
-                                        <td><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
+                                        <td><input type="checkbox" name="chkreportettcom" id="chkreportettcom" <? echo ($xreportes_tt_com === "1") ? "checked" : ""; ?> />
                                             TT Reportes Compañia </td>
                                     </tr>
                                 </table>

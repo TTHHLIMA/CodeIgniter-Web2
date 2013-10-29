@@ -188,6 +188,7 @@ class Compania extends CI_Controller {
      //HH: botones de navegacion contactos
     public function buscar_llamada_siguiente($idllamada_actual = '', $idcontacto_actual = '') {
         $data['llamada'] = $this->llamada_model->buscar_llamada_siguiente($idllamada_actual, $idcontacto_actual);
+        //var_dump($data['llamada']);
         if ($data['llamada'] === False) {
             $data['llamada'] = $this->llamada_model->buscar_llamada_idllamada($idllamada_actual);
         }
@@ -233,7 +234,12 @@ class Compania extends CI_Controller {
         $this->load->view('marqueting/formularioLlamadas');
     }    
     
-    
+     public function buscar_llamadas_idllamada($idcontacto = "", $idllamada = "") {
+        $data['llamada'] = $this->llamada_model->buscar_llamada_idllamada($idllamada);
+        $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto);
+        $this->load->vars($data);
+        $this->load->view('marqueting/formularioLlamadas');
+    }   
     
     function proceso_mantenimiento($opcion = "") {
         $idcompania = $this->input->post("txtidcompania");
@@ -380,11 +386,11 @@ class Compania extends CI_Controller {
         $contac_interes = ($this->input->post("chkcontacinteres") === "on") ? "S" : "N";
         $celular = $this->input->post("txtcelularContacto");
         $idioma = $this->input->post("cboIdioma");
-        $techni_forum = '0';
-        $reportes_tt = '0';
+        $techni_forum = ($this->input->post("chktechniforum") === "on") ? "1" : "0"; //HH: Permisos
+        $reportes_tt = ($this->input->post("chkreportett") === "on") ? "1" : "0"; //HH: Permisos
         $exportado = '0';
         $retirado = ($this->input->post("chkretirado") === "on") ? "1" : "0";
-        $reportes_tt_com = '0';
+        $reportes_tt_com = ($this->input->post("chkreportettcom") === "on") ? "1" : "0"; //HH: Permisos
         $chknich = ($this->input->post("chknich") === "on") ? "1" : "0";
         $fecha_datos_admin = '0000-00-00';
         $fecha_datos_user = '0000-00-00';
@@ -439,7 +445,10 @@ class Compania extends CI_Controller {
                 'contac_interes' => $contac_interes,
                 'celular' => $celular,
                 'idioma' => $idioma,
+                'techni_forum' => $techni_forum,
+                'reportes_tt' => $reportes_tt,
                 'retirado' => $retirado,
+                'reportes_tt_com' => $reportes_tt_com,
                 'chknich' => $chknich,
             );
             $respuesta = $this->contacto_model->actualizar_contacto($dataContacto, $idcontacto);
@@ -453,15 +462,15 @@ class Compania extends CI_Controller {
     }
 
     function proceso_mantenimiento_llamada($opcion = "", $idcontacto = "") {
-
+        //var_dump($idcontacto);
         $idllamada = $this->input->post("txtidLlamada");
-        $idcontacto = ($this->input->post("txtidContacto") === "") ? $idcontacto : $this->input->post("txtidContacto");
+        $xidcontacto = ($this->input->post("txtXidContacto") === "") ? $idcontacto : $this->input->post("txtXidContacto");
         $usuario = $this->input->post("cbousuario1");
-        $fecha_llamada = "0000-00-00";
-        $fecha_carta_html = "0000-00-00";
+        $fecha_llamada = $this->input->post("txtfecha_llamada");
+        $fecha_carta_html = "0000-00-00"; //HH: cartas html directa
         $nota = $this->input->post("txtnotaContacto");
-        $volver_llamar = "0000-00-00";
-        $fecha_cdirecta1_1 = "0000-00-00";
+        $volver_llamar = $this->input->post("txtvolver_llamar");
+        $fecha_cdirecta1_1 = "0000-00-00"; //HH: cartas html indirecta
         $chkCA1 = ($this->input->post("chkCa1") === "on") ? "1" : "0";
         $chkCA2 = ($this->input->post("chkCa2") === "on") ? "1" : "0";
         $chkCA3 = ($this->input->post("chkCa3") === "on") ? "1" : "0";
@@ -469,14 +478,18 @@ class Compania extends CI_Controller {
         $chkCC2 = ($this->input->post("chkCc2") === "on") ? "1" : "0";
         $chkCD1 = ($this->input->post("chkCd1") === "on") ? "1" : "0";
         $chkCD2 = ($this->input->post("chkCd2") === "on") ? "1" : "0";
-        $info_email = "0000-00-00";
-        $precio_email = "0000-00-00";
+        $info_email = $this->input->post("txtprecio_email");
+        $precio_email = $this->input->post("txtinfo_email");
 
+        //var_dump($this->input->post("txtidContacto"));
+        
+        
         if ($opcion === "1") {//HH: agregar
             $idllamada = "";
+            //echo "idcontacto:" . $idcontacto;
             $dataLlamada = array(
                 'idllamada' => $idllamada,
-                'idcontacto' => $idcontacto,
+                'idcontacto' => $xidcontacto,
                 'usuario' => $usuario,
                 'fecha_llamada' => $fecha_llamada,
                 'fecha_carta_html' => $fecha_carta_html,
@@ -497,7 +510,7 @@ class Compania extends CI_Controller {
         }
         if ($opcion === "2") { //HH: actualizar
             $dataLlamada = array(
-                'idcontacto' => $idcontacto,
+                'idcontacto' => $xidcontacto,
                 'usuario' => $usuario,
                 'fecha_llamada' => $fecha_llamada,
                 'fecha_carta_html' => $fecha_carta_html,

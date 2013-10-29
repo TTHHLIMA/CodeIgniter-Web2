@@ -540,13 +540,13 @@
                 e.preventDefault();
                 var idllamada = $("#txtidLlamada").attr("value");
                 var idcontacto = $("#txtidContacto").attr("value");
-                alert(idcontacto);
+                //alert("idllamada: " + idllamada + " idcontacto: " + idcontacto);
                 var xcount = 0;
                 $.ajax({
                     url: "<?= $this->config->base_url() ?>marqueting/compania/count_llamadas/" + idcontacto,
                     success: function(datos) {
                         xcount = datos;
-                        alert(xcount);
+                        //alert(xcount);
                         if (xcount === "0") {
                             $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/formulario_llamadas/" + idcontacto,
                                     function() {
@@ -558,6 +558,9 @@
                                     }
                             );
                         } else {
+                            if (idllamada ==""){
+                                idllamada=0;
+                            }
                             $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_siguiente/" + idllamada + "/" + idcontacto,
                                     function() {
                                         $("#btnAgregarL").attr('disabled', 'disabled');
@@ -592,6 +595,9 @@
                                     }
                             );
                         } else {
+                            if (idllamada ==""){
+                                idllamada=0;
+                            }
                             $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_anterior/" + idllamada + "/" + idcontacto,
                                     function() {
                                         $("#btnAgregarL").attr('disabled', 'disabled');
@@ -1125,7 +1131,7 @@
 
             $(document).on("click", "#btnAgregarL", function(e) {
                 e.preventDefault();
-                if ($('#btnAgregarC').attr('disabled')) {
+                if ($('#btnAgregarL').attr('disabled')) {
                     return false;
                 }
                 $.Zebra_Dialog('¿Desea Agregar el Registro?', {
@@ -1134,11 +1140,12 @@
                     'buttons': ['Si', 'No', 'Cancelar'],
                     'onClose': function(caption) {
                         if (caption == "Si") {
-                            var idcompania = $("#txtidcompania").attr("value");
+                            var xidcontacto = $("#txtidContacto").attr("value");
+                            //alert(xidcontacto);
                             $.ajax({
-                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/1/' + idcompania,
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_llamada/1/' + xidcontacto,
                                 type: 'POST',
-                                data: $("#frmContacto").serializeArray(),
+                                data: $("#frmLlamada").serializeArray(),
                                 success: function(resp) {
                                     if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
                                         //console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
@@ -1146,7 +1153,7 @@
                                             'type': 'confirmation',
                                             'title': 'Confirmación'
                                         });
-                                        $("#btnUltimoC").click();
+                                        $("#btnUltimoL").click();
                                     } else {
                                         console.log(resp);
                                         $.Zebra_Dialog('Error al Agregar el Registro.', {
@@ -1184,10 +1191,10 @@
 
             $(document).on("click", "#btnActualizarL", function(e) {
                 e.preventDefault();
-                if ($('#btnActualizarC').attr('disabled')) {
+                if ($('#btnActualizarL').attr('disabled')) {
                     return false;
                 }
-                var idcompania = $("#txtidcompania").attr("value");
+                var idllamada = $("#txtidLlamada").attr("value");
                 var idcontacto = $("#txtidContacto").attr("value");
 
                 $.Zebra_Dialog('¿Desea Actualizar el Registro?', {
@@ -1197,9 +1204,9 @@
                     'onClose': function(caption) {
                         if (caption == "Si") {
                             $.ajax({
-                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/2',
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_llamada/2',
                                 type: 'POST',
-                                data: $("#frmContacto").serializeArray(),
+                                data: $("#frmLlamada").serializeArray(),
                                 success: function(resp) {
                                     if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
                                         console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
@@ -1207,9 +1214,9 @@
                                             'type': 'confirmation',
                                             'title': 'Confirmación'
                                         });
-                                        $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_idcontacto/" + idcontacto + "/" + idcompania,
+                                        $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamadas_idllamada/" + idcontacto + "/" + idllamada,
                                                 function() {
-                                                    $("#btnAgregarC").attr('disabled', 'disabled');
+                                                    $("#btnAgregarL").attr('disabled', 'disabled');
                                                 }
                                         );
 
@@ -1250,7 +1257,7 @@
 
             $(document).on("click", "#btnEliminarL", function(e) {
                 e.preventDefault();
-                if ($('#btnEliminarC').attr('disabled')) {
+                if ($('#btnEliminarL').attr('disabled')) {
                     return false;
                 }
                 $.Zebra_Dialog('¿Desea Eliminar el Registro?', {
@@ -1260,9 +1267,9 @@
                     'onClose': function(caption) {
                         if (caption == "Si") {
                             $.ajax({
-                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/3',
+                                url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_llamada/3',
                                 type: 'POST',
-                                data: $("#frmContacto").serializeArray(),
+                                data: $("#frmLlamada").serializeArray(),
                                 success: function(resp) {
                                     if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
                                         console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
@@ -1270,8 +1277,8 @@
                                             'type': 'confirmation',
                                             'title': 'Confirmación'
                                         });
-                                        limpiaFormulario($("#frmContacto"));
-                                        $("#btnNuevoC").click();
+                                        limpiaFormulario($("#frmLlamada"));
+                                        $("#btnNuevoL").click();
                                         //$("#panelContacto").removeAttr("style");
                                     } else {
                                         console.log(resp);
