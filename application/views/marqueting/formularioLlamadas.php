@@ -93,7 +93,7 @@ if ($llamada != null) {
 
                     <tr>
                         <td width="289" valign="top">
-                            <form id="frmLlamada" action="" method="post">
+                            <form id="frmLlamada" action="javascript:void(0)" method="post">
                                 <table>
                                     <tr>
                                         <td colspan="2">
@@ -131,31 +131,25 @@ if ($llamada != null) {
                                     <tr>
                                         <td>Fecha de llamada</td>
                                         <td>
-                                            <!--
-                                            <div class="input-append date" id="dp3" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                                                <input class="span2" size="16" type="text" value="12-02-2012" readonly="">
-                                                <span class="add-on"><i class="icon-calendar"></i></span>
-                                            </div>
-                                            -->
-                                            <input  type="text" name="txtfecha_llamada" value="<?= $xfecha_llamada; ?>" />
+                                            <input  type="text" id ="txtfecha_llamada" name="txtfecha_llamada" value="<?= $xfecha_llamada; ?>" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Info per Email</td>
                                         <td>
-                                            <input  type="text" name="txtinfo_email" value="<?= $xinfo_email; ?>" />
+                                            <input  type="text" id ="txtinfo_email"  name="txtinfo_email" value="<?= $xinfo_email; ?>" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Preise per E-Mail</td>
                                         <td>
-                                             <input  type="text" name="txtprecio_email" value="<?= $xprecio_email; ?>" />
+                                             <input  type="text" id ="txtprecio_email"  name="txtprecio_email" value="<?= $xprecio_email; ?>" />
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Volver a llamar</td>
                                         <td>
-                                             <input  type="text" name="txtvolver_llamar" value="<?= $xvolver_llamar; ?>" />
+                                             <input  type="text" id ="txtvolver_llamar"  name="txtvolver_llamar" value="<?= $xvolver_llamar; ?>" />
                                         </td>
                                     </tr>
                                     <tr>

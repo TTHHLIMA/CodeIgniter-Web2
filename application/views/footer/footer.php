@@ -23,9 +23,11 @@
         <script src="<?=$this->config->base_url()?>assets/js/bootstrap-popover.js"></script>
         <script src="<?=$this->config->base_url()?>assets/js/bootstrap-button.js"></script>
         <script src="<?=$this->config->base_url()?>assets/js/bootstrap-collapse.js"></script>
-        <script src="<?=$this->config->base_url()?>assets/js/bootstrap-datepicker.js"></script>
         <!--<script src="../assets/js/bootstrap-carousel.js"></script>-->
         <script src="<?=$this->config->base_url()?>assets/js/bootstrap-typeahead.js"></script>
+        
+             
+        <script src="<?= $this->config->base_url()?>JQuery/DTpicker_Zebra/public/javascript/zebra_datepicker.js"></script>
 
     </body>
 </html>

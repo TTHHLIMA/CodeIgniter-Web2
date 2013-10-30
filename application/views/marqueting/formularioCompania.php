@@ -167,6 +167,7 @@ if ($compania != null) {
                                     <label >Firma</label>
                                 </div>
                                 <div class="FormLeft">
+                                    
                                     <input type="text" name="txtidcompania" id="txtidcompania"  value="<?= $VarIdcompania ?>" readonly >
                                 </div>
 

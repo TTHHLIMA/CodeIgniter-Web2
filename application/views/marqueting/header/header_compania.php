@@ -1,4 +1,4 @@
-<!DOCTYPE html >
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -10,10 +10,15 @@
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap-responsive.css" rel="stylesheet">	
         <link href="<?= $this->config->base_url() ?>css/estilosMarqueting.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilos.css" rel="stylesheet">
-        <link href="<?= $this->config->base_url() ?>assets/css/datepicker.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/estilosCompania.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/menu_superior.css" rel="stylesheet">
-        <script src="<?= $this->config->base_url() ?>JQuery/jquery-1.9.1.js"></script>
+        <script src="<?= $this->config->base_url() ?>JQuery/jquery-1.10.2.js"></script>
+
+        <!-- HH: JQ UI -->
+        <script src="<?= $this->config->base_url() ?>JQuery/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
+        <link href="<?= $this->config->base_url() ?>JQuery/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+        <!-- HH: JQ UI -->
+        
         <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
         <!--<link href="../assets/css/hernan.css" rel="stylesheet">-->
 
@@ -29,8 +34,28 @@
         <!-- Zebra_modal  -->
         <script type="text/javascript" src="<?= $this->config->base_url() ?>JQuery/Modal_Zebra/public/javascript/zebra_dialog.js"></script>
         <link rel="stylesheet" href="<?= $this->config->base_url() ?>JQuery/Modal_Zebra/public/css/default/zebra_dialog.css" type="text/css">
+
+ 
+
+
+
         <!-- fin Zebra modal -->
         <script type="text/javascript">
+
+            $(function() {
+               $("#txtfecha_llamada").datepicker();
+               $("#txtinfo_email").datepicker();
+               $("#txtprecio_email").datepicker();
+               $("#txtvolver_llamar").datepicker();
+            });
+            
+            function calendarios_llamada(){
+               $("#txtfecha_llamada").datepicker({ dateFormat: "dd-mm-yy" });
+               $("#txtinfo_email").datepicker();
+               $("#txtprecio_email").datepicker();
+               $("#txtvolver_llamar").datepicker();
+            }
+
             //HH: LLamos a los formularios al momento de cargar la pagina
             $(document).ready(function() {
                 $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_primero",
@@ -40,14 +65,22 @@
                                     function() {
                                         $("#btnAgregarC").attr('disabled', 'disabled');
                                         var idcontacto = $("#txtidContacto").attr("value");
-                                        $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + idcontacto);
+                                        $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + idcontacto,
+                                        function(){
+                                            calendarios_llamada();
+                                        }
+                                        );
                                     }
                             );
                             $("#btnAgregar").attr('disabled', 'disabled'); //HH: inicializo mostrando el formulario sin el biton agregar
                         }
                 );
 
-                $('.datepicker').datepicker()
+
+
+                
+
+
             });
 
             //HH: Cargo el div para filtrar los datos de tipo modal
@@ -100,12 +133,16 @@
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnNuevoL").click();
+                                                                            calendarios_llamada();
+                                                                            
                                                                         }
                                                                 );
                                                             } else {
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                            calendarios_llamada();
+                                                                            
                                                                         }
                                                                 );
 
@@ -159,12 +196,14 @@
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnNuevoL").click();
+                                                                            calendarios_llamada();
                                                                         }
                                                                 );
                                                             } else {
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                            calendarios_llamada();
                                                                         }
                                                                 );
 
@@ -215,12 +254,14 @@
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnNuevoL").click();
+                                                                            calendarios_llamada();
                                                                         }
                                                                 );
                                                             } else {
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                            calendarios_llamada();
                                                                         }
                                                                 );
 
@@ -272,12 +313,14 @@
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnNuevoL").click();
+                                                                            calendarios_llamada();
                                                                         }
                                                                 );
                                                             } else {
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                            calendarios_llamada();
                                                                         }
                                                                 );
 
@@ -336,12 +379,14 @@
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnNuevoL").click();
+                                                                calendarios_llamada();
                                                             }
                                                     );
                                                 } else {
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                calendarios_llamada();
                                                             }
                                                     );
 
@@ -395,12 +440,14 @@
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnNuevoL").click();
+                                                                calendarios_llamada();
                                                             }
                                                     );
                                                 } else {
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                calendarios_llamada();
                                                             }
                                                     );
 
@@ -452,12 +499,14 @@
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnNuevoL").click();
+                                                                calendarios_llamada();
                                                             }
                                                     );
                                                 } else {
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                calendarios_llamada();
                                                             }
                                                     );
 
@@ -508,12 +557,14 @@
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnNuevoL").click();
+                                                                calendarios_llamada();
                                                             }
                                                     );
                                                 } else {
                                                     $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                             function() {
                                                                 $("#btnAgregarL").attr('disabled', 'disabled');
+                                                                calendarios_llamada();
                                                             }
                                                     );
 
@@ -555,15 +606,17 @@
                                         $("#btnEliminarL").attr('disabled', 'disabled');
                                         $('#btnAgregarL').removeAttr("disabled");
                                         $('#cbousuario1').focus();
+                                        calendarios_llamada();
                                     }
                             );
                         } else {
-                            if (idllamada ==""){
-                                idllamada=0;
+                            if (idllamada == "") {
+                                idllamada = 0;
                             }
                             $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_siguiente/" + idllamada + "/" + idcontacto,
                                     function() {
                                         $("#btnAgregarL").attr('disabled', 'disabled');
+                                        calendarios_llamada();
                                     }
                             );
 
@@ -592,15 +645,17 @@
                                         $("#btnEliminarL").attr('disabled', 'disabled');
                                         $('#btnAgregarL').removeAttr("disabled");
                                         $('#cbousuario1').focus();
+                                        calendarios_llamada();
                                     }
                             );
                         } else {
-                            if (idllamada ==""){
-                                idllamada=0;
+                            if (idllamada == "") {
+                                idllamada = 0;
                             }
                             $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_anterior/" + idllamada + "/" + idcontacto,
                                     function() {
                                         $("#btnAgregarL").attr('disabled', 'disabled');
+                                        calendarios_llamada();
                                     }
                             );
 
@@ -628,12 +683,14 @@
                                         $("#btnEliminarL").attr('disabled', 'disabled');
                                         $('#btnAgregarL').removeAttr("disabled");
                                         $('#cbousuario1').focus();
+                                        calendarios_llamada();
                                     }
                             );
                         } else {
                             $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_primero/" + idcontacto,
                                     function() {
                                         $("#btnAgregarL").attr('disabled', 'disabled');
+                                        calendarios_llamada();
                                     }
                             );
 
@@ -660,12 +717,14 @@
                                         $("#btnEliminarL").attr('disabled', 'disabled');
                                         $('#btnAgregarL').removeAttr("disabled");
                                         $('#cbousuario1').focus();
+                                        calendarios_llamada();
                                     }
                             );
                         } else {
                             $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + idcontacto,
                                     function() {
                                         $("#btnAgregarL").attr('disabled', 'disabled');
+                                        calendarios_llamada();
                                     }
                             );
 
@@ -1364,6 +1423,17 @@
                     $(this).remove(); //or whatever else
                 });
             }
+
+
+
+
+
+
+
+
+
+
+
 
         </script>       
 
