@@ -51,8 +51,8 @@ if ($contacto != null) {
 
 
 
-
-<table width="100%" id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : "style='background-color: #ddd'"; ?> >
+<div style="color: "></div>
+<table width="100%" id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : "style='background-color: #ddddff'"; ?> >
     <tr>
         <td colspan="2">
 

@@ -192,12 +192,6 @@ if ($llamada != null) {
                       </tr>
                     </table></td>
                   </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
                 </table>
             </form>
         </td>
