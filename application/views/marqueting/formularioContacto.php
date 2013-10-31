@@ -52,7 +52,7 @@ if ($contacto != null) {
 
 
 
-<table width="600" id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : "style='background-color: #ddd'"; ?> >
+<table width="100%" id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : "style='background-color: #ddd'"; ?> >
     <tr>
         <td colspan="2">
 
@@ -105,9 +105,10 @@ if ($contacto != null) {
     </tr>
 
     <tr>
-        <td width="289" valign="top">
-            <form id="frmContacto" action="" method="post">
-                <table width="250">
+        <td width="300" rowspan="2" valign="top">
+           
+                <table width="100%">
+                 <form id="frmContacto" action="" method="post">
                     <tr>
                         <td colspan="2">
 
@@ -236,66 +237,90 @@ if ($contacto != null) {
                             ?>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2">
-
-
-                            <input type="checkbox" name="chkcontacinteres" id="chkcontacinteres" <? echo ($xcontac_interes === "S") ? "checked" : ""; ?> > Richtiger Ansprechpartner
-
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <input type="checkbox" name="chkretirado" id="chkretirado" <? echo ($xretirado === "1") ? "checked" : ""; ?> > Retirado
-
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> />
-                            Nicht richtiger Ansprechpartner </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <fieldset class="fieldset">
-                                <legend><span>Permisos</span></legend>    
-                                <table border="0" cellpadding="0" cellspacing="0">
-                                    <tr>
-                                        <td><input type="checkbox" name="chktechniforum" id="chktechniforum" <? echo ($xtechni_forum === "1") ? "checked" : ""; ?> />
-                                            Techni-Forum </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="chkreportett" id="chkreportett" <? echo ($xreportes_tt === "1") ? "checked" : ""; ?> />
-                                            TT Reportes Contacto </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox" name="chkreportettcom" id="chkreportettcom" <? echo ($xreportes_tt_com === "1") ? "checked" : ""; ?> />
-                                            TT Reportes Compañia </td>
-                                    </tr>
-                                </table>
-                            </fieldset>              
-                        </td>
-                    </tr>
+                    
                 </table>
-            </form>
+           
         </td>
 
 
 
 
 
-        <td width="299" valign="top">
-            <!-- div  para llamadas de contactos -->
+        <td width="715" valign="top">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="26%" align="left" valign="top">   
+                                <table width="180" border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                      <td colspan="2">Permisos</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><input type="checkbox" name="chktechniforum" id="chktechniforum" <? echo ($xtechni_forum === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="150">Techni-Forum</td>
+                                  </tr>
+                                    <tr>
+                                        <td width="20"><input type="checkbox" name="chkreportett" id="chkreportett" <? echo ($xreportes_tt === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="150">TT Reportes Contacto</td>
+                                  </tr>
+                                    <tr>
+                                        <td width="20"><input type="checkbox" name="chkreportettcom" id="chkreportettcom" <? echo ($xreportes_tt_com === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="150">TT Reportes Compañia</td>
+                                  </tr>
+                                </table>
+                            </td>
+        <td width="74%" align="left" valign="top"><table width="240" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td colspan="2">&nbsp;</td>
+          </tr>
+          <tr>
+                        <td width="18">
+
+
+                            <input type="checkbox" name="chkcontacinteres" id="chkcontacinteres" <? echo ($xcontac_interes === "S") ? "checked" : ""; ?> ></td>
+                        <td>Richtiger Ansprechpartner</td>
+                    </tr>
+                    <tr>
+                        <td width="18">
+                            <input type="checkbox" name="chkretirado" id="chkretirado" <? echo ($xretirado === "1") ? "checked" : ""; ?> ></td>
+                        <td>Retirado</td>
+                    </tr>
+                    <tr>
+                        <td width="18"><input type="checkbox" name="chknich" id="chknich" <? echo ($xchknich === "1") ? "checked" : ""; ?> /></td>
+                        <td>Nicht richtiger Ansprechpartner</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                                     
+                        </td>
+                    </tr></table></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+  
+    <td> </td>
+  </tr>
+</table>
+
+           
+
+
+
+
+      </td>
+    </tr>
+    
+     </form>
+    <tr>
+      <td valign="top"><!-- div  para llamadas de contactos -->
             <div id="formularioLlamadas">
                
             </div>
-            <!-- fin del div de llamadas -->
-
-
-
-
-        </td>
+            <!-- fin del div de llamadas --></td>
     </tr>
 
 </table>

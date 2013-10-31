@@ -18,8 +18,8 @@
         <script src="<?= $this->config->base_url() ?>JQuery/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
         <link href="<?= $this->config->base_url() ?>JQuery/jquery-ui-1.10.3.custom/css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
         <!-- HH: JQ UI -->
-        
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
         <!--<link href="../assets/css/hernan.css" rel="stylesheet">-->
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -35,7 +35,7 @@
         <script type="text/javascript" src="<?= $this->config->base_url() ?>JQuery/Modal_Zebra/public/javascript/zebra_dialog.js"></script>
         <link rel="stylesheet" href="<?= $this->config->base_url() ?>JQuery/Modal_Zebra/public/css/default/zebra_dialog.css" type="text/css">
 
- 
+
 
 
 
@@ -43,18 +43,20 @@
         <script type="text/javascript">
 
             $(function() {
-               $("#txtfecha_llamada").datepicker();
-               $("#txtinfo_email").datepicker();
-               $("#txtprecio_email").datepicker();
-               $("#txtvolver_llamar").datepicker();
+                $("#txtfecha_llamada").datepicker();
+                $("#txtinfo_email").datepicker();
+                $("#txtprecio_email").datepicker();
+                $("#txtvolver_llamar").datepicker();
             });
-            
-            function calendarios_llamada(){
-               $("#txtfecha_llamada").datepicker({ dateFormat: "dd-mm-yy" });
-               $("#txtinfo_email").datepicker();
-               $("#txtprecio_email").datepicker();
-               $("#txtvolver_llamar").datepicker();
+
+            function calendarios_llamada() {
+
+                $("#txtinfo_email").datepicker({dateFormat: "dd-mm-yy"});
+                $("#txtprecio_email").datepicker({dateFormat: "dd-mm-yy"});
+                $("#txtvolver_llamar").datepicker({dateFormat: "dd-mm-yy"});
+                $("#txtfecha_llamada").datepicker({dateFormat: "dd-mm-yy"});
             }
+          
 
             //HH: LLamos a los formularios al momento de cargar la pagina
             $(document).ready(function() {
@@ -66,9 +68,9 @@
                                         $("#btnAgregarC").attr('disabled', 'disabled');
                                         var idcontacto = $("#txtidContacto").attr("value");
                                         $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + idcontacto,
-                                        function(){
-                                            calendarios_llamada();
-                                        }
+                                                function() {
+                                                    calendarios_llamada();
+                                                }
                                         );
                                     }
                             );
@@ -78,7 +80,7 @@
 
 
 
-                
+
 
 
             });
@@ -133,8 +135,6 @@
                                                                 $("#formularioLlamadas").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_llamada_ultimo/" + xidcontacto,
                                                                         function() {
                                                                             $("#btnNuevoL").click();
-                                                                            calendarios_llamada();
-                                                                            
                                                                         }
                                                                 );
                                                             } else {
@@ -142,7 +142,7 @@
                                                                         function() {
                                                                             $("#btnAgregarL").attr('disabled', 'disabled');
                                                                             calendarios_llamada();
-                                                                            
+
                                                                         }
                                                                 );
 
@@ -1180,7 +1180,9 @@
                             $("#btnActualizarL").attr('disabled', 'disabled');
                             $("#btnEliminarL").attr('disabled', 'disabled');
                             $('#btnAgregarL').removeAttr("disabled");
+                            calendarios_llamada();
                             $('#cbousuario1').focus();
+                            
                         }
                 );
 

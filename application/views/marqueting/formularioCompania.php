@@ -84,9 +84,9 @@ if ($compania != null) {
 
 
 
-<table>
+<table width="1000">
     <tr>
-        <td colspan="2" valign="top">
+        <td  valign="top">
             <div class="contenedorFormulario well">
 
                 <div class="FormLeft">
@@ -154,89 +154,75 @@ if ($compania != null) {
             </div>               
         </td>
     </tr>
-    <tr>
+    <tr valign="top">
         <td>
+           
             <!-- <div class="contenedorFormulario1"> -->
             <div class="contenedorFormulario">
                 <div id="formularioCompania" class="divLeft" >  
                     <form id="frmCompania" action="" method="post">
-                        <div class="row-fluid">
-                            <fieldset class="fieldset2columnasCabecera">
-
-                                <div class="FormLeft">
-                                    <label >Firma</label>
-                                </div>
-                                <div class="FormLeft">
-                                    
-                                    <input type="text" name="txtidcompania" id="txtidcompania"  value="<?= $VarIdcompania ?>" readonly >
-                                </div>
-
-                                <div  class="FormLeft">
-                                    <input type="text" name="txtnombre" id="txtnombre" value="<?= $VarNombre ?>" <?= ($VarParalizado === "S") ? " style='background-color: #ccf;'" : ""; ?> >
-                                </div>
-                            </fieldset>                                        
-                        </div>
-                        <div class="row-fluid">
-                            <fieldset class="fieldset2columnas">
-                                <div class="FormLeft">
-
-                                    <input type="checkbox" name="chkmasch" id="chkmasch" <? echo ($VarMasch === "1") ? "checked" : ""; ?> > OEM
-
-                                </div>
-                                <div class="FormLeft">
-
-                                    <input type="checkbox" name="chkoem" id="chkoem" <? echo ($VarOem === "1") ? "checked" : ""; ?> > Masch/Anlagebau
-
-                                </div>
-                                <div class="FormLeft">
-
-                                    <input type="checkbox" name="chkdistri" id="chkdistri" <? echo ($VarDistri === "1") ? "checked" : ""; ?> > Distributeur
-
-                                </div>
-                                <div class="FormLeft">
-
-                                    <input type="checkbox" name="chkfach" id="chkfach" <? echo ($VarFach === "1") ? "checked" : ""; ?> > FachDienstleister
-
-                                </div>
-                                <div class="FormLeft">
-
-                                    <input type="checkbox" name="chkprivat" id="chkprivat" <? echo ($VarPrivat === "1") ? "checked" : ""; ?> > Privat
-
-                                </div>
-                                <div class="FormLeft">
-
-                                    <input type="checkbox" name="chksonst" id="chksonst" <? echo ($VarSonst === "1") ? "checked" : ""; ?> > Sonst.
-
-                                </div>
-                                <div class="FormLeft">
-
-                                    <input type="checkbox" name="chkdict" id="chkdict" <? echo ($VarDict === "1") ? "checked" : ""; ?> > DICT
-
-                                </div>
-                            </fieldset>                    
-                        </div>
-
-
-                        <!-- primera columna -->
-                        <div class="izquierdaFormulario">
-                            <fieldset>
-                                <div class="fila">
-                                    <label class="etiqueta" >Calle</label>
-                                    <input class="box" type="text" name="txtcalle" id="txtcalle" value="<?= $VarCalle ?>">
-                                </div>
-                                <div class="fila">
-                                    <label class="etiqueta">Codigo</label>
-                                    <input class ="box" type="text" name="txtcodigo" id="txtcodigo" value="<?= $VarCodigo ?>">
-                                </div>
-                                <div class="fila">
-                                    <label class="etiqueta">Lugar</label>
-                                    <input class="box" type="text" name="txtlugar" id="txtlugar" value="<?= $VarLugar ?>">
-                                </div>
-
-                                <div class="fila">
-                                    <?php //consola_google($paises); //HH: verificando los datos que se trae?>
-                                    <label class="etiqueta">Pa&iacute;s</label>
-                                    <?php
+                     <table width="1000" border="0" cellpadding="0" cellspacing="0">
+                     <tr>
+                    	<td>
+                        <table border="0" cellpadding="0" cellspacing="1">
+                          <tr>
+                              <td width="35">Firma</td>
+                              <td width="55"><input type="text" name="txtidcompania" id="txtidcompania"  value="<?= $VarIdcompania ?>" readonly ></td>
+                              <td width="450"> <input type="text" name="txtnombre" id="txtnombre" value="<?= $VarNombre ?>" <?= ($VarParalizado === "S") ? " style='background-color: #ccf;'" : ""; ?> ></td>
+                              <td><table border="0" cellspacing="1">
+                          <tr>
+                            <td width="80">Analisis ABC</td>
+                            <td width="30">
+                              <select  name="cboAnalisis" id="cboAnalisis" >
+                                <option value=''></option>
+                                <option <? echo ($VarAna_abc === "A") ? "selected" : ""; ?>>A</option>
+                                <option <? echo ($VarAna_abc === "B") ? "selected" : ""; ?>>B</option>
+                                <option <? echo ($VarAna_abc === "C") ? "selected" : ""; ?>>C</option>
+                              </select>
+                            </td>
+                            <td>
+                              
+                            </td>
+                            <td width="18"><input type="checkbox"  name="chkpendiente" id="chkpendiente" <? echo ($VarPendiente === "S") ? "checked" : ""; ?> /></td>
+                            <td width="60">Pendiente</td>
+                            <td width="15">&nbsp;</td>
+                            <td>Wirtschaftslage</td>
+                            <td>
+                              <select  name="cboWirtschaftslage" id="cboWirtschaftslage">
+                                <option value=''></option>
+                                <option <? echo ($VarBedarfinZukunft === "Positiv+") ? "selected" : ""; ?> >Positiv+</option>
+                                <option <? echo ($VarBedarfinZukunft === "Positiv") ? "selected" : ""; ?> >Positiv</option>
+                                <option <? echo ($VarBedarfinZukunft === "Normal") ? "selected" : ""; ?> >Normal</option>
+                                <option <? echo ($VarBedarfinZukunft === "ruhig") ? "selected" : ""; ?> >ruhig</option>
+                                <option <? echo ($VarBedarfinZukunft === "Schlecht") ? "selected" : ""; ?> >Schlecht</option>
+                              </select>
+                            </td>
+                          </tr>
+                        </table>
+                              </td>
+                          </tr>
+                        </table>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                                  <td width="280" valign="top"><table border="0" cellpadding="0" cellspacing="0">
+                                      <tr>
+                                        <td width="45">Calle</td>
+                                        <td><input class="box" type="text" name="txtcalle" id="txtcalle" value="<?= $VarCalle ?>"></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="45">Codigo</td>
+                                        <td><input class ="box" type="text" name="txtcodigo" id="txtcodigo" value="<?= $VarCodigo ?>"></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="45">Lugar</td>
+                                        <td><input class="box" type="text" name="txtlugar" id="txtlugar" value="<?= $VarLugar ?>"></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="45">Pa&iacute;s</td>
+                                        <td><?php
                                     echo "<select  name='cboPais' id='cboPais'>";
                                     echo "<option value=''></option>";
                                     foreach ($paises as $pais) {
@@ -247,40 +233,119 @@ if ($compania != null) {
                                         }
                                     }
                                     echo "</select>";
-                                    ?>
-
-
-
-
-                                </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="fila">
-                                    <label class="etiqueta">Tel.</label>
-                                    <input class="box" type="text" name="txttelefono" id="txttelefono" value="<?= $VarTelefono ?>">
-                                </div>
-                                <div class="fila">
-                                    <label class="etiqueta">Fax</label>
-                                    <input class="box" type="text" name="txtfax" id="txtfax" value="<?= $VarFax ?>">
-                                </div>
-                                <div class="fila">
-                                    <label class="etiqueta">Mail</label>
-                                    <input class="box" type="text" name="txtmail" id="txtmail" value="<?= $VarMail ?>">
-                                </div>
-                                <div class="fila">
-                                    <label class="etiqueta">Web</label>
-                                    <input class="box" type="text" name="txtweb" id="txtweb" value="<?= $VarWeb ?>">
-                                </div>
-                                <div class="fila">
-                                    <label class="etiqueta">Web2</label>
-                                    <input class="box" type="text" name="txtweb2" id="txtweb2"value="<?= $VarInteresante_link ?>">
-                                </div>
-                            </fieldset>
-                            <fieldset>
-
-                                <div class="fila">
-                                    <label class="totalHorizontal">Consorcio</label>
-                                    <?php
+                                    ?></td>
+                                      </tr>
+                                  </table></td>
+                                  <td width="280" valign="top"><table width="98%" border="0" cellpadding="0" cellspacing="0">
+                    	      <tr>
+                    	        <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>Producto</td></tr><tr><td><textarea class="totalHorizontal" name="txtproducto" id="txtproducto"><?= $VarProductos ?></textarea></td></tr></table>
+                                </td>
+                  	        </tr>
+                    	      <tr>
+                    	        <td><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td>Perfil del Cliente</td></tr><tr><td><textarea class="totalHorizontal" name="txtperfilCliente" id="txtperfilCliente"><?= $VarPerfil_cliente ?></textarea></td></tr></table></td>
+                  	        </tr>
+                  	      </table>
+                                    </td>
+                                  <td width="349" valign="top"><table border="0" cellpadding="0" cellspacing="0">
+                                      <tr>
+                                        <td colspan="4"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                          <tr>
+                                            <td><span class="fila">Procedencia</span></td>
+                                            <td><span class="fila">
+                                              <select class="box" name="cboprocedencia" id="cboprocedencia">
+                                                <option value=''></option>
+                                                <option <? echo ($VarProcedencia_cliente === "Gelbe Seiten Buch") ? "selected" : ""; ?> >Gelbe Seiten Buch</option>
+                                                <option <? echo ($VarProcedencia_cliente === "Gelbe Seiten Internet") ? "selected" : ""; ?> >Gelbe Seiten Internet</option>
+                                                <option <? echo ($VarProcedencia_cliente === "Google Internet") ? "selected" : ""; ?> >Google Internet</option>
+                                                <option <? echo ($VarProcedencia_cliente === "1&1 Statistiken") ? "selected" : ""; ?> >1&1 Statistiken</option>
+                                                <option <? echo ($VarProcedencia_cliente === "Allg. Internet") ? "selected" : ""; ?> >Allg. Internet</option>
+                                                <option <? echo ($VarProcedencia_cliente === "Telefonmarketing") ? "selected" : ""; ?> >Telefonmarketing</option>
+                                              </select>
+                                            </span></td>
+                                          </tr>
+                                        </table></td>
+                                      </tr>
+                                      <tr>
+                                        <td width="18"><input type="checkbox" name="chkmasch" id="chkmasch" <? echo ($VarMasch === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="105">OEM</td>
+                                        <td width="18"><input type="checkbox" name="chkprivat" id="chkprivat" <? echo ($VarPrivat === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="80">Privat</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="18"><input type="checkbox" name="chkoem" id="chkoem" <? echo ($VarOem === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="105"> Masch/Anlagebau</td>
+                                        <td width="18"><input type="checkbox" name="chksonst" id="chksonst" <? echo ($VarSonst === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="80">Sonst.</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="18"><input type="checkbox" name="chkdistri" id="chkdistri" <? echo ($VarDistri === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="105">Distributeur</td>
+                                        <td width="18"><input type="checkbox" name="chkdict" id="chkdict" <? echo ($VarDict === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="80">DICT</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="18"><input type="checkbox" name="chkfach" id="chkfach" <? echo ($VarFach === "1") ? "checked" : ""; ?> /></td>
+                                        <td width="105">FachDienstleister</td>
+                                        <td width="18">&nbsp;</td>
+                                        <td width="80">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="4"></td>
+                                      </tr>
+                                  </table></td>
+                                  <td width="349" valign="top">&nbsp;</td>
+                                </tr>
+                        </table></td>
+                    </tr>
+                    
+                     <tr>
+                    	<td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    	  <tr>
+                    	    <td width="280" align="left" valign="top"><table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                      <td width="45">Tel.</td>
+                                      <td width="100"><input class="box" type="text" name="txttelefono" id="txttelefono" value="<?= $VarTelefono ?>"></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="45">Fax</td>
+                                      <td width="100"><input class="box" type="text" name="txtfax" id="txtfax" value="<?= $VarFax ?>"></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="45">Mail</td>
+                                      <td width="100"><input class="box" type="text" name="txtmail" id="txtmail" value="<?= $VarMail ?>"></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="45">Web</td>
+                                      <td><input class="box" type="text" name="txtweb" id="txtweb" value="<?= $VarWeb ?>"></td>
+                                    </tr>
+                                    <tr>
+                                      <td width="45">Web2</td>
+                                      <td width="100"><input class="box" type="text" name="txtweb2" id="txtweb2"value="<?= $VarInteresante_link ?>"></td>
+                                    </tr>
+                                  </table></td>
+                    	    <td width="250" align="left" valign="top"><table width="98%" border="0">
+                                      <tr>
+                                        <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                          <tr>
+                                            <td>Listado de Ferias</td>
+                                          </tr>
+                                          <tr>
+                                            <td><?php
+                                    echo "<select class='totalHorizontal' size='2' id='cboferias' name='cboferias' multiple >";
+                                    foreach ($ferias as $feria) {
+                                        echo "<option value=''>" . $feria->nombre . " - " . $feria->fecha_comienzo . " - " . $feria->fecha_final . "</option>";
+                                    }
+                                    echo "</select>";
+                                    ?></td>
+                                          </tr>
+                                        </table></td>
+                                      </tr>
+                                      <tr>
+                                        <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                          <tr>
+                                            <td width="60">Consorcio</td>
+                                            <td><?php
                                     echo "<select class='totalHorizontal' name='cboconsorcio' id='cboconsorcio'>";
                                     echo "<option value=''></option>";
                                     foreach ($consorcios as $consorcio) {
@@ -291,136 +356,70 @@ if ($compania != null) {
                                         }
                                     }
                                     echo "</select>";
-                                    ?>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-
-
-
-                                <div class="fila">
-                                    <label class="totalHorizontal">Listado de Ferias</label>
-                                    <?php
-                                    echo "<select class='totalHorizontal' size='2' id='cboferias' name='cboferias' multiple >";
-                                    foreach ($ferias as $feria) {
-                                        echo "<option value=''>" . $feria->nombre . " - " . $feria->fecha_comienzo . " - " . $feria->fecha_final . "</option>";
-                                    }
-                                    echo "</select>";
-                                    ?>
-                                </div>
-
-                            </fieldset>
-
-                        </div>
-                        <!-- fin de primera columna -->
-                        <!-- segunda columna -->
-                        <div class="centroFormulario">
-
-                            <fieldset>
-                                <div class="fila">
-                                    <div class="izquierdaAnalisis">
-                                        Analisis ABC
-                                    </div>
-
-                                    <div class="centroAnalisis">
-                                        <select  name="cboAnalisis" id="cboAnalisis" >
-                                            <option value=''></option>
-                                            <option <? echo ($VarAna_abc === "A") ? "selected" : ""; ?>>A</option>
-                                            <option <? echo ($VarAna_abc === "B") ? "selected" : ""; ?>>B</option>
-                                            <option <? echo ($VarAna_abc === "C") ? "selected" : ""; ?>>C</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="derechaAnalisis">
-                                        <label class="checkbox">
-                                            <input type="checkbox"  name="chkpendiente" id="chkpendiente" <? echo ($VarPendiente === "S") ? "checked" : ""; ?> > Pendiente
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="fila">
-                                    <label class="etiqueta">Procedencia</label>
-                                    <select class="box" name="cboprocedencia" id="cboprocedencia">
-                                        <option value=''></option>
-                                        <option <? echo ($VarProcedencia_cliente === "Gelbe Seiten Buch") ? "selected" : ""; ?> >Gelbe Seiten Buch</option>
-                                        <option <? echo ($VarProcedencia_cliente === "Gelbe Seiten Internet") ? "selected" : ""; ?> >Gelbe Seiten Internet</option>
-                                        <option <? echo ($VarProcedencia_cliente === "Google Internet") ? "selected" : ""; ?> >Google Internet</option>
-                                        <option <? echo ($VarProcedencia_cliente === "1&1 Statistiken") ? "selected" : ""; ?> >1&1 Statistiken</option>
-                                        <option <? echo ($VarProcedencia_cliente === "Allg. Internet") ? "selected" : ""; ?> >Allg. Internet</option>
-                                        <option <? echo ($VarProcedencia_cliente === "Telefonmarketing") ? "selected" : ""; ?> >Telefonmarketing</option>
-                                    </select>
-                                </div>
-                                <div class="fila">
-                                    <label class="totalHorizontal">Producto</label>
-                                    <textarea class="totalHorizontal" name="txtproducto" id="txtproducto"><?= $VarProductos ?></textarea>
-                                </div>
-                                <div class="fila">
-                                    <label class="totalHorizontal">Perfil del Cliente</label>
-                                    <textarea class="totalHorizontal" name="txtperfilCliente" id="txtperfilCliente"><?= $VarPerfil_cliente ?></textarea>
-                                </div>
-
-                                <div class="fila">
-                                    <label class="totalHorizontal">Wirtschaftslage</label>
-                                    <select class="totalHorizontal" name="cboWirtschaftslage" id="cboWirtschaftslage">
-                                        <option value=''></option>
-                                        <option <? echo ($VarBedarfinZukunft === "Positiv+") ? "selected" : ""; ?> >Positiv+</option>
-                                        <option <? echo ($VarBedarfinZukunft === "Positiv") ? "selected" : ""; ?> >Positiv</option>
-                                        <option <? echo ($VarBedarfinZukunft === "Normal") ? "selected" : ""; ?> >Normal</option>
-                                        <option <? echo ($VarBedarfinZukunft === "ruhig") ? "selected" : ""; ?> >ruhig</option>
-                                        <option <? echo ($VarBedarfinZukunft === "Schlecht") ? "selected" : ""; ?> >Schlecht</option>
-                                    </select>
-                                </div>                            
-
-                            </fieldset>
-                            <fieldset>
-
-                                <div class="fila">
-                                    <label class="totalHorizontal">Listado de Categorias</label>
-
-                                    <?php
+                                    ?></td>
+                                          </tr>
+                                        </table></td>
+                                      </tr>
+                                  </table>
+                            </td>
+                    	    <td width="250" align="left" valign="top">
+                            <table width="98%" border="0" cellpadding="0" cellspacing="0">
+                    	          <tr>
+                    	            <td>Listado de Categorias</td>
+                  	            </tr>
+                    	          <tr>
+                    	            <td>   
+                                <?php
                                     echo "<select class='totalHorizontal' size='2' id='cbocategorias' name='cbocategorias' multiple >";
                                     foreach ($categorias as $categoria) {
                                         echo "<option value=''>" . $categoria->nombre . "</option>";
                                     }
                                     echo "</select>";
                                     ?>
-                                </div>
-                            </fieldset>
-                            <fieldset>
-
-                                <div class="fila">
-                                    <label class="totalHorizontal">Listado de Parthner</label>
-
-                                    <?php
+                            </td>
+                  	            </tr>
+                  	          </table>
+                            
+                           </td>
+                    	    <td width="250" align="left" valign="top">
+               <table width="98%" border="0" cellpadding="0" cellspacing="0">
+                    	          <tr>
+                    	            <td>Listado de Parthner</td>
+                  	            </tr>
+                    	          <tr>
+                    	            <td>   
+                                <?php
                                     echo "<select class='totalHorizontal' size='2' id='cboparthner' name='cboparthner' multiple >";
                                     foreach ($partner as $partne) {
                                         echo "<option value=''>" . $partne->nombre . " - " . $partne->categoria . "</option>";
                                     }
                                     echo "</select>";
                                     ?>
-                                </div>    
-                            </fieldset>
-
-                        </div>
+                            </td>
+                  	            </tr>
+                  	          </table>             
+                           </td>
+                  	    </tr>
+                  	  </table></td>
+                    </tr>
+                    
+            </table>
                     </form>
                 </div>
             </div>
-
             <!-- fin de segunda columna -->
-
+                    
         </td>
-        <td valign="top">
-
+    </tr>
+    
+    
+    <tr>
+        <td bgcolor="#CCCC00">
             <div id="formularioContacto" >
-                <!-- tercera columna -->
                 <!-- Formulario Contactos -->
-
-
                 <!-- fin de tercera columna -->
             </div>
         </td>
-
-
     </tr>
 </table>
 

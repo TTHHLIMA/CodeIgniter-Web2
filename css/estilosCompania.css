@@ -187,7 +187,7 @@ select{
     margin: 0
 }
 #txtnombre {
-    width: 450px;
+    width: 430px;
     margin: 0
 }
 
@@ -200,19 +200,29 @@ select{
 }
 
 #cboprocedencia {
-    width: 180px;
+    width: 150px;
+}
+
+#cboconsorcio{
+    width: 150px;
 }
 
 #cboIdioma{
     width: 210px;
 }
 #cboPais{
-    width: 210px;
+    width: 215px;
 }
 #cboAndere{
     width: 80px;
     float: left;
 }
+
+#cboWirtschaftslage {
+    width: 100px;
+}
+
+
 .modal{
 
     width: 700px;
@@ -258,4 +268,22 @@ select{
 /*HH: controles formulario llamada */
 #txtidLlamada{
     width: 50px;
+}
+
+#txtinfo_email{
+    width: 70px;
+}
+#txtprecio_email{
+    width: 70px;
+}
+
+#cbousuario1{
+    width: 100px;
+}
+
+#txtfecha_llamada{
+    width: 70px;
+}
+#txtvolver_llamar{
+    width: 70px;
 }

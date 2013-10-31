@@ -13,7 +13,7 @@ class Compania extends CI_Controller {
         $this->load->model('marqueting/compania_model');
         $this->load->model('marqueting/contacto_model');
         $this->load->model('marqueting/llamada_model');
-        $this->load->helper(array('url', 'consola_helper'));
+        $this->load->helper(array('url', 'consola_helper','funciones_helper'));
     }
 
     public function index() {
@@ -466,10 +466,10 @@ class Compania extends CI_Controller {
         $idllamada = $this->input->post("txtidLlamada");
         $xidcontacto = ($this->input->post("txtXidContacto") === "") ? $idcontacto : $this->input->post("txtXidContacto");
         $usuario = $this->input->post("cbousuario1");
-        $fecha_llamada = $this->input->post("txtfecha_llamada");
+        $fecha_llamada = fecha_calendario_inverso($this->input->post("txtfecha_llamada"));
         $fecha_carta_html = "0000-00-00"; //HH: cartas html directa
         $nota = $this->input->post("txtnotaContacto");
-        $volver_llamar = $this->input->post("txtvolver_llamar");
+        $volver_llamar = fecha_calendario_inverso($this->input->post("txtvolver_llamar"));
         $fecha_cdirecta1_1 = "0000-00-00"; //HH: cartas html indirecta
         $chkCA1 = ($this->input->post("chkCa1") === "on") ? "1" : "0";
         $chkCA2 = ($this->input->post("chkCa2") === "on") ? "1" : "0";
@@ -478,8 +478,8 @@ class Compania extends CI_Controller {
         $chkCC2 = ($this->input->post("chkCc2") === "on") ? "1" : "0";
         $chkCD1 = ($this->input->post("chkCd1") === "on") ? "1" : "0";
         $chkCD2 = ($this->input->post("chkCd2") === "on") ? "1" : "0";
-        $info_email = $this->input->post("txtprecio_email");
-        $precio_email = $this->input->post("txtinfo_email");
+        $info_email = fecha_calendario_inverso($this->input->post("txtinfo_email"));
+        $precio_email = fecha_calendario_inverso($this->input->post("txtprecio_email"));
 
         //var_dump($this->input->post("txtidContacto"));
         
@@ -527,6 +527,7 @@ class Compania extends CI_Controller {
                 'info_email' => $info_email,
                 'precio_email' => $precio_email
             );
+            //var_dump($dataLlamada);
             $respuesta = $this->llamada_model->actualizar_llamada($dataLlamada, $idllamada);
         }
         if ($opcion === "3") { //HH: Eliminar

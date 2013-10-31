@@ -41,7 +41,7 @@ if ($llamada != null) {
 }
 ?>
 
-<table width="100%"  id="panelLlamadas" style='background-color: #EFDCBC' >
+<table  id="panelLlamadas" style='background-color: #ddd' >
     <tr>
         <td>
             <div class="FormLeft ">
@@ -94,72 +94,68 @@ if ($llamada != null) {
     <tr>
         <td width="289" valign="top">
             <form id="frmLlamada" action="javascript:void(0)" method="post">
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td><table  width="100%">
+                <table>
+                    <tr>
+                        <td colspan="2">
+
+                            <table  width="100%">
                                 <tr>
-                                    <td width="20" align="left" valign="top"><label  >Id.</label></td>
-                                  <td width="40" align="left" valign="top"><input class="boxleft" type="text" name="txtidLlamada" id="txtidLlamada"  value="<?= $xidllamada; ?>" readonly> <input class="boxleft" type="hidden" name="txtXidContacto" id="txtXidContacto"  value="<?= $xidcontacto; ?>"></td>
-                                  <td width="160" align="left" valign="top">                        
+                                    <td valign="top"><label  >Id.</label></td>
+                                    <td valign="top"><input class="boxleft" type="text" name="txtidLlamada" id="txtidLlamada"  value="<?= $xidllamada; ?>" readonly></td>
+                                    <td valign="top"> <input class="boxleft" type="hidden" name="txtXidContacto" id="txtXidContacto"  value="<?= $xidcontacto; ?>">                        
                                         <div class="etiquetaCount">
                                             Total de llamadas : <b><?= $countLlamadas ?></b>
                                         </div></td>
-                                         <td align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                                           <tr>
-                                             <td>&nbsp;</td>
-                                             <td width="90" align="right">Info per Email</td>
-                                             <td width="70"><input  type="text" id ="txtinfo_email"  name="txtinfo_email" value="<?= $xinfo_email; ?>" /></td>
-                                             <td width="120" align="right">Preise per E-Mail</td>
-                                             <td width="70"><input  type="text" id ="txtprecio_email"  name="txtprecio_email" value="<?= $xprecio_email; ?>" /></td>
-                                           </tr>
-                                         </table></td>
                                 </tr>
-                                
-                               
-                                
-                    </table></td>
-                  </tr>
-                  <tr>
-                    <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                          <tr>
-                            <td>Usuario</td>
-                          </tr>
-                          <tr>
-                            <td><select class="box"  name="cbousuario1" id="cbousuario1" >
-                              <option value=''></option>
-                              <option <? echo ($xusuario === "Christian") ? "selected" : ""; ?>>Christian</option>
-                              <option <? echo ($xusuario === "Flormira") ? "selected" : ""; ?>>Flormira</option>
-                              <option <? echo ($xusuario === "Isolde Petrik") ? "selected" : ""; ?>>Isolde Petrik</option>
-                              <option <? echo ($xusuario === "Juan") ? "selected" : ""; ?>>Juan</option>
-                            </select></td>
-                          </tr>
-                          <tr>
-                            <td>Fecha de llamada</td>
-                          </tr>
-                          <tr>
-                            <td><input  type="text" id ="txtfecha_llamada" name="txtfecha_llamada" value="<?= $xfecha_llamada; ?>" /></td>
-                          </tr>
-                          <tr>
-                            <td>&nbsp;</td>
-                          </tr>
-                        </table></td>
-                        <td align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                          <tr>
-                            <td>Nota</td>
-                          </tr>
-                          <tr>
-                            <td><textarea name="txtnotaContacto" id="txtnotaContacto" cols="45" rows="5"><?= $xnota; ?></textarea></td>
-                          </tr>
-                          <tr>
-                            <td>Volver a llamar</td>
-                          </tr>
-                          <tr>
-                            <td><input  type="text" id ="txtvolver_llamar"  name="txtvolver_llamar" value="<?= $xvolver_llamar; ?>" /></td>
-                          </tr>
-                        </table></td>
-                        <td align="left" valign="top"><table border="0" cellpadding="0" cellspacing="0">
+                            </table>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <label for="cbousuario1" >Usuario</label>
+
+                        </td>
+                        <td>
+                            <select class="box"  name="cbousuario1" id="cbousuario1" >
+                                <option value=''></option>
+                                <option <? echo ($xusuario === "Christian") ? "selected" : ""; ?>>Christian</option>
+                                <option <? echo ($xusuario === "Flormira") ? "selected" : ""; ?>>Flormira</option>
+                                <option <? echo ($xusuario === "Isolde Petrik") ? "selected" : ""; ?>>Isolde Petrik</option>
+                                <option <? echo ($xusuario === "Juan") ? "selected" : ""; ?>>Juan</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de llamada</td>
+                        <td>
+                            <input  type="text" id ="txtfecha_llamada" name="txtfecha_llamada" value="<?= $xfecha_llamada; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Info per Email</td>
+                        <td>
+                            <input  type="text" id ="txtinfo_email"  name="txtinfo_email" value="<?= $xinfo_email; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Preise per E-Mail</td>
+                        <td>
+                            <input  type="text" id ="txtprecio_email"  name="txtprecio_email" value="<?= $xprecio_email; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Volver a llamar</td>
+                        <td>
+                            <input  type="text" id ="txtvolver_llamar"  name="txtvolver_llamar" value="<?= $xvolver_llamar; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+
+                            <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td><input type="checkbox" name="chkCa1" id="chkCa1" <? echo ($xchkCA1 === "1") ? "checked" : ""; ?> />
                                         Besonders intressiert</td>
@@ -188,16 +184,16 @@ if ($llamada != null) {
                                     <td><input type="checkbox" name="chkCd2" id="chkCd2" <? echo ($xchkCD2 === "1") ? "checked" : ""; ?> />
                                         Kein Bedarf, nur Vertrieb/Handel</td>
                                 </tr>
-                            </table></td>
-                      </tr>
-                    </table></td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td>&nbsp;</td>
-                  </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Nota</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><textarea name="txtnotaContacto" id="txtnotaContacto" cols="45" rows="5"><?= $xnota; ?></textarea></td>
+                    </tr>
                 </table>
             </form>
         </td>
