@@ -19,6 +19,7 @@
                         <tr>
                             <th>Item</th>
                             <th>Pedido</th>
+                            <th>NAS</th>
                             <th>Alias</th>
                             <th>Coordinador</th>
                             <th>Proceso</th>
@@ -55,6 +56,7 @@
                                         <? echo $proceso->pedido; ?>
                                     </a>
                                 </td>
+                                <td><a class="btn btn-mini">NAS</a></td>
                                 <td><? echo $proceso->alias; ?></td>
                                 <td><? echo $proceso->coordinador; ?></td>
                                 <td><? echo $proceso->proceso; ?></td>
