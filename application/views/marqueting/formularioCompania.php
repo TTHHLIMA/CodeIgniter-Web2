@@ -87,9 +87,9 @@ if ($compania != null) {
 <table width="1000">
     <tr>
         <td  valign="top">
-            <table>
+            <table width="100%">
                 <tr>
-                    <td>
+                    <td width="130px">
 
                         <div class="btn-group">
                             <a class="btn" id="btnPrimero"
@@ -111,7 +111,7 @@ if ($compania != null) {
                         </div>
 
                     </td>
-                    <td>
+                    <td width="170px;">
                         <div class="btn-group divLeft">
 
                             <a class="btn" id="btnNuevo"
@@ -141,33 +141,63 @@ if ($compania != null) {
                                ><img src="<?= $this->config->base_url() ?>images/marqueting/buscar2.png" class="tamanoIconoMantenimiento"></a>
                         </div>
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
-
-
-            <div class="contenedorFormulario well">
-
-                <div class="FormLeft">
-
-
-                    <div class="divLeft">
-                        <div class="etiquetaCount">
+                    <td width="140">
+                    <div class="etiquetaCount">
                             Total de Firmas : <b><?= $countCompania ?></b>
-                        </div>
-                    </div>
-                    <div class="divLeft">
-                        <?= ($VarNocontactar === "S") ? "<div class='circuloNoContactar'></div>" : ""; ?>
-                    </div>
-                    <div class="divLeft">
-                        <?= ($VarParalizado === "S") ? "<div class='circuloParalizado'></div>" : ""; ?>
-                    </div>
-                </div>
-
-
-            </div>               
+                        </div></td>
+                    <td>
+					<?= ($VarNocontactar === "S") ? "<div class='circuloNoContactar'></div>" : ""; ?></td>
+                    <td>
+                    <?= ($VarParalizado === "S") ? "<div class='circuloParalizado'></div>" : ""; ?>
+                    </td>
+                    <td>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    	<tr>
+                        	<td width="160"><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               >Compania y Contactos</a></td>
+                            <td width="30"><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               > A </a></td>
+                            <td width="30"><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               > B </a></td>
+                            <td width="30"><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               > C </a></td>
+                            <td width="30"><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               > D </a></td>
+                            <td><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               > Pendiente </a></td>
+                            <td><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               > No Contactar </a></td>
+                            <td><a class="btn" id="btncompania"
+                               href="#a"
+                               data-toggle="modal"
+                               title="Buscar"
+                               > Paralizado </a></td>
+                        </tr>
+                    </table>
+                    </td>
+                </tr>
+            </table>               
         </td>
     </tr>
     <tr valign="top">

@@ -56,7 +56,7 @@
                                         <? echo $proceso->pedido; ?>
                                     </a>
                                 </td>
-                                <td><a class="btn btn-mini">NAS</a></td>
+                                <td><a class="btn btn-mini" href="ftp://admin:techni_lima@190.41.47.93/ADMIN/red/Editacion/Proyectos_actuales/<? echo $proceso->pedido; ?>_<? echo $proceso->alias; ?>/" target="_blank">NAS-PERU</a></td>
                                 <td><? echo $proceso->alias; ?></td>
                                 <td><? echo $proceso->coordinador; ?></td>
                                 <td><? echo $proceso->proceso; ?></td>
