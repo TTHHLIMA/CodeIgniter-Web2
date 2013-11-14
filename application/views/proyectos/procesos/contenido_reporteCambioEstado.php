@@ -20,6 +20,7 @@
                             <th>Item</th>
                             <th>Pedido</th>
                             <th>NAS</th>
+                            <th>DIR</th>
                             <th>Alias</th>
                             <th>Coordinador</th>
                             <th>Proceso</th>
@@ -57,6 +58,9 @@
                                     </a>
                                 </td>
                                 <td><a class="btn btn-mini" href="ftp://admin:techni_lima@190.41.47.93/ADMIN/red/Editacion/Proyectos_actuales/<? echo $proceso->pedido; ?>_<? echo $proceso->alias; ?>/" target="_blank">NAS-PERU</a></td>
+                                <!--<td><a class="btn btn-mini" href="file://c:/" target="_blank">DIR</a></td>-->
+                                <td><input  type="button" onClick="CallMe()" value="Open USB" /></td>
+                               
                                 <td><? echo $proceso->alias; ?></td>
                                 <td><? echo $proceso->coordinador; ?></td>
                                 <td><? echo $proceso->proceso; ?></td>

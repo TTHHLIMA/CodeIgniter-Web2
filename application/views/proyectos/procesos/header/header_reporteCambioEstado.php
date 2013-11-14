@@ -56,6 +56,12 @@
                 document.getElementById(xid).style.fontWeight = "100";
             }
 
+            function CallMe()
+            {
+
+                alert("test");
+                window.open("file:///C:/");
+            }
 
             function getVista(xid, obj) {
                 var dato;

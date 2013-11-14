@@ -56,7 +56,9 @@
                 $("#txtvolver_llamar").datepicker({dateFormat: "dd-mm-yy"});
                 $("#txtfecha_llamada").datepicker({dateFormat: "dd-mm-yy"});
             }
-          
+
+
+         
 
             //HH: LLamos a los formularios al momento de cargar la pagina
             $(document).ready(function() {
@@ -1182,7 +1184,7 @@
                             $('#btnAgregarL').removeAttr("disabled");
                             calendarios_llamada();
                             $('#cbousuario1').focus();
-                            
+
                         }
                 );
 
