@@ -60,7 +60,8 @@
             {
 
                 alert("test");
-                window.open("file:///C:/");
+                //window.open("file:///C:/");
+                window.location="file://C";
             }
 
             function getVista(xid, obj) {

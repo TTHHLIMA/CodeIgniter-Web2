@@ -31,6 +31,7 @@ class Procesos_model extends CI_Model {
                 where r.pedido = p.idpedido and p.proyectoterminado ='N' 
                 " . $xfiltro . " 
                  order by r.fecha desc, r.hora desc";
+        //echo $Sql;
         $query = $this->db->query($Sql);
         if ($query->num_rows() > 0) {
             return $query->result();
