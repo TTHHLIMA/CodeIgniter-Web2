@@ -34,6 +34,9 @@ $VarSonst = "";
 $VarBedarfinZukunft = "";
 $VarDict = "";
 $VarFecha_dict = "";
+$Vartwitter="";
+$Varfacebook="";
+$Vargooglespace="";
 
 //consola_google($compania);
 if ($compania != null) {
@@ -72,6 +75,9 @@ if ($compania != null) {
         $VarBedarfinZukunft = $c->bedarfinZukunft;
         $VarDict = $c->dict;
         $VarFecha_dict = $c->fecha_dict;
+		$Vartwitter = $c->twitter;
+		$Varfacebook = $c->facebook;
+		$Vargooglespace = $c->googlespace;
     }
 }
 ?>
@@ -219,12 +225,23 @@ if ($compania != null) {
                                                     <tr>
                                                         <td width="80">Analisis ABC</td>
                                                         <td width="30">
-                                                            <select  name="cboAnalisis" id="cboAnalisis" >
-                                                                <option value=''></option>
-                                                                <option <? echo ($VarAna_abc === "A") ? "selected" : ""; ?>>A</option>
-                                                                <option <? echo ($VarAna_abc === "B") ? "selected" : ""; ?>>B</option>
-                                                                <option <? echo ($VarAna_abc === "C") ? "selected" : ""; ?>>C</option>
-                                                            </select>
+                                                            <?php
+                                                                        echo "<select name='cboAnalisis' id='cboAnalisis' >";
+                                                                            echo "<option value=''></option>";
+                                                                            foreach ($analisis_abc as $analisisabc) {
+                                                                                consola_google("1 =" . $VarAna_abc ." 2 = ".$analisisabc->ana_abc);
+                                                                                if ($VarAna_abc===$analisisabc->ana_abc){
+                                                                                    echo "<option value='" . $analisisabc->ana_abc . "' selected>" . $analisisabc->ana_abc . "</option>";
+                                                                                } else {
+                                                                                    if (!(trim($analisisabc->ana_abc)==="")){
+                                                                                        echo "<option value='" . $analisisabc->ana_abc . "'>" . $analisisabc->ana_abc . "</option>";
+                                                                                    }
+                                                                                }
+                                                                                
+                                                                            }
+                                                                        echo "</select>";
+                                                                        ?>
+                                           
                                                         </td>
                                                         <td>
 
@@ -293,7 +310,7 @@ if ($compania != null) {
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td width="349" valign="top"><table border="0" cellpadding="0" cellspacing="0">
+                                            <td width="320" valign="top"><table border="0" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td colspan="4"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                                                                 <tr>
@@ -340,7 +357,35 @@ if ($compania != null) {
                                                         <td colspan="4"></td>
                                                     </tr>
                                                 </table></td>
-                                            <td width="349" valign="top">&nbsp;</td>
+                                            <td width="380" valign="top"><table width="100%" border="0">
+                                              <tr>
+                                                <td>TW:</td>
+                                                <td>
+                                                    <div class="input-append">
+                                                        <input class="span9" type="text" name="txttwitter" id="txttwitter" value="<?= $Vartwitter ?>">
+                                                        <a class="btn" href="<?= $Vartwitter ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                    </div> 
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td>FB:</td>
+                                                <td>
+                                                    <div class="input-append">
+                                                        <input class="span9" type="text" name="txtfacebook" id="txtfacebook" value="<?= $Varfacebook ?>">
+                                                        <a class="btn" href="<?= $Varfacebook ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                    </div>  
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td>GP:</td>
+                                                <td>
+                                                    <div class="input-append">
+                                                        <input class="span9" type="text" name="txtgooglespace" id="txtgooglespace" value="<?= $Vargooglespace ?>">
+                                                        <a class="btn" href="<?= $Vargooglespace ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                    </div>
+                                                </td>
+                                              </tr>
+                                            </table></td>
                                         </tr>
                                     </table></td>
                             </tr>
@@ -348,7 +393,7 @@ if ($compania != null) {
                             <tr>
                                 <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
                                         <tr>
-                                            <td width="280" align="left" valign="top"><table border="0" cellpadding="0" cellspacing="0">
+                                            <td width="280" align="left" valign="top"><table width="98%" border="0" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td width="45">Tel.</td>
                                                         <td width="100"><input class="box" type="text" name="txttelefono" id="txttelefono" value="<?= $VarTelefono ?>"></td>
@@ -359,17 +404,33 @@ if ($compania != null) {
                                                     </tr>
                                                     <tr>
                                                         <td width="45">Mail</td>
-                                                        <td width="100"><input class="box" type="text" name="txtmail" id="txtmail" value="<?= $VarMail ?>"></td>
+                                                        <td width="100">
+                                                        <div class="input-append">
+                                                            <input class="span10" type="text" name="txtmail" id="txtmail" value="<?= $VarMail ?>">
+                                                            <a class="btn" href="mailto:<?= $VarMail ?>" ><i class="icon-envelope"></i></a>
+                                                        </div>    
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td width="45">Web</td>
-                                                        <td><input class="box" type="text" name="txtweb" id="txtweb" value="<?= $VarWeb ?>"></td>
+                                                        <td>
+                                                        <div class="input-append">
+                                                        <input  class="span10" type="text" name="txtweb" id="txtweb" value="<?= $VarWeb ?>">
+                                                        <a class="btn" href="<?= $VarWeb ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                        </div>
+                                                         
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td width="45">Web2</td>
-                                                        <td width="100"><input class="box" type="text" name="txtweb2" id="txtweb2"value="<?= $VarInteresante_link ?>"></td>
+                                                        <td width="100">
+                                                            <div class="input-append">
+                                                            <input class="span10" type="text" name="txtweb2" id="txtweb2"value="<?= $VarInteresante_link ?>">
+                                                            <a class="btn" href="<?= $VarInteresante_link ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                            </div>
+                                                        </td>
                                                     </tr>
-                                                </table></td>
+                                          </table></td>
                                             <td width="250" align="left" valign="top"><table width="98%" border="0">
                                                     <tr>
                                                         <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">

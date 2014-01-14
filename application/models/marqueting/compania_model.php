@@ -161,6 +161,16 @@ class Compania_model extends CI_Model {
         }
     }
 
+  
+    function listar_analisis_abc() {
+        $query = $this->db->query("select distinct ana_abc from compania order by ana_abc");
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+    
     function listar_paises() {
         $query = $this->db->query("select codigo , nombre from pais order by nombre asc");
         if ($query->num_rows() > 0) {

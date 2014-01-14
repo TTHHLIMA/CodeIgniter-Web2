@@ -42,6 +42,7 @@ class Compania extends CI_Controller {
     public function buscar_compania_siguiente($idcompania_actual = '') {
         $data['compania'] = $this->compania_model->buscar_compania_siguiente($idcompania_actual);
         $data['paises'] = $this->compania_model->listar_paises();
+        $data['analisis_abc'] = $this->compania_model->listar_analisis_abc();
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         if ($data['compania'] === False) {
             $data['compania'] = $this->compania_model->buscar_compania_idcompania($idcompania_actual);
@@ -57,6 +58,7 @@ class Compania extends CI_Controller {
     public function buscar_compania_anterior($idcompania_actual = '') {
         $data['compania'] = $this->compania_model->buscar_compania_anterior($idcompania_actual);
         $data['paises'] = $this->compania_model->listar_paises();
+        $data['analisis_abc'] = $this->compania_model->listar_analisis_abc();
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         if ($data['compania'] === False) {
             $data['compania'] = $this->compania_model->buscar_compania_idcompania($idcompania_actual);
@@ -72,6 +74,7 @@ class Compania extends CI_Controller {
     public function buscar_compania_ultimo($idcompania_actual = '') {
         $data['compania'] = $this->compania_model->buscar_compania_ultimo();
         $data['paises'] = $this->compania_model->listar_paises();
+        $data['analisis_abc'] = $this->compania_model->listar_analisis_abc();
         $data['ferias'] = $this->compania_model->buscar_ferias_idcompania($data['compania'][0]->idcompania);
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
@@ -84,6 +87,7 @@ class Compania extends CI_Controller {
     public function buscar_compania_primero() {
         $data['compania'] = $this->compania_model->buscar_compania_primero();
         $data['paises'] = $this->compania_model->listar_paises();
+        $data['analisis_abc'] = $this->compania_model->listar_analisis_abc();
         $data['ferias'] = $this->compania_model->buscar_ferias_idcompania($data['compania'][0]->idcompania);
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
@@ -290,6 +294,9 @@ class Compania extends CI_Controller {
         $chksonst = ($this->input->post("chksonst") === "on") ? "1" : "0";
         $cboWirtschaftslage = $this->input->post("cboWirtschaftslage");
         $chkdict = ($this->input->post("chkdict") === "on") ? "1" : "0";
+        $txttwitter =  $this->input->post("txttwitter");
+        $txtfacebook =  $this->input->post("txtfacebook");
+        $txtgooglespace =  $this->input->post("txtgooglespace");
         $fecha_dict = "0000-00-00";
 
         $respuesta = "";
@@ -336,7 +343,10 @@ class Compania extends CI_Controller {
                 'sonst' => $chksonst,
                 'bedarfinZukunft' => $cboWirtschaftslage,
                 'dict' => $chkdict,
-                'fecha_dict' => $fecha_dict
+                'fecha_dict' => $fecha_dict,
+                'twitter' => $txttwitter,
+                'facebook' => $txtfacebook,
+                'googlespace' => $txtgooglespace
             );
 
 
@@ -372,7 +382,10 @@ class Compania extends CI_Controller {
                 'privat' => $chkprivat,
                 'sonst' => $chksonst,
                 'bedarfinZukunft' => $cboWirtschaftslage,
-                'dict' => $chkdict
+                'dict' => $chkdict,
+                'twitter' => $txttwitter,
+                'facebook' => $txtfacebook,
+                'googlespace' => $txtgooglespace                    
             );
             $respuesta = $this->compania_model->actualizar_compania($dataCompa, $idcompania);
         }

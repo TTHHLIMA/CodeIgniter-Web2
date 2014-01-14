@@ -14,8 +14,8 @@
                             foreach ($lista_companias_relacionadas as $item) {
                                 echo "<tr>";
                                 echo "<td>".$item->Firma."</td>";
-                                echo "<td>".$item->Web;
-                                echo "<td>".$item->nombre;
+                                echo "<td><a href='".$item->Web."' target='_blank'>".$item->Web."</a></td>";
+                                echo "<td>".$item->nombre."</td>";
                                 echo "</tr>";
                             }
                         }
