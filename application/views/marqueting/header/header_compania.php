@@ -1384,6 +1384,22 @@
                 $('#test_modal').modal('show');
             });
 
+            // HH: cargando datos de consulta tipo modal
+            $(document).on("click", "#btncompaniaRelacionadas", function(e) {
+                $('#ListadoCompaniaRelacionadas').modal('show');
+                  
+                      var xidcompania = $("#txtidcompania").attr("value");
+                   // alert (xidcompania);
+                    var href = "<?= $this->config->base_url() ?>marqueting/compania/filtrar_compania_relacionadas_idcompania/" + xidcompania;
+                    $("#ResultadosCompaniaRelacionadas").load(href);
+                  });
+
+        
+
+
+
+
+
             //HH: llamando a cargar la compania en el formulario de compania
             function dato(id) {
                 var idcompania = id;

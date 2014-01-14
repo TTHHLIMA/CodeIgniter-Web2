@@ -30,6 +30,7 @@ class Compania extends CI_Controller {
             $this->load->view('menu/menuSuperior');
             $this->load->view('marqueting/compania');
             $this->load->view('contenedor/buscador_lista_Compania');
+            $this->load->view('contenedor/buscador_lista_Compania_relacionadas');
             $this->load->view('footer/footer');
         } else {
             //sino inicio sesion redirecciono
@@ -184,6 +185,20 @@ class Compania extends CI_Controller {
         }
     }
 
+    
+    public function filtrar_compania_relacionadas_idcompania($idcompania = null) {
+       // echo "sss".$idcompania;
+        if ($idcompania == null) {
+            $data['lista_companias_relacionadas'] = array();
+            $this->load->view("contenedor/lista_compania_relacionada", $data);
+        } else {
+            $data['lista_companias_relacionadas'] = $this->compania_model->filtrar_compania_relacionadas_idcompania($idcompania);
+            //var_dump($data['lista_companias_relacionadas']);
+            $this->load->view("contenedor/lista_compania_relacionada", $data);
+        }
+    }    
+    
+    
 //HH: botones de navegacion llamadas
      //HH: botones de navegacion contactos
     public function buscar_llamada_siguiente($idllamada_actual = '', $idcontacto_actual = '') {

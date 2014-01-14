@@ -48,8 +48,10 @@ class Job extends CI_Controller {
                                 $mensaje="Se confirmo el Pedido por email con los datos.<br>".
                                          "<b>Idproyecto = </b>" . $xidproyecto . "<br>" .
                                          "<b>traductor = </b>" . $xidtraductor . " - ". $Col->traductor_nombre ."<br>";
-                                if (!mail($para,$titulo,$mensaje,$dex)){
+                                if (mail($para,$titulo,$mensaje,$dex)){
+                                }else{
                                        $errorMail="Caso 1";
+                                       echo "ErrorMail.";
                                 }
                             $Booleano=true;
                         } else {

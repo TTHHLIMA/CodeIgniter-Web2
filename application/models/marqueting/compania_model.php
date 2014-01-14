@@ -93,6 +93,16 @@ class Compania_model extends CI_Model {
         }
     }
 
+    
+    public function filtrar_compania_relacionadas_idcompania($idcompania) {
+        $query = $this->db->query("select c.nombre as Firma , c.web as Web , s.idsonst , sc.nombre from clientes  k, compania c,sonts_categoria_compania s , sonts_categoria sc  where sc.idsonst = s.idsonst  and k.referencia ='1' and  k.id_compania = c.idcompania and c.nocontactar ='N' and c.paralizado = 'N' and c.idcompania = s.idcompania and s.idcompania <> '" . $idcompania . "' and s.idsonst IN (select distinct sonts_categoria_compania.idsonst from  sonts_categoria_compania  where  sonts_categoria_compania.idcompania = '" . $idcompania . "')  order by c.nombre , s.prioridad ");
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
     public function buscar_contacto_idcontacto($idcontacto_actual) {
         $query = $this->db->query("select * from contacto where idcontacto = '" . $idcontacto_actual . "'  LIMIT 0,1");
         if ($query->num_rows() === 1) {

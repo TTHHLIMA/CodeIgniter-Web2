@@ -411,7 +411,14 @@ if ($compania != null) {
                                             <td width="250" align="left" valign="top">
                                                 <table width="98%" border="0" cellpadding="0" cellspacing="0">
                                                     <tr>
-                                                        <td>Listado de Categorias</td>
+                                                        <td>
+                                                            Listado de Categorias 
+                                                            <a class="btn" id="btncompaniaRelacionadas"
+                                                                href="#a"
+                                                                data-toggle="modal"
+                                                                title="Mostrar Companias Relacionadas"
+                                                                >Mostrar Firmas</a>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>   
