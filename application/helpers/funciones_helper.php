@@ -54,4 +54,15 @@ function fecha_calendario_inverso($fecha_string) {
     return $xfecha_string;
     
 }
+
+
+function validar_link($cadena){
+     $cad = substr(trim($cadena), 0, 1);
+     if ($cad==="h" || $cad ==="H"){
+         return $cadena;
+     } else {
+         return "http://" . $cadena;
+     }
+}
+
 ?>

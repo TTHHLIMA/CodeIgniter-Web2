@@ -157,6 +157,7 @@ if ($compania != null) {
                     <?= ($VarParalizado === "S") ? "<div class='circuloParalizado'></div>" : ""; ?>
                     </td>
                     <td>
+                    <!--
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     	<tr>
                         	<td width="160"><a class="btn" id="btncompania"
@@ -201,6 +202,7 @@ if ($compania != null) {
                                > Paralizado </a></td>
                         </tr>
                     </table>
+                    -->
                     </td>
                 </tr>
             </table>               
@@ -362,8 +364,12 @@ if ($compania != null) {
                                                 <td>TW:</td>
                                                 <td>
                                                     <div class="input-append">
+                                                        <?php 
+                                                        $link="";
+                                                        $link= validar_link($Vartwitter);
+                                                        ?>
                                                         <input class="span9" type="text" name="txttwitter" id="txttwitter" value="<?= $Vartwitter ?>">
-                                                        <a class="btn" href="<?= $Vartwitter ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                        <a class="btn" href="<?= $link ?>"  target="_blank" ><i class="icon-globe"></i></a>
                                                     </div> 
                                                 </td>
                                               </tr>
@@ -371,8 +377,12 @@ if ($compania != null) {
                                                 <td>FB:</td>
                                                 <td>
                                                     <div class="input-append">
+                                                        <?php 
+                                                        $link="";
+                                                        $link= validar_link($Varfacebook);
+                                                        ?>
                                                         <input class="span9" type="text" name="txtfacebook" id="txtfacebook" value="<?= $Varfacebook ?>">
-                                                        <a class="btn" href="<?= $Varfacebook ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                        <a class="btn" href="<?= $link ?>"  target="_blank" ><i class="icon-globe"></i></a>
                                                     </div>  
                                                 </td>
                                               </tr>
@@ -380,8 +390,12 @@ if ($compania != null) {
                                                 <td>GP:</td>
                                                 <td>
                                                     <div class="input-append">
+                                                        <?php 
+                                                        $link="";
+                                                        $link= validar_link($Vargooglespace);
+                                                        ?>
                                                         <input class="span9" type="text" name="txtgooglespace" id="txtgooglespace" value="<?= $Vargooglespace ?>">
-                                                        <a class="btn" href="<?= $Vargooglespace ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                        <a class="btn" href="<?= $link ?>"  target="_blank" ><i class="icon-globe"></i></a>
                                                     </div>
                                                 </td>
                                               </tr>
@@ -415,8 +429,12 @@ if ($compania != null) {
                                                         <td width="45">Web</td>
                                                         <td>
                                                         <div class="input-append">
+                                                        <?php 
+                                                        $link="";
+                                                        $link= validar_link($VarWeb);
+                                                        ?>
                                                         <input  class="span10" type="text" name="txtweb" id="txtweb" value="<?= $VarWeb ?>">
-                                                        <a class="btn" href="<?= $VarWeb ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                        <a class="btn" href="<?= $link ?>"  target="_blank" ><i class="icon-globe"></i></a>
                                                         </div>
                                                          
                                                         </td>
@@ -425,8 +443,12 @@ if ($compania != null) {
                                                         <td width="45">Web2</td>
                                                         <td width="100">
                                                             <div class="input-append">
+                                                            <?php 
+                                                            $link="";
+                                                            $link= validar_link($VarInteresante_link);
+                                                            ?>
                                                             <input class="span10" type="text" name="txtweb2" id="txtweb2"value="<?= $VarInteresante_link ?>">
-                                                            <a class="btn" href="<?= $VarInteresante_link ?>"  target="_blank" ><i class="icon-globe"></i></a>
+                                                            <a class="btn" href="<?= $link ?>"  target="_blank" ><i class="icon-globe"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>
