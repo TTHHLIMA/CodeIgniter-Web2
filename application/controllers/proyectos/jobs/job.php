@@ -13,10 +13,11 @@ class Job extends CI_Controller {
     }
     
     function index(){
-        echo "Hola mnundo";
+        /*echo "Hola mnundo";
         echo date('h:i:s A');
+        echo date('Y-m-d');
         echo date("H:i:s");
-        echo date("G:H:s");
+        echo date("G:H:s");*/
     }
     
     function confirmacion($idproyecto ="" ,$idtraductor="" , $confir = "" ){
@@ -37,14 +38,16 @@ class Job extends CI_Controller {
                         if ($res===false){
                                $array_orden_trabajo = array(
                                     'estado' => "3", // Estado
-                                    'respuesta' => "1" // Le dio Click
+                                    'respuesta' => "1", // Le dio Click
+                                    'fecha_respuesta'=> date('Y-m-d') ,
+                                    'hora_respuesta'=> date('h:i:s A')
                                 );
                                 $this->jobs_model->update_estado_orden_trabajo($array_orden_trabajo, $xidproyecto,$xidtraductor);
                             echo "Proyecto Confirmado";
                                 $titulo="Proyecto " . $xidproyecto . " - Confirmado" ;
                                 $dex="From: info@techni-translate.com\nContent-Type: text/html; charset=utf-8";
-                                $para="hernanhuar@techni-translate.com";
-                                //$para= $Col->coordinador_email;
+                                //$para="hernanhuar@techni-translate.com";
+                                $para= $Col->coordinador_email;
                                 $mensaje="Se confirmo el Pedido por email con los datos.<br>".
                                          "<b>Idproyecto = </b>" . $xidproyecto . "<br>" .
                                          "<b>traductor = </b>" . $xidtraductor . " - ". $Col->traductor_nombre ."<br>";
@@ -66,13 +69,15 @@ class Job extends CI_Controller {
                         if ($res===false){
                                $array_orden_trabajo = array(
                                     'estado' => "2", // Estado
-                                    'respuesta' => "1" // Le dio Click
+                                    'respuesta' => "1", // Le dio Click
+                                    'fecha_respuesta'=> date('Y-m-d') ,
+                                    'hora_respuesta'=> date('h:i:s A')                                   
                                 );
                                 $this->jobs_model->update_estado_orden_trabajo($array_orden_trabajo, $xidproyecto,$xidtraductor);
                                 $titulo="Proyecto " . $xidproyecto . " - Rechazado" ;
                                 $dex="From: info@techni-translate.com\nContent-Type: text/html; charset=utf-8";
-                                $para="hernanhuar@techni-translate.com";
-                                //$para= $Col->coordinador_email;
+                                //$para="hernanhuar@techni-translate.com";
+                                $para= $Col->coordinador_email;
                                 $mensaje="Se Rechazo el Pedido por email con los datos.<br>".
                                          "<b>Idproyecto = </b>" . $xidproyecto . "<br>" .
                                          "<b>traductor = </b>" . $xidtraductor . " - ". $Col->traductor_nombre ."<br>";
