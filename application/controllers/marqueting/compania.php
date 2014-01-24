@@ -155,6 +155,7 @@ class Compania extends CI_Controller {
     public function buscar_compania_idcompania($idcompania = '') {
         $data['compania'] = $this->compania_model->buscar_compania_idcompania($idcompania);
         $data['paises'] = $this->compania_model->listar_paises();
+        $data['analisis_abc'] = $this->compania_model->listar_analisis_abc();
         $data['consorcios'] = $this->compania_model->listar_consorcio();
         $data['ferias'] = $this->compania_model->buscar_ferias_idcompania($data['compania'][0]->idcompania);
         $data['categorias'] = $this->compania_model->buscar_categorias_idcompania($data['compania'][0]->idcompania);
@@ -164,6 +165,8 @@ class Compania extends CI_Controller {
         $this->load->view('marqueting/formularioCompania');
     }
 
+    
+    
     //HH: funcion para cargar al contacto
     public function mostrar_contacto() {
         $this->load->view('marqueting/formularioContacto');
@@ -183,7 +186,7 @@ class Compania extends CI_Controller {
             $data['lista_companias'] = array();
             $this->load->view("contenedor/lista_compania", $data);
         } else {
-
+            $nombre = urldecode($nombre);
             $data['lista_companias'] = $this->compania_model->buscar_compania_nombre($nombre);
             $this->load->view("contenedor/lista_compania", $data);
         }

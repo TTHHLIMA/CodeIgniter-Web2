@@ -768,7 +768,10 @@ button.ui-button::-moz-focus-inner {
 .ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
-	padding: 1em 1.4em;
+	/*HH: cambie la linea 
+		padding: 1em 1.4em;
+	*/
+	padding: 0em 0.0em;
 	background: none;
 }
 .ui-tooltip {

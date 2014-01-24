@@ -96,6 +96,8 @@
                     for (var i = 0; i < cadena.length; i++) {
                         cadena = cadena.replace(" ", "_");
                     }
+                    cadena = encodeURI(cadena);
+                    //alert(cadena);
                     var href = "<?= $this->config->base_url() ?>marqueting/compania/filtrar_compania_nombre/" + cadena;
                     console.log(href);
                     $("#Resultados").load(href);
@@ -1392,7 +1394,7 @@
                    // alert (xidcompania);
                     var href = "<?= $this->config->base_url() ?>marqueting/compania/filtrar_compania_relacionadas_idcompania/" + xidcompania;
                     $("#ResultadosCompaniaRelacionadas").load(href);
-                  });
+            });
 
         
 
@@ -1404,10 +1406,13 @@
             function dato(id) {
                 var idcompania = id;
                 $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_idcompania/" + idcompania,
-                        function() {
+                            
+                            function() {
+                                alert("pruebas");
                             var xidcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania);
                             $("#btnAgregar").attr('disabled', 'disabled');
+                        
                         }
                 );
                 $('#test_modal').modal('hide') //HH:cierro el modal

@@ -11,6 +11,7 @@
                         <li class="active"><a href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/">Inbox</a></li>
                         <li class="active"><a href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/listar">Proyectos abiertos</a></li>
                         <li class="active"><a href="#contact">Reportes</a></li>
+                        <li class="active"><a href="<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador">Telefonmarqueting</a></li>
                     </ul>
                     <?php } ?>
                     <?php if ($xxxnivel==="2"){ ?>
