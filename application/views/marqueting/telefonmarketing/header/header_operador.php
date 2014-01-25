@@ -38,28 +38,31 @@
                 $('#txtllamHoraInicio').timepicker({
                     minutes: {
                         interval: 15,
-                        manual: [ 0, 1, 30, 59 ]
+                        manual: [0, 1, 30, 59]
                     },
                 });
                 $('#txtllamHoraFinal').timepicker({
                     minutes: {
                         interval: 15,
-                        manual: [ 0, 1, 30, 59 ]
+                        manual: [0, 1, 30, 59]
                     },
-                });                
+                });
             }
-            
 
-            function activa_tabs(){
+
+            function activa_tabs() {
                 $("#tabs").tabs({active: 0});
-            };
+            }
+            ;
 
 
             //HH: LLamos a los formularios al momento de cargar la pagina
             $(document).ready(function() {
+
+
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_operador_primero",
                         function() {
-                            
+
                             activa_tabs();
                             var xcodigo = $("#txtcodigo").attr("value");
                             var xcount = 0;
@@ -85,11 +88,16 @@
                                     }
                                 }
                             })
-                            
-                           
-                            
+
+
+
                         }
                 )
+
+                //calcularHora();
+
+
+
             });
 
 
@@ -99,8 +107,8 @@
                 var codigo = $("#txtcodigo").attr("value");
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_operador_siguiente/" + codigo,
                         function() {
-                            
-                             activa_tabs();
+
+                            activa_tabs();
                             var xcodigo = $("#txtcodigo").attr("value");
                             var xcount = 0;
                             $.ajax({
@@ -138,7 +146,7 @@
                 var codigo = $("#txtcodigo").attr("value");
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_operador_anterior/" + codigo,
                         function() {
-                            
+
                             activa_tabs();
                             var xcodigo = $("#txtcodigo").attr("value");
                             var xcount = 0;
@@ -177,7 +185,7 @@
                 e.preventDefault();
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_operador_primero",
                         function() {
-                             activa_tabs();
+                            activa_tabs();
                             var xcodigo = $("#txtcodigo").attr("value");
                             var xcount = 0;
                             $.ajax({
@@ -213,7 +221,7 @@
                 e.preventDefault();
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_operador_ultimo",
                         function() {
-                             activa_tabs();
+                            activa_tabs();
                             var xcodigo = $("#txtcodigo").attr("value");
                             var xcount = 0;
                             $.ajax({
@@ -242,13 +250,13 @@
 
                 );
             });
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
 //HH: eventos de los botones de navegacion llamadas
 
             $(document).on("click", "#btnllamSiguiente", function(e) {
@@ -283,10 +291,10 @@
                 });
 
             });
-            
-            
- 
-             $(document).on("click", "#btnllamAnterior", function(e) {
+
+
+
+            $(document).on("click", "#btnllamAnterior", function(e) {
                 e.preventDefault();
                 var xcodigo = $("#txtcodigo").attr("value");
                 var xidregistro = $("#txtllamCodigo").attr("value");
@@ -318,9 +326,9 @@
                 });
 
             });
-            
-            
-              $(document).on("click", "#btnllamPrimero", function(e) {
+
+
+            $(document).on("click", "#btnllamPrimero", function(e) {
                 e.preventDefault();
                 var xcodigo = $("#txtcodigo").attr("value");
                 var xcount = 0;
@@ -336,6 +344,9 @@
                                         $("#btnllamActualizar").attr('disabled', 'disabled');
                                         $('#btnllamAgregar').removeAttr("disabled");
                                         $('#txtllamFecha').focus();
+
+                                           
+                                        
                                     }
                             );
                         } else {
@@ -343,6 +354,9 @@
                                     function() {
                                         calendarios_llamada()
                                         $("#btnllamAgregar").attr('disabled', 'disabled');
+
+                                       calcularHora();
+
                                     }
                             );
 
@@ -350,9 +364,9 @@
                     }
                 });
 
-            });           
-            
-               $(document).on("click", "#btnllamUltimo", function(e) {
+            });
+
+            $(document).on("click", "#btnllamUltimo", function(e) {
                 e.preventDefault();
                 var xcodigo = $("#txtcodigo").attr("value");
                 var xcount = 0;
@@ -382,11 +396,11 @@
                     }
                 });
 
-            });     
- 
- 
- 
-             //HH: botones de compania    
+            });
+
+
+
+            //HH: botones de compania    
             $(document).on("click", "#btnllamNuevo", function(e) {
                 e.preventDefault();
                 $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/formulario_llamada/", function() {
@@ -397,12 +411,12 @@
                     $('#txtllamFecha').focus();
                 });
             });
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
 
             $(document).on("click", "#btnllamAgregar", function(e) {
                 e.preventDefault();
@@ -459,10 +473,10 @@
 
 
 
- 
- 
- 
- 
+
+
+
+
             $(document).on("click", "#btnllamActualizar", function(e) {
                 e.preventDefault();
                 if ($('#btnllamActualizar').attr('disabled')) {
@@ -524,15 +538,15 @@
 
 
 
- 
- 
- 
- 
- 
- 
- 
- 
-             //HH: Funcion para limpiar los formularios
+
+
+
+
+
+
+
+
+            //HH: Funcion para limpiar los formularios
             function limpiaFormulario(miFormulario) {
                 // recorremos todos los campos que tiene el formulario
                 $(':input', miFormulario).each(function() {
@@ -550,12 +564,109 @@
                         this.selectedIndex = -1;
                 });
             }
- 
- function ValidaSoloNumeros() {
- if ((event.keyCode < 48) || (event.keyCode > 58))  //HH: numeros y :
-  event.returnValue = false;
-}
- 
+
+            function ValidaSoloNumeros() {
+                if ((event.keyCode < 48) || (event.keyCode > 58))  //HH: numeros y :
+                    event.returnValue = false;
+            }
+
+
+
+
+
+
+
+
+
+            function calcularHora()
+            {
+
+                var HoraInicio = $("#txtllamHoraInicio").attr("value");
+                //var HoraFinal = $("#txtllamHoraFinal").attr("value");
+                var HoraFinal = document.getElementsByName("txtllamHoraFinal");
+                alert(HoraFinal);
+                if (HoraFinal.length == 5) {
+                    var horas1 = HoraInicio.split(":"); /*Mediante la función split separamos el string por ":" y lo convertimos en array. */
+                    var horas2 = HoraFinal.split(":");
+                    var subtraction = "";
+                    var resultado_final = "";
+                    console.log(HoraFinal);
+                    //horas1[] = (isNaN(parseInt(horas1[a]))) ? 0 : parseInt(horas1[a]) /*si horas1[a] es NaN lo convertimos a 0, sino convertimos el valor en entero*/
+                    //horas2[a] = (isNaN(parseInt(horas2[a]))) ? 0 : parseInt(horas2[a])
+
+                    console.log(horas2[1]);
+                    var h1_to_minutes = (parseInt(horas1[0]) * 60) + (parseInt(horas1[1]));
+                    var h2_to_minutes = (parseInt(horas2[0]) * 60) + (parseInt(horas2[1]));
+                    //console.log(h1_to_minutes);
+
+                    console.log(horas2);
+                    if (h1_to_minutes > h2_to_minutes) {
+                        subtraction = h1_to_minutes - h2_to_minutes;
+                    }
+                    else
+                    {
+                        subtraction = h2_to_minutes - h1_to_minutes;
+                    }
+
+                    console.log(subtraction);
+                    var resultado = subtraction / 60;
+
+                    //if(is_float ($result) && formated){ 
+
+                    resultado = resultado.toString();
+
+                    var resultado_explode = resultado.split(".");
+
+                    resultado_final = resultado_explode[0] + ":" + ((resultado_explode[1] * 60) / 10);
+
+                    $("#txtllamTotalHoras").val(resultado_final);
+
+                    /*Devolvemos el valor calculado en el formato hh:mm:ss*/
+                } else {
+                    $("#txtllamTotalHoras").val("0");
+                }
+            }
+
+
+
+
+
+
+
+            function calcularHora1()
+            {
+
+                var HoraInicio = $("#txtllamHoraInicio").attr("value");
+                var HoraFinal = $("#txtllamHoraFinal").attr("value");
+                //alert(HoraFinal.length);
+                if (HoraFinal.length == 5) {
+                    horas1 = HoraInicio.split(":"); /*Mediante la función split separamos el string por ":" y lo convertimos en array. */
+                    horas2 = HoraFinal.split(":");
+                    horatotale = new Array();
+                    for (a = 0; a < 2; a++) /*bucle para tratar la hora, los minutos y los segundos*/
+                    {
+                        horas1[a] = (isNaN(parseInt(horas1[a]))) ? 0 : parseInt(horas1[a]) /*si horas1[a] es NaN lo convertimos a 0, sino convertimos el valor en entero*/
+                        horas2[a] = (isNaN(parseInt(horas2[a]))) ? 0 : parseInt(horas2[a])
+                        alert(horas1[a]);
+                        alert(horas2[a]);
+                        horatotale[a] = (horas2[a] - horas1[a]);/* insertamos la resta dentro del array horatotale[a].*/
+                        alert(horatotale[a]);
+                    }
+                    horatotal = new Date()  /*Instanciamos horatotal con la clase Date de javascript para manipular las horas*/
+                    horatotal.setHours(horatotale[0]); /* En horatotal insertamos las horas, minutos y segundos calculados en el bucle*/
+                    horatotal.setMinutes(horatotale[1]);
+                    //horatotal.setSeconds(horatotale[2]);
+                    //return horatotal.getHours() + ":" + horatotal.getMinutes() + ":" +
+                    //        horatotal.getSeconds();
+                    $("#txtllamTotalHoras").val(horatotal.getHours() + ":" + horatotal.getMinutes());
+
+                    /*Devolvemos el valor calculado en el formato hh:mm:ss*/
+                } else {
+                    $("#txtllamTotalHoras").val("0");
+                }
+            }
+
+
         </script>
 
 
