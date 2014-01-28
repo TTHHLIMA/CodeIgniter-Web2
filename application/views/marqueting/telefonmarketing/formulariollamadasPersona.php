@@ -181,11 +181,11 @@ if ($llamadas != null) {
                             </tr>
                             <tr>
                                 <td align="left" valign="top">&nbsp;Hora de inicio:&nbsp;</td>
-                                <td align="left" valign="top"><input type="text" name="txtllamHoraInicio" id="txtllamHoraInicio" value="<?= $xhora_inicio;?>" onkeypress="ValidaSoloNumeros()"  maxlength="5"  style="width:40px; "></td>
+                                <td align="left" valign="top"><input type="text" name="txtllamHoraInicio" id="txtllamHoraInicio" value="<?= $xhora_inicio;?>"  onChange="calcularHora();"  onkeypress="ValidaSoloNumeros()"  maxlength="5"  style="width:40px; "></td>
                             </tr>
                             <tr>
                                 <td align="left" valign="top">&nbsp;Hora de final:&nbsp;</td>
-                                <td align="left" valign="top"><input type="text" name="txtllamHoraFinal" id="txtllamHoraFinal" value="<?= $xhora_final;?>" onkeypress="ValidaSoloNumeros(),calcularHora()" maxlength="5"  style="width:40px; "></td>
+                                <td align="left" valign="top"><input type="text" name="txtllamHoraFinal" id="txtllamHoraFinal" value="<?= $xhora_final;?>"  onChange="calcularHora();"  onkeypress="ValidaSoloNumeros()"  maxlength="5"  style="width:40px; "></td>
                             </tr>
                             <tr>
                                 <td align="left" valign="top">&nbsp;Total de Horas:&nbsp;</td>

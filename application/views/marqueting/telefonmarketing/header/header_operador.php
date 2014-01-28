@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="<?= $this->config->base_url() ?>JQuery/jquery-ui-timepicker-0.3.3/jquery.ui.timepicker.css" type="text/css">        
         <!-- HH: JQ UI -->
 
+        <!-- HH: Grid easyui -->
+
+        <!-- HH: Grid easyui -->
+
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?= $this->config->base_url() ?>img/favicon.ico">
 
@@ -345,8 +349,8 @@
                                         $('#btnllamAgregar').removeAttr("disabled");
                                         $('#txtllamFecha').focus();
 
-                                           
-                                        
+
+
                                     }
                             );
                         } else {
@@ -355,7 +359,7 @@
                                         calendarios_llamada()
                                         $("#btnllamAgregar").attr('disabled', 'disabled');
 
-                                       calcularHora();
+                                        calcularHora();
 
                                     }
                             );
@@ -443,6 +447,7 @@
                                             'title': 'Confirmación'
                                         });
                                         $("#btnllamUltimo").click();
+                                        calendarios_llamada()
                                     } else {
                                         console.log(resp);
                                         $.Zebra_Dialog('<b>Error al Agregar el Registro. </b><br>' + resp, {
@@ -505,6 +510,7 @@
                                         $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_llamada_idregistro/" + codigo + "/" + idregistro,
                                                 function() {
                                                     $("#btnllamAgregar").attr('disabled', 'disabled');
+                                                    calendarios_llamada()
                                                 }
                                         );
 
@@ -574,61 +580,82 @@
 
 
 
-
+            function prueba(x) {
+                var y = document.getElementById("txtllamHoraInicio").value;
+                alert(x + " - " + y);
+            }
 
 
 
             function calcularHora()
             {
-
-                var HoraInicio = $("#txtllamHoraInicio").attr("value");
-                //var HoraFinal = $("#txtllamHoraFinal").attr("value");
-                var HoraFinal = document.getElementsByName("txtllamHoraFinal");
-                alert(HoraFinal);
+                var HoraInicio = document.getElementById("txtllamHoraInicio").value;
+                var HoraFinal = document.getElementById("txtllamHoraFinal").value;
+                
+                if (HoraFinal=="" || HoraFinal == "0"){
+                    return true;
+                }
+                
                 if (HoraFinal.length == 5) {
                     var horas1 = HoraInicio.split(":"); /*Mediante la función split separamos el string por ":" y lo convertimos en array. */
                     var horas2 = HoraFinal.split(":");
                     var subtraction = "";
                     var resultado_final = "";
-                    console.log(HoraFinal);
-                    //horas1[] = (isNaN(parseInt(horas1[a]))) ? 0 : parseInt(horas1[a]) /*si horas1[a] es NaN lo convertimos a 0, sino convertimos el valor en entero*/
-                    //horas2[a] = (isNaN(parseInt(horas2[a]))) ? 0 : parseInt(horas2[a])
-
-                    console.log(horas2[1]);
-                    var h1_to_minutes = (parseInt(horas1[0]) * 60) + (parseInt(horas1[1]));
-                    var h2_to_minutes = (parseInt(horas2[0]) * 60) + (parseInt(horas2[1]));
-                    //console.log(h1_to_minutes);
-
-                    console.log(horas2);
-                    if (h1_to_minutes > h2_to_minutes) {
-                        subtraction = h1_to_minutes - h2_to_minutes;
+                    var tipo = "";
+                    console.log("HoraInicio = " + HoraInicio);
+                    console.log("HoraFinal = " + HoraFinal);
+                     //horas1[a] = (isNaN(parseInt(horas1[a]))) ? 0 : parseInt(horas1[a]) /*si horas1[a] es NaN lo convertimos a 0, sino convertimos el valor en entero*/
+                    var h1_to_minutes = ((isNaN(parseInt(horas1[0]))) ? 0 : parseInt(horas1[0]) * 60) + ((isNaN(parseInt(horas1[1]))) ? 0 : parseInt(horas1[1]));
+                    var h2_to_minutes = ((isNaN(parseInt(horas2[0]))) ? 0 : parseInt(horas2[0]) * 60) + ((isNaN(parseInt(horas2[1]))) ? 0 : parseInt(horas2[1]));
+                    //var h1_to_minutes = (parseInt(horas1[0]) * 60) + (parseInt(horas1[1]));
+                    //var h2_to_minutes = (parseInt(horas2[0]) * 60) + (parseInt(horas2[1]));
+                    console.log("h1_to_minutes = " + h1_to_minutes);
+                    console.log("h2_to_minutes = " + h2_to_minutes);
+                    if (h1_to_minutes < h2_to_minutes) {
+                        subtraction = h2_to_minutes - h1_to_minutes ;
+                        tipo = "Hora 1 es menor a hora 2";
                     }
                     else
                     {
-                        subtraction = h2_to_minutes - h1_to_minutes;
+                        alert("La hora inicial debe ser menor que la hora final.");
+                        $("#txtllamTotalHoras").val("0");
+                        return;
                     }
-
-                    console.log(subtraction);
+                    console.log(tipo);
+                    console.log("subtraction = " + subtraction);
                     var resultado = subtraction / 60;
-
-                    //if(is_float ($result) && formated){ 
-
                     resultado = resultado.toString();
-
-                    var resultado_explode = resultado.split(".");
-
-                    resultado_final = resultado_explode[0] + ":" + ((resultado_explode[1] * 60) / 10);
-
-                    $("#txtllamTotalHoras").val(resultado_final);
-
-                    /*Devolvemos el valor calculado en el formato hh:mm:ss*/
+                    console.log("resultado= " + resultado);
+                    if(resultado.indexOf(".") != -1){ //HH: si encuentro el punto
+                        var resultado_explode = resultado.split(".");
+                        var Hora, Minuto, resultado_minuto;
+                        Hora = resultado_explode[0];
+                        resultado_minuto = ((resultado_explode[1] * 60) / 10);
+                        resultado_minuto = Math.floor(resultado_minuto);
+                        console.log("resultado_explode[1] = " + resultado_explode[1] + " - resultado_minuto = " + resultado_minuto);
+                        Minuto = Math.round(Math.floor((resultado_explode[1] * 60) / 10))
+                        console.log(Minuto);
+                        resultado_final = Hora + "." + Minuto;
+                        resultado_final = roundToTwo(resultado_final);
+                        resultado_final = resultado_final.toString();
+                        resultado_explode = "";
+                        resultado_explode = resultado_final.split(".");
+                        resultado_final = resultado_explode[0] + ":" + resultado_explode[1];
+                        $("#txtllamTotalHoras").val(resultado_final);
+                    } else {
+                        resultado_final = resultado + ":00";
+                        $("#txtllamTotalHoras").val(resultado_final);
+                    }
+                    
                 } else {
                     $("#txtllamTotalHoras").val("0");
                 }
             }
 
 
-
+            function roundToTwo(num) {
+                return +(Math.round(num + "e+2") + "e-2");
+            }
 
 
 

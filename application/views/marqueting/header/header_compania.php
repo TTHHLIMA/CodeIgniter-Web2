@@ -99,7 +99,7 @@
                     cadena = encodeURI(cadena);
                     //alert(cadena);
                     var href = "<?= $this->config->base_url() ?>marqueting/compania/filtrar_compania_nombre/" + cadena;
-                    console.log(href);
+                    //console.log(href);
                     $("#Resultados").load(href);
                 });
             });
@@ -1408,7 +1408,7 @@
                 $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_idcompania/" + idcompania,
                             
                             function() {
-                                alert("pruebas");
+                                //alert("pruebas");
                             var xidcompania = $("#txtidcompania").attr("value");
                             $("#formularioContacto").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_contacto_primero/" + xidcompania);
                             $("#btnAgregar").attr('disabled', 'disabled');

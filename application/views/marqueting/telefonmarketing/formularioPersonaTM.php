@@ -13,16 +13,16 @@ if ($operador != null) {
         $xfecha = $row->fecha;
     }
 } else {
-        $xcodigo = $row->codigo;
-        $xpronombre = $row->pronombre;
-        $xnombre = $row->nombre;
-        $xapellidos = $row->apellidos;
-        $xdireccion = $row->direccion;
-        $xtelefono = $row->telefono;
-        $xcelular = $row->celular;
-        $xfax = $row->fax;
-        $xmail = $row->mail;
-        $xfecha = $row->fecha;
+    $xcodigo = $row->codigo;
+    $xpronombre = $row->pronombre;
+    $xnombre = $row->nombre;
+    $xapellidos = $row->apellidos;
+    $xdireccion = $row->direccion;
+    $xtelefono = $row->telefono;
+    $xcelular = $row->celular;
+    $xfax = $row->fax;
+    $xmail = $row->mail;
+    $xfecha = $row->fecha;
 }
 ?>
 <table width="900" border="0" cellpadding="0" cellspacing="0">
@@ -55,7 +55,7 @@ if ($operador != null) {
                                 </td>
                                 <td width="80">
                                     <div class="etiquetaCount">
-                                        Total : <b><?= $countOperador;?></b>
+                                        Total : <b><?= $countOperador; ?></b>
                                     </div></td>
 
 
@@ -92,7 +92,7 @@ if ($operador != null) {
             <div id="tabs" style="width: 100%;">
                 <ul>
                     <li><a href="#panelllamadas">Persona TM</a></li>
-                    <li><a href="#tabs-2">Tiempo</a></li>
+                    <li><a href="#panelTiempo">Tiempo</a></li>
                     <li><a href="#tabs-3">Estadisticas</a></li>
                 </ul>
                 <div id="panelllamadas" style="background-color:#FFC" >
@@ -101,7 +101,45 @@ if ($operador != null) {
 
                 </div>
 
-                <div id="tabs-2">
+                <div id="panelTiempo">
+                    <table >
+                        <tr>
+                            <td align="left" valign="top">&nbsp;Fecha de inicio:&nbsp;</td>
+                            <td align="left" valign="top"><input type="text" name="txtllamFechaInicio" id="txtllamFechaInicio" value=""   maxlength="5"  style="width:70px; "></td>
+                            <td align="left" valign="top">&nbsp;Fecha final:&nbsp;</td>
+                            <td align="left" valign="top"><input type="text" name="txtllamFechaFinal" id="txtllamFechaFinal" value=""   maxlength="5"  style="width:70px; "></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"> 
+                                <h5>Resultado de la Consulta</h5>
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 80px;" >Item</th>
+                                            <th style="width: 120px;">Fecha</th>
+                                            <th style="width: 100px;">Hora Inicio</th>
+                                            <th style="width: 100px;">Hora Final</th>
+                                            <th style="width: 120px;">Total de Horas</th>
+                                            <th style="width: 100px;">Llamadas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th ></th>
+                                            <th ></th>
+                                            <th ></th>
+                                            <th ></th>
+                                            <th ></th>
+                                            <th ></th>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                
+                            </td>
+                        </tr>
+                    </table>
 
                 </div>
                 <div id="tabs-3">

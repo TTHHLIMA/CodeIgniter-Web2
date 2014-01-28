@@ -139,7 +139,7 @@ class Operador extends CI_Controller {
         $xhora_inicio = $this->input->post("txtllamHoraInicio");
         $xhora_final = $this->input->post("txtllamHoraFinal");
         $xllamadas = $this->input->post("cbollamLlamadas");
-        $xsumatoria_horas = $this->input->post("");
+        $xsumatoria_horas = $this->input->post("txtllamTotalHoras");
         $xfecha = fecha_calendario_inverso($this->input->post("txtllamFecha"));
         $xzentrale = $this->input->post("cbollamZentrale");
         $xrichtiger = $this->input->post("cbollamRichtiger");
