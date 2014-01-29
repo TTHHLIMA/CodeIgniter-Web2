@@ -102,41 +102,35 @@ if ($operador != null) {
                 </div>
 
                 <div id="panelTiempo">
-                    <table >
-                        <tr>
-                            <td align="left" valign="top">&nbsp;Fecha de inicio:&nbsp;</td>
-                            <td align="left" valign="top"><input type="text" name="txtllamFechaInicio" id="txtllamFechaInicio" value=""   maxlength="5"  style="width:70px; "></td>
-                            <td align="left" valign="top">&nbsp;Fecha final:&nbsp;</td>
-                            <td align="left" valign="top"><input type="text" name="txtllamFechaFinal" id="txtllamFechaFinal" value=""   maxlength="5"  style="width:70px; "></td>
+                    <table  >
+                        <tr> 
+                            <td height="50px;" align="left" valign="bottom">
+                                <table>
+                                    <tr>
+                                        <td align="left" valign="top">&nbsp;Fecha de inicio:&nbsp;</td>
+                                        <td align="left" valign="top"><input type="text" name="txtllamFechaInicio" id="txtllamFechaInicio" value=""   maxlength="10"  style="width:70px; "></td>
+                                        <td align="left" valign="top">&nbsp;Fecha final:&nbsp;</td>
+                                        <td align="left" valign="top"><input type="text" name="txtllamFechaFinal" id="txtllamFechaFinal" value=""   maxlength="10"  style="width:70px; "></td>
+                                        <td align="left" valign="top"></td>
+                                        <td align="left" valign="top">
+                                             <a class="btn" id="btnBuscarTiempo"
+                                           href="#"
+                                           data-toggle="modal"
+                                           > &nbsp;Consultar&nbsp;
+                                                <img src="<?= $this->config->base_url() ?>images/marqueting/buscar2.png" class="tamanoIconoMantenimiento">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                         <tr>
-                            <td colspan="4"> 
-                                <h5>Resultado de la Consulta</h5>
-
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 80px;" >Item</th>
-                                            <th style="width: 120px;">Fecha</th>
-                                            <th style="width: 100px;">Hora Inicio</th>
-                                            <th style="width: 100px;">Hora Final</th>
-                                            <th style="width: 120px;">Total de Horas</th>
-                                            <th style="width: 100px;">Llamadas</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th ></th>
-                                            <th ></th>
-                                            <th ></th>
-                                            <th ></th>
-                                            <th ></th>
-                                            <th ></th>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                
+                            <td > 
+                               <!-- HH: Listado de registros por Fecha -->
+                               <div id="ListadoRegistrosPorFecha">
+                                   
+                               </div>
+                               <!-- HH: Fin -> Listado de registros por Fecha -->
                             </td>
                         </tr>
                     </table>

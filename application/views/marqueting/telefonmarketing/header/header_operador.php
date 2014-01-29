@@ -20,9 +20,11 @@
         <link rel="stylesheet" href="<?= $this->config->base_url() ?>JQuery/jquery-ui-timepicker-0.3.3/jquery.ui.timepicker.css" type="text/css">        
         <!-- HH: JQ UI -->
 
-        <!-- HH: Grid easyui -->
+        <script src="<?= $this->config->base_url() ?>JQuery/datatable/js/jquery.dataTables.js" type="text/javascript"></script>
+        <style type="text/css">
+            <!--  @import "<?= $this->config->base_url() ?>JQuery/datatable/css/demo_table_jui.css";-->
 
-        <!-- HH: Grid easyui -->
+        </style>       
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?= $this->config->base_url() ?>img/favicon.ico">
@@ -68,6 +70,7 @@
                         function() {
 
                             activa_tabs();
+                            //HH: muestro los datos del panel de llamadas
                             var xcodigo = $("#txtcodigo").attr("value");
                             var xcount = 0;
                             $.ajax({
@@ -92,15 +95,17 @@
                                     }
                                 }
                             })
-
-
+                            //HH: Fin -> muestro los datos del panel de llamadas
+                            //HH: muestro los datos del panel de Tiempo
+                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
+                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
+                            $('#tablaRegistros').dataTable();
+                            //HH: Fin -> panel Tiempo
 
                         }
                 )
 
                 //calcularHora();
-
-
 
             });
 
@@ -137,6 +142,14 @@
                                     }
                                 }
                             });
+
+
+                            //HH: muestro los datos del panel de Tiempo
+                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
+                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
+                            //HH: Fin -> panel Tiempo
+
+
                         }
 
                 );
@@ -176,6 +189,13 @@
                                     }
                                 }
                             });
+
+
+                            //HH: muestro los datos del panel de Tiempo
+                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
+                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
+                            //HH: Fin -> panel Tiempo                      
+
                         }
 
                 );
@@ -214,6 +234,14 @@
                                     }
                                 }
                             });
+
+
+                            //HH: muestro los datos del panel de Tiempo
+                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
+                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
+                            //HH: Fin -> panel Tiempo
+
+
                         }
 
                 );
@@ -250,6 +278,13 @@
                                     }
                                 }
                             });
+
+                            //HH: muestro los datos del panel de Tiempo
+                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
+                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
+                            //HH: Fin -> panel Tiempo    
+
+
                         }
 
                 );
@@ -591,11 +626,11 @@
             {
                 var HoraInicio = document.getElementById("txtllamHoraInicio").value;
                 var HoraFinal = document.getElementById("txtllamHoraFinal").value;
-                
-                if (HoraFinal=="" || HoraFinal == "0"){
+
+                if (HoraFinal == "" || HoraFinal == "0") {
                     return true;
                 }
-                
+
                 if (HoraFinal.length == 5) {
                     var horas1 = HoraInicio.split(":"); /*Mediante la función split separamos el string por ":" y lo convertimos en array. */
                     var horas2 = HoraFinal.split(":");
@@ -604,7 +639,7 @@
                     var tipo = "";
                     console.log("HoraInicio = " + HoraInicio);
                     console.log("HoraFinal = " + HoraFinal);
-                     //horas1[a] = (isNaN(parseInt(horas1[a]))) ? 0 : parseInt(horas1[a]) /*si horas1[a] es NaN lo convertimos a 0, sino convertimos el valor en entero*/
+                    //horas1[a] = (isNaN(parseInt(horas1[a]))) ? 0 : parseInt(horas1[a]) /*si horas1[a] es NaN lo convertimos a 0, sino convertimos el valor en entero*/
                     var h1_to_minutes = ((isNaN(parseInt(horas1[0]))) ? 0 : parseInt(horas1[0]) * 60) + ((isNaN(parseInt(horas1[1]))) ? 0 : parseInt(horas1[1]));
                     var h2_to_minutes = ((isNaN(parseInt(horas2[0]))) ? 0 : parseInt(horas2[0]) * 60) + ((isNaN(parseInt(horas2[1]))) ? 0 : parseInt(horas2[1]));
                     //var h1_to_minutes = (parseInt(horas1[0]) * 60) + (parseInt(horas1[1]));
@@ -612,7 +647,7 @@
                     console.log("h1_to_minutes = " + h1_to_minutes);
                     console.log("h2_to_minutes = " + h2_to_minutes);
                     if (h1_to_minutes < h2_to_minutes) {
-                        subtraction = h2_to_minutes - h1_to_minutes ;
+                        subtraction = h2_to_minutes - h1_to_minutes;
                         tipo = "Hora 1 es menor a hora 2";
                     }
                     else
@@ -626,7 +661,7 @@
                     var resultado = subtraction / 60;
                     resultado = resultado.toString();
                     console.log("resultado= " + resultado);
-                    if(resultado.indexOf(".") != -1){ //HH: si encuentro el punto
+                    if (resultado.indexOf(".") != -1) { //HH: si encuentro el punto
                         var resultado_explode = resultado.split(".");
                         var Hora, Minuto, resultado_minuto;
                         Hora = resultado_explode[0];
@@ -646,7 +681,7 @@
                         resultado_final = resultado + ":00";
                         $("#txtllamTotalHoras").val(resultado_final);
                     }
-                    
+
                 } else {
                     $("#txtllamTotalHoras").val("0");
                 }
@@ -659,39 +694,29 @@
 
 
 
+            //HH: Cargo el div para filtrar los datos de tipo modal
+            $(document).on("click", "#btnBuscarTiempo", function(e) {
+                e.preventDefault();
+                var Codigo = document.getElementById("txtcodigo").value;
+                var FechaInicial = document.getElementById("txtllamFechaInicio").value;
+                var FechaFinal = document.getElementById("txtllamFechaFinal").value;
+                $("#ListadoRegistrosPorFecha").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_registros_por_fechas/" + Codigo + "/" + FechaInicial + "/" + FechaFinal,
+                        function() {
+                            $('#tablaRegistros').dataTable(
+                                    {
+                                        //"bPaginate": false,
+                                        "sPaginationType": "full_numbers",
+                                        "bFilter": false,
+                                        "bInfo": false
+                                    }
+                            )
+                                
+                        }
+                )
 
-            function calcularHora1()
-            {
-
-                var HoraInicio = $("#txtllamHoraInicio").attr("value");
-                var HoraFinal = $("#txtllamHoraFinal").attr("value");
-                //alert(HoraFinal.length);
-                if (HoraFinal.length == 5) {
-                    horas1 = HoraInicio.split(":"); /*Mediante la función split separamos el string por ":" y lo convertimos en array. */
-                    horas2 = HoraFinal.split(":");
-                    horatotale = new Array();
-                    for (a = 0; a < 2; a++) /*bucle para tratar la hora, los minutos y los segundos*/
-                    {
-                        horas1[a] = (isNaN(parseInt(horas1[a]))) ? 0 : parseInt(horas1[a]) /*si horas1[a] es NaN lo convertimos a 0, sino convertimos el valor en entero*/
-                        horas2[a] = (isNaN(parseInt(horas2[a]))) ? 0 : parseInt(horas2[a])
-                        alert(horas1[a]);
-                        alert(horas2[a]);
-                        horatotale[a] = (horas2[a] - horas1[a]);/* insertamos la resta dentro del array horatotale[a].*/
-                        alert(horatotale[a]);
-                    }
-                    horatotal = new Date()  /*Instanciamos horatotal con la clase Date de javascript para manipular las horas*/
-                    horatotal.setHours(horatotale[0]); /* En horatotal insertamos las horas, minutos y segundos calculados en el bucle*/
-                    horatotal.setMinutes(horatotale[1]);
-                    //horatotal.setSeconds(horatotale[2]);
-                    //return horatotal.getHours() + ":" + horatotal.getMinutes() + ":" +
-                    //        horatotal.getSeconds();
-                    $("#txtllamTotalHoras").val(horatotal.getHours() + ":" + horatotal.getMinutes());
-
-                    /*Devolvemos el valor calculado en el formato hh:mm:ss*/
-                } else {
-                    $("#txtllamTotalHoras").val("0");
-                }
-            }
+                event.preventDefault();
+                return false;  //stop the actual form post !important!
+            });
 
 
         </script>

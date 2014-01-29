@@ -11,8 +11,8 @@ class Operador extends CI_Controller {
         $this->load->model('marqueting/telefonmarketing/operador_model');
         $this->load->helper(array('url', 'consola_helper', 'funciones_helper', 'procesos_helper'));
     }
-    
-    function index(){
+
+    function index() {
         if ($this->session->userdata('Datos_Session')) {
             $login = $this->session->userdata('Datos_Session');
             $data['xxxiduser'] = $login['xxxiduser'];
@@ -31,8 +31,7 @@ class Operador extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
-    
-    
+
     //HH: botones de navegacion Compania
     public function buscar_operador_siguiente($codigo_actual = '') {
         $data['operador'] = $this->operador_model->buscar_operador_siguiente($codigo_actual);
@@ -68,15 +67,14 @@ class Operador extends CI_Controller {
         //var_dump($data['operador']);
         $this->load->view('marqueting/telefonmarketing/formularioPersonaTM');
     }
-    
-     public function count_llamadas($codigo_actual) {
+
+    public function count_llamadas($codigo_actual) {
         echo $this->operador_model->total_registros_llamadas($codigo_actual);
-    }   
-    
-    
+    }
+
     //HH: botones de navegacion Llamadas
     public function buscar_llamada_siguiente($codigo_actual = '', $idregistro_actual = '') {
-        $data['llamadas'] = $this->operador_model->buscar_llamada_siguiente($codigo_actual,$idregistro_actual);
+        $data['llamadas'] = $this->operador_model->buscar_llamada_siguiente($codigo_actual, $idregistro_actual);
         if ($data['llamadas'] === False) {
             $data['llamadas'] = $this->operador_model->buscar_llamada_idregistro($idregistro_actual);
         }
@@ -86,7 +84,7 @@ class Operador extends CI_Controller {
     }
 
     public function buscar_llamada_anterior($codigo_actual = '', $idregistro_actual = '') {
-        $data['llamadas'] = $this->operador_model->buscar_llamada_anterior($codigo_actual , $idregistro_actual);
+        $data['llamadas'] = $this->operador_model->buscar_llamada_anterior($codigo_actual, $idregistro_actual);
         if ($data['llamadas'] === False) {
             $data['llamadas'] = $this->operador_model->buscar_llamada_idregistro($idregistro_actual);
         }
@@ -108,11 +106,9 @@ class Operador extends CI_Controller {
         $this->load->vars($data);
         //var_dump($data['operador']);
         $this->load->view('marqueting/telefonmarketing/formulariollamadasPersona');
-    }    
+    }
 
-    
-    
-     //HH: botones de navegacion contactos
+    //HH: botones de navegacion Registros
     public function buscar_llamada_idregistro($codigo_actual = '', $idregistro_actual = '') {
         $data['llamadas'] = $this->operador_model->buscar_llamada_idregistro($idregistro_actual);
         $data['countLlamadas'] = $this->operador_model->total_registros_llamadas($codigo_actual);
@@ -126,13 +122,19 @@ class Operador extends CI_Controller {
         $this->load->vars($data);
         $this->load->view('marqueting/telefonmarketing/formulariollamadasPersona');
     }
-   
-    
-    
-    
-    
-    
-    function proceso_mantenimiento($opcion = "" , $codigo="") {
+
+    //HH: Consulta de Registros por Tiempo
+    public function buscar_registros_por_fechas($codigo_actual = '', $fecha_inicial = '', $fecha_final = '') {
+        //consola_google("Codigo Actual = " . $codigo_actual . " fecha_inicial = " . $fecha_inicial . "$ fecha_final = " . $fecha_final );
+        $data['registrosPorFechas'] = $this->operador_model->buscar_registros_por_fechas($codigo_actual, fecha_calendario_inverso($fecha_inicial), fecha_calendario_inverso($fecha_final));
+        $this->load->vars($data);
+        $this->load->view('marqueting/telefonmarketing/lista_registros_por_fechas');
+    }
+
+    //HH: Funcion de mantenimiento 
+
+
+    function proceso_mantenimiento($opcion = "", $codigo = "") {
         $xidregistro = $this->input->post("txtllamCodigo");
         $xcodigo = ($this->input->post("txtxCodigo") === "") ? $codigo : $this->input->post("txtxCodigo");
         $xfecha_ingreso = $this->input->post("0000-00-00");
@@ -146,7 +148,7 @@ class Operador extends CI_Controller {
         $xrichtig = $this->input->post("cbollamRichtig");
         $respuesta = "";
         if ($opcion === "1") {//HH: agregar
-            $xidregistro="";
+            $xidregistro = "";
             $dataRegistro = array(
                 'idregistro' => $xidregistro,
                 'codigo' => $xcodigo,
@@ -160,7 +162,7 @@ class Operador extends CI_Controller {
                 'richtiger' => $xrichtiger,
                 'richtig' => $xrichtig
             );
-                $respuesta = $this->operador_model->agregar_registros($dataRegistro, $xcodigo);
+            $respuesta = $this->operador_model->agregar_registros($dataRegistro, $xcodigo);
         }
         if ($opcion === "2") { //HH: actualizar
             $dataRegistro = array(
@@ -175,19 +177,18 @@ class Operador extends CI_Controller {
                 'richtiger' => $xrichtiger,
                 'richtig' => $xrichtig
             );
-            $respuesta = $this->operador_model->actualizar_registros($dataRegistro, $xidregistro , $xcodigo);
+            $respuesta = $this->operador_model->actualizar_registros($dataRegistro, $xidregistro, $xcodigo);
         }
-       // if ($opcion === "3") { //HH: Eliminar
-       //     $respuesta = $this->compania_model->eliminar_compania($idcompania);
-       // }
+        // if ($opcion === "3") { //HH: Eliminar
+        //     $respuesta = $this->compania_model->eliminar_compania($idcompania);
+        // }
 
 
         if ($respuesta <> "") {
             echo $respuesta;
         }
     }
-    
-    
-    
+
 }
+
 ?>

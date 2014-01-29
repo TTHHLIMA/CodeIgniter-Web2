@@ -111,6 +111,17 @@ class Operador_model extends CI_Model {
         }
     }
     
+    
+     public function buscar_registros_por_fechas($codigo_actual = '', $fecha_inicial = '', $fecha_final = '') {
+        $query = $this->db->query("select * from registros where codigo = '" . $codigo_actual . "' and `fecha` BETWEEN '" . $fecha_inicial . "' AND '" . $fecha_final . "'");
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }   
+    
+    
      function total_registros_llamadas($codigo_actual) {
         $query = $this->db->query("SELECT COUNT(*) AS total FROM registros where codigo = '" . $codigo_actual . "'");
         $row = $query->row();
