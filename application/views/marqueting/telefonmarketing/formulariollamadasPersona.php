@@ -5,10 +5,10 @@ if ($llamadas != null) {
         $xidregistro = $row->idregistro;
         $xcodigo = $row->codigo;
         $xfecha_ingreso = $row->fecha_ingreso;
-        $xhora_inicio = $row->hora_inicio;
-        $xhora_final = $row->hora_final;
+        $xhora_inicio = date("H:i",strtotime($row->hora_inicio));
+        $xhora_final = date("H:i",strtotime($row->hora_final));
         $xllamadas = $row->llamadas;
-        $xsumatoria_horas = $row->sumatoria_horas;
+        $xsumatoria_horas = date("H:i",strtotime($row->sumatoria_horas));
         $xfecha = fecha_calendario(strftime($row->fecha));
         $xzentrale = $row->zentrale;
         $xrichtiger = $row->richtiger;
@@ -181,11 +181,11 @@ if ($llamadas != null) {
                             </tr>
                             <tr>
                                 <td align="left" valign="top">&nbsp;Hora de inicio:&nbsp;</td>
-                                <td align="left" valign="top"><input type="text" name="txtllamHoraInicio" id="txtllamHoraInicio" value="<?= $xhora_inicio;?>"  onChange="calcularHora();"  onkeypress="ValidaSoloNumeros()"  maxlength="5"  style="width:40px; "></td>
+                                <td align="left" valign="top"><input type="text" name="txtllamHoraInicio" id="txtllamHoraInicio" value="<?= $xhora_inicio;?>"  onChange="calcT3();"  onkeypress="ValidaSoloNumeros()"  maxlength="5"  style="width:40px; "></td>
                             </tr>
                             <tr>
                                 <td align="left" valign="top">&nbsp;Hora de final:&nbsp;</td>
-                                <td align="left" valign="top"><input type="text" name="txtllamHoraFinal" id="txtllamHoraFinal" value="<?= $xhora_final;?>"  onChange="calcularHora();"  onkeypress="ValidaSoloNumeros()"  maxlength="5"  style="width:40px; "></td>
+                                <td align="left" valign="top"><input type="text" name="txtllamHoraFinal" id="txtllamHoraFinal" value="<?= $xhora_final;?>"  onChange="calcT3();"  onkeypress="ValidaSoloNumeros()"  maxlength="5"  style="width:40px; "></td>
                             </tr>
                             <tr>
                                 <td align="left" valign="top">&nbsp;Total de Horas:&nbsp;</td>

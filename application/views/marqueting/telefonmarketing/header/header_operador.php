@@ -631,6 +631,9 @@
                     return true;
                 }
 
+
+//HH: funcion calculo de hora
+
                 if (HoraFinal.length == 5) {
                     var horas1 = HoraInicio.split(":"); /*Mediante la función split separamos el string por ":" y lo convertimos en array. */
                     var horas2 = HoraFinal.split(":");
@@ -688,9 +691,55 @@
             }
 
 
+
             function roundToTwo(num) {
                 return +(Math.round(num + "e+2") + "e-2");
             }
+
+//HH: fin de calculo de hora
+
+
+ function padNmb(nStr, nLen){
+    var sRes = String(nStr);
+    var sCeros = "0000000000";
+    return sCeros.substr(0, nLen - sRes.length) + sRes;
+   }
+
+   function stringToSeconds(tiempo){
+    var sep1 = tiempo.indexOf(":");
+    var sep2 = tiempo.lastIndexOf(":");
+    var hor = tiempo.substr(0, sep1);
+    var min = tiempo.substr(sep1 + 1, sep2 - sep1 - 1);
+    var sec = tiempo.substr(sep2 + 1);
+    return (Number(sec) + (Number(min) * 60) + (Number(hor) * 3600));
+   }
+
+   function secondsToTime(secs){
+    var hor = Math.floor(secs / 3600);
+    var min = Math.floor((secs - (hor * 3600)) / 60);
+    var sec = secs - (hor * 3600) - (min * 60);
+    //return padNmb(hor, 2) + ":" + padNmb(min, 2) + ":" + padNmb(sec, 2);
+    return padNmb(hor, 2) + ":"  + padNmb(sec, 2);
+   }
+
+   function substractTimes(t1, t2){
+    var secs1 = stringToSeconds(t1);
+    var secs2 = stringToSeconds(t2);
+    var secsDif = secs1 - secs2;
+    return secondsToTime(secsDif);
+   }
+
+   function calcT3(){
+    //with (document.frm)
+     //t3.value = substractTimes(t1.value, t2.value);
+     var HoraInicio = document.getElementById("txtllamHoraInicio").value;
+     var HoraFinal = document.getElementById("txtllamHoraFinal").value;
+      var resultado = substractTimes(HoraFinal,HoraInicio);
+     $("#txtllamTotalHoras").val(resultado);
+   }
+
+
+
 
 
 
