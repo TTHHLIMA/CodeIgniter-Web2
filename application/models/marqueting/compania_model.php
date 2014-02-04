@@ -93,7 +93,6 @@ class Compania_model extends CI_Model {
         }
     }
 
-    
     public function filtrar_compania_relacionadas_idcompania($idcompania) {
         $query = $this->db->query("select c.nombre as Firma , c.web as Web , s.idsonst , sc.nombre from clientes  k, compania c,sonts_categoria_compania s , sonts_categoria sc  where sc.idsonst = s.idsonst  and k.referencia ='1' and  k.id_compania = c.idcompania and c.nocontactar ='N' and c.paralizado = 'N' and c.idcompania = s.idcompania and s.idcompania <> '" . $idcompania . "' and s.idsonst IN (select distinct sonts_categoria_compania.idsonst from  sonts_categoria_compania  where  sonts_categoria_compania.idcompania = '" . $idcompania . "')  order by c.nombre , s.prioridad ");
         if ($query->num_rows() > 0) {
@@ -101,8 +100,8 @@ class Compania_model extends CI_Model {
         } else {
             return false;
         }
-    }    
-    
+    }
+
     public function buscar_contacto_idcontacto($idcontacto_actual) {
         $query = $this->db->query("select * from contacto where idcontacto = '" . $idcontacto_actual . "'  LIMIT 0,1");
         if ($query->num_rows() === 1) {
@@ -125,15 +124,15 @@ class Compania_model extends CI_Model {
     }
 
     function buscar_compania_nombre_completo($nombre) {
-        $sql = "SELECT idcompania FROM compania WHERE nombre = '".$nombre."'";
+        $sql = "SELECT idcompania FROM compania WHERE nombre = '" . $nombre . "'";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
             return false;
         }
-    }    
-    
+    }
+
     public function buscar_ferias_idcompania($idcompania = "") {
         $query = $this->db->query("select feria.nombre as nombre , feria.fecha_comienzo as fecha_comienzo , feria.fecha_final as fecha_final from feria , feria_compania where feria.idferia=feria_compania.idferia and feria_compania.idcompania= '" . $idcompania . "'");
         if ($query->num_rows() > 0) {
@@ -161,7 +160,6 @@ class Compania_model extends CI_Model {
         }
     }
 
-  
     function listar_analisis_abc() {
         $query = $this->db->query("select distinct ana_abc from compania order by ana_abc");
         if ($query->num_rows() > 0) {
@@ -170,7 +168,7 @@ class Compania_model extends CI_Model {
             return false;
         }
     }
-    
+
     function listar_paises() {
         $query = $this->db->query("select codigo , nombre from pais order by nombre asc");
         if ($query->num_rows() > 0) {
@@ -212,6 +210,26 @@ class Compania_model extends CI_Model {
         $row = $query->row();
         if ($query->num_rows() > 0) {
             return $row->total;
+        } else {
+            return false;
+        }
+    }
+
+    function total_requerimientos_x_compania($idcompania) {
+        $query = $this->db->query("select count(idrequerimiento) as Total from requerimientos , contacto where requerimientos.id_contacto=contacto.idcontacto and contacto.idcompania ='" . $idcompania . "'");
+        $row = $query->row();
+        if ($query->num_rows() > 0) {
+            return $row->Total;
+        } else {
+            return false;
+        }
+    }
+
+    function total_pedidos_x_compania($idcompania) {
+        $query = $this->db->query("SELECT count(idpedido) as Total From cotizacion, pedido, requerimientos, contacto Where pedido.idcotizacion = cotizacion.idcotizacion And cotizacion.idrequerimiento = requerimientos.idrequerimiento And requerimientos.id_contacto = contacto.idcontacto AND contacto.idcompania = '" . $idcompania . "'");
+        $row = $query->row();
+        if ($query->num_rows() > 0) {
+            return $row->Total;
         } else {
             return false;
         }

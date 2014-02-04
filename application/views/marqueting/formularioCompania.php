@@ -151,12 +151,12 @@ if ($compania != null) {
                     <div class="etiquetaCount">
                             Total de Firmas : <b><?= $countCompania ?></b>
                         </div></td>
-                    <td>
+                    <td width="35">
 					<?= ($VarNocontactar === "S") ? "<div class='circuloNoContactar'></div>" : ""; ?></td>
-                    <td>
+                    <td width="35">
                     <?= ($VarParalizado === "S") ? "<div class='circuloParalizado'></div>" : ""; ?>
                     </td>
-                    <td>
+                    <td align="left" valign="middle">
                     <!--
                     <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     	<tr>
@@ -203,7 +203,12 @@ if ($compania != null) {
                         </tr>
                     </table>
                     -->
-                    </td>
+                    <table border="0">
+                      <tr>
+                        <td><div class="etiquetaCountRequerimiento">Total de Requerimientos: <b><?php echo $countRequerimientos; ?></b></div></td>
+                        <td><div class="etiquetaCountPedido">Total de Pedidos: <b><?php echo $countPedidos; ?></b></div></td>
+                      </tr>
+                    </table></td>
                 </tr>
             </table>               
         </td>

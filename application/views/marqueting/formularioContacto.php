@@ -55,8 +55,11 @@ if ($contacto != null) {
 <table width="100%" id="panelContacto" <? echo ($xretirado === "1") ? "style='background-color: #f8b9b7'" : "style='background-color: #ddddff'"; ?> >
     <tr>
         <td colspan="2">
-
-            <div class="FormLeft ">
+            
+        <table border="0">
+          <tr>
+            <td width="270" align="left" valign="top">
+       
                 <div class="btn-group divLeft">
 
                     <a class="btn" id="btnPrimeroC"
@@ -100,39 +103,42 @@ if ($contacto != null) {
                        ><img src="<?= $this->config->base_url() ?>images/marqueting/eliminar2.png" class="tamanoIconoMantenimiento"></a>                                        
 
                 </div>   
-            </div>
-        </td>
+         
+            
+            </td>
+            <td align="left" valign="top">
+            
+           <table border="0">
+                      <tr>
+                      <td align="left" valign="top"> <div class="etiquetaCount">
+                                            Total de Contactos : <b><?= $countContactos ?></b>
+                                        </div></td>
+                        <td><div class="etiquetaCountRequerimiento">Total de Requerimientos: <b><?php echo $countContactosRequerimientos; ?></b></div></td>
+                        <td><div class="etiquetaCountPedido">Total de Pedidos: <b><?php echo $countContactosPedidos; ?></b></div></td>
+                      </tr>
+                    </table> 
+            
+            </td>
+            
+            <td align="left" valign="top">&nbsp;</td>
+            <td align="left" valign="top">&nbsp;</td>
+            <td align="left" valign="top">&nbsp;</td>
+          </tr>
+        </table></td>
     </tr>
 
     <tr>
-        <td width="300" rowspan="2" valign="top">
+        <td width="250" rowspan="2" valign="top">
            
                 <table width="100%">
                  <form id="frmContacto" action="" method="post">
                     <tr>
                         <td colspan="2">
 
-                            <table  width="100%">
+                            <table  width="260" border="0" cellpadding="0" cellspacing="0" bordercolor="#FF0000">
                                 <tr>
-                                    <td valign="top"><label  >Contact.</label></td>
-                                    <td valign="top"><input class="boxleft" type="text" name="txtidContacto" id="txtidContacto"  value="<?= $xidcontacto; ?>" readonly></td>
-                                    <td valign="top"> <input class="boxleft" type="hidden" name="txtidCompania" id="txtidCompania"  value="<?= $xidcompania; ?>">                        <div class="etiquetaCount">
-                                            Total de Contactos : <b><?= $countContactos ?></b>
-                                        </div></td>
-                                </tr>
-                            </table>
-
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-
-                            <label  >Andere</label>
-
-                        </td>
-                        <td>
-                            <select class="box"  name="cboAndere" id="cboAndere" >
+                                    <td width="48" align="left" valign="top">Andere</td>
+                                  <td width="50" align="left" valign="top"> <select class="box"  name="cboAndere" id="cboAndere" >
                                 <option value=''></option>
                                 <option <? echo ($xanrede === "Herr") ? "selected" : ""; ?>>Herr</option>
                                 <option <? echo ($xanrede === "Frau") ? "selected" : ""; ?>>Frau</option>
@@ -143,7 +149,25 @@ if ($contacto != null) {
                                 <option <? echo ($xanrede === "Miss.") ? "selected" : ""; ?>>Miss.</option>
                                 <option <? echo ($xanrede === "Mrs.") ? "selected" : ""; ?>>Mrs.</option>
                                 <option <? echo ($xanrede === "Ms.") ? "selected" : ""; ?>>Ms.</option>
-                            </select>
+                            </select></td>
+                                    <td width="59" align="right" valign="top"><input class="boxleft" type="hidden" name="txtidCompania" id="txtidCompania"  value="<?= $xidcompania; ?>" />
+                                    Codigo&nbsp;</td>
+                                  <td align="left" valign="top"><input class="boxleft" type="text" name="txtidContacto" id="txtidContacto"  value="<?= $xidcontacto; ?>" readonly></td>
+                                    
+                                </tr>
+                            </table>
+
+
+                      </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            
+
+                        </td>
+                        <td>
+                            
                         </td>
                     </tr>
                     <tr>

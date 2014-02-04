@@ -7,6 +7,26 @@ class Contacto_model extends CI_Model {
         $this->load->database();
     }
 
+    function total_requerimientos_x_contacto($idcontacto_actual) {
+        $query = $this->db->query("select count(idrequerimiento) as Total from requerimientos , contacto where requerimientos.id_contacto=contacto.idcontacto and  contacto.idcontacto ='" . $idcontacto_actual . "'");
+        $row = $query->row();
+        if ($query->num_rows() > 0) {
+            return $row->Total;
+        } else {
+            return false;
+        }
+    }
+
+    function total_pedidos_x_contacto($idcontacto_actual) {
+        $query = $this->db->query("SELECT   count(pedido.idpedido) as Total   FROM   contacto,requerimientos, cotizacion, pedido WHERE   contacto.idcontacto = requerimientos.id_contacto and  requerimientos.idrequerimiento = cotizacion.idrequerimiento and cotizacion.idcotizacion = pedido.idcotizacion and  contacto.idcontacto ='" . $idcontacto_actual . "'");
+        $row = $query->row();
+        if ($query->num_rows() > 0) {
+            return $row->Total;
+        } else {
+            return false;
+        }
+    }
+
     //HH: Mantenimiento
 
     public function nuevo_idcontacto() {

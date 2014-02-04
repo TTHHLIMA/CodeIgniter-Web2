@@ -23,3 +23,20 @@ body {
     padding: 5px;
     font-size: 12px;
 }
+
+.etiquetaCountRequerimiento{
+    height: 18px;
+    background-color: #d9edf7;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 5px;
+    font-size: 12px;
+}
+.etiquetaCountPedido{
+    height: 18px;
+    background-color: #ffc4c4;
+    margin: 0px;
+    margin-left: 5px;
+    padding: 5px;
+    font-size: 12px;
+}
