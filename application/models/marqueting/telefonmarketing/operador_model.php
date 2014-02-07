@@ -113,7 +113,7 @@ class Operador_model extends CI_Model {
     
     
      public function buscar_registros_por_fechas($codigo_actual = '', $fecha_inicial = '', $fecha_final = '') {
-        $query = $this->db->query("select * from registros where codigo = '" . $codigo_actual . "' and `fecha` BETWEEN '" . $fecha_inicial . "' AND '" . $fecha_final . "' order by fecha");
+        $query = $this->db->query("select * from registros where codigo = '" . $codigo_actual . "' and `fecha_ingreso` BETWEEN '" . $fecha_inicial . "' AND '" . $fecha_final . "' order by fecha_ingreso");
         if($query->num_rows() > 0) {
             return $query->result();
         } else {

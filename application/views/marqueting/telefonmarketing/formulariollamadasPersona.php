@@ -4,7 +4,7 @@ if ($llamadas != null) {
     foreach ($llamadas as $row) {
         $xidregistro = $row->idregistro;
         $xcodigo = $row->codigo;
-        $xfecha_ingreso = $row->fecha_ingreso;
+        $xfecha_ingreso = fecha_calendario(strftime($row->fecha_ingreso));
         $xhora_inicio = date("H:i",strtotime($row->hora_inicio));
         $xhora_final = date("H:i",strtotime($row->hora_final));
         $xllamadas = $row->llamadas;
@@ -103,7 +103,7 @@ if ($llamadas != null) {
                         <table border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td align="left" valign="top">&nbsp;Fecha&nbsp;</td>
-                                <td align="left" valign="top"><input  type="text" id ="txtllamFecha" name="txtllamFecha" value="<?= $xfecha;?>" style="width:70px;" /></td>
+                                <td align="left" valign="top"><input  type="text" id ="txtllamFecha" name="txtllamFecha" value="<?= $xfecha_ingreso;?>" style="width:70px;" /></td>
                             </tr>
                             <tr>
                                 <td align="left" valign="top">&nbsp;Llamadas&nbsp;</td>

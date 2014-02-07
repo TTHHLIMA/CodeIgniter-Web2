@@ -24,7 +24,7 @@
                         foreach ($registrosPorFechas as $item) {
                             echo "<tr>";
                             echo "<td>" . $i . "</td>";
-                            echo "<td>" . $item->fecha . "</td>";
+                            echo "<td>" . $item->fecha_ingreso . "</td>";
                             echo "<td>" . $item->hora_inicio. "</td>";
                             echo "<td>" . $item->hora_final. "</td>";
                             if ($item->sumatoria_horas == "00:00:00"){

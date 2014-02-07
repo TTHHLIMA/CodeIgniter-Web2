@@ -137,12 +137,12 @@ class Operador extends CI_Controller {
     function proceso_mantenimiento($opcion = "", $codigo = "") {
         $xidregistro = $this->input->post("txtllamCodigo");
         $xcodigo = ($this->input->post("txtxCodigo") === "") ? $codigo : $this->input->post("txtxCodigo");
-        $xfecha_ingreso = $this->input->post("0000-00-00");
+        $xfecha_ingreso = fecha_calendario_inverso($this->input->post("txtllamFecha"));
         $xhora_inicio = $this->input->post("txtllamHoraInicio");
         $xhora_final = $this->input->post("txtllamHoraFinal");
         $xllamadas = $this->input->post("cbollamLlamadas");
         $xsumatoria_horas = $this->input->post("txtllamTotalHoras");
-        $xfecha = fecha_calendario_inverso($this->input->post("txtllamFecha"));
+        $xfecha = fecha_calendario_inverso(date('d-m-Y')); // HH: fecha actual del sistema
         $xzentrale = $this->input->post("cbollamZentrale");
         $xrichtiger = $this->input->post("cbollamRichtiger");
         $xrichtig = $this->input->post("cbollamRichtig");
