@@ -21,6 +21,7 @@ class Operador extends CI_Controller {
             $data['xxxnivel'] = $login['xxxnivel'];
             $data['xxxactivo'] = $login['xxxactivo'];
             $data['xxxcoordinador'] = $login['xxxcoordinador'];
+            $data['menu']="1";
             $this->load->vars($data);
             $this->load->view('marqueting/telefonmarketing/header/header_operador');
             $this->load->view('menu/menuSuperior');

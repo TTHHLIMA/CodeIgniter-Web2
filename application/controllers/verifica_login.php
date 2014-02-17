@@ -24,7 +24,7 @@ class verifica_login extends CI_Controller {
             //HH: prueba
         } else {
             $login = $this->session->userdata('Datos_Session');
-            echo "dato:".$login['xxxnivel'];
+            //echo "dato:".$login['xxxnivel'];
             if ($login['xxxnivel'] === "1") {
                 redirect('proyectos/procesos/proceso/', 'refresh');
             }
@@ -42,7 +42,7 @@ class verifica_login extends CI_Controller {
         $usernname = $this->input->post('txtuser');
         $password = $this->input->post('txtpass');
         $xtipo = 0;
-        echo $password;
+        //echo $password;
         if (substr($password, 0, 1) == "Q") { //Contacto
             $result = $this->usuario_model->usuario_cliente($usernname, $password);
             $xtipo = 1; // HH:cliente
@@ -80,10 +80,10 @@ class verifica_login extends CI_Controller {
                 }
                 $this->session->set_userdata('Datos_Session', $sess_array);
             }
-            echo "true";
+            //echo "true";
             return true;
         } else {
-            echo "false";
+            //echo "false";
             $this->form_validation->set_message('check_database', 'Datos invalidos del Usuario o Password');
             return false;
         }

@@ -10,6 +10,7 @@
         <meta name="author" content="">
         <!-- Le styles -->
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+        <link href="<?= $this->config->base_url() ?>css/menu_superior.css" rel="stylesheet">
 
         <script src="<?= $this->config->base_url() ?>JQuery/datatable/js/jquery.js" type="text/javascript"></script>
        

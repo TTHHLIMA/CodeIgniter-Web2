@@ -13,6 +13,7 @@ class Proceso extends CI_Controller {
     }
 
     public function index($filtro = "") {
+        $data['menu'] = "3";
         $login = $this->session->userdata('Datos_Session');
         $data['xxxiduser'] = $login['xxxiduser'];
         $data['xxxnombres'] = $login['xxxnombres'];
@@ -120,6 +121,7 @@ class Proceso extends CI_Controller {
     }
 
     function listar($xFiltro = "", $xCoord = "") {
+        $data['menu'] = "4";
         $login = $this->session->userdata('Datos_Session');
         $data['xxxiduser'] = $login['xxxiduser'];
         $data['xxxnombres'] = $login['xxxnombres'];

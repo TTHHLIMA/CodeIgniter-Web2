@@ -25,6 +25,7 @@ class Compania extends CI_Controller {
             $data['xxxnivel'] = $login['xxxnivel'];
             $data['xxxactivo'] = $login['xxxactivo'];
             $data['xxxcoordinador'] = $login['xxxcoordinador'];
+            $data['menu']="2";
             $this->load->vars($data);
             $this->load->view('marqueting/header/header_compania');
             $this->load->view('menu/menuSuperior');
