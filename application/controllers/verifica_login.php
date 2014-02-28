@@ -52,6 +52,7 @@ class verifica_login extends CI_Controller {
         }
         if ($result) {
             $sess_array = array();
+            //var_dump($result);
             foreach ($result as $row) {
                 if ($xtipo === 1) {
                     $sess_array = array(
@@ -62,12 +63,14 @@ class verifica_login extends CI_Controller {
                         'xxxnombres' =>  $row->anrede . " " . $row->nombres . " " . $row->apellidos,
                         'xxxtipo' => "3",
                         'xxxnivel' => "3",
-                        'xxxtechniforum' => $row->activo,
-                        'xxxreportett' => $row->activo,
-                        'xxxterminologias' => $row->activo,
-                        'xxxsemaforo' => $row->activo,
-                        'xxxcoordinador' => $row->coordinador
-                    );                    
+                        'xxxtechniforum' => $row->techni_forum,
+                        'xxxreportett' => $row->reportes_tt,
+                        'xxxterminologias' => $row->terminologias,
+                        'xxxusuario' => $row->usuario
+                        //'xxxsemaforo' => $row->activo,
+                        //'xxxcoordinador' => $row->coordinador
+                    ); 
+                    //echo "true";
                 } else {
                     $sess_array = array(
                         'xxxiduser' => $row->id_usuario,

@@ -44,11 +44,11 @@ if ($menu == "6") {
 
                 <li ><a <?php echo $activo1; ?> href="<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador">Telefonmarqueting</a></li>
                 <li ><a <?php echo $activo2; ?> href="<?= $this->config->base_url() ?>marqueting/compania">Marqueting</a></li>
-                <li ><a <?php echo $activo6; ?> href="<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana">Campaña de Marqueting</a></li>
+                <!--<li ><a <?php echo $activo6; ?> href="<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana">Campaña de Marqueting</a></li>-->
                 <li ><a <?php echo $activo3; ?> href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/">Inbox</a></li>
                 <li ><a <?php echo $activo4; ?> href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/listar">Proyectos abiertos</a></li>
                 <li ><a <?php echo $activo5; ?> href="#contact">Reportes</a>
-                    <ul>
+                   <!-- <ul>
                         <li><a href="#">CSS</a></li>
                         <li><a href="#">Graphic design</a></li>
                         <li><a href="#">Development tools</a>
@@ -61,7 +61,7 @@ if ($menu == "6") {
                         </li>
                         <li><a href="#">Web design</a></li>
                     </ul>
-
+                   -->
                 </li>
 
 
