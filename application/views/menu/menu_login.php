@@ -10,9 +10,7 @@
 			  <a class="brand" href="">Bienvenidos a Techni-Translate</a>
 			  <nav class="nav-collapse">
 				<ul class="nav nav-pills">
-				  <li class="active"><a href="#">Home</a></li>
-				  <li><a href="#about">About</a></li>
-				  <li><a href="#contact">Contact</a></li>
+				  <!--li class="active"><a href="#">Home</a></li-->
 				</ul>
 			  </nav><!--/.nav-collapse -->
 			</div>

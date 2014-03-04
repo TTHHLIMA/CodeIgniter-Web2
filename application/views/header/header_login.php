@@ -27,7 +27,46 @@
         <link rel="shortcut icon" href="<?=$this->config->base_url()?>img/favicon.ico">
         
           
-
+<style type="text/css">
+ 
+            /* Custom container */
+            .container {
+                margin: 0 auto;
+                max-width: 1000px;
+            }
+            .container > hr {
+                margin: 30px 0;
+            }
+            .form-signin {
+                max-width: 280px;
+                padding: 5px 5px 5px;
+                margin: 0 auto 10px;
+                margin-top: 40px;
+                background-color: #fff;
+                border: 1px solid #e5e5e5;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            }
+            .form-signin .form-signin-heading,
+            .form-signin .checkbox {
+                margin-bottom: 0px;
+            }
+            .form-signin input[type="text"],
+            .form-signin input[type="captcha"],
+            .form-signin input[type="password"] {
+                font-size: 16px;
+                height: auto;
+                margin-bottom: 15px;
+                padding: 7px 9px;
+            }
+ 
+ 
+ 
+        </style>
 
 
 
