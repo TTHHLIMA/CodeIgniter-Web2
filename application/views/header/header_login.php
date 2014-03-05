@@ -21,7 +21,8 @@
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <link href="<?=$this->config->base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">	
+        <link href="<?=$this->config->base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="<?=$this->config->base_url()?>css/menu_superior.css" rel="stylesheet">
         
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?=$this->config->base_url()?>img/favicon.ico">
@@ -33,12 +34,13 @@
             .container {
                 margin: 0 auto;
                 max-width: 1000px;
+                min-width: 380px;
             }
             .container > hr {
                 margin: 30px 0;
             }
             .form-signin {
-                max-width: 280px;
+                max-width: 380px;
                 padding: 5px 5px 5px;
                 margin: 0 auto 10px;
                 margin-top: 40px;

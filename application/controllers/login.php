@@ -14,9 +14,11 @@ class Login extends CI_Controller {
     }
 
     public function index() {
-        // Captcha
-        //  //eliminar la imagen
-        $this->deleteImage();
+        if (isset($imagen) ){
+        } else {
+           $this->deleteImage();
+        }
+        
         $original_string = array_merge(range(0, 9), range('a', 'z'), range('A', 'Z'));
         $original_string = implode("", $original_string);
         $captcha = substr(str_shuffle($original_string), 0, 6);
@@ -35,20 +37,23 @@ class Login extends CI_Controller {
         $cap = create_captcha($vals);
         $data['image'] = $cap['image'];
 
-        if (file_exists(base_url() . "captcha/" . $this->session->userdata['image']))
-            unlink(base_url() . "captcha/" . $this->session->userdata['image']);
-
+        
+        if (isset($this->session->userdata['image'])) {
+            if (file_exists(base_url() . "captcha/" . $this->session->userdata['image']))
+                unlink(base_url() . "captcha/" . $this->session->userdata['image']);
+        } else {
+            
+        }
         $this->session->set_userdata(array('captcha' => $captcha, 'image' => $cap['time'] . '.jpg'));
         // 
         // Captcha
-        //$data['capcha'] = $this->captcha_model->setCaptcha();
-        //var_dump($data['capcha']);
+
         $this->load->vars($data);
         $this->load->helper(array('form'));
         $this->load->view('header/header_login');
-        //$this->load->view('menu/menu_login');
+        $this->load->view('menu/menu_login');
         $this->load->view('login');
-        $this->load->view('footer/footer_login');
+        //$this->load->view('footer/footer_login');
     }
     
     public function deleteImage() {

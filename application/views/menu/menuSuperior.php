@@ -48,20 +48,20 @@ if ($menu == "6") {
                 <li ><a <?php echo $activo3; ?> href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/">Inbox</a></li>
                 <li ><a <?php echo $activo4; ?> href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/listar">Proyectos abiertos</a></li>
                 <li ><a <?php echo $activo5; ?> href="#contact">Reportes</a>
-                   <!-- <ul>
-                        <li><a href="#">CSS</a></li>
-                        <li><a href="#">Graphic design</a></li>
-                        <li><a href="#">Development tools</a>
-                            <ul>
-                                <li><a href="#">CSS</a></li>
-                                <li><a href="#">Graphic design</a></li>
-                                <li><a href="#">Development tools</a></li>
-                                <li><a href="#">Web design</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Web design</a></li>
-                    </ul>
-                   -->
+                    <!-- <ul>
+                         <li><a href="#">CSS</a></li>
+                         <li><a href="#">Graphic design</a></li>
+                         <li><a href="#">Development tools</a>
+                             <ul>
+                                 <li><a href="#">CSS</a></li>
+                                 <li><a href="#">Graphic design</a></li>
+                                 <li><a href="#">Development tools</a></li>
+                                 <li><a href="#">Web design</a></li>
+                             </ul>
+                         </li>
+                         <li><a href="#">Web design</a></li>
+                     </ul>
+                    -->
                 </li>
 
 
@@ -70,9 +70,19 @@ if ($menu == "6") {
 
                 <li ><a<?php echo $activo4; ?> href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/listar">Proyectos abiertos</a></li>
 
-            <?php } ?>
+            <?php
+            }
+            if ($xxxnivel === "3") { //cliente
+                ?>
+                <li ><a href="<?= $this->config->base_url() ?>login/cerrar_sesion"><i class="icon-user"></i> Log Out (<?= $xxxiniciales; ?>)</a></li>            
+                <?php
+            } else {
+                ?>
+                <li ><a href="<?= $this->config->base_url() ?>login/cerrar_sesion"><i class="icon-user"></i> Cerrar Sesión <?= $xxxiniciales; ?></a></li>            
+                <?php
+            }
+            ?>
 
-            <li ><a href="<?= $this->config->base_url() ?>login/cerrar_sesion">Cerrar Sesión <?= $xxxiniciales; ?></a></li>            
 
             <!--  <li><a class="active" href="#">Home</a></li>
               <li>

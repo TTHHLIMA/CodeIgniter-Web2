@@ -16,13 +16,18 @@ class verifica_login extends CI_Controller {
 
     function index() {
         $this->load->library('form_validation');
- //eliminar la imagen
-        $this->deleteImage();
-        $this->form_validation->set_rules('txtuser', 'Usuario', 'trim|required|xss_clean');
-        //$this->form_validation->set_rules('word', 'Word', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('captcha', 'Captcha', 'callback_validate_captcha');
-        $this->form_validation->set_rules('txtpass', 'Password', 'trim|required|xss_clean|callback_check_database');
-        $this->form_validation->set_message('required', 'El  %s es requerido');
+        //eliminar la imagen
+        if (isset($imagen)) {
+            
+        } else {
+            $this->deleteImage();
+        }
+
+        $this->form_validation->set_rules('txtuser', 'Benutzername', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('captcha', 'Code', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('captcha', 'Code', 'callback_validate_captcha');
+        $this->form_validation->set_rules('txtpass', 'Kennwort', 'trim|required|xss_clean|callback_check_database');
+        $this->form_validation->set_message('required', '%s ist erforderlich.');
         if ($this->form_validation->run() == false) {
             $this->load->helper(array('form'));
 
@@ -50,9 +55,12 @@ class verifica_login extends CI_Controller {
             $cap = create_captcha($vals);
             $data['image'] = $cap['image'];
 
-            if (file_exists(base_url() . "captcha/" . $this->session->userdata['image']))
-                unlink(base_url() . "captcha/" . $this->session->userdata['image']);
-
+            if (isset($this->session->userdata['image'])) {
+                if (file_exists(base_url() . "captcha/" . $this->session->userdata['image']))
+                    unlink(base_url() . "captcha/" . $this->session->userdata['image']);
+            } else {
+                
+            }
             $this->session->set_userdata(array('captcha' => $captcha, 'image' => $cap['time'] . '.jpg'));
             // 
             // Captcha
@@ -60,14 +68,14 @@ class verifica_login extends CI_Controller {
 
             $this->load->vars($data);
             $this->load->view('header/header_login');
-            //$this->load->view('menu/menu_login');
+            $this->load->view('menu/menu_login');
             $this->load->view('login');
-            $this->load->view('footer/footer_login');
+            //$this->load->view('footer/footer_login');
 
             //            //HH: prueba
         } else {
             $login = $this->session->userdata('Datos_Session');
-             //eliminar la imagen
+            //eliminar la imagen
             $this->deleteImage();
             if ($login['xxxnivel'] === "1") {
                 redirect('proyectos/procesos/proceso/', 'refresh');
@@ -92,8 +100,9 @@ class verifica_login extends CI_Controller {
     }
 
     public function validate_captcha() {
+        //El codigo ingresado no coincide con el codigo de la imagen : Der eingegebene Code stimmt nicht mit dem Code im Bild überein.
         if ($this->input->post('captcha') != $this->session->userdata['captcha']) {
-            $this->form_validation->set_message('validate_captcha', 'El codigo ingresado no coincide con el codigo de la imagen.');
+            $this->form_validation->set_message('validate_captcha', 'Der eingegebene Code stimmt nicht mit dem Code im Bild überein.');
             return false;
         } else {
             return true;
@@ -146,8 +155,8 @@ class verifica_login extends CI_Controller {
             //echo "true";
             return true;
         } else {
-            //echo "false";
-            $this->form_validation->set_message('check_database', 'Datos invalidos del Usuario o Password');
+            //Datos invalidos del Usuario o datos invalidos del Password. : Ungültiger Benutzername oder ungültiges Kennwort.
+            $this->form_validation->set_message('check_database', 'Ungültiger Benutzername oder ungültiges Kennwort.');
             return false;
         }
     }
