@@ -18,20 +18,26 @@ class Reportes_model extends CI_Model {
         }
     }
 
-    function mostrar_reporte($idcontacto) {
-        $query = $this->db->query("SELECT contacto.idcontacto,concat(contacto.apellidos , ' ' ,  contacto.nombres) as nombre ,compania.idcompania ,cotizacion.idcotizacion , pedido.idpedido ,pedido.fechaentrega,cotizacion.idioma_origen,cotizacion.idioma_final,cotizacion.word, cotizacion.excel,cotizacion.ppt ,cotizacion.formato, cotizacion.cant_combinaciones ,cotizacion.total_euro,cotizacion.total_us,cotizacion.euros,cotizacion.us , requerimientos.numero_req_cli , requerimientos.fecha , pedido.numero_ped_cli, pedido.fecha_ped_cli , pedido.fecha_envio , pedido.term_estrac FROM compania, contacto, requerimientos, cotizacion, pedido   where pedido.idcotizacion = cotizacion.idcotizacion and cotizacion.idrequerimiento = requerimientos.idrequerimiento and cotizacion.euros = 'S' and requerimientos.id_contacto= contacto.idcontacto and contacto.idcompania = compania.idcompania and compania.idcompania in (select distinct (k.idcompania) from contacto as k where k.reportes_tt = 1 or k.reportes_tt_com = 1 ) and idcontacto ='" . $idcontacto . "' order by compania.idcompania");
+    function mostrar_reporte($idcontacto, $filtro = null) {
+        if ($filtro != null) {
+            $query = $this->db->query("SELECT contacto.idcontacto,concat(contacto.apellidos , ' ' ,  contacto.nombres) as nombre ,compania.idcompania ,cotizacion.idcotizacion , pedido.idpedido ,pedido.fechaentrega,cotizacion.idioma_origen,cotizacion.idioma_final,cotizacion.word, cotizacion.excel,cotizacion.ppt ,cotizacion.formato, cotizacion.cant_combinaciones ,cotizacion.total_euro,cotizacion.total_us,cotizacion.euros,cotizacion.us , requerimientos.numero_req_cli , requerimientos.fecha , pedido.numero_ped_cli, pedido.fecha_ped_cli , pedido.fecha_envio , pedido.term_estrac FROM compania, contacto, requerimientos, cotizacion, pedido   where pedido.idcotizacion = cotizacion.idcotizacion and cotizacion.idrequerimiento = requerimientos.idrequerimiento and cotizacion.euros = 'S' and requerimientos.id_contacto= contacto.idcontacto and contacto.idcompania = compania.idcompania and compania.idcompania in (select distinct (k.idcompania) from contacto as k where k.reportes_tt = 1 or k.reportes_tt_com = 1 ) and idcontacto ='" . $idcontacto . "' and year(pedido.fecha_envio) = '".$filtro."' order by requerimientos.fecha desc");
+        } else {
+            $query = $this->db->query("SELECT contacto.idcontacto,concat(contacto.apellidos , ' ' ,  contacto.nombres) as nombre ,compania.idcompania ,cotizacion.idcotizacion , pedido.idpedido ,pedido.fechaentrega,cotizacion.idioma_origen,cotizacion.idioma_final,cotizacion.word, cotizacion.excel,cotizacion.ppt ,cotizacion.formato, cotizacion.cant_combinaciones ,cotizacion.total_euro,cotizacion.total_us,cotizacion.euros,cotizacion.us , requerimientos.numero_req_cli , requerimientos.fecha , pedido.numero_ped_cli, pedido.fecha_ped_cli , pedido.fecha_envio , pedido.term_estrac FROM compania, contacto, requerimientos, cotizacion, pedido   where pedido.idcotizacion = cotizacion.idcotizacion and cotizacion.idrequerimiento = requerimientos.idrequerimiento and cotizacion.euros = 'S' and requerimientos.id_contacto= contacto.idcontacto and contacto.idcompania = compania.idcompania and compania.idcompania in (select distinct (k.idcompania) from contacto as k where k.reportes_tt = 1 or k.reportes_tt_com = 1 ) and idcontacto ='" . $idcontacto . "' order by requerimientos.fecha desc");
+        }
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
             return false;
         }
     }
+
     function buscar_monto_x_pedido($idpedido) {
-        $query = $this->db->query("SELECT detalle_factura.total , facturas.idpedido , facturas.idfactura FROM facturas , detalle_factura where detalle_factura.idfactura = facturas.idfactura and  facturas.estado_factura = 'N' and facturas.idpedido ='".$idpedido."'");
+        $query = $this->db->query("SELECT detalle_factura.total , facturas.idpedido , facturas.idfactura FROM facturas , detalle_factura where detalle_factura.idfactura = facturas.idfactura and  facturas.estado_factura = 'N' and facturas.idpedido ='" . $idpedido . "'");
         if ($query->num_rows() > 0) {
             return $query->result_array();
         } else {
             return false;
         }
     }
+
 }

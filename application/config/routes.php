@@ -40,6 +40,7 @@
 $route['compania']="compania";
 //$route['compania']="compania";
 $route['proyectos/procesos/proceso/(:any)'] = 'proyectos/procesos/proceso/$1';
+$route['clientes/reportes/(:num)'] = 'clientes/reportes/index/$1';
 //$route['product/(:any)'] = "catalog/product_lookup";
 //$route['product/(:num)'] = "catalog/product_lookup_by_id/$1";
 $route['default_controller'] = "login";
