@@ -13,6 +13,7 @@
         <link href="<?= $this->config->base_url() ?>css/estilosCompania.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/menu_superior.css" rel="stylesheet">
         <script src="<?= $this->config->base_url() ?>JQuery/jquery-1.10.2.js"></script>
+        <script src="<?= $this->config->base_url() ?>js/marqueting/funciones.js"></script>
 
         <!-- HH: JQ UI -->
         <script src="<?= $this->config->base_url() ?>JQuery/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.js"></script>
@@ -1490,10 +1491,7 @@
 
 
 
-
-
-
-
+ 
 
 
 

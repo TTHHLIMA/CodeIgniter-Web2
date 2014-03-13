@@ -13,7 +13,7 @@ class Compania extends CI_Controller {
         $this->load->model('marqueting/compania_model');
         $this->load->model('marqueting/contacto_model');
         $this->load->model('marqueting/llamada_model');
-        $this->load->helper(array('url', 'consola_helper','funciones_helper'));
+        $this->load->helper(array('url', 'consola_helper', 'funciones_helper'));
     }
 
     public function index() {
@@ -25,7 +25,7 @@ class Compania extends CI_Controller {
             $data['xxxnivel'] = $login['xxxnivel'];
             $data['xxxactivo'] = $login['xxxactivo'];
             $data['xxxcoordinador'] = $login['xxxcoordinador'];
-            $data['menu']="2";
+            $data['menu'] = "2";
             $this->load->vars($data);
             $this->load->view('marqueting/header/header_compania');
             $this->load->view('menu/menuSuperior');
@@ -71,7 +71,7 @@ class Compania extends CI_Controller {
         $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
         $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $data['countRequerimientos'] = $this->compania_model->total_requerimientos_x_compania($data['compania'][0]->idcompania);
-        $data['countPedidos'] = $this->compania_model->total_pedidos_x_compania($data['compania'][0]->idcompania);        
+        $data['countPedidos'] = $this->compania_model->total_pedidos_x_compania($data['compania'][0]->idcompania);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -86,7 +86,7 @@ class Compania extends CI_Controller {
         $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
         $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $data['countRequerimientos'] = $this->compania_model->total_requerimientos_x_compania($data['compania'][0]->idcompania);
-        $data['countPedidos'] = $this->compania_model->total_pedidos_x_compania($data['compania'][0]->idcompania);        
+        $data['countPedidos'] = $this->compania_model->total_pedidos_x_compania($data['compania'][0]->idcompania);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -101,7 +101,7 @@ class Compania extends CI_Controller {
         $data['partner'] = $this->compania_model->buscar_partner_idcompania($data['compania'][0]->idcompania);
         $data['countCompania'] = $this->compania_model->total_de_registros("compania");
         $data['countRequerimientos'] = $this->compania_model->total_requerimientos_x_compania($data['compania'][0]->idcompania);
-        $data['countPedidos'] = $this->compania_model->total_pedidos_x_compania($data['compania'][0]->idcompania);        
+        $data['countPedidos'] = $this->compania_model->total_pedidos_x_compania($data['compania'][0]->idcompania);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioCompania');
     }
@@ -110,12 +110,20 @@ class Compania extends CI_Controller {
     public function buscar_contacto_siguiente($idcompania_actual = '', $idcontacto_actual = '') {
         $data['contacto'] = $this->compania_model->buscar_contacto_siguiente($idcompania_actual, $idcontacto_actual);
         $data['idiomas'] = $this->compania_model->listar_idiomas();
+        //echo $idcompania_actual . " - " . $idcontacto_actual;
+        //var_dump($data['contacto']);
         if ($data['contacto'] === False) {
             $data['contacto'] = $this->compania_model->buscar_contacto_idcontacto($idcontacto_actual);
         }
+        //var_dump($data['contacto']);
         $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
-        $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto($data['contacto'][0]->idcontacto);
-        $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);          
+        if ($data['contacto'] === False) {
+            $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto('');
+            $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto('');
+        } else {
+            $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto($data['contacto'][0]->idcontacto);
+            $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);
+        }
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -126,9 +134,15 @@ class Compania extends CI_Controller {
         if ($data['contacto'] === False) {
             $data['contacto'] = $this->compania_model->buscar_contacto_idcontacto($idcontacto_actual);
         }
+        //var_dump($data['contacto']);
         $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
-        $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto($data['contacto'][0]->idcontacto);
-        $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);          
+        if ($data['contacto'] === False) {
+            $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto('');
+            $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto('');
+        } else {
+            $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto($data['contacto'][0]->idcontacto);
+            $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);
+        }
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -138,7 +152,7 @@ class Compania extends CI_Controller {
         $data['idiomas'] = $this->compania_model->listar_idiomas();
         $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
         $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto($data['contacto'][0]->idcontacto);
-        $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);          
+        $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -148,7 +162,7 @@ class Compania extends CI_Controller {
         $data['idiomas'] = $this->compania_model->listar_idiomas();
         $data['countContactos'] = $this->compania_model->total_registros_contacto($idcompania_actual);
         $data['countContactosRequerimientos'] = $this->contacto_model->total_requerimientos_x_contacto($data['contacto'][0]->idcontacto);
-        $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);        
+        $data['countContactosPedidos'] = $this->contacto_model->total_pedidos_x_contacto($data['contacto'][0]->idcontacto);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioContacto');
     }
@@ -188,8 +202,6 @@ class Compania extends CI_Controller {
         $this->load->view('marqueting/formularioCompania');
     }
 
-    
-    
     //HH: funcion para cargar al contacto
     public function mostrar_contacto() {
         $this->load->view('marqueting/formularioContacto');
@@ -215,9 +227,8 @@ class Compania extends CI_Controller {
         }
     }
 
-    
     public function filtrar_compania_relacionadas_idcompania($idcompania = null) {
-       // echo "sss".$idcompania;
+        // echo "sss".$idcompania;
         if ($idcompania == null) {
             $data['lista_companias_relacionadas'] = array();
             $this->load->view("contenedor/lista_compania_relacionada", $data);
@@ -226,11 +237,10 @@ class Compania extends CI_Controller {
             //var_dump($data['lista_companias_relacionadas']);
             $this->load->view("contenedor/lista_compania_relacionada", $data);
         }
-    }    
-    
-    
+    }
+
 //HH: botones de navegacion llamadas
-     //HH: botones de navegacion contactos
+    //HH: botones de navegacion contactos
     public function buscar_llamada_siguiente($idllamada_actual = '', $idcontacto_actual = '') {
         $data['llamada'] = $this->llamada_model->buscar_llamada_siguiente($idllamada_actual, $idcontacto_actual);
         //var_dump($data['llamada']);
@@ -266,26 +276,24 @@ class Compania extends CI_Controller {
         $this->load->view('marqueting/formularioLlamadas');
     }
 
-    
     public function count_llamadas($idcontacto) {
         echo $this->llamada_model->total_registros_llamada($idcontacto);
     }
-    
-    
+
     public function formulario_llamadas($idcontacto = "") {
         $data['llamada'] = NULL;
         $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioLlamadas');
-    }    
-    
-     public function buscar_llamadas_idllamada($idcontacto = "", $idllamada = "") {
+    }
+
+    public function buscar_llamadas_idllamada($idcontacto = "", $idllamada = "") {
         $data['llamada'] = $this->llamada_model->buscar_llamada_idllamada($idllamada);
         $data['countLlamadas'] = $this->llamada_model->total_registros_llamada($idcontacto);
         $this->load->vars($data);
         $this->load->view('marqueting/formularioLlamadas');
-    }   
-    
+    }
+
     function proceso_mantenimiento($opcion = "") {
         $idcompania = $this->input->post("txtidcompania");
         $txtnombre = $this->input->post("txtnombre");
@@ -320,9 +328,9 @@ class Compania extends CI_Controller {
         $chksonst = ($this->input->post("chksonst") === "on") ? "1" : "0";
         $cboWirtschaftslage = $this->input->post("cboWirtschaftslage");
         $chkdict = ($this->input->post("chkdict") === "on") ? "1" : "0";
-        $txttwitter =  $this->input->post("txttwitter");
-        $txtfacebook =  $this->input->post("txtfacebook");
-        $txtgooglespace =  $this->input->post("txtgooglespace");
+        $txttwitter = $this->input->post("txttwitter");
+        $txtfacebook = $this->input->post("txtfacebook");
+        $txtgooglespace = $this->input->post("txtgooglespace");
         $fecha_dict = "0000-00-00";
 
         $respuesta = "";
@@ -411,7 +419,7 @@ class Compania extends CI_Controller {
                 'dict' => $chkdict,
                 'twitter' => $txttwitter,
                 'facebook' => $txtfacebook,
-                'googlespace' => $txtgooglespace                    
+                'googlespace' => $txtgooglespace
             );
             $respuesta = $this->compania_model->actualizar_compania($dataCompa, $idcompania);
         }
@@ -536,8 +544,8 @@ class Compania extends CI_Controller {
         $precio_email = fecha_calendario_inverso($this->input->post("txtprecio_email"));
 
         //var_dump($this->input->post("txtidContacto"));
-        
-        
+
+
         if ($opcion === "1") {//HH: agregar
             $idllamada = "";
             //echo "idcontacto:" . $idcontacto;

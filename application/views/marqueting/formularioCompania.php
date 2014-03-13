@@ -207,6 +207,14 @@ if ($compania != null) {
                       <tr>
                         <td><div class="etiquetaCountRequerimiento">Total de Requerimientos: <b><?php echo $countRequerimientos; ?></b></div></td>
                         <td><div class="etiquetaCountPedido">Total de Pedidos: <b><?php echo $countPedidos; ?></b></div></td>
+                      
+                      <td>
+                      <a class="btn" id="btnhistorial"
+                               href='<?= $this->config->base_url() ?>marqueting/reportes/filtro/<?php echo $VarIdcompania; ?>' 
+                               data-toggle="modal"
+                               target="_blank"
+                               >&nbsp;Ver Historial&nbsp;</a>
+                      </td>
                       </tr>
                     </table></td>
                 </tr>

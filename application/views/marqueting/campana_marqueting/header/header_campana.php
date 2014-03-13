@@ -34,11 +34,11 @@
         <link rel="stylesheet" href="<?= $this->config->base_url() ?>JQuery/Modal_Zebra/public/css/default/zebra_dialog.css" type="text/css">        
 
         <script type="text/javascript">
-           
 
-           
 
-          
+
+
+
 
             //HH: LLamos a los formularios al momento de cargar la pagina
             $(document).ready(function() {
@@ -46,41 +46,12 @@
 
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/buscar_campana_primero",
                         function() {
-
-                          /*
                             //HH: muestro los datos del panel de llamadas
                             var xcodigo = $("#txtcodigo").attr("value");
-                            var xcount = 0;
-                            $.ajax({
-                                url: "<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/count_llamadas/" + xcodigo,
-                                success: function(datos) {
-                                    xcount = datos;
-                                    if (xcount === "0") {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/formulario_llamada/",
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamNuevo").click();
-                                                }
-                                        );
-                                    } else {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_llamada_primero/" + xcodigo,
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamAgregar").attr('disabled', 'disabled');
-                                                }
-                                        );
-
-                                    }
-                                }
-                            })
+                            $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/tareas/" + xcodigo);
                             //HH: Fin -> muestro los datos del panel de llamadas
-                           */
-
                         }
                 )
-
-                //calcularHora();
-
             });
 
 
@@ -90,40 +61,10 @@
                 var codigo = $("#txtcodigo").attr("value");
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/buscar_campana_siguiente/" + codigo,
                         function() {
-
-                            /*activa_tabs();
+                            //HH: muestro los datos del panel de llamadas
                             var xcodigo = $("#txtcodigo").attr("value");
-                            var xcount = 0;
-                            $.ajax({
-                                url: "<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/count_llamadas/" + xcodigo,
-                                success: function(datos) {
-                                    xcount = datos;
-                                    if (xcount === "0") {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/formulario_llamada/",
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamNuevo").click();
-                                                }
-                                        );
-                                    } else {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_llamada_primero/" + xcodigo,
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamAgregar").attr('disabled', 'disabled');
-                                                }
-                                        );
-
-                                    }
-                                }
-                            });
-
-
-                            //HH: muestro los datos del panel de Tiempo
-                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
-                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
-                            //HH: Fin -> panel Tiempo
-                            */
-
+                            $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/tareas/" + xcodigo);
+                            //HH: Fin -> muestro los datos del panel de llamadas
                         }
 
                 );
@@ -137,39 +78,10 @@
                 var codigo = $("#txtcodigo").attr("value");
                 $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/buscar_campana_anterior/" + codigo,
                         function() {
-
-                           /* activa_tabs();
+                            //HH: muestro los datos del panel de llamadas
                             var xcodigo = $("#txtcodigo").attr("value");
-                            var xcount = 0;
-                            $.ajax({
-                                url: "<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/count_llamadas/" + xcodigo,
-                                success: function(datos) {
-                                    xcount = datos;
-                                    if (xcount === "0") {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/formulario_llamada/",
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamNuevo").click();
-                                                }
-                                        );
-                                    } else {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_llamada_primero/" + xcodigo,
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamAgregar").attr('disabled', 'disabled');
-                                                }
-                                        );
-
-                                    }
-                                }
-                            });
-
-
-                            //HH: muestro los datos del panel de Tiempo
-                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
-                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
-                            //HH: Fin -> panel Tiempo                      
-                            */
+                            $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/tareas/" + xcodigo);
+                            //HH: Fin -> muestro los datos del panel de llamadas
                         }
 
                 );
@@ -181,41 +93,12 @@
 
             $(document).on("click", "#btnPrimero", function(e) {
                 e.preventDefault();
-                $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_operador_primero",
+                $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/buscar_campana_primero",
                         function() {
-                            activa_tabs();
+                            //HH: muestro los datos del panel de llamadas
                             var xcodigo = $("#txtcodigo").attr("value");
-                            var xcount = 0;
-                            $.ajax({
-                                url: "<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/count_llamadas/" + xcodigo,
-                                success: function(datos) {
-                                    xcount = datos;
-                                    if (xcount === "0") {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/formulario_llamada/",
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamNuevo").click();
-                                                }
-                                        );
-                                    } else {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_llamada_primero/" + xcodigo,
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamAgregar").attr('disabled', 'disabled');
-                                                }
-                                        );
-
-                                    }
-                                }
-                            });
-
-
-                            //HH: muestro los datos del panel de Tiempo
-                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
-                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
-                            //HH: Fin -> panel Tiempo
-
-
+                            $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/tareas/" + xcodigo);
+                            //HH: Fin -> muestro los datos del panel de llamadas
                         }
 
                 );
@@ -225,40 +108,12 @@
 
             $(document).on("click", "#btnUltimo", function(e) {
                 e.preventDefault();
-                $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_operador_ultimo",
+                $("#panelPersona").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/buscar_campana_ultimo",
                         function() {
-                            activa_tabs();
+                            //HH: muestro los datos del panel de llamadas
                             var xcodigo = $("#txtcodigo").attr("value");
-                            var xcount = 0;
-                            $.ajax({
-                                url: "<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/count_llamadas/" + xcodigo,
-                                success: function(datos) {
-                                    xcount = datos;
-                                    if (xcount === "0") {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/formulario_llamada/",
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamNuevo").click();
-                                                }
-                                        );
-                                    } else {
-                                        $("#panelllamadas").load("<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador/buscar_llamada_primero/" + xcodigo,
-                                                function() {
-                                                    calendarios_llamada()
-                                                    $("#btnllamAgregar").attr('disabled', 'disabled');
-                                                }
-                                        );
-
-                                    }
-                                }
-                            });
-
-                            //HH: muestro los datos del panel de Tiempo
-                            $("#txtllamFechaInicio").datepicker({dateFormat: "dd-mm-yy"});
-                            $("#txtllamFechaFinal").datepicker({dateFormat: "dd-mm-yy"});
-                            //HH: Fin -> panel Tiempo    
-
-
+                            $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/tareas/" + xcodigo);
+                            //HH: Fin -> muestro los datos del panel de llamadas
                         }
 
                 );
@@ -266,8 +121,86 @@
 
 
 
+//HH: pasar estados de tareas
+
+            $(document).on("click", "#btngrupo1_ida", function(e) {
+                e.preventDefault();
+                            //HH: muestro los datos del panel de llamadas
+                            var xcodigo = $("#txtcodigo").attr("value"); //id_mar
+                            var idcompania = $("#lsttareas").val();
+                            if (idcompania != "") {
+                                $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/procesos_tareas/" + xcodigo + "/" + idcompania + "/0/1");
+                            } else {
+                                alert("No selecciono ninguna firma.");
+                            }
+                            //HH: Fin -> muestro los datos del panel de llamadas
+            });
+
+            $(document).on("click", "#btngrupo1_regreso", function(e) {
+                e.preventDefault();
+                            //HH: muestro los datos del panel de llamadas
+                            var xcodigo = $("#txtcodigo").attr("value"); //id_mar
+                            var idcompania = $("#lstpendientes").val();
+                            if (idcompania != "") {
+                                $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/procesos_tareas/" + xcodigo + "/" + idcompania + "/0/0");
+                            } else {
+                                alert("No selecciono ninguna firma.");
+                            }
+                            //HH: Fin -> muestro los datos del panel de llamadas
+            });
 
 
+            $(document).on("click", "#btngrupo2_ida", function(e) {
+                e.preventDefault();
+                            //HH: muestro los datos del panel de llamadas
+                            var xcodigo = $("#txtcodigo").attr("value"); //id_mar
+                            var idcompania = $("#lsttareas").val();
+                            if (idcompania != "") {
+                                $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/procesos_tareas/" + xcodigo + "/" + idcompania + "/2/1");
+                            } else {
+                                alert("No selecciono ninguna firma.");
+                            }
+                            //HH: Fin -> muestro los datos del panel de llamadas
+            });
+
+            $(document).on("click", "#btngrupo2_regreso", function(e) {
+                e.preventDefault();
+                            //HH: muestro los datos del panel de llamadas
+                            var xcodigo = $("#txtcodigo").attr("value"); //id_mar
+                            var idcompania = $("#lstfinalizado").val();
+                            if (idcompania != "") {
+                                $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/procesos_tareas/" + xcodigo + "/" + idcompania + "/2/0");
+                            } else {
+                                alert("No selecciono ninguna firma.");
+                            }
+                            //HH: Fin -> muestro los datos del panel de llamadas
+            });
+
+            $(document).on("click", "#btngrupo3_ida", function(e) {
+                e.preventDefault();
+                            //HH: muestro los datos del panel de llamadas
+                            var xcodigo = $("#txtcodigo").attr("value"); //id_mar
+                            var idcompania = $("#lstpendientes").val();
+                            if (idcompania != "") {
+                                $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/procesos_tareas/" + xcodigo + "/" + idcompania + "/1/1");
+                            } else {
+                                alert("No selecciono ninguna firma.");
+                            }
+                            //HH: Fin -> muestro los datos del panel de llamadas
+            });
+
+            $(document).on("click", "#btngrupo3_regreso", function(e) {
+                e.preventDefault();
+                            //HH: muestro los datos del panel de llamadas
+                            var xcodigo = $("#txtcodigo").attr("value"); //id_mar
+                            var idcompania = $("#lstfinalizado").val();
+                            if (idcompania != "") {
+                                $("#paneltareas").load("<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana/procesos_tareas/" + xcodigo + "/" + idcompania + "/1/0");
+                            } else {
+                                alert("No selecciono ninguna firma.");
+                            }
+                            //HH: Fin -> muestro los datos del panel de llamadas
+            });
 
 
 //HH: eventos de los botones de navegacion llamadas
@@ -673,44 +606,44 @@
 //HH: fin de calculo de hora
 
 
- function padNmb(nStr, nLen){
-    var sRes = String(nStr);
-    var sCeros = "0000000000";
-    return sCeros.substr(0, nLen - sRes.length) + sRes;
-   }
+            function padNmb(nStr, nLen) {
+                var sRes = String(nStr);
+                var sCeros = "0000000000";
+                return sCeros.substr(0, nLen - sRes.length) + sRes;
+            }
 
-   function stringToSeconds(tiempo){
-    var sep1 = tiempo.indexOf(":");
-    var sep2 = tiempo.lastIndexOf(":");
-    var hor = tiempo.substr(0, sep1);
-    var min = tiempo.substr(sep1 + 1, sep2 - sep1 - 1);
-    var sec = tiempo.substr(sep2 + 1);
-    return (Number(sec) + (Number(min) * 60) + (Number(hor) * 3600));
-   }
+            function stringToSeconds(tiempo) {
+                var sep1 = tiempo.indexOf(":");
+                var sep2 = tiempo.lastIndexOf(":");
+                var hor = tiempo.substr(0, sep1);
+                var min = tiempo.substr(sep1 + 1, sep2 - sep1 - 1);
+                var sec = tiempo.substr(sep2 + 1);
+                return (Number(sec) + (Number(min) * 60) + (Number(hor) * 3600));
+            }
 
-   function secondsToTime(secs){
-    var hor = Math.floor(secs / 3600);
-    var min = Math.floor((secs - (hor * 3600)) / 60);
-    var sec = secs - (hor * 3600) - (min * 60);
-    //return padNmb(hor, 2) + ":" + padNmb(min, 2) + ":" + padNmb(sec, 2);
-    return padNmb(hor, 2) + ":"  + padNmb(sec, 2);
-   }
+            function secondsToTime(secs) {
+                var hor = Math.floor(secs / 3600);
+                var min = Math.floor((secs - (hor * 3600)) / 60);
+                var sec = secs - (hor * 3600) - (min * 60);
+                //return padNmb(hor, 2) + ":" + padNmb(min, 2) + ":" + padNmb(sec, 2);
+                return padNmb(hor, 2) + ":" + padNmb(sec, 2);
+            }
 
-   function substractTimes(t1, t2){
-    var secs1 = stringToSeconds(t1);
-    var secs2 = stringToSeconds(t2);
-    var secsDif = secs1 - secs2;
-    return secondsToTime(secsDif);
-   }
+            function substractTimes(t1, t2) {
+                var secs1 = stringToSeconds(t1);
+                var secs2 = stringToSeconds(t2);
+                var secsDif = secs1 - secs2;
+                return secondsToTime(secsDif);
+            }
 
-   function calcT3(){
-    //with (document.frm)
-     //t3.value = substractTimes(t1.value, t2.value);
-     var HoraInicio = document.getElementById("txtllamHoraInicio").value;
-     var HoraFinal = document.getElementById("txtllamHoraFinal").value;
-      var resultado = substractTimes(HoraFinal,HoraInicio);
-     $("#txtllamTotalHoras").val(resultado);
-   }
+            function calcT3() {
+                //with (document.frm)
+                //t3.value = substractTimes(t1.value, t2.value);
+                var HoraInicio = document.getElementById("txtllamHoraInicio").value;
+                var HoraFinal = document.getElementById("txtllamHoraFinal").value;
+                var resultado = substractTimes(HoraFinal, HoraInicio);
+                $("#txtllamTotalHoras").val(resultado);
+            }
 
 
 
@@ -733,7 +666,7 @@
                                         "bInfo": false
                                     }
                             )
-                                
+
                         }
                 )
 

@@ -1,11 +1,36 @@
 <?PHP
 if ($campana != null) {
+
     foreach ($campana as $row) {
         $xcodigo = $row->id_mar;
-
+        $tipo_a  = $row->tipo_a;
+        $tipo_b = $row->tipo_b;
+        $responsable = $row->responsable;
+        $coordinador = $row->coordinador;
+        $fecha_inicio = fecha_calendario($row->fecha_inicio);
+        $fecha_final = fecha_calendario($row->fecha_final);
+        $feria = $row->feria;
+        $pais = $row->xpais;
+        $con_contacto = $row->con_contacto;
+        $sin_contacto = $row->sin_contacto;
+        $oem = $row->oem;
+        $masch = $row->masch;
+         
     }
 } else {
     $xcodigo = "";
+        $tipo_a  = "";
+        $tipo_b = "";
+        $responsable = "";
+        $coordinador = "";
+        $fecha_inicio = "";
+        $fecha_final = "";
+        $feria = "";
+        $pais = "";
+        $con_contacto = "";
+        $sin_contacto = "";
+        $oem = "";
+        $masch = "";    
 }
 ?>
 <table width="900" border="0" cellpadding="0" cellspacing="0">
@@ -51,9 +76,23 @@ if ($campana != null) {
                     <td align="left" valign="middle">&nbsp;Tipo:&nbsp;</td>
                     <td align="left" valign="middle"><table border="0">
                       <tr>
-                        <td><input type="radio" name="radio" id="radio" value="radio" /></td>
+                        <td>
+                            <?php if ($tipo_a=="1"){ 
+                                echo "<input type='radio' name='tipo_a' id='tipo_a'  checked='checked'/>";
+                            } else {
+                                echo "<input type='radio' name='tipo_a' id='tipo_a'  />";
+                            }
+                            ?>
+                            </td>
                         <td>Telefonmarketing</td>
-                        <td width="30" align="right"><input type="radio" name="radio" id="radio" value="radio" /></td>
+                        <td>
+                            <?php if ($tipo_b=="1"){ 
+                                echo "<input type='radio' name='tipo_b' id='tipo_b' checked='checked'/>";
+                            } else {
+                                echo "<input type='radio' name='tipo_b' id='tipo_b'  />";
+                            }
+                            ?>
+                            </td>
                         <td>Massenbriefe</td>
                       </tr>
                     </table></td>
@@ -69,17 +108,17 @@ if ($campana != null) {
           <td width="400" align="left" valign="top"><table width="400" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td width="120">&nbsp;Fecha Comienzo:&nbsp;</td>
-              <td width="100"><input type="text" name="txtFechaInicial" id="txtFechaInicial"  value=""  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
+              <td width="100"><input type="text" name="fecha_inicio" id="fecha_inicio"  value="<?php echo $fecha_inicio; ?>"  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
               <td width="90">&nbsp;Fecha Final:&nbsp;</td>
-              <td width="100"><input type="text" name="txtFechaFinal" id="txtFechaFinal"  value=""  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
+              <td width="100"><input type="text" name="fecha_final" id="fecha_final"  value="<?php echo $fecha_final; ?>"  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
             </tr>
             <tr>
               <td width="120">&nbsp;Responsable</td>
-              <td colspan="3"><input type="text" name="" id=""  value=""  readonly="readonly"  style="width:80px; margin-top:0px;" /></td>
+              <td colspan="3"><input type="text" name="responsable" id="responsable"  value="<?php echo $responsable; ?>"  readonly="readonly"  style="width:170px; margin-top:0px;" /></td>
             </tr>
             <tr>
               <td width="120">&nbsp;Coordinador</td>
-              <td colspan="3"><input type="text" name="input" id="input"  value=""  readonly="readonly"  style="width:80px; margin-top:0px;" /></td>
+              <td colspan="3"><input type="text" name="coordinador" id="coordinador"  value="<?php echo $coordinador; ?>"  readonly="readonly"  style="width:170px; margin-top:0px;" /></td>
             </tr>
           </table></td>
           <td align="left" valign="top" bgcolor="#EAEAEA"><table width="500" border="0" cellpadding="0" cellspacing="0">
@@ -88,7 +127,7 @@ if ($campana != null) {
               </tr>
             <tr>
               <td width="60">&nbsp;Ferias:</td>
-              <td width="140" align="left" valign="bottom"><input type="text" name="input3" id="input3"  value=""  readonly="readonly"  style="width:80px; margin-top:2px;" /></td>
+              <td width="140" align="left" valign="bottom"><input type="text" name="feria" id="feria"  value="<?php echo $feria; ?>"  readonly="readonly"  style="width:220px; margin-top:2px;" /></td>
               <td width="300" rowspan="2" align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="10">&nbsp;</td>
@@ -102,19 +141,50 @@ if ($campana != null) {
             </tr>
             <tr>
               <td>&nbsp;Pais</td>
-              <td align="left" valign="bottom"><input type="text" name="input2" id="input2"  value=""  readonly="readonly"  style="width:80px; margin-top:2px;" /></td>
+              <td align="left" valign="bottom"><input type="text" name="pais" id="pais"  value="<?php echo $pais; ?>"  readonly="readonly"  style="width:220px; margin-top:2px;" /></td>
               </tr>
             <tr>
               <td colspan="3"><table border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="30" align="center" valign="top"><input type="checkbox" name="checkbox" id="checkbox" /></td>
+                  <td width="30" align="center" valign="top">
+                       <?php if ($con_contacto=="1"){ 
+                                echo "<input type='checkbox' name='con_contacto' id='con_contacto' checked='checked'/>";
+                            } else {
+                                echo "<input type='checkbox' name='con_contacto' id='con_contacto'  />";
+                            }
+                            ?>
+                  </td>
                   <td>Con Contactos</td>
-                  <td width="30" align="center" valign="top"><input type="checkbox" name="checkbox2" id="checkbox2" /></td>
+                  <td width="30" align="center" valign="top">
+                     
+                       <?php if ($sin_contacto=="1"){ 
+                                echo "<input type='checkbox' name='sin_contacto' id='sin_contacto' checked='checked'/>";
+                            } else {
+                                echo "<input type='checkbox' name='sin_contacto' id='sin_contacto'  />";
+                            }
+                            ?>
+                  </td>
                   <td>Sin Contactos</td>
                 
-                  <td width="30" align="center" valign="top"><input type="checkbox" name="checkbox3" id="checkbox3" /></td>
+                  <td width="30" align="center" valign="top">
+                     
+                       <?php if ($oem=="1"){ 
+                                echo "<input type='checkbox' name='oem' id='oem' checked='checked'/>";
+                            } else {
+                                echo "<input type='checkbox' name='oem' id='oem'  />";
+                            }
+                            ?> 
+                  </td>
                   <td>&nbsp;OEM</td>
-                  <td width="30" align="center" valign="top"><input type="checkbox" name="checkbox4" id="checkbox4" /></td>
+                  <td width="30" align="center" valign="top">
+                          
+                                            <?php if ($masch=="1"){ 
+                                echo "<input type='checkbox' name='masch' id='masch' checked='checked'/>";
+                            } else {
+                                echo "<input type='checkbox' name='masch' id='masch'  />";
+                            }
+                            ?> 
+                  </td>
                   <td>Masch/Anlagebau</td>
                 </tr>
               </table></td>
@@ -126,14 +196,8 @@ if ($campana != null) {
     <tr><td height="10"></td></tr>
     <tr>
         <td>
-<div id="panelllamadas" style="background-color:#FFC" >
-  <table width="900" border="1">
-    <tr>
-      <td width="400" height="500" align="left" valign="top">&nbsp;</td>
-      <td width="100" height="500" align="left" valign="top">&nbsp;</td>
-      <td width="400" height="500" align="left" valign="top">&nbsp;</td>
-    </tr>
-    </table>
+<div id="paneltareas" style="background-color:#FFC" >
+  
 
 
 </div>
