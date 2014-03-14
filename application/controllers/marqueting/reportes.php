@@ -36,6 +36,10 @@ class Reportes extends CI_Controller {
                     array_push($data['montos'], $this->reportes_model->buscar_monto_x_pedido($row->idpedido));
                 }
             }
+            $nombre = $this->reportes_model->mostrar_nombre_firma($idcompania);
+            foreach ($nombre as $c){
+                $data['nombreCompania']= $c->nombre;
+            }
             //var_dump($data['montos']);
             $this->load->vars($data);
             $this->load->view('marqueting/header/header_compania');

@@ -210,7 +210,7 @@ if ($compania != null) {
                       
                       <td>
                       <a class="btn" id="btnhistorial"
-                               href='<?= $this->config->base_url() ?>marqueting/reportes/filtro/<?php echo $VarIdcompania; ?>' 
+                               href='<?= $this->config->base_url() ?>marqueting/reportes/filtro/<?php echo $VarIdcompania; ?>/2014' 
                                data-toggle="modal"
                                target="_blank"
                                >&nbsp;Ver Historial&nbsp;</a>

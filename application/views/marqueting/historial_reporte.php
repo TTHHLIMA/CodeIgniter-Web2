@@ -1,8 +1,8 @@
 <container>
     <div class="row-fluid">
         <table border="0">
-            <tr><td width="130">
-                    <b>Firma:</b> &nbsp;
+            <tr><td >
+                    <b>Firma:</b> &nbsp; <?php echo $nombreCompania; ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </td>
                 <td width="130">
                     Ansicht nach Jahren &nbsp;
@@ -81,7 +81,7 @@
                         If ($row1->excel == "N") {
                             $formatox = $formatox;
                         } else {
-                            $formatox = $formatox . ", Word";
+                            $formatox = $formatox . ", Excel";
                         }
                         If ($row1->ppt == "N") {
                             $formatox = $formatox;

@@ -20,6 +20,11 @@ function xFecha($mifecha) {
 
 function fecha_calendario($fecha_string) {
     //var_dump($fecha_string);
+    if ($fecha_string ===False){
+    
+    $fecha_string="0000-00-00";    
+    
+    }
     if ($fecha_string === "0000-00-00") {
         $xfecha_string = "";
     } else {
