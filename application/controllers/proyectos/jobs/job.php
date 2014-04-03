@@ -43,7 +43,8 @@ class Job extends CI_Controller {
                                     'hora_respuesta'=> date('h:i:s A')
                                 );
                                 $this->jobs_model->update_estado_orden_trabajo($array_orden_trabajo, $xidproyecto,$xidtraductor);
-                            echo "Proyecto Confirmado";
+                            //echo "Proyecto Confirmado";
+                            echo "Auftrag best&auml;tigt / Order confirmed";
                                 $titulo="Proyecto " . $xidproyecto . " - Confirmado" ;
                                 $dex="From: info@techni-translate.com\nContent-Type: text/html; charset=utf-8";
                                 //$para="hernanhuar@techni-translate.com";
@@ -84,15 +85,17 @@ class Job extends CI_Controller {
                                 if (!mail($para,$titulo,$mensaje,$dex)){
                                        $errorMail="Caso 2";
                                 }                                
-                            echo "Proyecto Rechazado";
+                            //echo "Proyecto Rechazado";
+                            echo "Auftrag abegelehnt / Order declined";
                             $Booleano=true;
                         } else {
                             echo $res;
                         }
                     } 
                     
-                    if ($Booleano===false){  //caso 3
-                        echo "Link sin estado por confirmar...";
+                    if ($Booleano===false){  //caso 3 
+                        //echo "Link sin estado por confirmar...";
+                        echo "FEHLER - Bitte kontaktieren Sie den Administrator per E-Mail / ERROR - Please contact the administrator";
                         $titulo="Link sin estado por confirmar...";
                         $dex="From: info@techni-translate.com\nContent-Type: text/html; charset=utf-8";
                         $para="hernanhuar@techni-translate.com";
@@ -118,7 +121,9 @@ class Job extends CI_Controller {
                     
                 } else{
                     if ($Col->respuesta==="1"){
-                        echo "Link ya confirmado, comuniquese con el coordinador...";
+                        //echo "Link ya confirmado, comuniquese con el coordinador...";
+                        //echo "La orden de trabajo ya fue confirmada, gracias.";
+                        echo "Sie haben bereits den Auftrag best&auml;tigt / You already confirmed the order";
                     }
                 }
             }

@@ -96,12 +96,18 @@ if ($contacto != null) {
                        data-toggle="modal"
                        title="Actualizar"
                        ><img src="<?= $this->config->base_url() ?>images/marqueting/actualizar.png" class="tamanoIconoMantenimiento"></a>
+                    <?php
+                    
+                    if ($countContactosRequerimientos==0){
+                    ?>
                     <a class="btn" id="btnEliminarC"
                        href="#"
                        data-toggle="modal"
                        title="eliminar"
                        ><img src="<?= $this->config->base_url() ?>images/marqueting/eliminar2.png" class="tamanoIconoMantenimiento"></a>                                        
-
+                    <?php
+                    }
+                    ?>
                 </div>   
          
             

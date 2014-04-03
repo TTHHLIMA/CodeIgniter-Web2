@@ -135,11 +135,17 @@ if ($compania != null) {
                                data-toggle="modal"
                                title="Actualizar"
                                ><img src="<?= $this->config->base_url() ?>images/marqueting/actualizar.png" class="tamanoIconoMantenimiento"></a>
+                            <?php 
+                            if ($countContactosx==0){ 
+                            ?>
                             <a class="btn" id="btnEliminar"
                                href="#"
                                data-toggle="modal"
                                title="eliminar"
                                ><img src="<?= $this->config->base_url() ?>images/marqueting/eliminar2.png" class="tamanoIconoMantenimiento"></a>                                        
+                            <?php
+                            }
+                            ?>
                             <a class="btn" id="btnBuscador"
                                href="#a"
                                data-toggle="modal"

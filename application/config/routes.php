@@ -37,7 +37,9 @@
 | in the URL cannot be matched to a valid route.
 |
 */
+
 $route['compania']="compania";
+//$route['marqueting/compania/(:any)']="marqueting/compania/index.php/$1";
 //$route['compania']="compania";
 $route['proyectos/procesos/proceso/(:any)'] = 'proyectos/procesos/proceso/$1';
 $route['clientes/reportes/(:num)'] = 'clientes/reportes/index/$1';

@@ -19,7 +19,7 @@
                             <?php
                             if ($tareas != null) {
                                 foreach ($tareas as $row) {
-                                    echo "<option value='" . $row->idcompania . "'>" . $row->firma . "</option>";
+                                    echo "<option  value='" . $row->idcompania . "'>" . $row->firma . "</option>";
                                 }
                             }
                             ?>

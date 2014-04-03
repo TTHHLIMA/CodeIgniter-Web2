@@ -43,7 +43,11 @@ if ($menu == "6") {
             <?php if ($xxxnivel === "1") { ?>
 
                 <li ><a <?php echo $activo1; ?> href="<?= $this->config->base_url() ?>marqueting/telefonmarketing/operador">Telefonmarqueting</a></li>
-                <li ><a <?php echo $activo2; ?> href="<?= $this->config->base_url() ?>marqueting/compania">Marqueting</a></li>
+                <li ><a <?php echo $activo2; ?> href="<?= $this->config->base_url() ?>marqueting/compania">Marqueting</a>
+                    <ul>
+                        <li><a href="<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana">Campa&ntilde;a de Marqueting</a></li>
+                    </ul>
+                </li>
                 <!--<li ><a <?php echo $activo6; ?> href="<?= $this->config->base_url() ?>marqueting/campana_marqueting/campana">Campaña de Marqueting</a></li>-->
                 <li ><a <?php echo $activo3; ?> href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/">Inbox</a></li>
                 <li ><a <?php echo $activo4; ?> href="<?= $this->config->base_url() ?>proyectos/procesos/proceso/listar">Proyectos abiertos</a></li>
