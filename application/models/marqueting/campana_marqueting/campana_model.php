@@ -72,6 +72,16 @@ class Campana_model extends CI_Model {
         }
     }
 
+    public function buscar_analisis($idmar) {
+        $query = $this->db->query("SELECT id_mar , ana_abc  FROM `marqueting_analisis` where id_mar = '" . $idmar . "' ");
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }    
+    
+    
     public function buscar_pendientes($codigo_actual) {
         $query = $this->db->query("SELECT m.id_mar, m.idcompania  as idcompania, case  when c.interesante_link <> '' then concat(m.nom_compania,' [Web 2]   ',m.fecha_modi , ' ',m.hora_modi) else concat(m.nom_compania,'   ',m.fecha_modi , ' ',m.hora_modi) End as firma , (select nombre from feria where feria.idferia = m.idferia) as feria , (select nombre from pais where pais.codigo = m.idpais ) as pais ,m.fecha_ingreso ,  case m.estado  when '0' then 'Contactado' End as estado FROM `marqueting_compania` m , compania c  where id_mar ='" . $codigo_actual . "' and m.estado = '1' and m.idcompania = c.idcompania order by c.interesante_link desc , m.nom_compania ");
         if ($query->num_rows() > 0) {

@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/web2/';
+//$config['base_url']	= 'http://localhost/web2/';
+$config['base_url']	= 'http://80.147.114.91/';
 
 /*
 |--------------------------------------------------------------------------

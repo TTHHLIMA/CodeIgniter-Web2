@@ -1,4 +1,5 @@
-var ruta ="http://localhost/web2/";
+//var ruta ="http://localhost/web2/";
+var ruta ="http://80.147.114.91/";
 function filtrar(id, idcompania){
     var fecha = document.getElementById(id).value;
     //var idcompania = document.getElementById(idcompania).value;

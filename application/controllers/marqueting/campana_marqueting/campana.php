@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 session_start();
@@ -42,7 +41,11 @@ class Campana extends CI_Controller {
         if ($data['campana'] === False) {
             $data['campana'] = $this->campana_model->buscar_campana_codigo($codigo_actual);
         }
-        
+        if ($data['campana'] == FALSE ) {
+            $data['analisis'] = FALSE;
+        } else {
+            $data['analisis'] = $this->campana_model->buscar_analisis($data['campana']['0']->id_mar);
+        }        
         $data['countCampana'] = $this->campana_model->total_de_registros("marqueting");
         $this->load->vars($data);
         $this->load->view('marqueting/campana_marqueting/formularioCampana_marqueting');
@@ -53,6 +56,11 @@ class Campana extends CI_Controller {
         if ($data['campana'] === False) {
             $data['campana'] = $this->campana_model->buscar_campana_codigo($codigo_actual);
         }
+        if ($data['campana'] == FALSE ) {
+            $data['analisis'] = FALSE;
+        } else {
+            $data['analisis'] = $this->campana_model->buscar_analisis($data['campana']['0']->id_mar);
+        }         
         $data['countCampana'] = $this->campana_model->total_de_registros("marqueting");
         $this->load->vars($data);
         $this->load->view('marqueting/campana_marqueting/formularioCampana_marqueting');
@@ -60,12 +68,23 @@ class Campana extends CI_Controller {
 
     public function buscar_campana_ultimo() {
         $data['campana'] = $this->campana_model->buscar_campana_ultimo();
+        if ($data['campana'] == FALSE ) {
+            $data['analisis'] = FALSE;
+        } else {
+            $data['analisis'] = $this->campana_model->buscar_analisis($data['campana']['0']->id_mar);
+        }         
         $data['countCampana'] = $this->campana_model->total_de_registros("marqueting");
         $this->load->vars($data);
         $this->load->view('marqueting/campana_marqueting/formularioCampana_marqueting');
     }
 
     public function buscar_campana_primero() {
+        $data['campana'] = $this->campana_model->buscar_campana_primero();
+        if ($data['campana'] == FALSE ) {
+            $data['analisis'] = FALSE;
+        } else {
+            $data['analisis'] = $this->campana_model->buscar_analisis($data['campana']['0']->id_mar);
+        }
         $data['campana'] = $this->campana_model->buscar_campana_primero();
         $data['countCampana'] = $this->campana_model->total_de_registros("marqueting");
         $this->load->vars($data);

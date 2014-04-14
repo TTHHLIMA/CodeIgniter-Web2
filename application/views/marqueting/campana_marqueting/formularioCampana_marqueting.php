@@ -15,7 +15,8 @@ if ($campana != null) {
         $sin_contacto = $row->sin_contacto;
         $oem = $row->oem;
         $masch = $row->masch;
-         
+        $fecha_llamada_inicio = fecha_calendario($row->fecha_llamada_inicio);
+        $fecha_llamada_final = fecha_calendario($row->fecha_llamada_final);         
     }
 } else {
     $xcodigo = "";
@@ -31,6 +32,8 @@ if ($campana != null) {
         $sin_contacto = "";
         $oem = "";
         $masch = "";    
+        $fecha_llamada_inicio = "";
+        $fecha_llamada_final = "";          
 }
 ?>
 <table width="900" border="0" cellpadding="0" cellspacing="0">
@@ -107,10 +110,10 @@ if ($campana != null) {
         <tr>
           <td width="400" align="left" valign="top"><table width="400" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="120">&nbsp;Fecha Comienzo:&nbsp;</td>
-              <td width="100"><input type="text" name="fecha_inicio" id="fecha_inicio"  value="<?php echo $fecha_inicio; ?>"  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
-              <td width="90">&nbsp;Fecha Final:&nbsp;</td>
-              <td width="100"><input type="text" name="fecha_final" id="fecha_final"  value="<?php echo $fecha_final; ?>"  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
+              <td width="120" align="left" valign="top">&nbsp;Fecha Comienzo:&nbsp;</td>
+              <td width="100" align="left" valign="top"><input type="text" name="fecha_inicio" id="fecha_inicio"  value="<?php echo $fecha_inicio; ?>"  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
+              <td width="90" align="left" valign="top">&nbsp;Fecha Final:&nbsp;</td>
+              <td width="100" align="left" valign="top"><input type="text" name="fecha_final" id="fecha_final"  value="<?php echo $fecha_final; ?>"  readonly="readonly"  style="width:70px; margin-top:2px;" /></td>
             </tr>
             <tr>
               <td width="120">&nbsp;Responsable</td>
@@ -128,20 +131,38 @@ if ($campana != null) {
             <tr>
               <td width="60">&nbsp;Ferias:</td>
               <td width="140" align="left" valign="bottom"><input type="text" name="feria" id="feria"  value="<?php echo $feria; ?>"  readonly="readonly"  style="width:220px; margin-top:2px;" /></td>
-              <td width="300" rowspan="2" align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <td width="300" rowspan="3" align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="10">&nbsp;</td>
                   <td>&nbsp;Analisis A-B-C:&nbsp; </td>
                 </tr>
                 <tr>
                   <td>&nbsp;</td>
-                  <td><textarea name="txtFechaInicial2" rows="2" readonly="readonly" id="txtFechaInicial2" style="width:200px; margin-top:2px;"></textarea></td>
+                  <td><textarea name="txtFechaInicial2" rows="3" readonly="readonly" id="txtFechaInicial2" style="width:200px; margin-top:2px;">
+<?php
+if ($analisis != FALSE) {
+   foreach ($analisis as $row1) {
+       echo $row1->ana_abc . ", ";
+    }
+} 
+?>
+                      </textarea></td>
                 </tr>
               </table></td>
             </tr>
             <tr>
               <td>&nbsp;Pais</td>
               <td align="left" valign="bottom"><input type="text" name="pais" id="pais"  value="<?php echo $pais; ?>"  readonly="readonly"  style="width:220px; margin-top:2px;" /></td>
+            </tr>
+            <tr>
+              <td colspan="2"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="left" valign="top">&nbsp;F. Inicio</td>
+                  <td><input type="text" name="fecha_inicio" id="fecha_inicio_1"  value="<?php echo $fecha_llamada_inicio; ?>"  readonly="readonly"  style="width:70px; margin-top:0px;" /></td>
+                  <td align="left" valign="top">F. Final</td>
+                  <td><input type="text" name="fecha_inicio" id="fecha_final_1"  value="<?php echo $fecha_llamada_final; ?>"  readonly="readonly"  style="width:70px; margin-top:0px;" /></td>
+                </tr>
+              </table></td>
               </tr>
             <tr>
               <td colspan="3"><table border="0" cellpadding="0" cellspacing="0">

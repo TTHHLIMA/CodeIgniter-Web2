@@ -1,4 +1,5 @@
-var ruta ="http://localhost/web2/proyectos/procesos/proceso/";
+//var ruta ="http://localhost/web2/proyectos/procesos/proceso/";
+var ruta ="http://80.147.114.91/proyectos/procesos/proceso/";
 function upd_userformPrepSalto(pedido) {
     var Estado = "Cbo" + pedido + "1";
     var ChkPDFGlobal = "ChkPDFGlobal" + pedido;

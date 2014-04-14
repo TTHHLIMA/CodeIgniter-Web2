@@ -1,0 +1,18 @@
+.table tbody tr td {
+    font-size: 11px;
+}
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+  background-color: transparent;
+}
+
+
+.tablaTraduccion {
+ background-color: #FFFFAA;   
+}
+
+.tablaCorreccion {
+ background-color: #FFEEEE;   
+}
+
+
