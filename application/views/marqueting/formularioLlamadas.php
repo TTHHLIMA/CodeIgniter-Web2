@@ -40,9 +40,9 @@ if ($llamada != null) {
     $xprecio_email = "";
 }
 ?>
-
-<table width="740"  id="panelLlamadas" style='background-color: #EFDCBC' >
 <form id="frmLlamada" action="javascript:void(0)" method="post">
+<table width="400"  id="panelLlamadas" style='background-color: #EFDCBC' >
+
     <tr>
         <td>
             <table width="700">
@@ -162,14 +162,25 @@ if ($llamada != null) {
                                 <tr>
                                   <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
                                            <tr>
-                                             <td>&nbsp;</td>
-                                             <td width="90" height="30" align="right">Info per Email&nbsp;</td>
+                                             <td width="4">&nbsp;</td>
+                                             <td width="100" height="30" align="left">Info per Email&nbsp;</td>
                                              <td width="70" height="30"><input  type="text" id ="txtinfo_email"  name="txtinfo_email" value="<?= $xinfo_email; ?>" /></td>
-                                             <td width="120" height="30" align="right">Preise per E-Mail&nbsp;</td>
-                                             <td width="70" height="30"><input  type="text" id ="txtprecio_email"  name="txtprecio_email" value="<?= $xprecio_email; ?>" /></td>
-                                           </tr>
+                                             
+                                    </tr>
                                          </table></td>
                                 </tr>
+<tr>
+                                    <td>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                           <tr>
+                                             <td width="4">&nbsp;</td>
+                                             
+                                             <td width="100" height="30" align="left">Preise per E-Mail&nbsp;</td>
+                                             <td width="70" height="30"><input  type="text" id ="txtprecio_email"  name="txtprecio_email" value="<?= $xprecio_email; ?>" /></td>
+                                           </tr>
+                                         </table>
+                                    </td>
+                                </tr>                                
                                 <tr>
                                     <td><input type="checkbox" name="chkCa1" id="chkCa1" <? echo ($xchkCA1 === "1") ? "checked" : ""; ?> />
                                         Besonders intressiert</td>
@@ -204,6 +215,6 @@ if ($llamada != null) {
            
         </td>
     </tr>
- </form>
-</table>            
 
+</table>            
+</form>

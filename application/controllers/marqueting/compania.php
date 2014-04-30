@@ -552,6 +552,7 @@ class Compania extends CI_Controller {
     function proceso_mantenimiento_llamada($opcion = "", $idcontacto = "") {
         //var_dump($idcontacto);
         $idllamada = $this->input->post("txtidLlamada");
+        //echo "idllamada: ".$idllamada;
         $xidcontacto = ($this->input->post("txtXidContacto") === "") ? $idcontacto : $this->input->post("txtXidContacto");
         $usuario = $this->input->post("cbousuario1");
         $fecha_llamada = fecha_calendario_inverso($this->input->post("txtfecha_llamada"));

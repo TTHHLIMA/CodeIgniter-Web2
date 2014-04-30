@@ -63,6 +63,7 @@
 
             //HH: LLamos a los formularios al momento de cargar la pagina
             $(document).ready(function() {
+                
                   $("#CompaniaContactos").load("<?= $this->config->base_url() ?>marqueting/compania/buscar_compania_primero",
                         function() {
                             var idcompania = $("#txtidcompania").attr("value");
@@ -1032,19 +1033,36 @@
 
 
                     $(document).on("click", "#btnActualizarC", function(e) {
-                        e.preventDefault();
-                        if ($('#btnActualizarC').attr('disabled')) {
-                            return false;
-                        }
+                        //e.preventDefault();
+                        //if ($('#btnActualizarC').attr('disabled')) {
+                        //    return false;
+                        //}
                         var idcompania = $("#txtidcompania").attr("value");
                         var idcontacto = $("#txtidContacto").attr("value");
-
+                        //console.log( idcontacto );
+                        //console.log( $( "#frmCompania" ).serialize() );
+                        //console.log( $( "#txtnomContacto" ).serializeArray() );
+                        
+                        //var datos = $("#txtnomContacto").serialize();  
+                        //console.log (datos);
+                        //alert(e.status);
                         $.Zebra_Dialog('¿Desea Actualizar el Registro?', {
                             'type': 'question',
                             'title': 'Confirmación',
                             'buttons': ['Si', 'No', 'Cancelar'],
                             'onClose': function(caption) {
                                 if (caption == "Si") {
+                                    
+if ($('#frmContacto').length){
+                             //alert('existe');
+                             //var data = document.getElementById("txtnomContacto").value;
+                             //alert (data);
+                             var dato = $("#frmContacto").serialize();
+                             //alert(dato);
+                        } else {
+                            //alert ('no existe');
+                        }                                    
+                                    
                                     $.ajax({
                                         url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_contacto/2',
                                         type: 'POST',
@@ -1268,7 +1286,9 @@
                         }
                         var idllamada = $("#txtidLlamada").attr("value");
                         var idcontacto = $("#txtidContacto").attr("value");
-
+                        //alert(idllamada);
+                        //var dato = $("#frmLlamada").serialize();
+                          //   alert(dato);
                         $.Zebra_Dialog('¿Desea Actualizar el Registro?', {
                             'type': 'question',
                             'title': 'Confirmación',
@@ -1278,7 +1298,7 @@
                                     $.ajax({
                                         url: '<?= base_url() ?>marqueting/compania/proceso_mantenimiento_llamada/2',
                                         type: 'POST',
-                                        data: $("#frmLlamada").serializeArray(),
+                                        data: $("#frmLlamada").serialize(),
                                         success: function(resp) {
                                             if (resp == "") { //HH: pregunto si no hay ningun mensaje de error 
                                                 console.log(resp);  //HH: verificamos los datos que se esta enviando al servidor
