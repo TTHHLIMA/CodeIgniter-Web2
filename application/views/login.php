@@ -1,7 +1,7 @@
 
 <div class="container">
     <center>
-        <? //php $atributos = array('class' => 'well form-inline span5', 'id' => 'frmLogin'); ?>
+        
 
         <?php $atributos = array('class' => 'form-signin', 'id' => 'frmLogin'); ?>
         <?php echo form_open('verifica_login', $atributos); ?>

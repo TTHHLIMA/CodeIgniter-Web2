@@ -1,0 +1,4 @@
+/* se altero el estilo a breadcrumb de bootstrap */
+.breadcrumb {
+  margin: 0 0 4px;
+}

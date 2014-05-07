@@ -50,10 +50,14 @@ $pm->load->model("procesos_model");
                     $xrbUsuarioCheked5 = "";
                     $xrbUsuarioCheked6 = "";
                     $xrbUsuarioCheked7 = "";
+                    $xrbUsuarioCheked13 = "";
                     switch ($xFiltro) {
                         case "5":
                             $xrbUsuarioCheked1 = " checked ";
                             break;
+                        case "13":
+                            $xrbUsuarioCheked13 = " checked ";
+                            break;                        
                         case "4":
                             $xrbUsuarioCheked2 = " checked ";
                             break;
@@ -95,8 +99,10 @@ $pm->load->model("procesos_model");
                                     </tr>
                                 </table>
                             </td>
-
+                            <!-- id_usuarios de la tabla usuarios -->
+                            <!-- Filtra los usuarios  -->
                             <td width="60"><input type="radio" name="rbUsuario" value="5" onChange="llamaUsuario();"  <?PHP echo $xrbUsuarioCheked1; ?> /> AG</td>
+                            <td width="60"><input type="radio" name="rbUsuario" value="13" onChange="llamaUsuario();"  <?PHP echo $xrbUsuarioCheked13; ?> /> BM</td>
                             <td width="60"><input type="radio" name="rbUsuario" value="4" onChange="llamaUsuario();" <?PHP echo $xrbUsuarioCheked2; ?> /> FDM</td>
                             <td width="60"><input type="radio" name="rbUsuario" value="7" onChange="llamaUsuario();" <?PHP echo $xrbUsuarioCheked3; ?> /> FM</td>
                             <td width="60"><input type="radio" name="rbUsuario" value="6" onChange="llamaUsuario();" <?PHP echo $xrbUsuarioCheked4; ?> /> FSM</td>

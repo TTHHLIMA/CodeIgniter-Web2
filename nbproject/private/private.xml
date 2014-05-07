@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/wamp/www/web2/js/proyecto/proceso/updTermStrac.js</file>
+            <file>file:/E:/wamp/www/web2/application/controllers/proyectos/procesos/proceso.php</file>
+            <file>file:/E:/wamp/www/web2/application/controllers/marqueting/campana_marqueting/campana.php</file>
+            <file>file:/E:/wamp/www/web2/js/proyecto/proceso/updProcesos.js</file>
+            <file>file:/E:/wamp/www/web2/application/views/login.php</file>
+            <file>file:/E:/wamp/www/web2/css/estilosCampanaMarqueting.css</file>
+            <file>file:/E:/wamp/www/web2/css/estilosMarqueting.css</file>
+            <file>file:/E:/wamp/www/web2/application/config/config.php</file>
+            <file>file:/E:/wamp/www/web2/application/views/marqueting/campana_marqueting/contenedorCampana.php</file>
+            <file>file:/E:/wamp/www/web2/application/views/marqueting/campana_marqueting/header/header_campana.php</file>
+            <file>file:/E:/wamp/www/web2/application/controllers/login.php</file>
+            <file>file:/E:/wamp/www/web2/application/config/routes.php</file>
+            <file>file:/E:/wamp/www/web2/css/estilosCompania.css</file>
+            <file>file:/E:/wamp/www/web2/assets/css/bootstrap.min.css</file>
+            <file>file:/E:/wamp/www/web2/js/cliente/funciones.js</file>
+            <file>file:/E:/wamp/www/web2/assets/css/bootstrap.css</file>
+            <file>file:/E:/wamp/www/web2/application/views/proyectos/procesos/contenido_listar.php</file>
+            <file>file:/E:/wamp/www/web2/js/marqueting/funciones.js</file>
+            <file>file:/E:/wamp/www/web2/application/controllers/verifica_login.php</file>
+            <file>file:/E:/wamp/www/web2/application/config/database.php</file>
+        </group>
+    </open-files>
 </project-private>

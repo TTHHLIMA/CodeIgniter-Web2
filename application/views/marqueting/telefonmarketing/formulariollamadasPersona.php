@@ -28,8 +28,9 @@ if ($llamadas != null) {
         $xrichtig = "";
 }
 ?>
+<form id="frmllamadas"  action="" method="post" >
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <form id="frmllamadas"  action="" method="post" >
+    
     <tr>
         <td valign="bottom"><table width="450" border="0" align="left" cellpadding="0" cellspacing="0">
                 <tr>
@@ -196,7 +197,7 @@ if ($llamadas != null) {
                 
             </table></td>
     </tr>
-</form>
-</table>
 
+</table>
+</form>
 

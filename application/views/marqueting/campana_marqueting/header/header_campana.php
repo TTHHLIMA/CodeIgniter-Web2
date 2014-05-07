@@ -9,6 +9,7 @@
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>assets/css/bootstrap-responsive.css" rel="stylesheet">	
         <link href="<?= $this->config->base_url() ?>css/estilos.css" rel="stylesheet">
+        <link href="<?= $this->config->base_url() ?>css/estilosCampanaMarqueting.css" rel="stylesheet">
         <link href="<?= $this->config->base_url() ?>css/menu_superior.css" rel="stylesheet">
         <script src="<?= $this->config->base_url() ?>JQuery/jquery-1.10.2.js"></script>
         <script src="<?= $this->config->base_url() ?>js/marqueting/campana_marqueting/campana.js"></script>

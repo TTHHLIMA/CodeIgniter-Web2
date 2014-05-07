@@ -22,7 +22,10 @@ body {
     margin: 0px;
 }
 
-
+/* se altero el estilo a breadcrumb de bootstrap */
+.breadcrumb {
+  margin: 0 0 4px;
+}
 
 /* cambio en tabd JQ UI  
 .ui-tabs .ui-tabs-panel{

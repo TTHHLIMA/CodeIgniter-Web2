@@ -1,7 +1,7 @@
-<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #333333;">
+<table width="730" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #333333;">
     <tr>
-        <td width="400" height="500" align="left" valign="top">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+        <td width="320" height="500" align="left" valign="top">
+            <table width="320" border="0" cellpadding="0" cellspacing="0" >
                 <tr>
                     <td valign="top" style="padding:5px;">
                         <?php
@@ -15,7 +15,7 @@
                 </tr>
                 <tr>
                     <td style="padding:5px;">
-                        <select name="lsttareas" id="lsttareas" size="2" multiple style="width:400px; height:440px;">
+                        <select name="lsttareas" id="lsttareas" size="2" multiple style="width:310px; height:440px;">
                             <?php
                             if ($tareas != null) {
                                 foreach ($tareas as $row) {
@@ -29,7 +29,7 @@
             </table>
 
         </td>
-        <td width="100" height="500" align="left" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <td width="60" height="500" align="left" valign="top"><table width="60" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td height="70" align="center">&nbsp;</td>
                 </tr>
@@ -69,8 +69,8 @@
                     </td>
                 </tr>
             </table></td>
-        <td width="400" height="500" align="left" valign="top">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" >
+        <td width="320" height="500" align="left" valign="top">
+            <table width="320" border="0" cellpadding="0" cellspacing="0" >
                 <tr>
                     <td valign="top" style="padding:5px;">
                         <?php
@@ -84,7 +84,7 @@
                 </tr>
                 <tr>
                     <td style="padding:5px;">
-                        <select name="lstpendientes" id="lstpendientes" size="2" multiple style="width:400px; height:200px;">
+                        <select name="lstpendientes" id="lstpendientes" size="2" multiple style="width:310px; height:200px;">
                             <?php
                             if ($pendientes != null) {
                                 foreach ($pendientes as $row) {
@@ -98,10 +98,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding:5px;">
-                        <table width="350" border="0" cellpadding="0" cellspacing="0">
+                    <td width="320" style="padding:5px;">
+                        <table width="300" border="0" cellpadding="0" cellspacing="0">
                             <tr>
-                                <td width="200">
+                                <td width="180">
                         <?php
                         if ($finalizados != null) {
                             echo "<b>Finalizado</b> [ " . count($finalizados) . " Firmas ]";
@@ -122,7 +122,7 @@
                 </tr>
                 <tr>
                     <td style="padding:5px;">
-                        <select name="lstfinalizado" id="lstfinalizado" size="2" multiple style="width:400px; height:200px;">
+                        <select name="lstfinalizado" id="lstfinalizado" size="2" multiple style="width:310px; height:200px;">
                             <?php
                             if ($finalizados != null) {
                                 foreach ($finalizados as $row) {
